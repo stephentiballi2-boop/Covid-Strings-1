@@ -1,0 +1,59 @@
+{"\ufeff<doc.type.hmtl>
+n<script>
+FileName=Covid Strings One Second Round.JS 
+Highest Remaining Seed =( Greatest Remaining Num Value In Covid Strings List)
+Lowest Remaining Seed = (Lowest Remaining Num Value In Covid Strings List)
+Intermediate Seed1=(First Middle Remaining Value In Covid Strings List)
+Intermediate Seed2=(Second Middle Remaining Value In Covid Strings List)
+<Html>
+\n<Head>\n<Meta Charset": null,
+"\n\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 Gap : Tenpx:\n\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 
+.Matchup{}\n\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 Border : Onepx Solid Zero": null, "\n\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 
+Padding: Tenpx": null, "\n\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 
+Text-Align: Center": null, 
+<title Covid Strings One Second Round Bracket>
+Create Matchup (Intermediate Seed2 Versus Intermediate Seed1)
+Create Matchup (Lowest Remaining Seed Versus Highest Remaining Seed)
+If (Event.Target.Covid Strings Seed List.Contains(Matchup))
+Event.Target.Covid Strings Seed List.Toggle
+else:
+create matchup
+Import Java Util.Scanner
+Import Java.Util
+Questions[]Questions={
+New Question18
+New Question19
+New Question20
+New Question21
+New Question22
+New Question23
+New Question24
+New Question25
+New Question26
+Const MyClass=(Non-Concatenated)
+If Category==Math Problem:
+Type Answer
+Else:
+Select From Multiple Choice
+Const MyClass=New MyClass(Concatenated) 
+Return Category
+If Category==Math Problem:
+Type Answer
+Else:
+Select From Multiple Choice
+Import Syntax 
+AdvancingTeams=CurrentTeams.Slice(Zero,CurrentTeams.Length/Two)
+For (I In Covid Strings Seed List)
+Const Round Div=Document.CreateElement
+Round Div Class Name= Covid Strings1 Second Round
+Bracket.AppendChild(Round Div)
+DeclareWinner
+If Intermediate Seed 1 Score >=Fourty:
+Console.Log(Intermediate Seed1 Wins )
+Else:
+Console.Log( Intermediate Seed2 Wins)
+If Highest Remaining Seed Score>=Fourty: 
+Console.Log(Highest Remaining Seed Wins)
+Else:
+Console.Log(Lowest Remaining Seed Wins)
+Return FileName
