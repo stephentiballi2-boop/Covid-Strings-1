@@ -1,5 +1,5 @@
 <Doc.Type.HTML>\n\u00a0
-  <script>\
+  <script>
   FileName": Covid Strings One First Round. JS, " I++) 
   Covid Strings Seed List=[One,Two,Three,Four,Five,Six,Seven,Eight]
 Matchup1= (Six Versus Three )
@@ -27,6 +27,8 @@ Matchup4=(Eight Versus One)
   create matchup(Black Night Riders Versus Red Protein Spikers)
   If(Event.Target.Covidstringsseedlist.Contains(Matchup)){
     Event.Target.Covidstringsseedlist.Toggle
+else:
+create matchup
  ConstTeams=[Red,Orange,Yellow,Green,Burgundy,Indigo,Blue,Black])
     Import Java Util.Scanner
 Import Java.Util
