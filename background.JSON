@@ -1,0 +1,25 @@
+{"branch_id":"f8cc5f53-913a-46c1-91e4-f11506c5016b","name":"Back Ground","settings":{"physics":{"gravity":[0,-9.8,0]},"render":{"fog_end":1000,"fog_start":1,
+"global_ambient":[0.2,0.2,0.2],"fog_color":[0,0,0],"fog":"none","fog_density":0.01,"gamma_correction":1,"tonemapping":0,"exposure":1,
+"skybox":null,"skyType":"infinite","skyMeshPosition":[0,0,0],"skyMeshRotation":[0,0,0],"skyMeshScale":[100,100,100],
+"skyCenter":[0,0.1,0],"skyboxIntensity":1,"skyboxRotation":[0,0,0],"skyboxMip":0,"lightmapSizeMultiplier":16,"lightmapMaxResolution":2048,"lightmapMode":1,
+"lightmapFilterEnabled":false,"lightmapFilterRange":10,"lightmapFilterSmoothness":0.2,"ambientBake":false,"ambientBakeNumSamples":1,
+"ambientBakeSpherePart":0.4,"ambientBakeOcclusionBrightness":0,"ambientBakeOcclusionContrast":0,"clusteredLightingEnabled":true,"lightingCells":[10,3,10],
+"lightingMaxLightsPerCell":255,"lightingCookieAtlasResolution":2048,"lightingShadowAtlasResolution":2048,"lightingShadowType":0,"lightingCookiesEnabled":false,
+"lightingAreaLightsEnabled":false,"lightingShadowsEnabled":true}},"entities":{"!  ":{"!":"Root","#":null,"$":"!  ","%":[]," ":true,"&":{},"'":["! !","! #","!
+$","! %"],"___1":[0,0,3]},"! !":{"!":"Camera","#":"!  ","$":"! !","%":[]," ":true,"&":{"5":{"6":45,"7":0,"8":[0.118,0.118,0.118,1],"9":true,":":true,";":true,
+" ":true,"<":4,"=":1000,">":0.1,"?":0,"@":[0,0,1,1],"(":[0,1,2,3,4]}},"'":[],"___1":[6,9,3]},"! #":{"!":"Light","#":"!  ","$":"! #","%":[]," 
+":true,"&":{"A":{" ":true,"B":false,"C":1,"D":0,"E":true,"F":true,"G":false,")":false,
+"H":[1,1,1],"I":1,"*":"directional","J":16,"K":8,"L":40,"M":45,"N":0,"O":0,"+":true,
+"P":2,"Q":0,"R":1024,"S":0.4,"T":0.05,"U":1,"V":11,"W":0.01,"X":null,"Y":1,"Z":true,
+"[":"rgb","]":0,"^":[1,1],"_":[0,0],"(":[0]}},"'":[],"___1":[12,15,3]},"! $":{"!":"Box","#":"!  ","$":"! $","%":[]," ":true,"&":{",":{"0":false,
+"1":1,"2":true,"3":null,"4":null," ":true,"*":"box","-":null,".":[null],"+":true,"/":true,")":false,
+"(":[0]}},"'":[],"___1":[18,0,3]},"! %":{"!":"Plane","#":"!  ","$":"! %","%":[]," ":true,"&":{",":{"0":false,"1":1,"2":true,"3":null,"4":null," ":true,"
+*":"plane","-":null,".":[null],"+":true,"/":true,")":false,"(":[0]}},"'":[],"___1":[0,0,21]}},
+"created":"2024-09-12T03:45:49.789Z","id":2069685,"compressedFormat":
+{"fieldFirstCode":32,"fieldCodeBase":95,"fieldArray":
+["enabled","name",1,"parent","resource_id","tags","components","children","layers","isStatic","type","castShadows","render","asset","materialAssets","receiveShadows","lightmapped","lightmapSizeMultiplier","castShadowsLightmap","rootBone","batchGroupId","camera","fov","projection","clearColor","clearColorBuffer","clearDepthBuffer","frustumCulling","orthoHeight","farClip","nearClip","priority","rect","light","bake",
+"bakeNumSamples","bakeArea","bakeDir","affectDynamic","affectLightmapped","color","intensity","shadowDistance","range",
+"innerConeAngle","outerConeAngle","shape","falloffMode","shadowUpdateMode","shadowType","shadowResolution","shadowBias","normalOffsetBias",
+"vsmBlurMode","vsmBlurSize","vsmBias","cookieAsset","cookieIntensity","cookieFalloff","cookieChannel",1,"cookieAngle","cookieScale","cookieOffset"],
+"singleVecs":[0,0,0,1,1,1,4,3.5,4,-30,45,0,2,2,-2,45,135,0,0,0.5,0,8,1,8],"tripleVecs":[]}}
+
