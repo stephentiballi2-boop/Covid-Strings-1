@@ -1,27 +1,32 @@
-{"\ufeff<doc.type.hmtl>
-n<script>
-FileName=Covid Strings One Second Round.JS 
+<doc.type.hmtl>
+<script>
+<Html>
+<Head>
+<Meta Charset=UTF-Eight
+ <Meta Name= Viewport Content=Width=Device-Width,Inital Scale One
+<TITLE> Covid Strings One Second Round>
+</Head>
+<Body>
+<Link Rel=Stylesheet Href CSS
+Bracket Container
+.Matchup{}
+Solid Zero": 
+FileName=Covid Strings1 Second Round.JS 
+SECOND ROUND=(HIGHEST REMAINING SEED, INTERMEDIATE SEED 1, ITERMIEDATE SEED 2 AND LOWEST REMAINING SEED)
 Highest Remaining Seed =( Greatest Remaining Num Value In Covid Strings List)
 Lowest Remaining Seed = (Lowest Remaining Num Value In Covid Strings List)
 Intermediate Seed1=(First Middle Remaining Value In Covid Strings List)
 Intermediate Seed2=(Second Middle Remaining Value In Covid Strings List)
-<Html>
-\n<Head>\n<Meta Charset": null,
-"\n\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 Gap : Tenpx:\n\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 
-.Matchup{}\n\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 Border : Onepx Solid Zero": null, "\n\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 
-Padding: Tenpx": null, "\n\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 
-Text-Align: Center": null, 
-<title Covid Strings One Second Round Bracket>
 Create Matchup (Intermediate Seed2 Versus Intermediate Seed1)
 Create Matchup (Lowest Remaining Seed Versus Highest Remaining Seed)
 If (Event.Target.Covid Strings Seed List.Contains(Matchup))
 Event.Target.Covid Strings Seed List.Toggle
 else:
-create matchup
+Create matchup
 Import Java Util.Scanner
 Import Java.Util
-Questions[]Questions={
-New Question18
+Questions[]Questions=
+Question18
 New Question19
 New Question20
 New Question21
@@ -57,3 +62,5 @@ Console.Log(Highest Remaining Seed Wins)
 Else:
 Console.Log(Lowest Remaining Seed Wins)
 Return FileName
+<BODY>
+</HTML>
