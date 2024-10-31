@@ -2,52 +2,54 @@
   <script>
 <HTML>
 <Head>
-<Meta Charset=UTF-Eight>
- Meta Name = Viewport Content =Width= Device-Width, Inital Scale One> 
-    <Title> Covid Strings One  First Round </Title> 
-    <Link Rel= Stylesheet Href= Styles.CSS >
+<Meta Charset=UTF-Eight
+ Meta Name = Viewport Content =Width= Device-Width, Inital Scale One 
+    <Title> Covid Strings 1  First Round JS </Title> 
+    <Link Rel= Stylesheet Href=CSS >
     </Head>
     <Body>
         <Div Id=Bracket-Container ></Div>
-  FileName": Covid Strings One First Round.JS 
+.Matchup
+Solid Zero;
+  FileName=Covid Strings 1 First Round.JS 
   Covid Strings Seed List=[One,Two,Three,Four,Five,Six,Seven,Eight]
 Matchup1= (Six Versus Three )
 Matchup2=(Five VersusFour)
 Matchup3= (Seven Versus Two)
 Matchup4=(Eight Versus One)
-  "Document.CreateElement(Div)"
-  RoundDiv.ClassName ": "Covid Strings One First Round
+  Const Round Div=Create Element
+  RoundDiv.ClassName= Covid Strings 1 First Round
   RoundDiv.AppenedChild(MatchupDiv)
   Teams.ForEach((Team,Index)" 
+ ConstTeams=[Red,Orange,Yellow,Green,Burgundy,Indigo,Blue,Black]
   Create Matchup(Indigo Isos Versus Yellow Moxie)
   Create Matchup(Burgundy Rebuilders Versus Green Peacemakers)
   Create Matchup(Blue Curve Crushers Versus Orange RNA Messengers)
   Create Matchup(Black Night Riders Versus Red Protein Spikers)
-  If(Event.Target.Covidstringsseedlist.Contains(Matchup)){
-    Event.Target.Covidstringsseedlist.Toggle
-Else:
-Create Matchup
- ConstTeams=[Red,Orange,Yellow,Green,Burgundy,Indigo,Blue,Black]
+If (Event.Target.Covid Strings Seed List.Contains(Matchup))
+Event.Target.Covid Strings Seed List.Toggle
+else:
+Create matchup
     Import Java Util.Scanner
 Import Java.Util
     Questions[]Questions={
-New Question One
-New Question Two
-New Question Three
-New Question Four
-New Question Five
-New Question Six
-New Question Seven
-New Question Eight
-New Question Nine
-New Question Ten
-New Question Eleven
-New Question Twelve
-New Question Thirteen
-New Question Fourteen
-New Question Fifteen
-New Question Sixteen
-New Question Seventeen 
+Question1
+New Question2
+New Question3
+New Question4
+New Question5
+New Question6
+New Question7
+New Question8
+New Question9
+New Question10
+New Question11
+New Question12
+New Question13
+New Question14
+New Question15
+New Question16
+New Question17 
 Advancing Teams=Teams.Slice(Zero, CurrentTeams/Two)
   Let Result= Declare Winner(Team One Score, Team Two Score) 
   If Team Yellow Score >=FOURTY":
