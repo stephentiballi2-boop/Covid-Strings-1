@@ -11,86 +11,74 @@ Private Final J Button Option Button=
 New J Button (Change Color)
 Public Fun With Graphics(){
 JPanel Color Panel=New J Panel();
-This Add (Color.Panel, Border Layout. Center )
-JPanel Button Panel=
-New J Panel (New Flowlayout(Flowlayout.Center)
-ButtonPanel.Add(RandomButton);
-Random.Button Add ActionListener(New Action Listiner(){
+ Add (Panel,Center )
+Add(Button);
+Button Add ActionListener(New Action Listener)
+Override 
+SetBackground(New Color)
+Panel.Add(OptionButton);
+Add ActionListener(New Action Listener(){
 Override 
 Public Void ActionPerformed(ActionEvent E){
-Random R= NewRandom();
-ColorPanel.SetBackground(New Color (R NextInt(Thirteen),)(R NextInt(Thirteen),)(R NextInt(Thirteen),)(R NextInt(Thirteen),)(R NextInt(Thirteen),)(R NextInt(Thirteen),)(R NextInt(Thirteen),)(R NextInt(Thirteen)))
-(R NextInt(Thirteen,))(R NextInt(Thirteen,))(R NextInt(Thirteen)),(R NextInt(Thirteen)))
-ButtonPanel.Add(OptionButton);
-OptionButton.Add ActionListener(New Action Listiner(){
-Override 
-Public Void ActionPerformed(ActionEvent E){
-Color Multi=JColorChooser.ShowDialog(FunWithGraphics.This,)
-If(Multi!=Null)
-Color Panel Set.Background(Multi)
-This.Add(ButtonPanel, BorderLayout.South)
-Public Static Void Main(String [] Args){
-JFrame F = New Covid Strings1()
-F.Set Title(Covid Strings 1)
-F.Set Default CloseOperation(JFrame. Exit_On_Close);
-F.SetSize
-F.Set Visible(True);
+ShowDialog(This)
+If(Background!=Null)
+Set.Background
+Add(South)
+JFrame
+Set Title(1)
+Set( Exit_On_Close);
+SetSize
+Set 
 <Label Id=LblScore>Zero</Label>
-CreateElement(IMG) 
-Img.Src = Http://Www.Google.Com/Intl/En_com/Images/Logo_plain.Png;
-Var Src = Document.GetElementById(Covid Virus)
-Src.AppendChild(Img)
-Var Score=Zero
-If (Mult == X*Y)
-[Non-Concatenated]
-Score+=Ten
-Else:
-Score-=Ten
-If (Mult == X*Y)
-[Concatenated]
-Score+=Twenty
-Else:
-Score-=Twenty
-Var LblScore= Document.GetElementbyId(LblScore)
-Lbl.Score.InnerHTML=Score
-Covidstrings1List=[Red,Orange,Yellow,Green,Burgundy,Indigo,Blue,Black]
-Covid Strings Version1  PhraseList=[  Non - Concatenated Hello  Covid World,Dont Eat Bleach,Could You Please Get Vaccinated,Good Bye Covid World,Dont Overcrowd Hospital Capacity,Are We Going Back To Nineteen-Eighteen,There Have Been One Hundred Thousand, Reported Deaths So Far,The Covid Tracker Shows , Concatenated You+Should+Get+Tested,Pfizer+Is+Ninety-Five+Percent+Effective,You+Should+Not+Forget+Your+Flu+Shot,+SNL+Nailed+A+Rona+Christmas+There+Have+Been+Some+Negative+Effects,+Some+Of+These+Include+Suicide,The+Best+Thing+To+Do+Is+Practice+Continuity+Safely,+In+Short+You+Should+Not+Change+Your+Behavoir+Much
-Covid Strings1 Math Problems List=[
-If A Covid Value Of C Equals Three Is Added To The Double Of The Value Its Equal To What Do You Get?, If A Covid Value Represented By A Variable C Is Quadrupled And Then Added By F What Is The Resulting Product?, If The CDCs Covid Tracker Has Fifty Cases if Only Thirty-Five Thousand Were  Reported Last Week How Many new Cases Happened? The Cov19 Emergency Alert System Was Installed On March Twelfth Twenty-Twenty After Two Weeks There Were Nineteen-Seventy Five Calls If The Rate Of Calls Was Five Per Hour How Many Calls Happened After The First Week?, Town A1s Annual Thanksgiving Parade Happens On November Nineteenth If A1s Public Health Guidelines Require That Events Of More Than Twenty-Thosuand People Be Held Only If The Positivity Rate Is Less Than Or Equal To Five Percent If The Current Positivity Rate Is Six And A Third Percent And The Parade Is Next Week Could It Be Held? If A Decision Could Be Made No Later Than The Sixteenth And The Amount Of Precautions Taken Include Ten Cartons Of One Hundred Masks And Sixft Of Distancing Can The Parade Still Happen? ,A+Knock+Off+Vaccine+Company+Promises+To+Deliver+A+Vaccine+Within+Two+Weeks+If+The+Standard+Timeline+Is+Four+Weeks+How+Much+Damage+Can+Happen?
-If+A+Poll+On+This+Question+Showed+That+Ninety-Two+Percent+Of+Republicans+Thought+That+He+Was+Joking+When+It+Came+To+Bleach+How+Many+Of+Those+People+Risked+Illness?,If+Eight Hundred Seventy-Five+People+Were+Reported+To+A+Covid+Hotline+Because+They+Thought+Injecting+Bleach+Cured+Cvid+And+Eighty-Nine+Percent+of+Them+Said+They+Believed+Trump+How+Many+People +Out+of+The+Total+Believed+Trump?
-  If+The+Margin+Of+Error+Is+.Fifty AND FIVE HUNDRETHS+Percent+What+Is+The+Range?,A+News+Report+Suggested+That+The+Level+Two+Emergency+Will+ Continue+For+Another+Week+If+The+Rate+Is+Greater+Three+Percent If+It+Is+Currently+Two And A Quarter Percent+Would+It+continue? ,if + Four People+ Took+An+Unknown+Number+of+Shots+from+Pfizers+Vaccine+At+Three Fourty Five +P.M.+On+October+Seventh When+Would+It+Expire?
-Covid Strings Sentence List1=[Pfizer Has A Ninety-Five Percent Effective Vaccine,The+Most+Obvious+Similarity+Between+Covid+And+The+Spanish+Flu+Is+That+They+Were+Global+Pandemics,Any+Covid+-+Is+A+Representation+of+Data+At+A+Specific+Place+And+Time]
-Covid Strings Multiple Choice List1=[One: A Hydrogen Peroxide,  B, Ammonium Nitrate, C Bleach , D Green Eggs And Ham Two: A Rona, B Green, C Krona, D White Three : A Tested, B A Piercing, C A TI-Eighty-Two Graphing Calculator, D A Mcdonalds Happy Meal Four : A Bienvenu, B Hello, C Nihau, D Hola 
-Five A Fifty-Five, B Ninety-Five, C Eighty-Eight, D Sixty-Nine, Six : A Oversaturate, B Overcrowd, C Synthesize, D Crowd-Surf Seven : A Flu, B Meningits, C Dogs Rabies, D Archery Eight : A Tracker, B Map, C Graph Positiioning System, D Lockdown 
-Nine: A Effects, B Things, C Results, D Impacts Ten: a Snow Throwing, B Vaccinated, C Off Qanon, D Snowballing Eleven: A Nineteen-Eighteen, B Nineteen-Nineteen, c Negative2045, d Negative1985 Twelve: a  One Hundred Thousand B A Google, c A Bevy, D A Number with Zero Sig Figs 
-Thirteen: A Negative B Netural C Firework-Like D Wanting Fourteen: A Changes, B Continuity, C Sameness, D Parity,  
-Fifteen :A Behavoir, B Outlook, C Stress-Level, D Mindset, Sixteen: A Serum B Vaccine C Version Of Mountain Dew D Gatorade Knockoff,
- Seventeen: A Major B Only C Most Obvious D Glaring, Eighteen: A Hey-Ey-Ey Goodybe, B Sayornara, C Good Night, D Goodbye, Nineteen: A Poll B Prediction C Doom Scroll D Tracker]
-Userin.Select Team
+(IMG) 
+Src =Www.Google.Com/Intl/En_com/Images/Logo_plain.Png;
+GetElementById
+AppendChild
+GetElementbyId
+Score.InnerHTML
+PhraseList=[non -concatenated hello covid world,dont eat bleach,could you please get vaccinated,Good bye covid world,dont overcrowd hospital capacity,are we going back To 1918,there have been 100,000 reported deaths so far,the covid tracker shows] 
+Concatenated [you+should+get+tested,pfizer+is+95%+effective,you+should+not+forget+your+flu+shot,+snl+nailed+a+rona+christmas+There+have+been+some+negative+effects,+some+of+these+include+suicide,the+best+thing+to+do+is+practice+continuity+safely,+in+short+you+should+not+change+your+behavoir+much] 
+Math Problems List=[if a covid value c equals 3 is added to the double of the value its equal to what do you get?, a covid value represented by a variable c is quadrupled and then added by f what is the resulting Product?, If the CDCs covid tracker has 50,000 cases 35,000 cases were reported last week how many cases happened? The Cov19 emergency alert system was installed On March 12 2020 after 2 weeks there were 1975 calls if the rate of calls was 5 per hour how many calls happened after the 1st week?, Town A1s Annual Thanksgiving Parade Happens On November 19 A1s public health guidelines require that events of more than 20,000 people be held only if the positivity rate is <=5%  the current positivity rate is 6 1/3% and the parade is next week could it be held? if a decision could be made no later than the 16th and the amount of precautions taken include 10 cartons of 100 masks and 6ft of distancing can the parade still happen?]
+[a+knock+off+vaccine+company+promises+to+deliver+a+vaccine+within+2+weeks+if+the+standard+timeline+is+4+weeks+how+much+damage+can+happen?
+if+a+poll+on+this+question+showed+that+92 percent+of+republicans+thought+that+he+was+joking+when+it+came+to+bleach+how+many+cf+those+people+risked+illness?,if+875+people+were+reported+to+a+covid+hotline+because+they+thought+injecting+bleach+cured+covid+and+89%+of+them+said+they+believed+trump+how+many+people +out+of+the+total+believed+trump?
+If+the+margin+of+error+is+Fifty And  Five Hundreths+Percent+what+is+the+range?,a+news+report+suggested+that+the+level2+emergency+will+continue+for+another+week+if+the+rate+is+>3% if+it+is+currently+2.25%+would+it+continue? ,if + 4 people+ took+an+unknown+number+of+shots+from+pfizers+vaccine+at+3:45pm +on+october 7th when+would+it+expire?]
+Sentence List=[Pfizer has a 95% effective vaccine,the+most+obvious+similarity+between+covid+and+the+spanish+flu+is+that+they+were+global+pandemics,any+covid+tracker+is+a+representation+of+data+at+a+specific+place+and+time]
+ Multiple Choice List=[1: a Hydrogen Peroxide,  b, ammonium nitrate, c bleach , d Green Eggs And Ham 2: a rona, b green, c krona, d white 3: a tested, b a piercing, c a TI-82 graphing Calculator, d a mcdonalds happy meal 4 : a bienvenu, b hello, c nihau, d hola 
+5: a 55, b 95, C 88, D 66, 6 : a oversaturate, b overcrowd, c synthesize, d crowd-surf 7 : a flu, b meningits, c dogs rabies, d archery 8 : a tracker, b map, c graph positiioning system, d lockdown 
+9: a effects, b things, c results, d impacts 10: a snow throwing, b vaccinated, c off qanon, d snowballing 11: a 1918, b 1919, c -2045, d -1985 12: a 100,000 B A google, c a bevy, d a number with zero sig figs 
+13: a negative b netural c firework-like d Wanting 14: a changes, b continuity, c sameness, d parity,  
+15 :a behavoir, b Outlook, c stress-level, d mindset, 16: a serum b vaccine c version of mountain dew d Gatorade knockoff,
+ 17: a major b only c most obvious d glaring, 18: a hey-ey-ey goodybe, b sayornara, c good night, d goodbye, 19: a poll b prediction c doom scroll d tracker]
+Select 
 Import Meta.
-Select Class 
-Class MyClass
-Constructor (Non-Concatenated)
-Return Category
-If Category==Math Problem:
-Type Answer
+Select 
+(Non-Concatenated)
+If Question==Math Problem:
+Prompt
+Log 
 Else:
 Select From Multiple Choice
+If Question==Multiple Choice:
+Select Answer
+Else:
+Prompt
+Log
 Const Myclass=NewMyClass( Concatenated) 
 Return Category
-If Category==Math Problem:
-Type Answer
+If Question==Math Problem:
+Prompt
+Log
 Else:
 Select From Multiple Choice
 Import Syntax 
 Substring(Start,End)
 Userin.Multiple Choice
-If SelectedAnswer==Correct:
-True
+If User Answer==Correct:
+Log True
+If User Answer==
+Log False
+Check Winner :
+Log( The Winner is)
 else:
-False
-If Users Team Wins Covid Strings1 :
-Console.Log( You Win  Covid Strings1)
-else:
-Console.log(Game Over) 
-Return FileName
+Log(No Winner Yet) 
+return FileName
