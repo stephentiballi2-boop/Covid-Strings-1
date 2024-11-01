@@ -1,40 +1,52 @@
-<doc.type.HTML>
-  <script>
-<HTML>
-<Head>
-<Meta Charset=UTF-Eight
- Meta Name = Viewport Content =Width= Device-Width, Inital Scale One 
-    <Title> Covid Strings 1  First Round>
-    <Link Rel= Stylesheet Href=CSS >
+Doc.Type.HTML>
+ <script>
+    <Head>
+    <Meta Charset UTF-Eight>
+    Meta Name = Viewport Content =Width= Device-Width, Inital Scale One> 
+    <Title> Covid Strings Version1 First Round </Title> 
+    <Link Rel= Stylesheet Href= CSS >
     </Head>
     <Body>
-      Bracket-Container {}
-      .Matchup
-      Solid Zero
-FileName=Covid Strings 1 First Round.JS 
-First Round=(Six Versus Three ),(Five VersusFour),(Seven Versus Two),(Eight Versus One)
-Console.Log(Covid Strings1 First Round )
+        <Div Id=Bracket-Container ></Div>
+        </Body>
+        </Html>
+FileName=Covid Strings1 First Round.JS
  ConstTeams=[Red,Orange,Yellow,Green,Burgundy,Indigo,Blue,Black]
-  Covid Strings Seed List=[One,Two,Three,Four,Five,Six,Seven,Eight]
-  Const Round Div=Create Element
-  RoundDiv.ClassName= Covid Strings 1 First Round
-  RoundDiv.AppenedChild(MatchupDiv)
-  Teams.ForEach((Team,Index)" 
-  Create Matchup(Indigo Isos Versus Yellow Moxie)
-  Create Matchup(Burgundy Rebuilders Versus Green Peacemakers)
-  Create Matchup(Blue Curve Crushers Versus Orange RNA Messengers)
-  Create Matchup(Black Night Riders Versus Red Protein Spikers)
-If (Event.Target.Covid Strings Seed List.Contains(Matchup))
-Event.Target.Covid Strings Seed List.Toggle
-else:
-Create Matchup
+Covid Strings Seed List=[One,Two,Three,Four,Five,Six,Seven,Eight]
+First Round=(Six Versus Three ),(Five VersusFour),(Seven Versus Two),(Eight Versus One)
+Console.JS(Covid Strings1 First Round )
+Create Matchup(Yellow Versus Indigo)
+If(Event.Target.Covidstringsseedlist.Contains(Matchup)){
+    Event.Target.Covidstringsseedlist.Toggle
+    Else:
+    Create Matchup
+     Create Matchup(Burgundy Versus Green)
+If(Event.Target.Covidstringsseedlist.Contains(Matchup)){
+    Event.Target.Covidstringsseedlist.Toggle
+    Else:
+    Create Matchup
+    Teams.ForEach((Team,Index)=>{}
+    Create Matchup(Blue Versus Orange)
+If(Event.Target.Covidstringsseedlist.Contains(Matchup)){
+    Event.Target.Covidstringsseedlist.Toggle
+     Create Matchup (Black Versus Red)
+If(Event.Target.Covidstringsseedlist.Contains(Matchup)){
+    Event.Target.Covidstringsseedlist.Toggle
+    Else:
+    Create Matchup
+Bracket.AppendChild()
+For (Let I = Zero I < Rounds; I++) {
+        Const RoundDiv = CreateElement(Div);
+        RoundDiv.ClassName = Covid Strings1First Round;
+        RoundDiv.AppenedChild(MatchupDiv)
+Teams.ForEach((Team,Index)=>{}
     Import Java Util.Scanner
 Import Java.Util
     Questions[]Questions={
-Question1
+ Question1 
 New Question2
 New Question3
-New Question4
+New Question4 
 New Question5
 New Question6
 New Question7
@@ -47,29 +59,49 @@ New Question13
 New Question14
 New Question15
 New Question16
-New Question17 
-If Selected Answer==Correct:
-True
-If Selected Answer=Incorrect:
-False
-Advancing Teams=Teams.Slice(Zero, CurrentTeams/Two)
-  Let Result= Declare Winner(Team One Score, Team Two Score) 
-  If Team Yellow Score >=FOURTY:
-  Else:
-  console.log(Indigo Isos Win)
-Let Result= Declare Winner(Team One Score, Team Two Score)
-  If Team Green Score >=Fourty":
-  Console.Log(Green Peacemakers Win)
- Else:
- Console.Log(Burgundy Rebuilders Win)
-Let Result= Declare Winner(Team One Score, Team Two Score)
- If Orange Score>=Fourty":
-  Console.Log(Orange RNA Messengers Win)
- Else:
- Console.Log(Blue Curve Crushers Win )
-Let Result= Declare Winner(Team One Score, Team Two Score)
- If Red Score >=Fourty":
-  Console.Log(Red Protein Spikers Win)
+New Question17
+Const MyClass=(Non-Concatenated)
+If Category==Math Problem:
+Type Answer
 Else:
-Console.Log(Black Night Riders Win)
-Return FileName
+Select From Multiple Choice
+If Category==Multiple Choice:
+Click Answer
+Else:
+Type Answer
+If Selected Answer==:Correct
+True
+If Selected Answer==Not Correct:
+False
+Const MyClass=New MyClass(Concatenated) 
+Return Category
+If Category==Multiple Choice:
+Click Answer
+Else:
+Type Answer
+If Selected Answer==:Correct
+True
+If Selected Answer==Not Correct:
+False
+ AdvancingTeams= Teams.Slice(Zero,CurrentTeams.Length/Two);
+Let Result= DeclareWinner(Team1Score,Team2Score)
+If  Team Yellow Score >=Fourty:
+  Console.Log(Yellow Moxie Wins)
+Else:
+      Console.Log(Indigo Isos Win)
+Let Result = DeclareWinner(Team1Score,Team2Score);
+If Green Score >=Fourty:
+  Console.Log(Green Peacemakers Win)
+Else:
+  Console.Log(Burgundy Rebuilders Win)
+Let Result = DeclareWinner(Team1Score,Team2Score);
+If Orange Score>=Fourty:
+      Console.Log(Orange RNA Messengers  Win)
+Else:
+  Console.Log(Blue Curve Crushers Win )
+Let Result = DeclareWinner(Team1Score,Team2Score);
+If Red Score >=Fourty:
+        Console.Log(Red Protein Spikers Wins)
+Else:
+  Console.Log(Black Night Riders Win)
+        Return FileName
