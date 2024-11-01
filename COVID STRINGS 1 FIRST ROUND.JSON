@@ -4,24 +4,22 @@
 <Head>
 <Meta Charset=UTF-Eight
  Meta Name = Viewport Content =Width= Device-Width, Inital Scale One 
-    <Title> Covid Strings 1  First Round JS </Title> 
+    <Title> Covid Strings 1  First Round>
     <Link Rel= Stylesheet Href=CSS >
     </Head>
     <Body>
-        <Div Id=Bracket-Container ></Div>
-.Matchup
-Solid Zero;
-  FileName=Covid Strings 1 First Round.JS 
+      Bracket-Container {}
+      .Matchup
+      Solid Zero
+FileName=Covid Strings 1 First Round.JS 
+First Round=(Six Versus Three ),(Five VersusFour),(Seven Versus Two),(Eight Versus One)
+Console.Log(Covid Strings1 First Round )
+ ConstTeams=[Red,Orange,Yellow,Green,Burgundy,Indigo,Blue,Black]
   Covid Strings Seed List=[One,Two,Three,Four,Five,Six,Seven,Eight]
-Matchup1= (Six Versus Three )
-Matchup2=(Five VersusFour)
-Matchup3= (Seven Versus Two)
-Matchup4=(Eight Versus One)
   Const Round Div=Create Element
   RoundDiv.ClassName= Covid Strings 1 First Round
   RoundDiv.AppenedChild(MatchupDiv)
   Teams.ForEach((Team,Index)" 
- ConstTeams=[Red,Orange,Yellow,Green,Burgundy,Indigo,Blue,Black]
   Create Matchup(Indigo Isos Versus Yellow Moxie)
   Create Matchup(Burgundy Rebuilders Versus Green Peacemakers)
   Create Matchup(Blue Curve Crushers Versus Orange RNA Messengers)
@@ -29,7 +27,7 @@ Matchup4=(Eight Versus One)
 If (Event.Target.Covid Strings Seed List.Contains(Matchup))
 Event.Target.Covid Strings Seed List.Toggle
 else:
-Create matchup
+Create Matchup
     Import Java Util.Scanner
 Import Java.Util
     Questions[]Questions={
@@ -50,9 +48,13 @@ New Question14
 New Question15
 New Question16
 New Question17 
+If Selected Answer==Correct:
+True
+If Selected Answer=Incorrect:
+False
 Advancing Teams=Teams.Slice(Zero, CurrentTeams/Two)
   Let Result= Declare Winner(Team One Score, Team Two Score) 
-  If Team Yellow Score >=FOURTY":
+  If Team Yellow Score >=FOURTY:
   Else:
   console.log(Indigo Isos Win)
 Let Result= Declare Winner(Team One Score, Team Two Score)
