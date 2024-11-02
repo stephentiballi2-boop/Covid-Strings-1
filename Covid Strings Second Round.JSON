@@ -1,36 +1,36 @@
-<doc type.hmtl>
+<doc type.html>
 <script>
+<Html>
     <Head>
-    <Meta Charset UTF-Eight>
-    Meta Name = Viewport Content =Width= Device-Width, Inital Scale One> 
-    <Title> Covid Strings 1 Second  Round </Title> 
+    <Meta Charset UTF-Eight
+    Meta Name= Viewport Content=Width=Device-Width, Inital Scale One 
+    <Title> Covid Strings1 Second  Round </Title> 
   </Head>
     <Body>
-    <Link Rel= Stylesheet Href= CSS >
+    <Link Rel= Stylesheet Href=CSS
         Bracket-Container
-        Matchup
+        .Matchup{}
         Solid Zero;
 FileName=Covid Strings1 Second Round.JS
-SecondRound=(Highest Remaining Seed,Intermeidate Seed1,Intermediate Seed2,Lowest Remaining Seed) 
-Highest Remaining Seed =(Greatest Remaining  Value In Covid Strings List)
-Intermediate Seed1=(First Middle Remaining Value In Covid Strings List)
-Intermediate Seed2=(Second Middle Remaining Value In Covid Strings List)
-Lowest Remaining Seed = (Lowest Remaining Value In Covid Strings List)
-Console.Js (Covid Strings1 Second Round)
+secondround=(highest remaining seed,intermediate seed1,intermediate seed2,lowest remaining seed) 
+highest remaining seed =(greatest remaining seed)
+intermediate seed1=(first middle remaining seed)
+Intermediate seed2=(second middle remaining seed)
+Lowest Remaining Seed = (least remaining seed)
+Console.Log (Covid Strings1 Second Round)
 Create Matchup (Intermediate Seed2 Versus Intermediate Seed1)
-If  (Event.Target.Covid Strings Seed List.Contains(Matchup))
-Event.Target.Covid Strings Seed List.Toggle
-else:
-Create Matchup
 Create Matchup (Lowest Remaining Seed Versus Highest Remaining Seed)
-If (Event.Target.Covid Strings Seed List.Contains(Matchup))
-Event.Target.Covid Strings Seed List.Toggle)
-else:
-Create Matchup
+Const Matchup Div=matchup
+Document.CreateElement 
+MatchupDiv.ClassName=(Matchup)
+MatchupDiv.InnerHTML =[Matchup]
+RoundDiv.AppendChild(Matchup)
 For (I In Covid Strings Seed List)
 Const Round Div=Document.CreateElement
 Round Div Class Name= Covid Strings1 Second Round
 Bracket.AppendChild(Round Div)
+If (Event.Target.Covid Strings Seed List.Contains(Matchup))
+Event.Target.Covid Strings Seed List.Toggle
 Import Java Util.Scanner
 Import Java.Util
 Questions[]Questions={
@@ -44,8 +44,8 @@ New Question24
 New Question25
 New Question26
 select class
-const myclass=(non-Concatenated)
-If category==math Problem:
+const myclass=(non-concatenated)
+If category==math problem:
 prompt
 log
 else:
@@ -56,7 +56,7 @@ else:
 prompt
 log
 select class
-const myClass=New myClass(concatenated) 
+const myclass=new myclass(concatenated) 
 If category==math problem:
 prompt
 log
@@ -68,20 +68,20 @@ else:
 prompt
 log
 import syntax 
-If SelectedAnswer==Correct:
+If SelectedAnswer==correct:
 return True
 If SelectedAnswer==Incorrect:
 return False
-AdvancingTeams=Teams.Slice(Zero,CurrentTeams.Length)
+AdvancingTeams=Teams.Slice(CurrentTeams.Length)
 DeclareWinner
-If IntermediateSeed1Score>=40:
-Console.Log(Intermediate Seed1 Wins )
+If IntermediateSeed1Score>=fourty:
+Log(Intermediate Seed1 Wins )
 Else:
-Console.Log(Intermediate Seed2 Wins)
-If Highest Remaining Seed Score>=40:
-Console.Log(Highest Remaining Seed Wins)
+Log(Intermediate Seed2 Wins)
+If Highest Remaining Seed Score>=fourty:
+Log(Highest Remaining Seed Wins)
 Else:
-Console.Log(Lowest Remaining Seed Wins)
+Log(Lowest Remaining Seed Wins)
 Return FileName
 <BODY>
 </HTML>
