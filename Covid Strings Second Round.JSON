@@ -1,4 +1,4 @@
-<doc type.html>
+<doc.type.HTML>
 <script>
 <Html>
     <Head>
@@ -13,28 +13,24 @@
         Solid Zero;
 FileName=Covid Strings1 Second Round.JS
 secondround=(highest remaining seed,intermediate seed1,intermediate seed2,lowest remaining seed) 
-highest remaining seed =(greatest remaining seed)
-intermediate seed1=(first middle remaining seed)
-Intermediate seed2=(second middle remaining seed)
-Lowest Remaining Seed = (least remaining seed)
 Console.Log (Covid Strings1 Second Round)
 Create Matchup (Intermediate Seed2 Versus Intermediate Seed1)
 Create Matchup (Lowest Remaining Seed Versus Highest Remaining Seed)
 Const Matchup Div=matchup
-Document.CreateElement 
-MatchupDiv.ClassName=(Matchup)
-MatchupDiv.InnerHTML =[Matchup]
-RoundDiv.AppendChild(Matchup)
+CreateElement 
+ClassName
+InnerHTML
+AppendChild
 For (I In Covid Strings Seed List)
-Const Round Div=Document.CreateElement
+Const Round Div=CreateElement
 Round Div Class Name= Covid Strings1 Second Round
-Bracket.AppendChild(Round Div)
+AppendChild(Round Div)
 If (Event.Target.Covid Strings Seed List.Contains(Matchup))
 Event.Target.Covid Strings Seed List.Toggle
 Import Java Util.Scanner
 Import Java.Util
 Questions[]Questions={
- Question18
+ question18
 New Question19
 New Question20
 New Question21
@@ -55,7 +51,6 @@ Select Answer
 else:
 prompt
 log
-select class
 const myclass=new myclass(concatenated) 
 If category==math problem:
 prompt
@@ -67,7 +62,6 @@ select answer
 else:
 prompt
 log
-import syntax 
 If SelectedAnswer==correct:
 return True
 If SelectedAnswer==Incorrect:
@@ -83,5 +77,3 @@ Log(Highest Remaining Seed Wins)
 Else:
 Log(Lowest Remaining Seed Wins)
 Return FileName
-<BODY>
-</HTML>
