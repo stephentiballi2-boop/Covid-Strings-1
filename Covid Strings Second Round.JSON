@@ -1,32 +1,40 @@
-<doc.type.hmtl>
+<doc type.hmtl>
 <script>
-<Html>
-<Head>
-<Meta Charset=UTF-Eight
- <Meta Name= Viewport Content=Width=Device-Width,Inital Scale One
-<TITLE> Covid Strings One Second Round>
-</Head>
-<Body>
-<Link Rel=Stylesheet Href CSS
-Bracket Container
-.Matchup{}
-Solid Zero": 
-FileName=Covid Strings1 Second Round.JS 
-SECOND ROUND=(HIGHEST REMAINING SEED, INTERMEDIATE SEED 1, ITERMIEDATE SEED 2 AND LOWEST REMAINING SEED)
-Highest Remaining Seed =( Greatest Remaining Num Value In Covid Strings List)
-Lowest Remaining Seed = (Lowest Remaining Num Value In Covid Strings List)
+    <Head>
+    <Meta Charset UTF-Eight>
+    Meta Name = Viewport Content =Width= Device-Width, Inital Scale One> 
+    <Title> Covid Strings 1 Second  Round </Title> 
+  </Head>
+    <Body>
+    <Link Rel= Stylesheet Href= CSS >
+        Bracket-Container
+        Matchup
+        Solid Zero;
+FileName=Covid Strings1 Second Round.JS
+SecondRound=(Highest Remaining Seed,Intermeidate Seed1,Intermediate Seed2,Lowest Remaining Seed) 
+Highest Remaining Seed =(Greatest Remaining  Value In Covid Strings List)
 Intermediate Seed1=(First Middle Remaining Value In Covid Strings List)
 Intermediate Seed2=(Second Middle Remaining Value In Covid Strings List)
+Lowest Remaining Seed = (Lowest Remaining Value In Covid Strings List)
+Console.Js (Covid Strings1 Second Round)
 Create Matchup (Intermediate Seed2 Versus Intermediate Seed1)
-Create Matchup (Lowest Remaining Seed Versus Highest Remaining Seed)
-If (Event.Target.Covid Strings Seed List.Contains(Matchup))
+If  (Event.Target.Covid Strings Seed List.Contains(Matchup))
 Event.Target.Covid Strings Seed List.Toggle
 else:
-Create matchup
+Create Matchup
+Create Matchup (Lowest Remaining Seed Versus Highest Remaining Seed)
+If (Event.Target.Covid Strings Seed List.Contains(Matchup))
+Event.Target.Covid Strings Seed List.Toggle)
+else:
+Create Matchup
+For (I In Covid Strings Seed List)
+Const Round Div=Document.CreateElement
+Round Div Class Name= Covid Strings1 Second Round
+Bracket.AppendChild(Round Div)
 Import Java Util.Scanner
 Import Java.Util
-Questions[]Questions=
-Question18
+Questions[]Questions={
+ Question18
 New Question19
 New Question20
 New Question21
@@ -35,29 +43,42 @@ New Question23
 New Question24
 New Question25
 New Question26
-Const MyClass=(Non-Concatenated)
-If Category==Math Problem:
-Type Answer
-Else:
-Select From Multiple Choice
-Const MyClass=New MyClass(Concatenated) 
-Return Category
-If Category==Math Problem:
-Type Answer
-Else:
-Select From Multiple Choice
-Import Syntax 
-AdvancingTeams=CurrentTeams.Slice(Zero,CurrentTeams.Length/Two)
-For (I In Covid Strings Seed List)
-Const Round Div=Document.CreateElement
-Round Div Class Name= Covid Strings1 Second Round
-Bracket.AppendChild(Round Div)
+select class
+const myclass=(non-Concatenated)
+If category==math Problem:
+prompt
+log
+else:
+select from multiple choice
+if category == multiplechoice:
+Select Answer
+else:
+prompt
+log
+select class
+const myClass=New myClass(concatenated) 
+If category==math problem:
+prompt
+log
+else:
+select from multiple choice
+If category == multiplechoice:
+select answer
+else:
+prompt
+log
+import syntax 
+If SelectedAnswer==Correct:
+return True
+If SelectedAnswer==Incorrect:
+return False
+AdvancingTeams=Teams.Slice(Zero,CurrentTeams.Length)
 DeclareWinner
-If Intermediate Seed 1 Score >=Fourty:
+If IntermediateSeed1Score>=40:
 Console.Log(Intermediate Seed1 Wins )
 Else:
-Console.Log( Intermediate Seed2 Wins)
-If Highest Remaining Seed Score>=Fourty: 
+Console.Log(Intermediate Seed2 Wins)
+If Highest Remaining Seed Score>=40:
 Console.Log(Highest Remaining Seed Wins)
 Else:
 Console.Log(Lowest Remaining Seed Wins)
