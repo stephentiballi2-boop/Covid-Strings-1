@@ -7,7 +7,7 @@
     <TITLE> COVID Strings1 Championship >
     </Head>
 <Body>
-<Link Rel=Stylesheet Href=Styles.CSS
+<Link Rel=Stylesheet Href CSS
  Brakcet Container{}
             .Matchup{}
              Solid Zero;
@@ -29,8 +29,7 @@ Round Div Class Name= Covid Strings1 Second Round
 Bracket.AppendChild(Round Div)
 If (Event.Target.Covid Strings Seed List.Contains(Matchup))
 Event.Target.Covid Strings Seed List.Toggle
-Else:
-Create Matchup
+Add Matchup
 Import Java Util.Scanner
 Import Java.Util
 Questions[]Questions={
@@ -43,17 +42,17 @@ New Question32
 New Question33
 New Question34
 Substring(Start,End)
-Userin.Mltiple Choice
-If SelectedAnswer==Correct:
+Userin.Multiple Choice
+If SelectedAnswer==correct:
 return True
 If SelectedAnswer=InCorrect
-AdvancingTeam=Teams.Slice(CurrentTeams.Length)
+AdvancingTeam=(CurrentTeams.Length)
 DeclareWinner
 If Team High Seed Score>=60:
 Let Result= DeclareWinner(Team1 Score, Team2 Score)
-Console.Log( Team High Seed Wins Covid Strings1) 
+Log( Team High Seed Wins Covid Strings1) 
 Else:
-Console.Log(Team Low Seed Wins Covid Strings1)
+Log(Team Low Seed Wins Covid Strings1)
 Return FileName
 <BODY>
 </HTML>
