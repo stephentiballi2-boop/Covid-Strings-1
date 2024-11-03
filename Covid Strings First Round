@@ -1,0 +1,107 @@
+doc type.HTML>
+ <script>
+    <Head>
+    <Meta Charset UTF-Eight>
+    Meta Name = Viewport Content =Width= Device-Width, Inital Scale One> 
+    <Title> Covid Strings Version1 First Round </Title> 
+    <Link Rel= Stylesheet Href= CSS >
+    </Head>
+    <Body>
+        <Div Id=Bracket-Container ></Div>
+        Matchup
+        Solid Zero
+FileName=Covid Strings1 First Round.JS
+ 
+First Round=(Highest Overall Seed ,Second Highest Seed Third Highest Seed First Middle Seed, Second Middle Seed, Third Lowest Seed ,Second Lowest Seed,Lowest Overall Seed)
+Highest Overall Seed =Seed1
+Second Highest Seed=Seed2
+Third Highest Seed=Seed3
+Firstmiddleseed=Seed4
+Second Middle Seed = Seed5
+Third Lowest Seed= Seed6
+Second Lowest Seed = Seed7
+Lowest Overall Seed = Seed8
+Console.JS(Covid Strings1 First Round )
+Create Matchup(Yellow Versus Indigo)
+Create Matchup(Burgundy Versus Green)
+ Create Matchup(Blue Versus Orange)
+     Create Matchup (Black Versus Red)
+If(Event.Target.Covidstringsseedlist.Contains(Matchup)){
+    Event.Target.Covidstringsseedlist.Toggle
+    Else:
+    Add Matchup
+Bracket.AppendChild()
+For (I In Covid Strings First Round ) {
+        Const RoundDiv = CreateElement(Div);
+        RoundDiv.ClassName = Covid Strings1First Round;
+        RoundDiv.AppenedChild(MatchupDiv)
+Teams.ForEach((Team,Index)=>{}
+    Import Java Util.Scanner
+Import Java.Util
+    Questions[]Questions={
+ Question1 
+New Question2
+New Question3
+New Question4 
+New Question5
+New Question6
+New Question7
+New Question8
+New Question9
+New Question10
+New Question11
+New Question12
+New Question13
+New Question14
+New Question15
+New Question16
+New Question17
+Const MyClass=(Non-Concatenated)
+If Category==Math Problem:
+Type Answer
+Else:
+Select From Multiple Choice
+If Category == MultipleChoice:
+Select Answer
+Else:
+Prompt
+Log
+If Category == MultipleChoice:
+Select Answer
+Else:
+Prompt
+Log
+If Selected Answer==:Correct
+True
+If Selected Answer==Not Correct:
+False
+Const MyClass=New MyClass(Concatenated) 
+Return Category
+If Category == MultipleChoice:
+Select Answer
+Else:
+Prompt
+Log
+If Selected Answer==:Correct
+True
+If Selected Answer==Not Correct:
+False
+        AdvancingTeams= Slice(CurrentTeams.Length);
+        Let Result= DeclareWinner(Team1Score,Team2Score)
+        If  Team Yellow Score >=Fourty:
+        Console.Log(Yellow Moxie Wins)
+        Else:
+        Console.Log(Indigo Isos Win)
+        If Green Score >=Fourty:
+        Console.Log(Green Peacemakers Win)
+        Else:
+        Console.Log(Burgundy Rebuilders Win)
+        If Orange Score>=Fourty:
+        Console.Log(Orange RNA Messengers Win)
+        Else:
+        Console.Log(Blue Curve Crushers Win )
+        If Red Score >=Fourty:
+        Console.Log(Red Protein Spikers Wins)
+        Else:
+        Console.Log(Black Night Riders Win)
+        Return FileName
