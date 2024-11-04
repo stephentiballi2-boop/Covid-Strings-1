@@ -1,0 +1,78 @@
+<doc type.html>
+<script>
+    <Head>
+    <Meta Charset UTF-Eight>
+    Meta Name = Viewport Content =Width= Device-Width, Inital Scale One> 
+    <Title> Covid Strings Version1 Second  Round </Title> 
+    <Link Rel= Stylesheet Href= CSS >
+    </Head>
+    <Body>
+        Bracket-Container
+        Matchup
+        Solid Zero
+FileName=Covid Strings1 Second Round.JS
+SecondRound=(Highest Remaining Seed,Intermeidate Seed1,Intermediate Seed2,Lowest Remaining Seed) 
+Highest Remaining Seed =( Greatest Remaining Num Value In Covid Strings List)
+Lowest Remaining Seed = (Lowest Remaining Num Value In Covid Strings List)
+Intermediate Seed1=(First Middle Remaining Value In Covid Strings List)
+Intermediate Seed2=(Second Middle Remaining Value In Covid Strings List)
+Console.Js (Covid Strings1 Second Round)
+Create Matchup (Intermediate Seed2 Versus Intermediate Seed1)
+If  (Event.Target.Covid Strings Seed List.Contains(Matchup))
+Event.Target.Covid Strings Seed List.Toggle
+Create Matchup (Lowest Remaining Seed Versus Highest Remaining Seed)
+If (Event.Target.Covid Strings Seed List.Contains(Matchup))
+Event.Target.Covid Strings Seed List.Toggle)
+For (I In Covid Strings Seed List)
+Const Round Div=Document.CreateElement
+Round Div Class Name= Covid Strings1 Second Round
+Bracket.AppendChild(Round Div)
+Import Java Util.Scanner
+Import Java.Util
+Questions[]Questions={
+ Question18
+New Question19
+New Question20
+New Question21
+New Question22
+New Question23
+New Question24
+New Question25
+New Question26
+Const MyClass=(Non-Concatenated)
+If Category==Math Problem:
+Prompt
+Log
+Else:
+Select From Multiple Choice
+If Category == MultipleChoice:
+Select Answer
+Else:
+Prompt
+Log
+Const MyClass=New MyClass(Concatenated) 
+Return Category
+If Category==Math Problem:
+Prompt
+Log
+Else:
+Select From Multiple Choice
+If Category == MultipleChoice:
+Select Answer
+Else:
+Prompt
+Log
+Import Syntax 
+AdvancingTeams=Teams.Slice(Zero,CurrentTeams.Length/Two)
+Let Result = DeclareWinner(Team1Score, Team2Score);
+If IntermediateSeed1Score>=Fourty:
+Let Result = DeclareWinner(Team1Score,Team2Score);
+Console.Log(Intermediate Seed1 Wins )
+Else:
+Console.Log( Intermediate Seed2 Wins)
+Let Result = DeclareWinner(Team1Score, Team2Score);
+If Highest Remaining Seed Score>=Fourty:
+Console.Log(Highest Remaining Seed Wins)
+Else:
+Console.Log(Lowest Remaining Seed Wins)
+Return FileName
