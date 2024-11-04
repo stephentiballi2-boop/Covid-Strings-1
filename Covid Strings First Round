@@ -1,107 +1,104 @@
-doc type.HTML>
- <script>
-    <Head>
-    <Meta Charset UTF-Eight>
-    Meta Name = Viewport Content =Width= Device-Width, Inital Scale One> 
-    <Title> Covid Strings Version1 First Round </Title> 
-    <Link Rel= Stylesheet Href= CSS >
-    </Head>
-    <Body>
-        <Div Id=Bracket-Container ></Div>
-        Matchup
-        Solid Zero
-FileName=Covid Strings1 First Round.JS
- 
-First Round=(Highest Overall Seed ,Second Highest Seed Third Highest Seed First Middle Seed, Second Middle Seed, Third Lowest Seed ,Second Lowest Seed,Lowest Overall Seed)
-Highest Overall Seed =Seed1
-Second Highest Seed=Seed2
-Third Highest Seed=Seed3
-Firstmiddleseed=Seed4
-Second Middle Seed = Seed5
-Third Lowest Seed= Seed6
-Second Lowest Seed = Seed7
-Lowest Overall Seed = Seed8
-Console.JS(Covid Strings1 First Round )
-Create Matchup(Yellow Versus Indigo)
-Create Matchup(Burgundy Versus Green)
- Create Matchup(Blue Versus Orange)
-     Create Matchup (Black Versus Red)
-If(Event.Target.Covidstringsseedlist.Contains(Matchup)){
-    Event.Target.Covidstringsseedlist.Toggle
-    Else:
-    Add Matchup
-Bracket.AppendChild()
-For (I In Covid Strings First Round ) {
-        Const RoundDiv = CreateElement(Div);
-        RoundDiv.ClassName = Covid Strings1First Round;
-        RoundDiv.AppenedChild(MatchupDiv)
-Teams.ForEach((Team,Index)=>{}
-    Import Java Util.Scanner
-Import Java.Util
-    Questions[]Questions={
- Question1 
-New Question2
-New Question3
-New Question4 
-New Question5
-New Question6
-New Question7
-New Question8
-New Question9
-New Question10
-New Question11
-New Question12
-New Question13
-New Question14
-New Question15
-New Question16
-New Question17
-Const MyClass=(Non-Concatenated)
-If Category==Math Problem:
-Type Answer
-Else:
-Select From Multiple Choice
-If Category == MultipleChoice:
-Select Answer
-Else:
-Prompt
-Log
-If Category == MultipleChoice:
-Select Answer
-Else:
-Prompt
-Log
-If Selected Answer==:Correct
-True
-If Selected Answer==Not Correct:
-False
-Const MyClass=New MyClass(Concatenated) 
-Return Category
-If Category == MultipleChoice:
-Select Answer
-Else:
-Prompt
-Log
-If Selected Answer==:Correct
-True
-If Selected Answer==Not Correct:
-False
-        AdvancingTeams= Slice(CurrentTeams.Length);
-        Let Result= DeclareWinner(Team1Score,Team2Score)
-        If  Team Yellow Score >=Fourty:
-        Console.Log(Yellow Moxie Wins)
-        Else:
-        Console.Log(Indigo Isos Win)
-        If Green Score >=Fourty:
-        Console.Log(Green Peacemakers Win)
-        Else:
-        Console.Log(Burgundy Rebuilders Win)
-        If Orange Score>=Fourty:
-        Console.Log(Orange RNA Messengers Win)
-        Else:
-        Console.Log(Blue Curve Crushers Win )
-        If Red Score >=Fourty:
-        Console.Log(Red Protein Spikers Wins)
-        Else:
-        Console.Log(Black Night Riders Win)
-        Return FileName
+doc type HTML>
+ script
+html
+    Head
+    Meta Charset UTF8
+    Viewport Content =Width= Device-Width, Inital Scale One> 
+    <Title> Covid Strings Version1 First Round
+    Link Rel= Stylesheet Href= CSS
+    head
+    body
+    bracket-container
+        Matchup{}
+        Solid Zero;
+filename=covid strings1 first round.JS
+first round=(highest overall seed ,second high seed third highseed, first middle seed, second middle seed, thirdlow seed ,second low seed,lowest overall seed)
+highest overall seed =seed1
+second highest seed=seed2
+third highest seed=seed3
+firstmiddleseed=seed4
+second middle seed = seed5
+third lowest seed= seed6
+second lowest seed = seed7
+lowest overall seed = seed8
+console.js(covid strings1 first round )
+create matchup(yellow versus indigo)
+create matchup(burgundy versus green)
+create matchup(blue versus orange)
+create matchup (black versus Red)
+if(event.target.covidstringsseedlist.contains(matchup)){
+    event.target.covidstringsseedlist.toggle
+    else:
+    add matchup
+bracket.appendchild
+for (i in covid strings first round ) {
+        const rounddiv = createelement(div);
+        rounddiv.classname = covid strings1first round;
+        rounddiv.appenedchild(matchupdiv)
+teams.foreach(team,index)=>{}
+import java util.scanner
+import java.util
+questions[]questions={
+question1 
+new question2
+new question3
+new question4 
+new question5
+new question6
+new question7
+new question8
+new question9
+new question10
+new question11
+new question12
+new question13
+new question14
+new question15
+new question16
+new question17
+const myclass=(non-concatenated)
+return class
+if category==math problem:
+prompt
+log
+else:
+select from multiple choice
+if category == multiplechoice:
+select answer
+else:
+prompt
+log
+if selected answer==:correct
+true
+if selected answer==not correct:
+false
+const myclass=new myclass(concatenated) 
+return class
+if category == multiplechoice:
+select answer
+else:
+prompt
+log
+if selected answer==correct:
+true
+if selected answer==not correct:
+false
+advancingteams= slice(currentteams.length);
+let result= declarewinner(team1score,team2score)
+if  team yellow score >=fourty:
+console.log(yellow moxie wins)
+else:
+console.log(indigo isos win)
+if green score >=fourty:
+console.log(green peacemakers win)
+else:
+console.log(burgundy rebuilders win)
+if orange score>=fourty:
+console.log(orange rna messengers win)
+else:
+console.log(blue curve crushers win )
+if red score >=fourty:
+console.log(red protein spikers wins)
+else:
+console.log(black night riders win)
+return filename
