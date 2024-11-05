@@ -1,59 +1,60 @@
-<doc.type.HTML>
-<script>
-    <Html>
-<Head>
-    <Meta Charset=UTF-Eight
-        <Meta Name= Viewport Content=Width=Device-Width,Inital Scale One
-    <TITLE> COVID Strings1 Championship >
-    </Head>
-<Body>
-<Link Rel=Stylesheet Href CSS
- Brakcet Container{}
-            .Matchup{}
-             Solid Zero;
-FileName=Covid Strings1 Championship Game.JS
-Championship Game=(High And Lowest Remaining Seeds) 
-Team High Seed= Highest Remaining Seed
-Team Low Seed = Lowest Remaining Seed
-Console.Log(Covid Strings1 Championship Game)
-Create Matchup (Team Low Seed Versus Team High Seed )
-Const Matchup Div=matchup
-Document.CreateElement 
-MatchupDiv.ClassName=(Matchup)
-MatchupDiv.InnerHTML =[Matchup]
-RoundDiv.AppendChild(Matchup)
-Bracket.AppendChild(Round Div)
-For (I In Covid Strings Seed List)
-Const Round Div=CreateElement
-Round Div Class Name= Covid Strings1 Second Round
-Bracket.AppendChild(Round Div)
-If (Event.Target.Covid Strings Seed List.Contains(Matchup))
-Event.Target.Covid Strings Seed List.Toggle
-Add Matchup
-Import Java Util.Scanner
-Import Java.Util
-Questions[]Questions={
-Question27
-New Question28
-New Question29
-New Question30
-New Question31
-New Question32
-New Question33
-New Question34
-Substring(Start,End)
-Userin.Multiple Choice
-If SelectedAnswer==correct:
-return True
-If SelectedAnswer=InCorrect
-AdvancingTeam=(CurrentTeams.Length)
-DeclareWinner
-If Team High Seed Score>=60:
-Let Result= DeclareWinner(Team1 Score, Team2 Score)
-Log( Team High Seed Wins Covid Strings1) 
-Else:
-Log(Team Low Seed Wins Covid Strings1)
-Return FileName
-<BODY>
-</HTML>
+doc type html
+script
+html
+head
+utf-eight
+viewport content=width=device-width,inital scale one
+title covid strings1 championship 
+head
+body
+link rel=stylesheet href css
+ bracket container{}
+matchup{}
+solid zero;
+filename=covid strings1 championship game.js
+championship game=(high and lowest remaining seeds) 
+team high seed= highest remaining seed
+team low seed = lowest remaining seed
+console.log(covid strings1 championship game)
+create matchup (team low seed versus team high seed )
+ matchup div=matchup
+document.createelement 
+matchupdiv.classname=(matchup)
+matchupdiv.innerhtml =[matchup]
+rounddiv.appendchild(matchup)
+bracket.appendchild(round div)
+(i covid strings seed list)
+round div=createelement
+round div name= covid strings1 second round
+bracket.appendchild(round div)
+(event.target.covid strings seed list.contains(matchup))
+event.target.covid strings seed list.toggle
+add matchup
+java util.scanner
+java.util
+questions[]questions=
+question27
+question28
+ question29
+ question30
+question31
+question32
+question33
+question34
+substring(start,end)
+userin.multiple choice
+selectedanswer==correct:
+true
+selectedanswer=incorrect
+false
+advancingteam=(currentteams.length)
+declarewinner
+team high seed score>=sixty:
+result= declarewinner(team1 score, team2 score)
+log(team high seed wins covid strings1) 
+else:
+log(team low seed wins covid strings1)
+return filename
+body
+html
 
