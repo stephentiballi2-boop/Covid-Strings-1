@@ -1,78 +1,82 @@
-<doc type.html>
-<script>
-    <Head>
-    <Meta Charset UTF-Eight>
-    Meta Name = Viewport Content =Width= Device-Width, Inital Scale One> 
-    <Title> Covid Strings Version1 Second  Round </Title> 
-    <Link Rel= Stylesheet Href= CSS >
-    </Head>
-    <Body>
-        Bracket-Container
-        Matchup
-        Solid Zero
-FileName=Covid Strings1 Second Round.JS
-SecondRound=(Highest Remaining Seed,Intermeidate Seed1,Intermediate Seed2,Lowest Remaining Seed) 
-Highest Remaining Seed =( Greatest Remaining Num Value In Covid Strings List)
-Lowest Remaining Seed = (Lowest Remaining Num Value In Covid Strings List)
-Intermediate Seed1=(First Middle Remaining Value In Covid Strings List)
-Intermediate Seed2=(Second Middle Remaining Value In Covid Strings List)
-Console.Js (Covid Strings1 Second Round)
-Create Matchup (Intermediate Seed2 Versus Intermediate Seed1)
-If  (Event.Target.Covid Strings Seed List.Contains(Matchup))
-Event.Target.Covid Strings Seed List.Toggle
-Create Matchup (Lowest Remaining Seed Versus Highest Remaining Seed)
-If (Event.Target.Covid Strings Seed List.Contains(Matchup))
-Event.Target.Covid Strings Seed List.Toggle)
-For (I In Covid Strings Seed List)
-Const Round Div=Document.CreateElement
-Round Div Class Name= Covid Strings1 Second Round
-Bracket.AppendChild(Round Div)
-Import Java Util.Scanner
-Import Java.Util
-Questions[]Questions={
- Question18
-New Question19
-New Question20
-New Question21
-New Question22
-New Question23
-New Question24
-New Question25
-New Question26
-Const MyClass=(Non-Concatenated)
-If Category==Math Problem:
-Prompt
-Log
-Else:
-Select From Multiple Choice
-If Category == MultipleChoice:
-Select Answer
-Else:
-Prompt
-Log
-Const MyClass=New MyClass(Concatenated) 
-Return Category
-If Category==Math Problem:
-Prompt
-Log
-Else:
-Select From Multiple Choice
-If Category == MultipleChoice:
-Select Answer
-Else:
-Prompt
-Log
-Import Syntax 
-AdvancingTeams=Teams.Slice(Zero,CurrentTeams.Length/Two)
-Let Result = DeclareWinner(Team1Score, Team2Score);
-If IntermediateSeed1Score>=Fourty:
-Let Result = DeclareWinner(Team1Score,Team2Score);
-Console.Log(Intermediate Seed1 Wins )
-Else:
-Console.Log( Intermediate Seed2 Wins)
-Let Result = DeclareWinner(Team1Score, Team2Score);
-If Highest Remaining Seed Score>=Fourty:
-Console.Log(Highest Remaining Seed Wins)
-Else:
-Console.Log(Lowest Remaining Seed Wins)
-Return FileName
+doc type.html
+script
+    head
+     utf-eight
+ viewport content=width=device-width, inital scale one 
+    title covid strings version1 second  round 
+    link rel= stylesheet href=css
+    head
+    body
+    bracket-container{}
+    matchup
+    solid zero;
+filename=covid strings1 second round.js
+secondround=(highest remaining seed,intermediate seed1,intermediate seed2,lowest remaining seed) 
+highest remaining seed =(greatest remaining num value in covid strings list)
+lowest remaining seed = (lowest remaining num value in covid strings list)
+intermediate seed1=(first middle remaining value in covid strings list)
+intermediate seed2=(second middle remaining value in covid strings list)
+console.js (covid strings1 second round)
+create matchup (intermediate seed2 versus intermediate seed1)
+if  (event.target.covid strings seed list.contains(matchup))
+event.target.covid strings seed list.toggle
+else:
+add matchup
+create matchup (lowest remaining seed versus highest remaining seed)
+if (event.target.covid strings seed list.contains(matchup))
+event.target.covid strings seed list.toggle)
+else
+add matchup
+for (i in covid strings seed list)
+const round div=document.createelement
+round div class name= covid strings1 second round
+bracket.appendchild(round div)
+import java util.scanner
+import java.util
+questions[]questions
+question18
+new question19
+new question20
+new question21
+new question22
+new question23
+new question24
+new question25
+new question26
+const myclass=(non-concatenated)
+if category==math problem:
+prompt
+log
+else:
+select from multiple choice
+if category == multiplechoice:
+select answer
+else:
+prompt
+log
+const myclass=new myclass(concatenated) 
+return category
+if category==math problem:
+prompt
+log
+else:
+select from multiple choice
+if category == multiplechoice:
+select answer
+else:
+prompt
+log
+import syntax 
+advancingteams=slice(currentteams.length)
+let result = declarewinner(team1score,team2score);
+if intermediateseed1score>=fourty:
+let result =declarewinner(team1score,team2score);
+console.log(intermediate seed1 wins )
+else:
+console.log(intermediate seed2 wins)
+let result = declarewinner(team1score, team2score);
+if highest remaining seed score>=fourty:
+console.log(highest remaining seed wins)
+else:
+console.log(lowest remaining seed wins)
+return filename
