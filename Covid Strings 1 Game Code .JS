@@ -58,13 +58,13 @@ prompt
 log 
 If question==multiple choice:
 select answer
-const myclass=newmyclass(concatenated) 
-return category
+Const myclass=newmyclass(concatenated) 
+Return category
 If question==math problem:
 prompt
 log
 If question== multiple choice:
-select from multiple choice
+select From Multiple Choice
 Import syntax 
 substring(start,end)
 userin.multiple choice
@@ -77,4 +77,4 @@ If winner==true:
 log(the winner is)
 If winner==false:
 log(no winner yet) 
-return fileName
+Return fileName
