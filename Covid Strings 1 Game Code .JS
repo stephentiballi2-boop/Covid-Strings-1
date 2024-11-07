@@ -13,15 +13,15 @@ Public Fun With Graphics(){
 jpanel=color panel
 add (panel,center )
 add(button);
-button add actionlistener(new action listener)
+button add actionlistener(action listener)
 override 
-setbackground(new color)
+setbackground(New color)
 panel add(optionbutton);
-add actionlistener(new action listener(){
+add actionlistener(action listener(){
 override 
-public void actionperformed(actionevent e){
+public actionperformed(actionevent e){
 showdialog(this)
-if(background!=null)
+If(background!=null)
 set.Background
 add(south)
 jframe
