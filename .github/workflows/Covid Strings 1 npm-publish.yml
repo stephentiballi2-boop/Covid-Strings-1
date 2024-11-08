@@ -1,29 +1,232 @@
 # This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
 # For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-name: Node.js Package
-game files= backeground,first round, second round, championship, game code
-on: play canvas
-  release: game files 
-    types: multiple choice, math problems
-jobs:
-  build: Covid Strings 1 
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: npm test
-  publish-npm:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm publish
-        env: computer with colors of rainbow image with strings in background 
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+name: Node.Js Package
+on: Node
+release: Package 
+types: multiple choice, math problems
+jobs: question types
+build: Covid Strings 1 
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v4
+- uses: actions/setup-node@v4
+  with:
+  node-version: 20
+- run: npm ci
+- run: npm test
+- uses: actions/checkout@v4
+- uses: actions/setup-node@v4
+with:
+node-version: 20
+registry-url: https://registry.npmjs.org/
+document seperator
+parse files
+covid strings1filelist=(covid strings 1 background, first round, second round, championship, game code)
+filedivide=covid strings 1 
+open github files 
+clone files 
+Map.covid strings projects
+open covid strings 1 
+game scenes=covid strings 1 game scenes
+if covid strings  game scenes==done:
+publish build 
+copy play canvas covid strings  1 url
+copy github covid strings 1 url
+upload covid strings js files 
+export covid strings files to hosting domain
+hosting domain=playcanvas,chrome app store
+covid strings url=http:/www.covidstrings.com/version1
+covid strings access=login
+Useraccount=Gameaccount
+User_id=Userid
+Userkey=user key
+process.envUSER_ID
+process.envUSER KEY
+Gameenv=Gameenvironment
+USER_ID,USER KEY
+FOO=bar
+BAZ=bob
+require('dotenv').config();
+console.log(process.env.FOO);
+process.env['NODE_ENV'] = 'production';
+filename1=background.js
+Java.awt graphics
+JButton random Button
+New JButton (“set random color”)
+Private final J Button option Button=
+New J button (“change color”)
+Public Fun With Graphics(){
+JPanel color panel=new J Panel();
+This add (color.panel, border layout. Center )
+JPanel button panel=
+New J Panel (new Flowlayout(flowlayout.Center)
+buttonPanel.add(randomButton);
+Random.button add actionListener(new Action Listiner(){
+Override 
+Public void actionPerformed(ActionEvent e){
+Random r= newRandom();
+ColorPanel.setBackground(new Color (r nextInt(8),)(r nextInt(8),)(r nextInt(8),)(r nextInt(8),)(r nextInt(8),)(r nextInt(8),)(r nextInt(8),)(r nextInt(8)))
+buttonPanel.add(optionButton);
+optionButton.add actionListener(new Action Listiner(){
+Override 
+Public void actionPerformed(ActionEvent e){
+Color multi=JColorChooser.showDialog(FunWithGraphics.this,))
+if(multi!=null)
+color Panel set.background(multi)
+this.add(buttonPanel, BorderLayout.South)
+Public static void main(String [] args){
+JFrame f = new Covid Strings1()
+F.set title(“Covid Strings 1”)
+F.set Default CloseOperation(JFrame. Exit_On_Close);
+f.setSize
+F.set visible(true);
+<label id=”lblScore”>0</label>
+Var Score=0
+If (mult == x*y)
+[non-concatenated]
+score+=10
+Else:
+score-=10
+If (mult == x*y)
+[concatenated]
+score+=20
+Else:
+score-=20
+Var lblScore= Document.getElementbyId(‘lblScore’)
+lbl.Score.innerHTML=score
+Const object {a:1, b:2, c:3, d:4, e:5, f:6, g:7, h:8}
+Const keys object keys(team)
+Const entries object entries(obj);
+Const  value =object [team color]
+NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+document seperator
+filename2=first round.js
+</Head>
+<Body>
+<Div Id=Bracket-Container ></Div>
+Matchup
+Solid Zero
+matchup1=(indigo isos v yellow moxie) 
+matchup2=(burgundy rebuilders vs green peacemakers)
+matchup3=(blue curve crushers v orange rna messengers)
+matchup4=(black night riders v red protein spikers)
+advanceteams=slice(current teams length)
+letresult=declarewinner(team1score,team2score)
+if yellow score >=fourty:
+consolelog(yellow moxie wins)
+Else:
+consolelog(indigo isos win)
+if green score>=fourty:
+consolelog(green peacemakers win)
+Else:
+consolelog(burgundy rebuilders win)
+if orange score>=fourty:
+consolelog(orange rna messengers win)
+else:
+consolelog(blue curve crushers win)
+if red score>=fourty:
+consolelog(red protein spikers win)
+Else:
+consolelog(black night riders win)
+filename3=second round.js
+matchup1=(intermediate seed 2 v intermediate seed 1)
+matchup2=(lowest remaining seed v highest remaining seed)
+if intermeidate seed 1 score>=fourty:
+consolelog(intermeidate seed 1 wins)
+else:
+consolelog(intermediate seed 2 wins)
+if highest remaining seed score>=:fourty
+consolelog(highest remaining seed wins)
+else:
+consolelog(lowest remaining seed wins)
+filename4=covid strings championship.js
+matchup=(team low seed v team high seed)
+if team high seed score >=sixty:
+consolelog(team high seed wins covid strings 1)
+else:
+consolelog(team low seed wins covid strings 1)
+filename5=covid strings game code.js
+Covid strings version 1  phraseList=[ “Hello  covid world”,”don’t eat bleach”,”could you please get vaccinated,”good bye covid world”,”don’t overcrowd hospital capacity”,”are we going back to 1918?”,”there have been 100,000 reported deaths so far”,”the covid tracker shows” ,”you”+”should”+”get”+”tested”,”Pfizer”+”is”+”95”+”percent”+”effective”, “you”+”should”+”not”+”forget”+”your”+”flu”+”shot”,+”SNL”+”nailed”+”a”+”Rona”+”Christmas”+”there”+”have”+”been”+”some”+”negative”+”effects”,+”some”+”of”+”these”+”include”+”suicide”,”the”+”best”+”thing”+”to”+”do”+”is”+”practice”+”continuity”+”safely”,+”in”+”short”+”you”+”should”+”not”+”change”+”your”+”behavoir”+”much”
+your”+”behavoir”+”much”
+Covid strings  1 math problems list=[
+if a covid value of c=3 is added to the double of the value it’s equal to what do you get?”, “if a covid value represented by a variable c is quadrupled and then added by 5 what is the resulting product?”, “if the CDC’s covid tracker has 50,000 cases if only 35,000  were reported last week how many new cases happened?” , “ the cov19 emergency alert system was installed on march 12 2020 after 2 weeks  there were 1,975 calls if the rate of calls was 5 per hour how many calls happened after the first week?”,“ town a1s annual thanksgiving parade happens on November 19th if a1s public health guidelines require that events of more than 20,000 people be held only if the positivity rate is less than or equal to 5 percent if the current positivity rate is six and a third percent and the parade is next week could it be held?”, “if a decision could be made no later than the 16th and the amount of precautions taken include 10 cartons of 100 masks and 6ft of distancing can the parade still happen”? ,“a”+”knock”+”off”+”vaccine”+”company”+”promises”+”to”+”deliver”+”a”+”vaccine”+”within”+”2”+”weeks”+”if”+”the”+”standard”+”timeline”+”is”+”4”+”weeks”+”how”+”much”+”damage”+”can”+”happen”?
+If”+”a”+”poll”+”on”+”this”+”question”+”showed”+”that”+”92”+”percent”+”of”+”republicans”+”thought”+”that”+”he”+”was”+”joking”+”when”+”it”+”came”+”to”+”bleach”+”how”+”many”+”of”+”those”+”people”+”risked”+”illness?”, “if”+”875”+”people”+”were”+”reported”+”to”+”a”+”covid”+”hotline”+”because”+”they”+”thought”+”injecting”+”bleach” +”cured”+”covid”+”and”+”89”+”percent”+”of”+”them”+”said”+”they”+”believed”+”trump”+”how”+”many”+”people” +”out”+”of”+”the”+”total”+”believed”+”trump?”
+ “ if”+”the”+”margin”+”of”+”error”+”is”+”+”.505”+”percent”+”what”+”is”+”the”+”range?”, “a” +”news”+”report”+”suggested”+”that”+”the”+”level”+”two”+”emergency”+”will”+” continue”+”for”+”another”+”week”+”if”+”the”+”rate”+”is”+”greater”+”three”+”percent” “if”+”it”+”is”+”currently”+”two and a quarter percent”+”would”+”it”+”continue”? ,”if” +” four ”+”people”+ “took”+”an”+”unknown”+”number”+”of”+”shots”+”from”+”Pfizer’s”+”vaccine”+”at”+”3:45”+”p.m.”+”on”+”October”+”seventh” “when”+”would”+”it”+”expire?”
+Covid strings sentence list 1=[“Pfizer has a 95% effective vaccine”  ,sentence ”the”+”most”+”obvious”+”similarity”+”between”+”covid”+”and”+”the”+”Spanish”+”flu”+”is”+”that”+”they”+”were”+”global”+”pandemics”,“any”+”covid”+-+”is”+”a”+”representation”+”of”+”data”+”at”+”a”+”specific”+”place”+”and”+”time”]
+String.split   
+arrays.asList(list<string>)
+For (string ss:arr){
+system.outprintIn(ss)
+Import Java util.scanner
+Import Java.util
+Questions[]questions={
+New question 1
+New question 2
+New question 3
+New question 4
+New question 5
+New question 6
+New question 7
+New question 8
+New question 9
+New question 10
+New question 11
+New question 12
+New question 13
+New question 14
+New question 15
+New question 16
+New question 17
+New question 18
+New question 19
+New question 20
+New question 21
+New question 22
+New question 23
+New question 24
+New question 25
+New question 26
+New question 27
+New question 28
+New question 29
+New question 30
+New question 31
+New question 32
+New question 33
+New question 34
+Collections.shuffle(arrays.aslist(questions)
+Private String getBlanks(int numberofBlanks)
+Char[] chars = new char[numberofBlanks]
+Arrays.fill chars 
+Return new string chars 
+If math problem== x percent:
+Subtract exact from 100
+If math problem== margin of error:
+Add and subtract exact 
+Else:
+Remain constant
+ covidstrings 1 team  list=[red,orange,yellow,green,burgundy,indigo,blue,black]
+Userin.select team
+Import meta.
+Select class 
+Class MyClass
+constructor (non-concatenated)
+Return category
+If category==”math problem”:
+Type answer
+Else:
+Select from multiple choice
+Const myclass=newMyClass( Concatenated) 
+Return category
+If category==”math problem”:
+Type answer
+Else:
+Select from multiple choice
+Import syntax 
+substring(start,end)
+Userin.multiple choice
+If selectedAnswer==correct answer:
+Return true
+Else:
+Return false
+run npm publish
