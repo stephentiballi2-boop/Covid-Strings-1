@@ -1,0 +1,29 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+name: Node.js Package
+game files= backeground,first round, second round, championship, game code
+on: play canvas
+  release: game files 
+    types: multiple choice, math problems
+jobs:
+  build: Covid Strings 1 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm test
+  publish-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+      - run: npm ci
+      - run: npm publish
+        env: computer with colors of rainbow image with strings in background 
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
