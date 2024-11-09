@@ -4,7 +4,7 @@ name: Node.Js Package
 on: Node
 release: Package 
 types: multiple choice, math problems
-jobs: question types
+jobs: input  category superkey
 build: Covid Strings 1 
 runs-on: ubuntu-latest
 steps:
@@ -18,11 +18,19 @@ steps:
 - uses: actions/setup-node@v4
 with:
 node-version: 20
-registry-url: https://registry.npmjs.org/
-document seperator
-parse files
+create registry url
+"package.json"
+  "description": "",
+  "version": "1.0.0",
+  "dependencies": {
+    "jquery": "1.2.3",
+    "myPrivateLibFromNpmFury": "0.0.4"
+open registry
+ffi require
+var advApi = ffi.Library
+result=RegOpenCurrentUser(Key_Read)
+file divide covid strings 1 
 covid strings1filelist=(covid strings 1 background, first round, second round, championship, game code)
-filedivide=covid strings 1 
 open github files 
 clone files 
 Map.covid strings projects
