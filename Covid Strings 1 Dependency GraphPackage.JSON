@@ -1,0 +1,15 @@
+graph:
+title: Covid Strings 1 Game Dependency Graph.JSON
+create x axis  for questions
+create y axis for answers 
+create color code of green for correct answers and red for incorrect answers
+create bar for teams 
+create intervals of 1 for questions and 10 for points 
+set point on graph to the number of points given per question type 
+dependencies:
+questions=covidstrings1questions
+points=number of points per question
+color code= color for answers
+teams= covid strings teams
+round reached=advancement or elimination of team 
+winner=covid strings winner 
