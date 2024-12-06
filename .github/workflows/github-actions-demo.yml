@@ -1,0 +1,42 @@
+Covid strings 1 workflow notes
+name: Covid Strings 1 GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+Game Jobs:
+Create super key
+Create non concatenated class
+Create concatenated class
+Create multiple choice category
+Create math problem category
+Create sentence category
+Organize questions
+For background insert play button in addition to music 
+Copy background code including game title
+After next button put team names into covid strings team list
+For first round copy covid strings 1 first round js file
+For second round copy covid strings 1 second round js file
+For championship game copy covid strings 1 championship  js file
+For game code copy covid strings 1 game code file 
+When it comes to the user in for selecting a team make sure it involves the 8 teams in each version rather than the 13 overall teams that exist in this generic game league.
+Create login for game access 
+For website copy url used in code section
+Copy url for the newsletter from the same section 
+For correct answer add 10 or 20 points to the scoreboard
+For incorrect answers say its the other teams chance to steal
+
+
