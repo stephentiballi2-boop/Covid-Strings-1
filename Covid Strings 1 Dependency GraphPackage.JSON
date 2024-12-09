@@ -1,4 +1,39 @@
-graph:
+class graph 
+constructor(){
+this.map=new Map
+Add vertex(vertex)
+This.map.set (vertex,[ ] ));
+addEdge(source,direction,bidirectional)
+if(!this.map.has(source))
+this.addVertex(source)
+if(this.map.has(destination))
+This.addVertex(destination);
+This.map.get source(destination)
+If (bidirectional)
+this.map.get(destination).push(source
+getVertex Count()
+console.log(‘the graph has ${this.map.size}vertex’)
+Get EdgesConut(bidirectional)
+Let count=0
+for(const edges of this. map.values ())
+count+=edges.length
+if(bidirectional)
+count/=2;
+console.log(‘the graph has$ {count} edges.’)
+hasVertex(vertex)
+if(this.map.has(vertex))
+console.log(‘the graph contains ${vertex} as a vertex’)
+Else
+console.log(the graph  does not contain ${vertex} as a vertex’)
+hasEdge(source,destination)
+if(this.map.has(vertex) return;
+console.log(‘the neighbors of ${vertex} are
+${this map.get(vertex).join(“,”)});
+toString()
+Let result=””
+for(const[vertex,edges] of this.map.entries())
+result+=${‘vertex}:{edges.join(“”)}/n’
+Return result;
 title: Covid Strings 1 Game Dependency Graph.JSON
 create x axis  for questions
 create y axis for answers 
