@@ -34,13 +34,16 @@ Let result=””
 for(const[vertex,edges] of this.map.entries())
 result+=${‘vertex}:{edges.join(“”)}/n’
 Return result;
-title: Covid Strings 1 Game Dependency Graph.JSON
+title: Covid Strings 1 Game Dependency Graph
 create x axis  for questions
 create y axis for answers 
 create color code of green for correct answers and red for incorrect answers
 create bar for teams 
 create intervals of 1 for questions and 10 for points 
 set point on graph to the number of points given per question type 
+due to other team stealing rule only change an incorrect answer to red  if the team with the chance to steal gets the question wrong
+create intervals of 1 for questions and 10 for points 
+for fan voting create separate graph to track percent of votes for each question
 dependencies:
 questions=covidstrings1questions
 points=number of points per question
@@ -48,3 +51,17 @@ color code= color for answers
 teams= covid strings teams
 round reached=advancement or elimination of team 
 winner=covid strings winner 
+project Name:Covid Strings
+Version 1:
+express ^node js 20
+npm install <app store->  - d  
+npm install jest - - save 
+npm install audit
+scripts
+start 
+build 
+test 
+lint 
+npm install=  - -  only production
+npm test
+npm deploy  
