@@ -1,0 +1,144 @@
+ignore
+operating system files
+for covid strings include the web browser in which you can access the game 
+configuration files 
+for covid strings specific ide  settings include
+generated files
+for covid strings a log file for each version which includes having a tracker for the number of questions completed over total questions 
+dependency directories
+similar to the dependency graph file a list of dependencies would include a number of things that aren’t in their own separate file including node modules for each version 
+for covid strings ignore files or folders that contain notes involving source code and other files mentioned above 
+source code from covid strings 1 google doc
+doc type html
+script
+java.awt graphics
+jbutton random button
+new jbutton (“set random color”)
+private final jbutton option button=
+new j button (“change color”)
+public fun with graphics(){
+jpanel color panel=new jpanel();
+this add (color.panel, border layout.center )
+jpanel button panel=
+new j panel (new flowlayout(flowlayout.Center)
+buttonpanel.add(randomButton);
+random.button add actionlistener(new action listener(){
+override 
+oublic void actionperformed(actionevent e){
+random r= newRandom();
+colorpanel.setBackground(new Color (r nextInt(8),)(r nextInt(8),)(r nextInt(8),)(r nextInt(8),)(r nextInt(8),)(r nextInt(8),)(r nextInt(8),)(r nextInt(8)))
+buttonPanel.add(optionButton);
+optionButton.add actionListener(new Action Listiner(){
+override 
+public void actionPerformed(actionevent e){
+color multi=jcolorchooser.showdialog(funwithgraphics.this,)
+if(multi!=null)
+color Panel set.background(multi)
+this.add(buttonPanel, BorderLayout.South)
+public static void main(String [] args){
+jframe f = new Covid Strings1()
+f.set title(“Covid Strings 1”)
+f.set Default CloseOperation(JFrame. Exit_On_Close);
+f.setSize
+f.set visible(true);
+<label id=”lblScore”>0</label>
+var Score=0
+if (mult == x*y)
+[non-concatenated]
+score+=10
+else:
+score-=10
+if (mult == x*y)
+[concatenated]
+score+=20
+else:
+score-=20
+var lblScore= Document.getElementbyId(‘lblScore’)
+lbl.Score.innerHTML=score
+const object {a:1, b:2, c:3, d:4, e:5, f:6, g:7, h:8}
+const keys object keys(team)
+const entries object entries(obj);
+const  value =object [team color]
+covid strings version 1  phraseList=[ “Hello  covid world”,”don’t eat bleach”,”could you please get vaccinated,”good bye covid world”,”don’t overcrowd hospital capacity”,”are we going back to 1918?”,”there have been 100,000 reported deaths so far”,”the covid tracker shows” ,”you”+”should”+”get”+”tested”,”Pfizer”+”is”+”95”+”percent”+”effective”, “you”+”should”+”not”+”forget”+”your”+”flu”+”shot”,+”SNL”+”nailed”+”a”+”Rona”+”Christmas”+”there”+”have”+”been”+”some”+”negative”+”effects”,+”some”+”of”+”these”+”include”+”suicide”,”the”+”best”+”thing”+”to”+”do”+”is”+”practice”+”continuity”+”safely”,+”in”+”short”+”you”+”should”+”not”+”change”+”your”+”behavoir”+”much”
+covid strings  1 math problems list=[
+if a covid value of c=3 is added to the double of the value it’s equal to what do you get?”, “if a covid value represented by a variable c is quadrupled and then added by 5 what is the resulting product?”, “if the CDC’s covid tracker has 50,000 cases if only 35,000  were reported last week how many new cases happened?” , “ the cov19 emergency alert system was installed on march 12 2020 after 2 weeks  there were 1,975 calls if the rate of calls was 5 per hour how many calls happened after the first week?”,“ town a1s annual thanksgiving parade happens on November 19th if a1s public health guidelines require that events of more than 20,000 people be held only if the positivity rate is less than or equal to 5 percent if the current positivity rate is six and a third percent and the parade is next week could it be held?”, “if a decision could be made no later than the 16th and the amount of precautions taken include 10 cartons of 100 masks and 6ft of distancing can the parade still happen”? ,“a”+”knock”+”off”+”vaccine”+”company”+”promises”+”to”+”deliver”+”a”+”vaccine”+”within”+”2”+”weeks”+”if”+”the”+”standard”+”timeline”+”is”+”4”+”weeks”+”how”+”much”+”damage”+”can”+”happen”?
+If”+”a”+”poll”+”on”+”this”+”question”+”showed”+”that”+”92”+”percent”+”of”+”republicans”+”thought”+”that”+”he”+”was”+”joking”+”when”+”it”+”came”+”to”+”bleach”+”how”+”many”+”of”+”those”+”people”+”risked”+”illness?”, “if”+”875”+”people”+”were”+”reported”+”to”+”a”+”covid”+”hotline”+”because”+”they”+”thought”+”injecting”+”bleach” +”cured”+”covid”+”and”+”89”+”percent”+”of”+”them”+”said”+”they”+”believed”+”trump”+”how”+”many”+”people” +”out”+”of”+”the”+”total”+”believed”+”trump?”
+ “ if”+”the”+”margin”+”of”+”error”+”is”+”+”.505”+”percent”+”what”+”is”+”the”+”range?”, “a” +”news”+”report”+”suggested”+”that”+”the”+”level”+”two”+”emergency”+”will”+” continue”+”for”+”another”+”week”+”if”+”the”+”rate”+”is”+”greater”+”three”+”percent” “if”+”it”+”is”+”currently”+”two and a quarter percent”+”would”+”it”+”continue”? ,”if” +” four ”+”people”+ “took”+”an”+”unknown”+”number”+”of”+”shots”+”from”+”Pfizer’s”+”vaccine”+”at”+”3:45”+”p.m.”+”on”+”October”+”seventh” “when”+”would”+”it”+”expire?”
+covid strings sentence list 1=[“Pfizer has a 95% effective vaccine”  ,sentence ”the”+”most”+”obvious”+”similarity”+”between”+”covid”+”and”+”the”+”Spanish”+”flu”+”is”+”that”+”they”+”were”+”global”+”pandemics”,“any”+”covid”+-+”is”+”a”+”representation”+”of”+”data”+”at”+”a”+”specific”+”place”+”and”+”time”]
+string.split   
+arrays.asList(list<string>)
+for (string ss:arr){
+system.outprintIn(ss)
+import java util.scanner
+import java.util
+questions[]questions={
+new question 1
+new question 2
+new question 3
+new question 4
+new question 5
+new question 6
+new question 7
+new question 8
+new question 9
+new question 10
+new question 11
+new question 12
+new question 13
+new question 14
+new question 15
+new question 16
+new question 17
+new question 18
+new question 19
+new question 20
+new question 21
+new question 22
+new question 23
+new question 24
+new question 25
+new question 26
+new question 27
+new question 28
+new question 29
+new question 30
+new question 31
+new question 32
+new question 33
+new question 34
+collections.shuffle(arrays.aslist(questions)
+private string getBlanks(int numberofBlanks)
+char[] chars = new char[numberofBlanks]
+arrays.fill chars 
+return new string chars 
+if math problem== x percent:
+subtract exact from 100
+if math problem== margin of error:
+add and subtract exact 
+else:
+remain constant
+covidstrings 1 team  list=[red,orange,yellow,green,burgundy,indigo,blue,black]
+userin.select team
+import meta.
+select class 
+class myclass
+constructor (non-concatenated)
+return category
+if category==”math problem”:
+type answer
+else:
+select from multiple choice
+const myclass=newMyClass( Concatenated) 
+return category
+if category==”math problem”:
+type answer
+else:
+select from multiple choice
+import syntax 
+substring(start,end)
+userin.multiple choice
+if selectedAnswer==correct answer:
+return true
+else:
+return false
+
