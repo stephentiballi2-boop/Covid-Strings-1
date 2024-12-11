@@ -4,7 +4,7 @@ html
     Head
     Meta Charset UTF8
     Viewport Content =Width= Device-Width, Inital Scale One> 
-    <Title> Covid Strings Version1 First Round
+    title Covid Strings Version1 First Round Bracket
     Link Rel= Stylesheet Href= CSS
     head
     body
