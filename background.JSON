@@ -1,4 +1,5 @@
-{"branch_id":"f8cc5f53-913a-46c1-91e4-f11506c5016b","name":"Back Ground","settings":{"physics":{"gravity":[0,-9.8,0]},"render":{"fog_end":1000,"fog_start":1,
+data 
+"branch_id":"f8cc5f53-913a-46c1-91e4-f11506c5016b","name":"Back Ground","settings":{"physics":{"gravity":[0,-9.8,0]},"render":{"fog_end":1000,"fog_start":1,
 "global_ambient":[0.2,0.2,0.2],"fog_color":[0,0,0],"fog":"none","fog_density":0.01,"gamma_correction":1,"tonemapping":0,"exposure":1,
 "skybox":null,"skyType":"infinite","skyMeshPosition":[0,0,0],"skyMeshRotation":[0,0,0],"skyMeshScale":[100,100,100],
 "skyCenter":[0,0.1,0],"skyboxIntensity":1,"skyboxRotation":[0,0,0],"skyboxMip":0,"lightmapSizeMultiplier":16,"lightmapMaxResolution":2048,"lightmapMode":1,
@@ -12,7 +13,7 @@
 "P":2,"Q":0,"R":1024,"S":0.4,"T":0.05,"U":1,"V":11,"W":0.01,"X":null,"Y":1,"Z":true,
 "[":"rgb","]":0,"^":[1,1],"_":[0,0],"(":[0]}},"'":[],"___1":[12,15,3]},"! $":{"!":"Box","#":"!  ","$":"! $","%":[]," ":true,"&":{",":{"0":false,
 "1":1,"2":true,"3":null,"4":null," ":true,"*":"box","-":null,".":[null],"+":true,"/":true,")":false,
-"(":[0]}},"'":[],"___1":[18,0,3]},"! %":{"!":"Plane","#":"!  ","$":"! %","%":[]," ":true,"&":{",":{"0":false,"1":1,"2":true,"3":null,"4":null," ":true,"
+"(":[0]}},"'":[],"___1":[18,0,3]},"! %":{"!":"Plane","#":"!  ","$":"! %","%":[]," ":true,"&":{",":{"0":false,"1":1,"2":true,"3":null,"4":null," ":true,
 }},"'":[],"___1":[0,0,21]}
 "created":"2024-09-12T03:45:49.789Z","id":2069685,"compressedFormat":
 {"fieldFirstCode":32,"fieldCodeBase":95,"fieldArray":
@@ -21,3 +22,56 @@
 "innerConeAngle","outerConeAngle","shape","falloffMode","shadowUpdateMode","shadowType","shadowResolution","shadowBias","normalOffsetBias",
 "vsmBlurMode","vsmBlurSize","vsmBias","cookieAsset","cookieIntensity","cookieFalloff","cookieChannel",1,"cookieAngle","cookieScale","cookieOffset"],
 "singleVecs":[0,0,0,1,1,1,4,3.5,4,-30,45,0,2,2,-2,45,135,0,0,0.5,0,8,1,8],"tripleVecs":[]}
+code
+doc.type.html
+script
+filename=covidstrings1.js
+java.awt graphics
+jbutton random button
+new jbutton(set random color)
+private final j button option button=
+new j button (change color)
+public fun with graphics()
+jpanel color panel=new j panel();
+this add (color.panel,border layout.center)
+jpanel button panel=
+new j panel (new flowlayout(flowlayout.center)
+buttonpanel.add(randombutton);
+random.button add actionlistener(new action listener()
+override 
+public actionperformed(actionevent e)
+random r= newrandom();
+colorpanel.setbackground(new color (rnextint(thirteen),)(rnextint(thirteen),)(RNextInt(thirteen),)(rnextint(thirteen),)(rnextint(thirteen),)(rnextint(thirteen),)(rnextint(thirteen),)(rnextint(thirteen)))
+buttonpanel.add(optionbutton);
+optionbutton.add actionlistener(new action listener()
+override 
+public actionperformed(actionevent e)
+color multi=jcolorchooser.showdialog(funwithgraphics.this,))
+if(multi!=null)
+color panel set.background(multi)
+this.add(buttonpanel,borderlayout.south)
+public static main(string [] args)
+jframe= new covid strings1()
+f.set title(covid strings1)
+f.set default closeoperation(jframe.exit_on_close);
+f.setsize
+f.set visible(true);
+<label id=lblscore>zero</label>
+score=zero
+if (mult == x*y)
+[non-concatenated]
+score+=ten
+else:
+score-=ten
+if (mult == x*y)
+[concatenated]
+score+=twenty
+else:
+score-=twenty
+lblscore=document.getelementbyid(lblscore)
+lbl.score.innerHTML=score
+object{a:one,b:two,c:three,d:four, e:five, f:six,g:seven,h:eight}
+keys object keys(team)
+entries object entries(obj);
+value object= [team color]
+
