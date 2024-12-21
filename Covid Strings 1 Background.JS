@@ -1,6 +1,6 @@
 doc.type.html
 script
-filename=covidstrings1.js
+filename=covidstrings1 background.js
 java.awt graphics
 jbutton random button
 new jbutton(set random color)
