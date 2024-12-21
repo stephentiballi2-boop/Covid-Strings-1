@@ -67,6 +67,8 @@ select
 if question==math problem:
 prompt
 log 
+else:
+select from mutliple choice
 if question==multiple choice:
 select from multiple choice
 else:
@@ -79,17 +81,29 @@ prompt
 log
 if question== multiple choice:
 select from multiple choice
+else:
+prompt
+log
 import syntax 
 substring(start,end)
 userin.multiple choice
-if user answer==correct:
+if select answer ==correct answer
 log true
+else
+log false 
+if selectedanswer=not correct:
+return false
 else:
-log false
-if user answer==not correct
-log false
+return true
+answer checker
+scanner=new scanner(system.in)
+string correct answer
+string useranswer=scanner.nextline()
+if useranswer.equals((correctanswer))
+system.out.print.in(correct)
 else:
-log true
+system.out.printin(incorrect)
+scanner.close
 check winner:
 if winner==true:
 log(the winner is)
