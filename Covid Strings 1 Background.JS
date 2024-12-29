@@ -8,7 +8,7 @@ private final j button option button=
 new j button (change color)
 public fun with graphics()
 jpanel color panel=new j panel();
-this add (color.panel,border layout.center)
+this add (panel,center)
 jpanel button panel=
 new j panel (new flowlayout(flowlayout.center)
 buttonpanel.add(randombutton);
