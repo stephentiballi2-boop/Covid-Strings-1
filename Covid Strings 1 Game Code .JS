@@ -21,7 +21,7 @@ button add actionlistener(action listener)
 override 
 setbackground(new color)
 panel add(optionbutton);
-add actionlistener(action listener(){
+add actionlistener(action listener)
 override 
 public actionperformed(actionevent e){
 showdialog(this)
