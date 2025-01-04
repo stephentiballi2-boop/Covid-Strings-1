@@ -71,7 +71,7 @@ if selected answer==:correct
 true
 if selected answer==not correct:
 false
-const myclass=new myclass(concatenated) 
+myclass=new myclass(concatenated) 
 return class
 if category == multiplechoice:
 select answer
