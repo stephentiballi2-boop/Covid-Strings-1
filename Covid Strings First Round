@@ -35,8 +35,8 @@ rounddiv = createelement(div);
 rounddiv.classname = covid strings1first round;
 rounddiv.appenedchild(matchupdiv)
 teams.foreach(team,index)=>{}
-import java util.scanner
-import java.util
+java util.scanner
+java.util
 questions[]questions={
 question1 
 new question2
