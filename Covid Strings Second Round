@@ -1,15 +1,15 @@
 doc type.html
 script
-    head
-     utf-eight
- viewport content=width=device-width, inital scale one 
-    title covid strings version1 second  round bracket
-    link rel= stylesheet href=css
-    head
-    body
-    bracket-container{}
-    matchup
-    solid zero;
+head
+utf-eight
+viewport content=width=device-width, inital scale one 
+title covid strings version1 second  round bracket
+link rel= stylesheet href=css
+head
+body
+bracket-container{}
+matchup
+solid zero;
 filename=covid strings1 second round.js
 secondround=(highest remaining seed,intermediate seed1,intermediate seed2,lowest remaining seed) 
 highest remaining seed =(greatest remaining num value in covid strings list)
@@ -18,7 +18,7 @@ intermediate seed1=(first middle remaining value in covid strings list)
 intermediate seed2=(second middle remaining value in covid strings list)
 console.js (covid strings1 second round)
 create matchup (intermediate seed2 versus intermediate seed1)
-if  (event.target.covid strings seed list.contains(matchup))
+if (event.target.covid strings seed list.contains(matchup))
 event.target.covid strings seed list.toggle
 else:
 add matchup
@@ -28,11 +28,11 @@ event.target.covid strings seed list.toggle)
 else
 add matchup
 for (i in covid strings seed list)
-const round div=document.createelement
+round div=document.createelement
 round div class name= covid strings1 second round
 bracket.appendchild(round div)
-import java util.scanner
-import java.util
+java util.scanner
+java.util
 questions[]questions
 question18
 new question19
@@ -43,7 +43,7 @@ new question23
 new question24
 new question25
 new question26
-const myclass=(non-concatenated)
+myclass=(non-concatenated)
 if category==math problem:
 prompt
 log
@@ -54,7 +54,7 @@ select answer
 else:
 prompt
 log
-const myclass=new myclass(concatenated) 
+myclass=new myclass(concatenated) 
 return category
 if category==math problem:
 prompt
@@ -68,13 +68,11 @@ prompt
 log
 import syntax 
 advancingteams=slice(currentteams.length)
-let result = declarewinner(team1score,team2score);
+result = declarewinner(team1score,team2score);
 if intermediateseed1score>=fourty:
-let result =declarewinner(team1score,team2score);
 console.log(intermediate seed1 wins )
 else:
 console.log(intermediate seed2 wins)
-let result = declarewinner(team1score, team2score);
 if highest remaining seed score>=fourty:
 console.log(highest remaining seed wins)
 else:
