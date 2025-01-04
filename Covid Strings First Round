@@ -83,7 +83,7 @@ true
 if selected answer==not correct:
 false
 advancingteams= slice(currentteams.length);
-let result= declarewinner(team1score,team2score)
+result= declarewinner(team1score,team2score)
 if  team yellow score >=fourty:
 console.log(yellow moxie wins)
 else:
