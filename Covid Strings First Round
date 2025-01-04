@@ -1,17 +1,17 @@
-doc type HTML>
- script
+doc type html
+script
 html
-    Head
-    Meta Charset UTF8
-    Viewport Content =Width= Device-Width, Inital Scale One> 
-    title Covid Strings Version1 First Round Bracket
-    Link Rel= Stylesheet Href= CSS
-    head
-    body
-    bracket-container
-        Matchup{}
-        Solid Zero;
-filename=covid strings1 first round.JS
+head
+utf8
+viewport content=width=device-width, inital scale one 
+title covid strings version1 first round bracket
+link rel= stylesheet href= css
+head
+body
+bracket-container
+matchup{}
+solid zero;
+filename=covid strings1 first round.js
 first round=(highest overall seed ,second high seed third highseed, first middle seed, second middle seed, thirdlow seed ,second low seed,lowest overall seed)
 highest overall seed =seed1
 second highest seed=seed2
@@ -21,20 +21,19 @@ second middle seed = seed5
 third lowest seed= seed6
 second lowest seed = seed7
 lowest overall seed = seed8
-console.js(covid strings1 first round )
 create matchup(yellow versus indigo)
 create matchup(burgundy versus green)
 create matchup(blue versus orange)
 create matchup (black versus Red)
 if(event.target.covidstringsseedlist.contains(matchup)){
-    event.target.covidstringsseedlist.toggle
-    else:
-    add matchup
+event.target.covidstringsseedlist.toggle
+else:
+add matchup
 bracket.appendchild
-for (i in covid strings first round ) {
-        const rounddiv = createelement(div);
-        rounddiv.classname = covid strings1first round;
-        rounddiv.appenedchild(matchupdiv)
+for (i in covid strings first round ) 
+rounddiv = createelement(div);
+rounddiv.classname = covid strings1first round;
+rounddiv.appenedchild(matchupdiv)
 teams.foreach(team,index)=>{}
 import java util.scanner
 import java.util
