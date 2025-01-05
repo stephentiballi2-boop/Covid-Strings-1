@@ -16,7 +16,7 @@ random.button add actionlistener(new action listener()
 override 
 public actionperformed(actionevent e)
 random r= newrandom();
-colorpanel.setbackground(new color (rnextint(thirteen),)(rnextint(thirteen),)(RNextInt(thirteen),)(rnextint(thirteen),)(rnextint(thirteen),)(rnextint(thirteen),)(rnextint(thirteen),)(rnextint(thirteen)))
+colorpanel.setbackground(new color (rnextint(thirteen),)(rnextint(thirteen),)(rnextint(thirteen),)(rnextint(thirteen),)(rnextint(thirteen),)(rnextint(thirteen),)(rnextint(thirteen),)(rnextint(thirteen)))
 buttonpanel.add(optionbutton);
 optionbutton.add actionlistener(new action listener()
 override 
