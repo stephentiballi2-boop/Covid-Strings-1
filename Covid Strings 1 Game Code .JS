@@ -109,4 +109,8 @@ if winner==true:
 log(the winner is)
 if winner==false:
 log(no winner yet) 
+if users team wins covid strings1
+console.log (users team wins covid strings 1)
+else
+return game over
 return filename
