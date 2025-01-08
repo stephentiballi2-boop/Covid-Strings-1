@@ -40,7 +40,7 @@ getelementbyid
 appendchild
 getelementbyid
 score.InnerHTML
-covidstrings1teamlist=[red,orange,yellow,green,burgundy,indigo,blue,black]
+covidstrings1teamlist=[red protein spikers,orange rna messengers ,yellow moxie ,green peacemakers,burgundy rebuilders ,indigo isos,blue curve crushers,black night riders]
 num teams
 total players players per team
 if players per team=0
