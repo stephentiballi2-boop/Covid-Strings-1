@@ -9,10 +9,10 @@ filename=covid strings1 .JS
 java.awt graphics
 audio = new audio
 audio.play();
-jbutton random button
-new jbutton (set random color)
+button random button
+new button (set random color)
 private final j button option button=
-new j button (change color)
+new button (change color)
 public fun with graphics(){
 jpanel=color panel
 add (panel,center )
@@ -26,7 +26,7 @@ override
 public actionperformed(actionevent e){
 showdialog(this)
 if(background!=null)
-set.Background
+set.background
 add(south)
 jframe
 set title(1)
@@ -39,7 +39,7 @@ src =www.google.com/intl/en_com/images/logo_plain.png;
 getelementbyid
 appendchild
 getelementbyid
-score.InnerHTML
+score.inner html
 covidstrings1teamlist=[red protein spikers,orange rna messengers ,yellow moxie ,green peacemakers,burgundy rebuilders ,indigo isos,blue curve crushers,black night riders]
 num teams
 total players players per team
