@@ -23,10 +23,10 @@ second middle seed = seed5
 third lowest seed= seed6
 second lowest seed = seed7
 lowest overall seed = seed8
-create matchup(yellow versus indigo)
-create matchup(burgundy versus green)
-create matchup(blue versus orange)
-create matchup (black versus Red)
+matchup1=(yellow versus indigo)
+matchup2=(burgundy versus green)
+matchup3=(blue versus orange)
+matchup4=(black versus red)
 if(event.target.covidstringsseedlist.contains(matchup)){
 event.target.covidstringsseedlist.toggle
 else:
@@ -41,23 +41,23 @@ java util.scanner
 java.util
 questions[]questions={
 question1 
-new question2
-new question3
-new question4 
-new question5
-new question6
-new question7
-new question8
-new question9
-new question10
-new question11
-new question12
-new question13
-new question14
-new question15
-new question16
-new question17
-const myclass=(non-concatenated)
+question2
+question3
+question4 
+question5
+question6
+question7
+question8
+question9
+question10
+question11
+question12
+question13
+question14
+question15
+question16
+question17
+myclass=(non-concatenated)
 return class
 if category==math problem:
 prompt
@@ -85,20 +85,23 @@ true
 if selected answer==not correct:
 false
 advancingteams= slice(currentteams.length);
-result= declarewinner(team1score,team2score)
-if  team yellow score >=fourty:
+result= declarewinner(matchup1)
+if  team yellow score >=forty:
 console.log(yellow moxie wins)
 else:
 console.log(indigo isos win)
-if green score >=fourty:
+result= declarewinner(matchup2)
+if green score >=forty:
 console.log(green peacemakers win)
 else:
 console.log(burgundy rebuilders win)
-if orange score>=fourty:
+result= declarewinner(matchup3)
+if orange score>=forty:
 console.log(orange rna messengers win)
 else:
-console.log(blue curve crushers win )
-if red score >=fourty:
+console.log(blue curve crushers win)
+result= declarewinner(matchup4)
+if red score>=forty:
 console.log(red protein spikers wins)
 else:
 console.log(black night riders win)
