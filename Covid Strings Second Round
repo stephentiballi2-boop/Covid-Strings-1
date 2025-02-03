@@ -19,12 +19,12 @@ lowest remaining seed = (lowest remaining num value in covid strings list)
 intermediate seed1=(first middle remaining value in covid strings list)
 intermediate seed2=(second middle remaining value in covid strings list)
 console.js (covid strings1 second round)
-create matchup (intermediate seed2 versus intermediate seed1)
+matchup1=(intermediate seed2 versus intermediate seed1)
 if (event.target.covid strings seed list.contains(matchup))
 event.target.covid strings seed list.toggle
 else:
 add matchup
-create matchup (lowest remaining seed versus highest remaining seed)
+matchup2=(lowest remaining seed versus highest remaining seed)
 if (event.target.covid strings seed list.contains(matchup))
 event.target.covid strings seed list.toggle)
 else
