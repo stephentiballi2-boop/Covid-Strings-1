@@ -5,6 +5,8 @@ head
 utf-eight
 viewport content=width=device-width,inital scale one
 title covid strings1 championship bracket
+div id bracket class bracket div
+script src bracket .js
 head
 body
 link rel=stylesheet href css
