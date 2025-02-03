@@ -84,7 +84,7 @@ if selected answer==correct:
 true
 if selected answer==not correct:
 false
-advancingteams= slice(currentteams.length);
+advancingteams= slice(current teams);
 result= declarewinner(matchup1)
 if  team yellow score >=forty:
 console.log(yellow moxie wins)
