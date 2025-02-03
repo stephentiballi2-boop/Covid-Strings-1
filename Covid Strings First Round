@@ -5,6 +5,8 @@ head
 utf8
 viewport content=width=device-width, inital scale one 
 title covid strings version1 first round bracket
+div id bracket class bracket div
+script src bracket .js
 link rel= stylesheet href= css
 head
 body
