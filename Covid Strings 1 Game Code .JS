@@ -11,10 +11,10 @@ audio = new audio
 audio.play();
 button random button
 new button (set random color)
-private final j button option button=
+option button
 new button (change color)
 public fun with graphics(){
-jpanel=color panel
+color panel
 add (panel,center )
 add(button);
 button add actionlistener(action listener)
