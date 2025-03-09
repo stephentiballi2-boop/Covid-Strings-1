@@ -11,106 +11,100 @@ for string in covid strings search word list
 select characters
 edit diffuse property
 desired color=green
-covid Strings1 reference pairing list=[a:https://www.politico.com/news/2021/04/23/Trump-bleach-one-year-484399, B: https://www.newsweek.com/timothee-chalamet-plays-coronavirus-snl-hosting-debut-1554385,c:https://www.factcheck.org/2022/05/scicheck-pfizer-documents-show-vaccine-is-highly-effective,d:https://www.npr.org/sections/health-shots/2021/09/07/1033756464/flu-shot-covid-booster,e:covid tracker-bing images
+covid strings1 reference pairing list=[a:https://www.politico.com/news/2021/04/23/Trump-bleach-one-year-484399, B: https://www.newsweek.com/timothee-chalamet-plays-coronavirus-snl-hosting-debut-1554385,c:https://www.factcheck.org/2022/05/scicheck-pfizer-documents-show-vaccine-is-highly-effective,d:https://www.npr.org/sections/health-shots/2021/09/07/1033756464/flu-shot-covid-booster,e:covid tracker-bing images
 f:cdc:some people did take bleach to protect from coronavirus(usnews.com) g:trumps disinfectant injection claim has actually caused people to poison themselves(thenewcivilrightsmovement.com),h: Leader behind bleach miracle cure claims trump consumed his product|donald trump |the guardian,i:how soon will you start building immunity after getting the covid-19 vaccine? -goodrx, 
 j:https://www.cnn.com/2020/04/16/health/spanish-flu-coronavirus-lessons-learned/index.k:html,100,000 more covid deaths seen unless us changes its ways |ap news,l:the coronavirus (covid19) pandemics impact on mental health-pmc (nih.gov)]
 asset=this app.assets.find()
 template asset resource 
 entity template instanite
-Entity Script Foobar=This Entity
-Entity Reparnet (This.Entity)
-Ar A = Pc.CreateScript(A);
-A.Attributes.Add(Foobar, {Type: Entity});
-A.Prototype.Initialize=Function() {
-Console.Log(This.Foobar.Name);
+entity script foobar=this entity
+entity reparnet (this.entity)
+a =pc.create script(a);
+a.attributes.add(foobar,{type:entity});
+a.prototype.initialize=function() 
+console.log(this.foobar.name);
+asset=this app.assets.find()
+template asset resource 
+entity template instanite
+entity script foobar=this entity
+entity reparnet (this.entity)
+a=pc.createscript(a);
+a.attributes.add(foobar,{type:entity});
+a.prototype.initialize=function() 
+console.log(this.foobar.name);
+asset=this app.assets.find()
+template asset resource 
+entity template instanite
+entity script foobar=this entity
+entity reparnet (this.entity)
+b=pc.create script(b);
+b.attributes.add(foobar,{type:entity});
+b.prototype.initialize=function() 
+console.log(this.foobar.name);
+asset=this app.assets.find()
+template asset resource 
+entity template instanite
+entity script foobar=this entity
+entity reparnet (this.entity)
+c=pc.create script(c);
+c.attributes.add(foobar,{type:entity});
+c.prototype.initialize=function() 
+console.log(this.foobar.name);
+asset=this app.assets.find()
+template asset resource 
+entity template instanite
+entity script foobar=this entity
+entity reparnet(this.entity)
+d=pc.createscript(d);
+d.attributes.add(foobar,{type:entity});
+d.prototype.initialize=function() 
+console.log(this.foobar.name);
+asset=this app.assets.find()
+template asset resource 
+entity template instanite
+entity script foobar=this entity
+entity reparnet(this.entity)
+e=pc.create script(e);
+e.attributes.add(foobar,{type:entity});
+e.prototype.initialize=function() {
+console.log(this.foobar.name);
 };
-Asset= This App.Assets.Find()
-Template Asset Resource 
-Entity Template Instanite
-Entity Script Foobar=This Entity
-Entity Reparnet (This.Entity)
-A = Pc.CreateScript(A);
-A.Attributes.Add(Foobar, {Type: Entity});
-A.Prototype.Initialize=Function() {
-Console.Log(This.Foobar.Name);
+asset=this app.assets.find()
+template asset resource 
+entity template instanite
+entity script foobar=this entity
+entity reparnet (this.entity)
+f=pc.createscript(f);
+f.attributes.add(foobar,{type:entity});
+f.prototype.initialize=function() {
+console.log(this.foobar.name);
 };
-Asset= This App.Assets.Find()
-Template Asset Resource 
-Entity Template Instanite
-Entity Script Foobar=This Entity
-Entity Reparnet (This.Entity)
-B=Pc.CreateScript(B);
-B.Attributes.Add(Foobar, {Type: Entity});
-B.Prototype.Initialize=Function() {
-Console.Log(This.Foobar.Name);
-};
-Asset= This App.Assets.Find()
-Template Asset Resource 
-Entity Template Instanite
-Entity Script Foobar=This Entity
-Entity Reparnet (This.Entity)
-C= Pc.CreateScript(C);
-C.Attributes.Add(Foobar, {Type: Entity});
-C.Prototype.Initialize=Function() {
-Console.Log(This.Foobar.Name);
-};
-Asset= This App.Assets.Find()
-Template Asset Resource 
-Entity Template Instanite
-Entity Script Foobar=This Entity
-Entity Reparnet (This.Entity)
-D= Pc.CreateScript(D);
-D.Attributes.Add(Foobar, {Type: Entity});
-D.Prototype.Initialize=Function() {
-Console.Log(This.Foobar.Name);
-};
-Asset= This App.Assets.Find()
-Template Asset Resource 
-Entity Template Instanite
-Entity Script Foobar=This Entity
-Entity Reparnet (This.Entity)
-E= Pc.CreateScript(E);
-E.Attributes.Add(Foobar, {Type: Entity});
-E.Prototype.Initialize=Function() {
-Console.Log(This.Foobar.Name);
-};
-Asset= This App.Assets.Find()
-Template Asset Resource 
-Entity Template Instanite
-Entity Script Foobar=This Entity
-Entity Reparnet (This.Entity)
-F= Pc.CreateScript(F);
-F.Attributes.Add(Foobar, {Type: Entity});
-F.Prototype.Initialize=Function() {
-Console.Log(This.Foobar.Name);
-};
-Asset= This App.Assets.Find()
-Template Asset Resource 
-Entity Template Instanite
-Entity Script Foobar=This Entity
-Entity Reparnet (This.Entity)
-G=Pc.CreateScript(G);
-G.Attributes.Add(Foobar, {Type: Entity});
-G.Prototype.Initialize=Function() {
-Console.Log(This.Foobar.Name);
-};
-Asset= This App.Assets.Find()
-Template Asset Resource 
-Entity Template Instanite
-Entity Script Foobar=This Entity
-Entity Reparnet (This.Entity)
-H=Pc.CreateScript(H);
-H.Attributes.Add(Foobar, {Type: Entity});
-H.Prototype.Initialize=Function() {
-Console.Log(This.Foobar.Name);
-Asset= This App.Assets.Find()
-Template Asset Resource 
-Entity Template Instanite
-Entity Script Foobar=This Entity
-Entity Reparnet (This.Entity)
-I=Pc.CreateScript(I);
-I.Attributes.Add(Foobar, {Type: Entity});
-I.Prototype.Initialize=Function() {
+asset=this app.assets.find()
+template asset resource 
+entity template instanite
+entity script foobar=this entity
+entity reparnet (this.entity)
+g=pc.create script(g);
+g.attributes.add(foobar,{type:entity});
+g.prototype.initialize=function() 
+console.log(this.foobar.name);
+asset=this app.assets.find()
+template asset resource 
+entity template instanite
+entity script foobar=this entity
+entity reparnet (this.entity)
+h=pc.create script(h);
+h.attributes.add(foobar, {type: entity});
+h.prototype.initialize=function() {
+console.log(this.foobar.name);
+asset=this app.assets.find()
+template asset resource 
+entity template instanite
+entity script foobar=this entity
+entity reparnet (this.entity)
+i=pc.create script(i);
+i.attributes.Add(Foobar, {Type: Entity});
+i.prototype.Initialize=Function() {
 Console.Log(This.Foobar.Name);
 Asset= This App.Assets.Find()
 Template Asset Resource 
