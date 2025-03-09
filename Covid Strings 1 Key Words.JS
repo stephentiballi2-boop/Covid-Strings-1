@@ -103,34 +103,34 @@ entity template instanite
 entity script foobar=this entity
 entity reparnet (this.entity)
 i=pc.create script(i);
-i.attributes.Add(Foobar, {Type: Entity});
-i.prototype.Initialize=Function() {
-Console.Log(This.Foobar.Name);
-Asset= This App.Assets.Find()
-Template Asset Resource 
-Entity Template Instanite
-Entity Script Foobar=This Entity
-Entity Reparnet (This.Entity)
-J=Pc.CreateScript(J);
-J.Attributes.Add(Foobar, {Type: Entity});
-J.Prototype.Initialize=Function() {
-Console.Log(This.Foobar.Name);
-Asset= This App.Assets.Find()
-Template Asset Resource 
-Entity Template Instanite
-Entity Script Foobar=This Entity
-Entity Reparnet (This.Entity)
-K=Pc.CreateScript(K);
-K.Attributes.Add(Foobar, {Type: Entity});
-K.Prototype.Initialize=Function() {
-Console.Log(This.Foobar.Name);
-Asset= This App.Assets.Find()
-Template Asset Resource 
-Entity Template Instanite
-Entity Script Foobar=This Entity
-Entity Reparnet (This.Entity)
-L=Pc.CreateScript(L);
-L.Attributes.Add(Foobar, {Type: Entity});
-L.Prototype.Initialize=Function() {
-Console.Log(This.Foobar.Name);
-Return Filename
+i.attributes.add(foobar,{type:entity});
+i.prototype.initialize=function() {
+console.log(this.foobar.name);
+asset=this app.assets.find()
+template asset resource 
+entity template instanite
+entity script foobar=this entity
+entity reparnet (this.entity)
+j=pc.create script(j);
+j.attributes.add(foobar,{type:entity});
+j.prototype.initialize=function() {
+console.log(this.foobar.name);
+asset=this app.assets.find()
+template asset resource 
+entity template instanite
+entity script foobar=this entity
+entity reparnet (this.entity)
+k=pc.create script(k);
+k.attributes.add(foobar, {type:entity});
+k.prototype.initialize=function() {
+console.log(this.foobar.name);
+asset=this app.assets.find()
+template asset resource 
+entity template instanite
+entity script foobar=this entity
+entity reparnet (this.entity)
+l=pc.create script(l);
+l.attributes.add(foobar,{type:entity});
+l.prototype.initialize=function() {
+console.log(this.foobar.name);
+return filename
