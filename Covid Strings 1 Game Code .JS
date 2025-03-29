@@ -23,7 +23,7 @@ setbackground(new color)
 panel add(optionbutton);
 add actionlistener(action listener)
 override 
-public actionperformed(actionevent e){
+public actionperformed(actionevent e)
 showdialog(this)
 if(background!=null)
 set.background
