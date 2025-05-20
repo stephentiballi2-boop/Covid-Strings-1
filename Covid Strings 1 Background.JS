@@ -34,7 +34,7 @@ optionbutton.add actionlistener(new action listener)
 override
 <header.html>
 background code 
-code for covid strings 1 background 
+code for game background
 public actionperformed(actionevent e)
 color multi=jcolorchooser.showdialog(funwithgraphics.this)
 if(multi!=null)
