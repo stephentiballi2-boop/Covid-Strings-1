@@ -3,10 +3,13 @@ script
 <header.html>
 heading for heading variables
 the variables used for headings and subheadings 
+heading1=#background overview
+heading2=#functions
+heading3=background code
 filename=covidstrings1 background.js
 <header.html>
 background overview
-overview for covid strings 1 background
+overview for covid strings1
 java.awt graphics
 random button
 new button(set random color)
