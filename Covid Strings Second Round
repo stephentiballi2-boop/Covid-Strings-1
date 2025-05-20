@@ -96,7 +96,7 @@ log
 import syntax 
 team1=lower ranked seed
 team2=the higher seeded oppponent
-Points: 10 Points or 20 points
+points: 10 points or 20 points
 <subheading.html>
 team stealing
 steal points(stealingteam,victimteam,pointstosteal)
