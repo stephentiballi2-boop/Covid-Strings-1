@@ -1,5 +1,25 @@
 doc type.html
+html. lang.en
 script
+header=document create.element(header)
+header.style.backgroundcolor=#4caf50
+header.style.color=’white’
+header.style.padding=’10px’
+header.style.textalign=’center’
+header.style.text.fontsize=’24px’
+header.textcontent=’welcome to covid strings1 second round’
+document append child(header)
+<header.html>
+heading variables 
+the heading numbers that determine where each heading and subheading go 
+heading1=second round overview
+heading2=matchups
+heading3=second round questions
+heading4=advancing rounds
+subheading1=team stealing
+<header.html>
+second round overview
+is an overview of the second round of the covid strings contest
 head
 utf-eight
 viewport content=width=device-width, inital scale one 
@@ -18,7 +38,9 @@ highest remaining seed =(greatest remaining num value in covid strings list)
 lowest remaining seed = (lowest remaining num value in covid strings list)
 intermediate seed1=(first middle remaining value in covid strings list)
 intermediate seed2=(second middle remaining value in covid strings list)
-console.js (covid strings1 second round)
+<header.html>
+matchups
+contains 4 teams which equals 2 matchups 
 matchup1=(intermediate seed2 versus intermediate seed1)
 if (event.target.covid strings seed list.contains(matchup))
 event.target.covid strings seed list.toggle
@@ -33,6 +55,9 @@ for (i in covid strings seed list)
 round div=document.createelement
 round div class name= covid strings1 second round
 bracket.appendchild(round div)
+<header.html>
+second round questions
+the questions asked in the second round of the covid strings contest
 java util.scanner
 java.util
 questions[]questions
@@ -69,7 +94,26 @@ else:
 prompt
 log
 import syntax 
-advancingteams=slice(currentteams.length)
+team1=lower ranked seed
+team2=the higher seeded oppponent
+Points: 10 Points or 20 points
+<subheading.html>
+team stealing
+steal points(stealingteam,victimteam,pointstosteal)
+if(victim team.points>=point to steal)
+victimteam.points-=pointtosteal;
+stealingteampoints+=pointstosteal
+console.log([stealingteam.name} stole points from {victim team name}!)
+else:
+console.log({victimteam.name} doesnt have enough points to steal)
+if teams final  answer==incorrect:
+opposing team steals
+else:
+change covid strings matchup  score
+<header.html>
+advancing rounds 
+contains the criteria for teams in the second round to advance to the championship 
+advancingteams=slice(current teams)
 result = declarewinner(team1score,team2score);
 if intermediateseed1score>=fourty:
 console.log(intermediate seed1 wins )
