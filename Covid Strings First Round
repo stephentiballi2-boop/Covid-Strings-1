@@ -7,7 +7,7 @@ header.style.background color=#4caf50
 header.style.color=’white’
 header.style.padding=’10px’
 header.style.textalign=’center’
-header.style.text.fontsize=’24Px’
+header.style.text.fontsize=’24px’
 header.textcontent=’welcome to covid strings1 first round’
 document appendchild(header)
 <header.html>
@@ -60,9 +60,13 @@ rounddiv = createelement(div);
 rounddiv.classname = covid strings1first round;
 rounddiv.appenedchild(matchupdiv)
 teams.foreach(team,index)=>{}
+<header.html>
+first round questions
+the questions asked in the first round of the covid strings contest
 java util.scanner
 java.util
-questions[]questions={
+first roundquestions=questions[1-17]
+collections.shuffle(arrays.aslist(questions)
 question1 
 question2
 question3
