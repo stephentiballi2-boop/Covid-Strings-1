@@ -60,7 +60,8 @@ second round questions
 the questions asked in the second round of the covid strings contest
 java util.scanner
 java.util
-questions[]questions
+second round questions=questions[18-26]
+collections.shuffle(arrays.aslist(questions)
 question18
 new question19
 new question20
