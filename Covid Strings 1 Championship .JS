@@ -17,6 +17,7 @@ heading2=championship code
 heading3=championship round questions
 heading4=victory
 subheading1=team stealing
+subheading2=result for championship  matchup
 <header.html>
 championship overview
 contains an overview of the championship
@@ -117,12 +118,16 @@ return true
 if selectedanswer=incorrect
 return false
 advancingteam= slice (current team)
-declarewinner
-team high seed score>=sixty:
 result= declarewinner(team1 score, team2 score)
-log(team high seed wins covid strings1) 
+<subheading.html>
+result for  championship  matchup
+the code for how to determine the end result of covid strings1 championship
+if team high seed score>=sixty:
+console.log(team high seed wins covid strings1) 
 else:
-log(team low seed wins covid strings1)
+remain
+if team low seed score>=sixty:
+console.log(team low seed wins covid strings1)
+else:
+remain
 return filename
-
-
