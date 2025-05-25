@@ -249,5 +249,9 @@ log(no winner yet)
 if users team wins covid strings1
 console.log (users team wins covid strings 1)
 else
-return game over
+remain
+if users team loses covid strings1:
+return game over 
+else:
+remain
 return filename
