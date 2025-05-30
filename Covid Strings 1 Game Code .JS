@@ -27,9 +27,7 @@ subheading2= answer scanner
 document.createelement(img) 
 imagesrc =www.google.com/intl/en_com/images/logo_plain.png;
 src = document.getelementbyid(covid virus)
-getelementbyid
-appendchild
-getelementbyid
+src. append child (img)
 filename=covid strings1.js
 <header.html>
 game code overview
@@ -44,12 +42,10 @@ new button (change color)
 public fun with graphics()
 color panel
 add (panel,center )
-add(button);
-button add actionlistener(action listener)
-override 
-setbackground(new color)
-panel add(optionbutton);
-add actionlistener(action listener)
+button panel
+new panel (new flowlayout(flowlayout.center)
+buttonpanel.add(randombutton);
+add actionlistener(new action listener)
 override 
 public actionperformed(actionevent e)
 random r=newrandom();
@@ -61,6 +57,9 @@ colorpanel.setbackground(new color (r nextint(thirteen),)(r nextint(thirteen),)(
 buttonpanel.add(optionbutton);
 optionbutton.add actionlistener(new action listener)
 override 
+<header.html>
+game code part1 
+part1 of game code for covid strings1(value object[team-color]-desired color green)
 public actionperformed(actionevent e)
 color multi=jcolorchooser.showdialog(funwithgraphics.this)
 if(multi!=null)
@@ -88,9 +87,6 @@ score-=twenty
 lblscore=document.getelementbyid(lblscore)
 lbl.score.innerhtml=score
 value object=[team color]
-<header.html>
-game code part1 
-part1 of game code for covid strings1(value object[team-color]-desired color green)
 covidstrings1teamlist=[red protein spikers,orange rna messengers ,yellow moxie ,green peacemakers,burgundy rebuilders ,indigo isos,blue curve crushers,black night riders]
 num teams
 total players players per team
@@ -98,6 +94,11 @@ if players per team=0
 return zero
 return math floor total players/players per team
 teamsgrouping=(rnextint8)(rnextint8)(rnextint8)(rnextint8)(rnextint8)(rnextint8)(rnextint8)
+<header.html>
+phrases
+phrases that involve both non-concatenated and concatenated strings 
+phraselist=[non -concatenated strings "hello covid world","dont" "eat" "bleach","could" "you" "please" "get" "vaccinated","good bye covid world","dont overcrowd hospital capacity","are we going back to 1918,there have been 100,000 reported deaths so far,the covid tracker shows] 
+[concatenated strings "you"+"should"+"get"+"tested","pfizer"+"is"+"95%"+"effective","you"+"should"+"not"+"forget"+"your"+"flu"+"shot","snl"+"nailed"+"a"+"rona"+"christmas"+"there"+"have"+"been"+"some"+"negative"+"effects","some"+"of"+"these"+"include"+"suicide","the"+"best"+"thing"+"to"+"do"+"is"+"practice"+"continuity"+"safely","in"+"short"+"you"+"should"+"not"+"change"+"your"+"behavoir"+"much"] 
 string manager{non-concatenated}
 insert string(entity,string)
 entity.element.text=string
@@ -111,28 +112,25 @@ for string in covid strings1 phrase list1
 select characters
 edit diffuse property
 desired color=green
+<header.html>
+math problems
+covid related math problems that will appear in covid strings1
+math problems list=[non-concatenated strings "if a covid value c equals 3 is added to the double of the value its equal to what do you get?", a covid value represented by a variable c is quadrupled and then added by f what is the resulting product?, if the cdcs covid tracker has 50,000 cases 35,000 cases were reported last week how many cases happened?" "the cov19 emergency alert system was installed on march 12 2020 after 2 weeks there were 1975 calls if the rate of calls was 5 per hour how many calls happened after the 1st week?", "town a1s annual thanksgiving parade happens on november 19 a1s public health guidelines require that events of more than 20,000 people be held only if the positivity rate is <=5%  the current positivity rate is 6 1/3% and the parade is next week could it be held? if a decision could be made no later than the 16th and the amount of precautions taken include 10 cartons of 100 masks and 6ft of distancing can the parade still happen?"]
+[concatenated strings "a"+"knock"+"off"+"vaccine"+"company"+"promises"+"to"+"deliver"+"a"+"vaccine"+"within"+"2"+"weeks"+"if"+"the"+"standard"+"timeline"+"is"+"4"+"weeks"+"how"+"much"+"damage"+"can"+"happen"?"if"+"a"+"poll"+"on"+"this"+"question"+"showed"+"that"+"92"+"percent"+"of"+"republicans"+"thought"+"that"+"he"+"was"+"joking"+"when"+"it"+"came"+"to"+"bleach"+"how"+"many"+"of"+"those"+"people"+"risked"+"illness?","if"+"875"+"people"+"were"+"reported"+"to"+"a"+"covid"+"hotline"+"because"+"they"+"thought"+"injecting"+"bleach"+"cured"+"covid"+"and"+"89%"+"of"+"them"+"said"+"they"+"believed"+"trump"+"how"+"many"+"people"+"out"+"of"+"the"+"total"+"believed"+"trump"?
+"if"+"the"+"margin"+"of"+"error"+"is"+"fifty" +"and"+"five"+"hundreths"+"percent"+"what"+"is"+"the"+"range?","a"+"news"+"report"+"suggested"+"that"+"the"+"level2"+"emergency"+"will"+"continue"+"for"+"another"+"week"+"if"+"the"+"rate"+"is"+">3%" "if"+"it"+"is"+"currently"+"2.25%"+"would"+"it"+"continue"?,"if"+"4"+"people"+"took"+"an"+"unknown"+"number"+"of"+"shots"+"from"+"pfizers"+"vaccine"+"at"+"3:45pm" +"on"+"october"+"7th"+"when"+"would"+"it"+"expire?"]
+string manager{non-concatenated}
+insert string(entity,string)
+entity.element.text=string
+string manager insert string
+string manager{concatenated}
+insert string (entity,string)
+entity.element.text=string
+string manager insert string
+string=””
 for string in covid strings1 math problems list 
 select characters
 edit diffuse property
 desired color=green
-for string in covid strings sentence list1 
-select characters
-edit diffuse property
-desired color=green
-<header.html>
-phrases
-phrases that involve both non-concatenated and concatenated strings 
-phraselist=[non -concatenated "hello covid world","dont" "eat" "bleach","could" "you" "please" "get" "vaccinated","good bye covid world","dont overcrowd hospital capacity","are we going back to 1918,there have been 100,000 reported deaths so far,the covid tracker shows] 
-concatenated ["you"+"should"+"get"+"tested","pfizer"+"is"+"95%"+"effective","you"+"should"+"not"+"forget"+"your"+"flu"+"shot","snl"+"nailed"+"a"+"rona"+"christmas"+"there"+"have"+"been"+"some"+"negative"+"effects","some"+"of"+"these"+"include"+"suicide","the"+"best"+"thing"+"to"+"do"+"is"+"practice"+"continuity"+"safely","in"+"short"+"you"+"should"+"not"+"change"+"your"+"behavoir"+"much"] 
-<header.html>
-math problems
-covid related math problems that will appear in covid strings1
-math problems list=[ non-concatenated "if a covid value c equals 3 is added to the double of the value its equal to what do you get?", a covid value represented by a variable c is quadrupled and then added by f what is the resulting product?, if the cdcs covid tracker has 50,000 cases 35,000 cases were reported last week how many cases happened?" "the cov19 emergency alert system was installed on march 12 2020 after 2 weeks there were 1975 calls if the rate of calls was 5 per hour how many calls happened after the 1st week?", "town a1s annual thanksgiving parade happens on november 19 a1s public health guidelines require that events of more than 20,000 people be held only if the positivity rate is <=5%  the current positivity rate is 6 1/3% and the parade is next week could it be held? if a decision could be made no later than the 16th and the amount of precautions taken include 10 cartons of 100 masks and 6ft of distancing can the parade still happen?"]
-[concatenated "a"+"knock"+"off"+"vaccine"+"company"+"promises"+"to"+"deliver"+"a"+"vaccine"+"within"+"2"+"weeks"+"if"+"the"+"standard"+"timeline"+"is"+"4"+"weeks"+"how"+"much"+"damage"+"can"+"happen"?
-"if"+"a"+"poll"+"on"+"this"+"question"+"showed"+"that"+"92"+"percent"+"of"+"republicans"+"thought"+"that"+"he"+"was"+"joking"+"when"+"it"+"came"+"to"+"bleach"+"how"+"many"+"of"+"those"+"people"+"risked"+"illness?","if"+"875"+"people"+"were"+"reported"+"to"+"a"+"covid"+"hotline"+"because"+"they"+"thought"+"injecting"+"bleach"+"cured"+"covid"+"and"+"89%"+"of"+"them"+"said"+"they"+"believed"+
-"trump"+"how"+"many"+"people"+"out"+"of"+"the"+"total"+"believed"+"trump"?
-"if"+"the"+"margin"+"of"+"error"+"is"+"fifty" +"and"+"five"+"hundreths"+"percent"+"what"+"is"+"the"+"range?","a"+"news"+"report"+"suggested"+"that"+"the"+"level2"+"emergency"+"will"+"continue"+"for"+"another"+"week"+"if"+"the"+"rate"+"is"+">3%" 
-"if"+"it"+"is"+"currently"+"2.25%"+"would"+"it"+"continue"?,"if"+"4"+"people"+"took"+"an"+"unknown"+"number"+"of"+"shots"+"from"+"pfizers"+"vaccine"+"at"+"3:45pm" +"on"+"october"+"7th"+"when"+"would"+"it"+"expire?"]
 public static main(string []args)
 int number
 number=number*2
@@ -163,6 +161,19 @@ remain
 sentences
 covid related sentences that will appear in covid strings1 
 sentence list=["pfizer has a 95% effective vaccine","the"+"most"+"obvious"+"similarity"+"between"+"covid"+"and"+"the"+"spanish"+"flu"+"is"+"that"+"they"+"were"+"global"+"pandemics","any"+"covid"+"tracker"+"is"+"a"+"representation"+"of"+"data"+"at"+"a"+"specific"+"place"+"and"+"time"]
+string manager{non-concatenated}
+insert string(entity,string)
+entity.element.text=string
+string manager insert string
+string manager{concatenated}
+insert string (entity,string)
+entity.element.text=string
+string manager insert string
+string=””
+for string in covid strings sentence list1 
+select characters
+edit diffuse property
+desired color=green
 <header.html>
 multiple choice questions
 multiple choice questions and answers that will appear in covid strings1 
@@ -174,15 +185,21 @@ multiple choice list=[1: a hydrogen peroxide,  b, ammonium nitrate, c bleach , d
 <header.html>
 game code part2
 the rest of the game code excluding answer and winner checker
+java util.scanner
+java.util
+questions=total# of questions from covid strings1 [first-championship round] 
+collections.shuffle(arrays.aslist(questions)
 userin.select team 
 import meta.
 select class
-(non-concatenated)
+class my class
+constructor (non-concatenated)
+return category
 if question==math problem:
 prompt
 log 
 else:
-select from mutliple choice
+select from mutliple choicew
 if question==multiple choice:
 select from multiple choice
 else:
@@ -193,6 +210,8 @@ return category
 if question==math problem:
 prompt
 log
+else:
+select from multiple choice
 if question== multiple choice:
 select from multiple choice
 else:
@@ -204,7 +223,6 @@ substring(start,end)
 answer checker
 the feature within covid strings that allows the software to check whether a users answer is correct
 for multiple choice questions in covid strings 
-userin.multiple choice
 if select answer ==correct answer
 log true
 else
@@ -244,8 +262,12 @@ the feature within covid strings that allows for the player to know if their tea
 check winner:
 if winner==true:
 log(the winner is)
+else:
+remain
 if winner==false:
 log(no winner yet) 
+else:
+log winner
 if users team wins covid strings1
 console.log (users team wins covid strings 1)
 else
