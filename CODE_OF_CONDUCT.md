@@ -1,7 +1,7 @@
 # Contributor Covenant Code of Conduct
 Covid Strings 1
 Mission Statement:
-Covid Strings is a Game Focused on Archiving Covid  through combining multiple subjects, Covid Strings’ belief is that  the idea of checks and balances  goes beyond the constitution and should be applied to the career process . Covid Strings views the idea of economic opportunity as non-partisan .When it comes to politics and the state of covid  we want to inform players the public about the state of covid focused on the news so you know what’s happening.
+Covid Strings is a Game Focused on Archiving Covid  through combining multiple subjects, Covid Strings’ belief is that  the idea of checks and balances  goes beyond the constitution and should be applied to the career process . Covid Strings views the idea of economic opportunity as non-partisan .When it comes to politics and the state of covid  we want to inform players the public about the state of covid focused on the news so you know what’s happening.Regarding politics and COVID, the game hopes to inform players about the states of the COVID pandemic by focusing on the activities of the concurrent news cycles.”   
 ## Our Pledge
 We as members, contributors, and leaders pledge to make participation in our
 community a harassment-free experience for everyone, regardless of age, body
