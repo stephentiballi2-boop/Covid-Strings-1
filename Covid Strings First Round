@@ -128,9 +128,11 @@ else:
 prompt
 log
 if selected answer==correct:
-true
+return true
+else:
+return false
 if selected answer==not correct:
-false
+return false
 else:
 return true
 team1=lower ranked seed
