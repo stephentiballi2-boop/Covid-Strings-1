@@ -23,9 +23,18 @@ console log updated string
 <header.html>
 keywords
 key search words for covid strings1
-covid strings1 search word list=[bleach,rona,95,flu,tracker,875*.89,vaccinated,1918,100,000,negative]
+covid strings1 key word list=[bleach,rona,95,flu,tracker,875*.89,vaccinated,1918,100,000,negative]
+string manager non-concatenated
+insert string(entity,string)
+entity.element.text=string
+string manager insert string
 string=””
-for string in covid strings search word list
+string manger concatenated
+insert string(entity,string)
+entity.element.text=string
+string manager insert string
+string=””
+for string in covid strings key word list
 select characters
 edit diffuse property
 desired color=green
