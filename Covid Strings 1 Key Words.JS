@@ -44,26 +44,26 @@ links to articles that correspond to phrases in covid strings1
 covid strings1 reference pairing list=[a:https://www.politico.com/news/2021/04/23/Trump-bleach-one-year-484399, B: https://www.newsweek.com/timothee-chalamet-plays-coronavirus-snl-hosting-debut-1554385,c:https://www.factcheck.org/2022/05/scicheck-pfizer-documents-show-vaccine-is-highly-effective,d:https://www.npr.org/sections/health-shots/2021/09/07/1033756464/flu-shot-covid-booster,e:covid tracker-bing images
 f:cdc:some people did take bleach to protect from coronavirus(usnews.com) g:trumps disinfectant injection claim has actually caused people to poison themselves(thenewcivilrightsmovement.com),h: Leader behind bleach miracle cure claims trump consumed his product|donald trump |the guardian,i:how soon will you start building immunity after getting the covid-19 vaccine? -goodrx, 
 j:https://www.cnn.com/2020/04/16/health/spanish-flu-coronavirus-lessons-learned/index.k:html,100,000 more covid deaths seen unless us changes its ways |ap news,l:the coronavirus (covid19) pandemics impact on mental health-pmc (nih.gov)]
-asset=this app.assets.find()
-template asset resource 
-entity template instanite
-entity script foobar=this entity
-entity reparnet (this.entity)
 <header.html>
 script templates
 code for accessing the references
+asset=this app.assets.find()
+template asset resource 
+entity template instantiate
+entity script foobar=this entity
+entity reparnet (this.entity)
 a =pc.create script(a);
 a.attributes.add(foobar,{type:entity});
 a.prototype.initialize=function() 
 console.log(this.foobar.name);
 asset=this app.assets.find()
 template asset resource 
-entity template instanite
+entity template instantiate
 entity script foobar=this entity
 entity reparnet (this.entity)
 asset=this app.assets.find()
 template asset resource 
-entity template instanite
+entity template instantiate
 entity script foobar=this entity
 entity reparnet (this.entity)
 b=pc.create script(b);
@@ -72,7 +72,7 @@ b.prototype.initialize=function()
 console.log(this.foobar.name);
 asset=this app.assets.find()
 template asset resource 
-entity template instanite
+entity template instantiate
 entity script foobar=this entity
 entity reparnet (this.entity)
 c=pc.create script(c);
@@ -81,7 +81,7 @@ c.prototype.initialize=function()
 console.log(this.foobar.name);
 asset=this app.assets.find()
 template asset resource 
-entity template instanite
+entity template instantiate
 entity script foobar=this entity
 entity reparnet(this.entity)
 d=pc.createscript(d);
@@ -90,7 +90,7 @@ d.prototype.initialize=function()
 console.log(this.foobar.name);
 asset=this app.assets.find()
 template asset resource 
-entity template instanite
+entity template instantiate
 entity script foobar=this entity
 entity reparnet(this.entity)
 e=pc.create script(e);
