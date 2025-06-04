@@ -14,7 +14,7 @@ java.awt graphics
 random button
 new button(set random color)
 option button
-new j button (change color)
+new  button (change color)
 public fun with graphics()
 color panel=new j panel();
 add (panel,center)
