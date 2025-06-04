@@ -52,7 +52,7 @@ template asset resource
 entity template instantiate
 entity script foobar=this entity
 entity reparnet (this.entity)
-a =pc.create script(a);
+a=pc.createscript(a);
 a.attributes.add(foobar,{type:entity});
 a.prototype.initialize=function() 
 console.log(this.foobar.name);
@@ -61,12 +61,7 @@ template asset resource
 entity template instantiate
 entity script foobar=this entity
 entity reparnet (this.entity)
-asset=this app.assets.find()
-template asset resource 
-entity template instantiate
-entity script foobar=this entity
-entity reparnet (this.entity)
-b=pc.create script(b);
+b=pc.createscript(b);
 b.attributes.add(foobar,{type:entity});
 b.prototype.initialize=function() 
 console.log(this.foobar.name);
@@ -75,7 +70,7 @@ template asset resource
 entity template instantiate
 entity script foobar=this entity
 entity reparnet (this.entity)
-c=pc.create script(c);
+c= pc.createscript(c);
 c.attributes.add(foobar,{type:entity});
 c.prototype.initialize=function() 
 console.log(this.foobar.name);
@@ -83,7 +78,7 @@ asset=this app.assets.find()
 template asset resource 
 entity template instantiate
 entity script foobar=this entity
-entity reparnet(this.entity)
+entity reparnet (this.entity)
 d=pc.createscript(d);
 d.attributes.add(foobar,{type:entity});
 d.prototype.initialize=function() 
@@ -92,11 +87,11 @@ asset=this app.assets.find()
 template asset resource 
 entity template instantiate
 entity script foobar=this entity
-entity reparnet(this.entity)
-e=pc.create script(e);
+entity reparnet (this.entity)
+e=pc.createscript(e);
 e.attributes.add(foobar,{type:entity});
 e.prototype.initialize=function() 
-console.log(this.foobar.name);
+console.log(this.foobar.name)
 asset=this app.assets.find()
 template asset resource 
 entity template instantiate
@@ -111,7 +106,7 @@ template asset resource
 entity template instantiate
 entity script foobar=this entity
 entity reparnet (this.entity)
-g=pc.create script(g);
+g=pc.createscript(g);
 g.attributes.add(foobar,{type:entity});
 g.prototype.initialize=function() 
 console.log(this.foobar.name);
@@ -120,8 +115,8 @@ template asset resource
 entity template instantiate
 entity script foobar=this entity
 entity reparnet (this.entity)
-h=pc.create script(h);
-h.attributes.add(foobar, {type: entity});
+h=pc.createscript(h);
+h.attributes.add(foobar,{type:entity});
 h.prototype.initialize=function() 
 console.log(this.foobar.name);
 asset=this app.assets.find()
@@ -129,7 +124,7 @@ template asset resource
 entity template instantiate
 entity script foobar=this entity
 entity reparnet (this.entity)
-i=pc.create script(i);
+i=pc.createscript(i);
 i.attributes.add(foobar,{type:entity});
 i.prototype.initialize=function() 
 console.log(this.foobar.name);
@@ -138,17 +133,17 @@ template asset resource
 entity template instantiate
 entity script foobar=this entity
 entity reparnet (this.entity)
-j=pc.create script(j);
+j=pc.createscript(j);
 j.attributes.add(foobar,{type:entity});
 j.prototype.initialize=function() 
-console.log(this.foobar.name);
+console.log(this.foobar.name)
 asset=this app.assets.find()
 template asset resource 
 entity template instantiate
 entity script foobar=this entity
 entity reparnet (this.entity)
-k=pc.create script(k);
-k.attributes.add(foobar, {type:entity});
+k=pc.createscript(k);
+k.attributes.add(foobar,{type:entity});
 k.prototype.initialize=function() 
 console.log(this.foobar.name);
 asset=this app.assets.find()
@@ -156,8 +151,8 @@ template asset resource
 entity template instantiate
 entity script foobar=this entity
 entity reparnet (this.entity)
-l=pc.create script(l);
-l.attributes.add(foobar,{type:entity});
+l=pc.createscript(l);
+l.attributes.add(foobar, {type:entity});
 l.prototype.initialize=function() 
 console.log(this.foobar.name);
 return filename
