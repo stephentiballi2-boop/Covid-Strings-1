@@ -19,7 +19,7 @@ public fun with graphics()
 color panel=new j panel();
 add (panel,center)
 button panel=
-new j panel (new flowlayout(flowlayout.center)
+new panel (flowlayout.center)
 buttonpanel.add(randombutton);
 random.button add actionlistener(new action listener)
 override 
