@@ -533,167 +533,167 @@ div class thought display id=”thought display
 <script>
 display thought
 thought input=document.get element by id (‘thought input) .value
-THOUGHT DISPLAY =DOCUMENT.GETELEMENT BY ID(‘THOUGHT DISPLAY’)
-THOUGHT DISPLAY. TEXT CONTENT= THOUGHT INPUT 
-<SCRIPT>
-</BODY>
-</HTML>
-<SUBHEADING.HTML>
-INDIGO THOUGHT BOX
-THOUGHT BOX FOR INDIGO ISOS
-<DOCTYPE.HTML>
-<HTML LANG “EN”>
-<HEAD>
-UTF8
-“VIEWPORT” CONTENT =WIDTH DEVICE -WIDTH INITIAL SCALE 1.0
-<TITLE> THOGUHT BOX /<TITLE>
-<STYLE>
-BODY{
-FONT FAMILY ARIAL SANS SERIF
-DISPLAY: FLEX
-JUSTIFY CONTENT:CENTER
-ALIGN  ITEMS:CENTER
-HEIGHT 100VH;
-BACKGROUND-COLOR:F0F0F0
-THOUGHT BOX 
-BACKGROUND COLOR FFF
-PADDING 20PX
-BORDER RADIUS 10PX
-BOX-SHADOW 00 10PX RGBA(0,0,0,0.1);
-DISPLAY 
-WIDTH 300PX
-TEXT ALIGN CENTER
-THOUGHT BOX INPUT 
-WIDTH  80%
-PADDING: 10PX;
-MARGIN-BOTTOM: 10PX;
-BORDER: 1PX SOLID CCC
-BORDER-RADIUS 5PX
-THOUGHT BOX BUTTON
-PADDING 10PX, 20PX
-BORDER-RADIUS 5PX
-BACKGROUND COLOR 007BFF
-Color: Fff
-Cursor: Pointer;
-THOUGHT BOX HOVER BUTTON
-BACKGROUND COLOR 0056B3
-THOUGHT DISPLAY 
-MARGIN-TOP 20PX;
-FONT-SIZE 1.2EM
-COLOR 333
-<STYLE/>
-</HEAD>
-<BODY>
-<DIV CLASS= “THOUGHT BOX”
-INPUT TYPE= “TEXT” ID=”THOUGHT INPUT” 
-CLICK ON BUTTON DISPLAY THOUGHT> SUBMIT</ BUTTON>
-DIV CLASS THOUGHT DISPLAY  ID=”THOUGHT DISPLAY
-</DIV>
-<SCRIPT>
-DISPLAY THOUGHT
-THOUGHT INPUT=DOCUMENT.GETELEMENT BY ID (‘THOUGHT INPUT) .VALUE
-THOUGHT DISPLAY =DOCUMENT.GETELEMENT BY ID(‘THOUGHT DISPLAY’)
-THOUGHT DISPLAY. TEXT CONTENT= THOUGHT INPUT 
-<SCRIPT>
-</BODY>
-</HTML>
-<SUBHEADING.HTML>
-BLUE THOUGHT BOX
-THOUGHT BOX FOR BLUE CURVE CRUSHERS
-<DOCTYPE.HTML>
-<HTML LANG “EN”>
-<HEAD>
-UTF8
-“VIEWPORT” CONTENT =WIDTH DEVICE -WIDTH INITIAL SCALE 1.0
-<TITLE> THOGUHT BOX /<TITLE>
-<STYLE>
-BODY{
-FONT FAMILY ARIAL SANS SERIF
-DISPLAY: FLEX
-JUSTIFY CONTENT:CENTER
-ALIGN  ITEMS:CENTER
-HEIGHT 100VH;
-BACKGROUND-COLOR:F0F0F0
-THOUGHT BOX 
-BACKGROUND COLOR FFF
-PADDING 20PX
-BORDER RADIUS 10PX
-BOX-SHADOW 00 10PX RGBA(0,0,0,0.1);
-DISPLAY 
-WIDTH 300PX
-TEXT ALIGN CENTER
-THOUGHT BOX INPUT 
-WIDTH  80%
-PADDING: 10PX;
-MARGIN-BOTTOM: 10PX;
-BORDER: 1PX SOLID CCC
-BORDER-RADIUS 5PX
-THOUGHT BOX BUTTON
-PADDING 10PX, 20PX
-BORDER-RADIUS 5PX
-BACKGROUND COLOR 007BFF
-Color: Fff
-Cursor: Pointer;
-THOUGHT BOX HOVER BUTTON
-BACKGROUND COLOR 0056B3
-THOUGHT DISPLAY 
-MARGIN-TOP 20PX;
-FONT-SIZE 1.2EM
-COLOR 333
-<STYLE/>
-</HEAD>
-<BODY>
-<DIV CLASS= “THOUGHT BOX”
-INPUT TYPE= “TEXT” ID=”THOUGHT INPUT” 
-CLICK ON BUTTON DISPLAY THOUGHT> SUBMIT</ BUTTON>
-DIV CLASS THOUGHT DISPLAY  ID=”THOUGHT DISPLAY
-</DIV>
-<SCRIPT>
-DISPLAY THOUGHT
-THOUGHT INPUT=DOCUMENT.GETELEMENT BY ID (‘THOUGHT INPUT) .VALUE
-THOUGHT DISPLAY =DOCUMENT.GETELEMENT BY ID(‘THOUGHT DISPLAY’)
-THOUGHT DISPLAY. TEXT CONTENT= THOUGHT INPUT 
-<SCRIPT>
-</BODY>
-</HTML>
-<SUBHEADING.HTML>
-BLACK THOUGHT BOX
-THOUGHT BOX FOR BLACK NIGHT RIDERS
-<DOCTYPE.HTML>
-<HTML LANG “EN”>
-<HEAD>
-UTF8
-“VIEWPORT” CONTENT =WIDTH DEVICE -WIDTH INITIAL SCALE 1.0
-<TITLE> THOGUHT BOX /<TITLE>
-<STYLE>
-BODY{
-FONT FAMILY ARIAL SANS SERIF
-DISPLAY: FLEX
-JUSTIFY CONTENT:CENTER
-ALIGN  ITEMS:CENTER
-HEIGHT 100VH;
-BACKGROUND-COLOR:F0F0F0
-THOUGHT BOX 
-BACKGROUND COLOR FFF
-PADDING 20PX
-BORDER RADIUS 10PX
-BOX-SHADOW 00 10PX RGBA(0,0,0,0.1);
-DISPLAY 
-WIDTH 300PX
-TEXT ALIGN CENTER
-THOUGHT BOX INPUT 
-WIDTH  80%
-PADDING: 10PX;
-MARGIN-BOTTOM: 10PX;
-BORDER: 1PX SOLID CCC
-BORDER-RADIUS 5PX
-THOUGHT BOX BUTTON
-PADDING 10PX, 20PX
-BORDER-RADIUS 5PX
-BACKGROUND COLOR 007BFF
-Color: Fff
-Cursor: Pointer;
-THOUGHT BOX hover button
+thought display=document.get element by id(‘thought display’)
+thought display.text content=thought input
+<script>
+</body>
+</html>
+<subheading.html>
+indigo thought box
+thought box for indigo isos
+<doc type.html>
+<html lang “en”>
+<head>
+utf8
+“viewport” content=width device-width inital scale 1.0
+<title> thought box /<title>
+<style>
+body
+font family arial sans serif
+display:flex
+justify content:center
+align items:center
+height 100vh;
+background-color:f0f0f0
+thought box 
+background color fff
+padding 20px
+border radius 10px
+box-shadow 00 10px rgba(0,0,0,0.1);
+display 
+width 300px
+text align center
+thought box input 
+width  80%
+padding: 10px;
+margin-bottom: 10px;
+border:1px solid ccc
+border-radius 5px
+thought box button
+padding 10px, 20px
+border-radius 5px
+background color 007bff
+color:fff
+cursor:pointer;
+thought box hover button
+background color 0056b3
+thought display 
+margin-top 20px;
+font-size 1.2em
+color 333
+<style/>
+</head>
+<body>
+<div class= “thought box”
+input type= “text” id=”thought input” 
+click on button display thought> submit</button>
+div class thought display id=”thought display
+</div>
+<script>
+display thought
+thought input=document.get element by id (‘thought input) .value
+thought display=document.get element by id(‘thought display’)
+thought display.text content=thought input 
+<script>
+</body>
+</html>
+<sub heading.html>
+blue thought box
+thought box for blue curve crushers
+<doc type.html>
+<html lang “en”>
+<head>
+utf8
+“viewport” content=width device-width inital scale 1.0
+<title> thought box/<title>
+<style>
+body
+font family arial sans serif
+display:flex
+justify content:center
+align items:center
+height 100vh;
+background-color:f0f0f0
+thought box 
+background color fff
+padding 20px
+border radius 10px
+box-shadow 00 10px rgba(0,0,0,0.1);
+display
+width 300px
+text align center
+thought box input 
+width 80%
+padding:10px;
+margin-botton: 10px;
+border:1px solid ccc
+border-radius 5px
+thought box button
+padding 10px, 20px
+border-radius 5px
+background color 007bff
+color:fff
+cursor:pointer;
+thought box hover button
+background color 0056b3
+thought display 
+margin-top 20px;
+font-size 1.2em
+color 333
+<style/>
+</head>
+<body>
+<div class= “thought box”
+input type= “text” id=”thought input” 
+click on button display thought> submit</button>
+div class thought display id=”thought display
+</div>
+<script>
+display thought
+thought input=document.get element by id (‘thought input) .value
+thought display=document. get element by id(‘thought display’)
+thought display. text content=thought input 
+<script>
+</body>
+</html>
+<subheading.html>
+black thought box
+thought box for black night riders
+<doc type.html>
+<html lang “en”>
+<head>
+utf8
+“viewport” content=width device-width inital scale 1.0
+<title> thought box /<title>
+<style>
+body
+font family arial sans serif
+display:flex
+justify content:center
+align items:center
+height 100vh;
+background-color:f0f0f0
+thought box 
+background color fff
+padding 20px
+border radius 10px
+box-shadow 00 10px rgba(0,0,0,0.1);
+display 
+width 300 px
+text align center
+thought box input 
+width  80%
+padding: 10px;
+margin-bottom:10px;
+border:1px solid ccc
+border-radius 5px
+thought box button
+padding 10px, 20px
+border-radius 5px
+background color 007bff
+color:fff
+cursor:pointer;
+thought box hover button
 background color 0056b3
 thought display 
 margin-top 20px;
@@ -716,5 +716,3 @@ thought display. text content=thought input
 </body>
 </hmtl>
 return filename
-
-
