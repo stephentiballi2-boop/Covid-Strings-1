@@ -1,58 +1,112 @@
+doctype.html>
+<html lang en>
+<script>
+<header.html>
+heading for heading variables
+the place where heading and subheading variables go 
+heading1=dependency graph
+heading2=graph title
+heading3=dependencies
+heading4=covid strings directed acyclic graph
+subheading1=vertices
+subheading2=edges
+subheading3=map check
+subheading4=node installing
+subheading5=nodes
+subheading6=dependency graph sorting
+subheading7=dependency graph production
+filename=covid strings1 dependency graph.js
+<header.html>
+dependency graph 
+the graph in covid strings where dependencies can be tracked 
+dependency graph 
+constructor
+this.graph=newmap();
+addnode(node)
+if(this graph.has(node))
+this.graph.set(node,[])
+add dependency(node,dependency)
+if(this graph.has(node))
+this.graph.set(node,[])
+if(this graph .has(dependency))
+this.graph.addnode(dependency)
+this.graph.get(node).push(dependency)
+get dependencies(node)
+return this.graph.get(node).
+displaygraph ()
+for (const [node,dependencies] of this graph.entries())
+console.log [node->[dependencies.join (‘,’)]
+<header.html>
+graph title 
+the section at the top of the graph where the name is 
+title covid strings1 dependency graph
 class graph 
 constructor(){
-this.map=new Map
-Add vertex(vertex)
-This.map.set (vertex,[ ] ));
-addEdge(source,direction,bidirectional)
+this.map=new map
+<subheading.html>
+vertices
+the dependencies in covid strings that have sides
+add vertex(vertex)
+this.map.set (vertex,[ ] ));
+addedge(source,direction,bidirectional)
 if(!this.map.has(source))
 this.addVertex(source)
 if(this.map.has(destination))
-This.addVertex(destination);
-This.map.get source(destination)
-If (bidirectional)
-this.map.get(destination).push(source
-getVertex Count()
+this.addvertex(destination);
+this.map.get source(destination)
+if (bidirectional)
+this.map.get(destination).push(source)
+getvertex count()
 console.log(‘the graph has ${this.map.size}vertex’)
-Get EdgesConut(bidirectional)
-Let count=0
+<subheading.Html>
+edges 
+the lines that are considered an edge on the graph 
+get edgescount(bidirectional)
+let count=0
 for(const edges of this. map.values ())
 count+=edges.length
 if(bidirectional)
 count/=2;
 console.log(‘the graph has$ {count} edges.’)
-hasVertex(vertex)
+<subheading.html>
+map check
+the code designed to check how a map in a dependency graph  is working 
+hasvertex(vertex)
 if(this.map.has(vertex))
 console.log(‘the graph contains ${vertex} as a vertex’)
-Else
+else
 console.log(the graph  does not contain ${vertex} as a vertex’)
-hasEdge(source,destination)
+hasedge(source,destination)
 if(this.map.has(vertex) return;
 console.log(‘the neighbors of ${vertex} are
 ${this map.get(vertex).join(“,”)});
-toString()
-Let result=””
+tostring()
+let result=””
 for(const[vertex,edges] of this.map.entries())
 result+=${‘vertex}:{edges.join(“”)}/n’
-Return result;
-title: Covid Strings 1 Game Dependency Graph
+return result;
+<header.html>
+dependencies
+the units in covid strings that are dependent on the game 
+title:covid strings 1 game dependency graph
 create x axis  for questions
 create y axis for answers 
-create color code of green for correct answers and red for incorrect answers
+create seperate color code of green for correct answers and red for incorrect answers
 create bar for teams 
-create intervals of 1 for questions and 10 for points 
 set point on graph to the number of points given per question type 
 due to other team stealing rule only change an incorrect answer to red  if the team with the chance to steal gets the question wrong
 create intervals of 1 for questions and 10 for points 
 for fan voting create separate graph to track percent of votes for each question
-dependencies:
 questions=covidstrings1questions
 points=number of points per question
 color code= color for answers
 teams= covid strings teams
 round reached=advancement or elimination of team 
 winner=covid strings winner 
-project Name:Covid Strings
-Version 1:
+project name:covid strings version 1:
+<subheading.html>
+node installing 
+the method used to install node within the dependency graph 
 express ^node js 20
 npm install <app store->  - d  
 npm install jest - - save 
@@ -65,3 +119,71 @@ lint
 npm install=  - -  only production
 npm test
 npm deploy  
+<header.html>
+covid strings directed acyclic graph
+the type of dependency graph used in covid strings
+dependency graph with cyclecheck extends dependency graph
+<subheading.html>
+nodes
+the types of nodes used in the dependency graph 
+has cycleutil(node,visited,stack)
+if (!visited[node])
+visited[node]=true
+stack[node]=true
+for(const dependencies of this graph.get dependencies(node))
+if (!visited[dependency] && this.hascycleutil(dependency,visitedstack))
+return true
+else if (stack [dependency])
+return true
+stack[node]=false
+return false
+has cycle(){
+visited={}
+stack={}
+for(const node of this graph.keys())
+if(thishas cycle.util(node,visited,stack)
+return true
+else:
+return false
+<subheading.html>
+dependency graph sorting
+the process behind sorting a dependency graph
+dependency graphwithtopsort extends dependency graph
+topologicalsort()
+visited=new set()
+stack={}
+visit=(node)
+if (!visited has [node])
+visited.add (node)
+for(const dependencies of this graph.get dependencies(node))
+visit (dependency)
+stack.push(node)
+for (const node of this graph.keys())
+return stack.reverse()
+<subheading.html>
+dependency graph production
+the final step in publishing a dependency graph
+class dependencygraph
+constructor
+this.graph=new map
+addnode(node)
+if (!this.graph.has node).thisadd(node)
+if (!this.graph.has dependency).thisaddnode(dependency)
+this Graph.Get(Node).Push(Dependency)
+resolvedependencies
+visited=new set
+stack=[]
+tempmark=new set
+visit=(node)
+if (tempmark.has(node))
+tempmark.add(node)
+for(const dependencies of this graph get(node))
+visit(dep)
+temmark.delete(node)
+visited.add(node)
+stack.push(node)
+for (const node of this graph.keys()) 
+if (!visitedhas node)
+visit(node)
+return stack.reverse 
+return filename
