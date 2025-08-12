@@ -1,0 +1,20 @@
+octo.kit.require [@ octo.kit.rest]
+ockto.kit= new.octko.kit [{auth  personal access token}]
+async function create pull request
+try
+owner = stephen tiballi 2 boop
+repo= covid strings 1 
+branch name =” covid strings 1 fork ”
+basebranch=”sgtibal covid strings 1”
+head=stephen tiballi  2 boop
+title=covid strings 1 fan voting js pull request 2 
+body=  the change in this pull request is to pull the updated file from the stephen tiballi 2 branch to the main tree file 
+for i in stephen tiball 2 boop
+transfer updated covid strings 1 fan voting js from stephen tiballi 2 boop to sgtibal covid strings 1 
+console.log(pull request created {pr.html.https://github.com/SGTIBALCOVIDSTRINGS}
+const {data:file data }await.octo kit repos.create({owner,repo, head, base, title,body})
+console log (pull request created, response.data.html url )
+catch. (error)
+console.error(“error creating pull request”,error) 
+create .pullrequest 
+node create pr.js
