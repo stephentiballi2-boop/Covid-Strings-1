@@ -7,6 +7,8 @@ branch name =”covid strings fork ”
 basebranch=”sgtibal covid strings 1 ”
 for i in covid strings 1 game plays js
 transfer lines 12-27, 29-31, 58-60, 80-239, lines 246-718  in fork to sgtibal covid strings 1 
+max transfer number= the  last line number in a range that a set of code gets added to in order to determine it's new value
+move code existing in current spots + max transfer number
 filepath=path/to/file.js;
 commit message=”update part of the file”
 const {data:file data }await.octo kit repos.get content ({sgtibal covid strings})
