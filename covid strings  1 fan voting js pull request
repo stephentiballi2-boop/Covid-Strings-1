@@ -32,3 +32,9 @@ head branch name
 base branch base
 body: “this PR updates part of the file”
 console.log(pull request created {pr.html.https://github.com/SGTIBALCOVIDSTRINGS
+const {data:file data }await.octo kit repos.create({owner,repo, head, base, title,body})
+console log (pull request created, response.data.html url )
+catch (error)
+console.error(“error creating pull request”,error) 
+create pull request 
+node create pr.js
