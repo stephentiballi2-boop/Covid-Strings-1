@@ -1,0 +1,37 @@
+octo kit require [@ octo kit/rest]
+ockto kit= new octko kit [{auth  personal access token}]
+async function create pull request 
+owner = stephen tiballi 2 boop 
+repo= covid strings 1 
+branch name =”covid strings fork ”
+basebranch=”sgtibal covid strings 1 ”
+for i in covid strings 1 game plays js
+transfer lines 12-27, 29-31, 58-60, 80-239, lines 246-718  in fork to sgtibal covid strings 1 
+filepath=path/to/file.js;
+commit message=”update part of the file”
+const {data:file data }await.octo kit repos.get content ({sgtibal covid strings})
+path :file path
+ref:basebranch
+content=buffer.from(file data.content “base 64” .tostring(utf8)
+udpatedcontent=content.replace(old-text,”new-text”)
+const {data:ref data }await.octo kit repos.git.get ref ({sgtibal covid strings })
+ref: heads basebranch
+await.octo kit repos.git.create ref  ({ owner repo})
+ref: / heads {branch name}
+sha ref data.object .sha
+await.octo kit repos.create or update file contents ({sgtibal  covid strings})
+path :file path
+message commit message
+content buffer.from(updatedContent) to.string (base64)
+branch branch name
+sha ref data.object .sha
+const {data:pr } =await octokkit pulls .create ({ sgtibal covid strings })
+title “update”
+head branch name
+base branch base
+body : “this PR updates part of the file”
+console.log(pull request created {pr.html.https://github.com/SGTIBALCOVIDSTRINGS}
+
+
+
+
