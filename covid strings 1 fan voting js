@@ -1,0 +1,694 @@
+<doc.type.html>
+<html lang en>
+<script>
+<header.html>
+heading for heading variables 
+the heading numbers that determine where each heading and subheading go 
+heading1=fan voting rounds
+heading2=string voting
+heading3=result
+heading4=non-concatenated string variables
+heading5=concatenated string variables
+heading6=second round
+heading7=third round
+heading8=fourth round
+heading9=fifth round
+subheading1=covid strings first Round Matchups
+subheading2=first round non-concatenated string advancing
+subheading3=first round concatenated string advancing
+subheading4=second round non-concatenated string advancing
+subheading5=second round concatenated string advancing
+subheading6=third round non-concatenated string advancing
+subheading7=third round concatenated string advancing
+subheading8=fourth round non-concatenated string advancing
+subheading9=fourth round concatenated string advancing
+subheading10=covid strings fan voting victory
+filename=covid strings1 fan voting.js
+<meta charset utf-8>
+<meta name “viewport” content=”width=device-width,inital scale 1>
+<title covid strings1 fan voting</title>
+<style>
+vote button
+margin: 5px;
+Padding: 10px;
+background-color: 4caf50
+color:white;
+border:none;
+cursor:pointer;
+vote button.hover
+background color 45a049
+<header.html>
+fan voting rounds
+the number of rounds overall in covid strings fan voting
+total entry limit=32
+non-concatenated string limit=16
+concatenated string  limit=16
+amount of rounds= math.log(entry limit) /math.log(2) 
+for (i=amount_ of_rounds;-i>0;i- -)
+s=round+(amount_ of_ rounds;i+1)+’ of amount_ of_ rounds consist of ‘math.pow(2,i-1)+matches’;
+</style>
+</head>
+<h1 vote for your favorite string>
+<header.html>
+string voting
+the processes by which a user votes for their favorite string
+<button class=vote button  on click “vote” (‘string 1’) <string pair button>
+<button class=vote button on click “vote” (string 2’) <string pair button>
+<button class=vote button  on click “vote” (‘string 3’) <string pair button>
+<button class=vote button on click “vote” (‘string 4’) <string pair button>
+<button class=vote button on click “vote” (‘string 5’) <string pair button>
+<button class=vote button on click “vote” (‘string 6’) <string pair button>
+<button class=vote button  on click “vote” (‘string 7’) <string pair button>
+<button class=vote button  on click “vote” (‘string 8’) <string pair button>
+<button class=vote button  on click “vote” (‘string 9’) <string pair button>
+<button class=vote button  on click “vote” (‘string 10’) <string pair button>
+<button class=vote button  on click “vote” (‘string 11’) <string pair button>
+<button class=vote button  on click “vote” (‘string 12’) <string pair button>
+<button class=vote button  on click “vote” (‘string 13’) <string pair button>
+<button class=vote button  on click “vote” (‘string 14’) <string pair button>
+<button class=vote button  on click “vote” (‘string 15’) <string pair button>
+<button class=vote button  on click “vote” (‘string 16’) <string pair button>
+<header.html>
+first round
+the first round in covid strings fan voting
+render round
+roundcontainer.innerhtml=<h1 round {first round} <h1>
+candidates foreach((candidate,index)
+candidatediv.innerhtml
+<p> {candidate name} {candidate votes} votes </p>
+<button on click= “vote {index} >”vote for {candidate name} </button>
+round container.appendchild(candidatediv)
+add event listener (‘dom content loaded ,()
+let current round=1
+total rounds=5
+round container=document.get element by id(‘round-container’)
+nextroundbutton=document.get element by id(‘next-round’)
+window open 
+window vote function(index)
+candidates [index] votes++
+commence round.addeventlistener(click)
+if current round==round 1:
+commence round 1
+else:
+remain 
+<subheading.html>
+covid strings first round matchups
+the matchups that appear in the first round of covid strings fan voting 
+<div class=”matchup”
+non-concatenated strings 
+matchup1= string 6 vs string 11
+<button id vote string 6 "vote for string 6”  </button>
+<button id vote string 11 "vote for string 11” </button>
+<div class ="results”>
+<p> string 6 <span id= "votes string 6 >0</span> votes <p>
+<p> string 11 <span id= "votes string 11 >0</span> votes <p>
+<div>
+matchup2= string 2 vs string 15
+<button id vote string 2 "vote for string 2”  </button>
+<button id vote string 15 "vote for string 15” </button>
+<div class ="results”>
+<p> string 2 <span id= "votes string 2 >0</span> votes <p>
+<p> string 15 <span id= "votes string 15 >0</span> votes <p>
+<div>
+matchup3= String 7 Vs String 10
+<button id vote string 7 "vote for string 7” </button>
+<button id vote string 10 "vote for string 10” </button>
+<div class ="results”>
+<p> string 7 <span id= "votes string 7 >0</span> votes <p>
+<p> string 10 <span id= "votes string 10 >0</span> votes <p>
+<div>
+matchup4= string 3 vs string 14
+<button id vote string 3 "vote for string 3”  </button>
+<button id vote string 14 "vote for string 14”  </button>
+<div class ="results”>
+<p> string 3 <span id= "votes string 3 >0</span> votes <p>
+<p> string 14 <span id= "votes string 14 >0</span> votes <p>
+<div>
+matchup5= string 8 vs string 9
+<button id vote string 8 "vote for string 8” </button>
+<button id vote string 9 "vote for string 9” </button>
+<div class =”results”>
+<p> string 8 <span id=  "votes string 8 >0</Span> Votes <p>
+<p>string 9 <span id= "votes string 9 >0</Span> Votes <p>
+<div>
+matchup6= string 1 vs string 16
+<button id vote string 1 "vote for string 1” </button>
+<button id votestring 16 "vote for string 16” </button>
+<div class ="results”>
+<p>string 1 <span id="votes string 1 >0</span> votes <p>
+<p> string 16 <span id="votes string 16 >0</span> votes <p>
+<div>
+matchup7= string 4 vs string 13
+<button id vote string 4 "vote for string 4”  </button>
+<button id vote string 13 "vote for string 13” </button>
+<div class =”Results”>
+<p> string 4 <span id= "votes string 4 >0</span> votes <p>
+<p> string 13 <span id="votes string 13 >0</span> votes <p>
+<div>
+matchup8= String 5 Vs String 12
+<button id vote string 5 "vote for string 5”  </button>
+<button id vote string 12 "vote for string 12” </button>
+<div class =”results”>
+<p>string 5 <span id= “votes string 5 >0</span> votes <p>
+<p>string 12 <span id= “votes string 12 >0</span> votes <p>
+<div>
+concatenated strings 
+matchup1= string 5 vs string 12
+<button id vote string 5 “vote for string 5”  </button>
+<button id vote string 12 “vote for string 12” </button>
+<div class =”results”>
+<p> string 5 <span id= “votes string 5 >0</span> votes <p>
+<p> string 12 <span id= “votes string 12 >0</span> votes <p>
+<div>
+matchup2= string 4 vs string 13
+<button id vote string 4 “vote for string 4” </button>
+<button id vote string 13 “vote for string 13” </button>
+<div class =”results”>
+<p> string 4 <span id= “votes string 4 >0</span> votes <p>
+<p> string 13 <span id= “votes string 13 >0</span> votes <p>
+<div>
+matchup3= String 8 Vs String 9
+<button id vote string 8 “vote for string 8” </button>
+<button id vote string 9 “vote for string 9” </button>
+<div class =”results”>
+<p> string 8 <span id= “votes string 8 >0</span> votes <p>
+<p> string 9 <span id= “votes string 9 >0</span> votes <p>
+<div>
+matchup4= string 1 vs string 16
+<button id vote string 1 “vote for string 1” </button>
+<button id vote string 16 “vote for string 16” </button>
+<div class =”Results”>
+<p> string 1 <span id= “votes string 1 >0</span> votes <p>
+<p> string 16 <span id= “votes string 16 >0</span> votes <p>
+matchup5= string 7 vs string 10
+<button id vote string 7 “vote for string 7” </button>
+<button id vote string 10 “vote for string 10”  </button>
+<div class =”results”>
+<p> string 7 <span id= “votes string 7 >0</span> votes <p>
+<p> string 10 <span id= “votes string 10 >0</span> votes <p>
+<div>
+matchup6= string 2 vs string 15
+<button id vote string 2 “vote for string 2”  </button>
+<button id vote string 15 “vote for string 15” </button>
+<div class =”results”>
+<p> string 2 <span id= “votes string 2 >0</span> votes <p>
+<p> string 15 <span id= “votes string 15 >0</span> votes <p>
+<div>
+matchup7= string 6 vs string 11
+<button id vote string 6 “vote for string 6” </button>
+<button id vote string 11 “vote for string 11” </button>
+<div class=”results”>
+<p> string 6 <span id= “votes string 6 >0</span> votes <p>
+<p> string 11 <span id= “votes string 11 >0</span> votes <p>
+<Div>
+matchup8= string 3 vs string 14
+<button id vote string 3 “vote for string 3” </button>
+<button id vote string 14 “vote for string 14” </button>
+<div class =”results”>
+<p> string 3 <span id= “votes string 3 >0</span> votes <p>
+<p> string 14 <span id= “votes string 14 >0</span> votes <p>
+<div>
+<script src= script.js
+</body>
+</html>
+<h2 id =”result”></h2>
+<header.html>
+result
+the end result of voting on a particular pair of strings
+<script src=”vote.js”><
+<script>
+<body>
+<html>
+vote js file notes
+votes={
+‘string 1
+‘string 2’
+vote (string)
+if (votes.hasownproperty(character))
+votes [character]++
+display results
+else
+console. error(‘invalid string’)
+displayresults
+result element= document get element by id (‘result’)
+result element inner html
+<header.html>
+non-concatenated string variables 
+non-concatenated strings in covid strings
+non-concatenated strings list=[1: phrase “dont eat bleach”,2: phrase ”hello covid world”, 3: math problem ”if a covid value of c =  3 is added to the double of the value its equal to what do you get?”, 4: phrase “dont overcrowd hospital capacity”,  5: math problem “if a covid value represented by a variable c is quadrupled and then added by 5 what is the resulting product”?,6: phrase ”the covid tracker shows”, 7: math problem ”if the cdcs covid tracker has 50,000 cases if only 35,000 were reported last week how many new cases happened?”, 8: phrase “could you please get vaccinated”, 9: math problem “the cov 19 emergency alert system was installed on march 12 2020 after its first two weeks there were 1,975 calls if the rate was 5 calls per hour how many calls happened after the first week?”, 10: math problem ”if there were 840 calls in week 1 and 1,975 calls if the rate of calls was 5 how many calls happened between the two weeks”?,  11: math problem “town a1s annual thanksgiving parade happens on november 19th if a1s annual guidelines require that events of more than 20,000 people be held only if the positivity rate is less than or equal to 5 percent if the current positivity rate is six and a third percent and the parade is next week could it be held”?, 12:math problem ”if the decision could be made no later than the 16th and the amount of precautions taken include 10 cartons of 100 masks and 6ft of distancing can the parade still happen?”, 13: phrase “are we going back to 1918”, 14: phrase ”there have 100,000 deaths so far”,  15:sentence “pfizer has a 95% effective vaccine”, 16: sentence “goodbye covid world”  ]
+non-concatenated string1= phrase ”dont eat bleach”
+non-concatenated string2= phrase ”hello covid world”
+non-concatenated string3= math problem ”if a covid value of c=3 is added to the double of the value its equal to what do you get?”
+non-concatenated string4= phrase “dont overcrowd hospital capacity”
+non-concatenated string5= math problem “if a covid value represented by a variable c is quadrupled and then added by5 what is the resulting product”?
+non-concatenated string6= phrase ”the covid tracker shows”,
+non-concatenated string7= math problem ”if the cdcs covid tracker has 50,000 cases if only 35,000 were reported last week how many new cases happened?”
+non-concatenated string8= phrase ”could you please get vaccinated”
+non-concatenated string9= math problem ”the cov 19 emergency alert system was installed on march 12 2020 after its first two weeks there were 1,975 calls if the rate was 5 calls per hour how many calls happened after the first week?”
+non-concatenated string10= math problem ”if there were 840 calls in week 1 and 1,975 calls if the rate of calls was 5 how many calls happened between the two weeks”?
+non-concatenated string11= math problem ”town a1s annual thanksgiving parade happens on november 19th if a1s annual guidelines require that events of more than 20,000 people be held only if the positivity rate is less than or equal to 5 percent if the current positivity rate is six and a third percent and the parade is next week could it be held”?
+non-concatenated string12= math problem ”if the Decision Could Be Made No Later Than The 16Th And The Amount Of Precautions Taken Include 10 Cartons Of 100 Masks And 6Ft Of Distancing Can The Parade Still Happen?”,
+non-concatenated string13= phrase “are we going back to 1918”
+non-concatenated string14= phrase ”there have 100,000 deaths so far”,
+non-concatenated string15= sentence ”pfizer has a 95% effective vaccine”
+non-concatenated string16= sentence ”goodbye covid world”
+chapter= document.queryselector(chapter)
+chapter inner html
+replace ‘ with/ 
+for apostrophe in covid strings1fan voting  
+select characters
+edit diffuse property
+desired color= green
+<p>string 1[votes ‘string 1 ‘]}votes</p>
+<p>string 2[votes ‘string 2‘]}votes</p>
+<p>string 3 [votes ‘string 3 ‘]}votes</p>
+<p>string 4 [votes ‘string 4 ‘]}votes</p>
+<p>string 5[votes ‘string 5 ‘]}votes</p>
+<p>string 6[votes ‘string 6 ‘]}votes</p>
+<p>string 7 [votes ‘string 7 ‘]}votes</p>
+<p>string 8[votes ‘string 8 ‘]}votes</p>
+<p>string 9 [votes ‘string 9 ‘]}votes</p>
+<p>string 10 [votes ‘string 10 ‘]}votes</p>
+<p>string 11[votes ‘string 11 ‘]}votes</p>
+<p>string 12 [votes ‘string 12 ‘]}votes</p>
+<p>string 13 [votes ‘string 13 ‘]}votes</p>
+<p>string 14 [votes ‘string 14 ‘]}votes</p>
+<p>string 15 [votes ‘string 15 ‘]}votes</p>
+<p>string 16 [votes ‘string 16 ‘]}votes</p>
+<subheading.html>
+first round non-concatenated string advancing 
+the code designed to advancing winning non-concatenated strings 
+advance to next round (strings to advance)
+sorted strings=(strings.sort(string1,string2) strings 1 votes string 2 votes)
+advancing strings= sorted strings.slice(0,num to 8)
+return advancing Strings 
+if result matchup1>=.5
+if result matchup2>=.5
+if result matchup3>=.5
+if result matchup4>=.5
+if result matchup5>=.5
+if result matchup6>=.5
+if result matchup7>=.5
+if result matchup8>=.5
+<header.html>
+concatenated string variables
+concatenated strings In Covid Strings
+concatenated string List=[1:phrase “snl”+”nailed”+”a”+”rona”+”christmas”,2:phrase ”you”+”should”+”get”+”tested”,3:phrase ”pfizer”+”is”+”95”+”percent”+”effective”,4: phrase ”you”+”should”+”not”+”forget”+”your”+”flu”+”shot”,5: math problem ”a”+”knock”+”off”+”vaccine”+”company”+”promises”+”to”+”deliver”+”a”+”vaccine”+”within”+”2”+”weeks”+”if”+”the”+”standard”+”timeline”+”is”+”4”+”weeks”+”how”+”much”+”damage”+”can”+”happen?”, 6:Math Problem”if”+”the”+”knock”+”off”+”showed”+”side”+”effects”+”within”+”3”+”days”+”involving”+”goosebumps”+”and”+”the”+”actual”+”vaccine”+”only”+”showed”+”slight”+”chills”+”what”+”vaccine”+”should”+”you”+”take”?,7: phrase ”some”+”of”+”these”+”effects”+”include”+”suicide”, 8:math problem”if”+”875”+”people”+”were”+”reported”+”to”+”a”+”covid”+”hotline”+”because”+”they”+”thought”+”injecting”+”bleach”+”cured”+”covid”+"and”+”89”+”percent”+”of”+”them”+”said”+”they”+”beleived”+”trump”+”how”+”many”+”people”+”out”+”of”+”the”+”total”+”believed”+”trump?”, 9:math problem”if”+”a”+”poll”+”on”+”this”+”question”+”showed”+”that”+”92”+”percent”+”of”+”republicans”+”thought”+”he”+”was”+”joking”+”when”+”it”+”came”+”to”+”bleach”+”how”+”many”+”risked”+”illness?”, 10:math problem ”if”+”the”+”margin”+”of”+”error”+”is”+”.505”+”percent”+”what”+”is”+”the”+”range?”,11: math problem ”a”+”news”+”report”+”suggested”+”that”+”the”+”level”+”two”+”emergency”+”will”+”continue”+”for”+”another”+”week”+”if”+”the”+”rate”+”is”+”greater”+”than”+”three”+”percent”+”if”+”it”+”is”+”currently”+”two”+”and”+”a”+”quarter”+”percent”+”would”+”it”+”continue?”,12: phrase ”there”+”have”+”been”+”some”+”negative”+”effects”,13: math problem”if”+”four”+”people”+”took”+”an”+”unknown”+”number”+”of”+”shots”+”from”+”pfizers”+”vaccine”+”at”+”3:45”+”p.m.”+”on”+”october”+”seventh”+”when”+”would”+”it”+”expire?”, 14: phrase ”the”+”best”+”thing”+”to”+”do”+”is”+”practice”+”continuity”+”safely”,15: phrase "in”+”short”+”you”+”should”+”not”+”change”+”your”+”behavoir”+”much”, 16:sentence ”the”+”most”+”obvious”+”similarity”+”between”+”covid”+”and”+”the”+”spanish”+”flu”+”is”+”that”+”they”+”were”+”global”+”pandemics”]
+concatenated string1= phrase ”snl”+”nailed”+”a”+”rona”+”christmas”,
+concatenated string2= phrase ”you”+”should”+”get”+”tested”
+concatenated string3= phrase ”pfizer”+”is”+”95”+”percent”+”effective”
+concatenated string4= phrase ”you”+”should”+”not”+”forget”+”your”+”flu”+”shot”
+concatenated string5= math problem ”a”+”knock”+”off”+”vaccine”+"company”+”promises”+”to”+”deliver”+”a”+”vaccine”+”within”+”2”+”weeks”+”if”+”the”+”standard”+”timeline”+”is”+”4”+”weeks”+”how”+”much”+”damage”+”can”+”happen?”
+concatenated string6= math problem "if”+”the”+”knock”+”off”+”showed”+”side”+”effects”+”Within”+”3”+”days”+”involving”+”goosebumps”+”and”+”the”+”actual”+”vaccine”+”only”+”showed”+”slight”+”chills”+”what”+”vaccine”+”should”+”you”+”take”?
+concatenated string7= phrase ”some”+”of”+”these”+”effects”+”include”+”suicide”
+concatenated string8= math problem "if”+”875”+”people”+”were”+”reported”+”to”+”a”+”covid”+”hotline”+”because”+”they”+”thought”+”injecting”+”bleach”+”cured”+”covid”+”and”+”89”+”percent”+”of”+”them”+”said”+”they”+”beleived”+”trump”+”how”+”many”+”people”+”out”+”of”+”the”+”total”+”beleived”+”trump?”
+concatenated string9= math problem "if”+”a”+”poll”+”on”+”this”+”question”+”showed”+”that”+”92”+”percent”+”of”+”republicans”+”thought”+”he”+”was”+”joking”+”when”+”it”+”came”+”to”+”bleach”+”how”+”many”+”risked”+”illness?”
+concatenated string10= math problem ”if”+”the”+”margin”+”of”+”error”+”is”+”.505”+”percent”+”what”+”is”+”the”+”range?”
+concatenated string11= math problem ”a”+”news”+”report”+”suggested”+”that”+”the”+”level”+”two”+”emergency”+”will”+”continue”+”for”+”another”+”week”+”if”+”the”+”rate”+”is”+”greater”+”than”+”three”+”percent”+”if”+”it”+”is”+”currently”+”two”+”and”+”a”+”quarter”+”percent”+”would”+”it”+”continue?”
+concatenated string12= phrase ”there”+”have”+”been”+”some”+”negative”+”effects”
+concatenated string13= math problem ”if”+”four”+”people”+”took”+”an”+”unknown”+”number”+”of”+”shots”+”from”+”pfizers”+”vaccine”+”at”+”3:45”+”p.m.”+”on”+”october”+”seventh”+”when”+”would”+”it”+”expire?”
+concatenated string14= phrase ”the”+”best”+”thing”+”to”+”do”+”is”+”practice”+”continuity”+”safely”
+concatenated string15= phrase ”in”+”short”+”you”+”should”+”not”+”change”+”your”+”behavoir”+”much”
+concatenated string16= sentence ”the”+”most”+”obvious”+”similarity”+”between”+”covid”+”and”+”the”+”spanish”+”flu”+”is”+”that”+”they”+”were”+”global”+”pandemics”
+chapter= document.queryselector(chapter)
+chapter inner html
+replace ‘ with/ 
+for apostrophe in covid strings1fan voting 
+select characters
+edit Diffuse Property
+desired Color=Green
+<p>string 1[votes ‘string 1 ‘]}votes</p>
+<p>string 2[votes ‘string 2 ‘]}votes</p>
+<p>string 3 [votes ‘string 3 ‘]}votes</p>
+<p>string 4 [votes ‘string 4 ‘]}votes</p>
+<p>string 5[votes ‘string 5 ‘]}votes</p>
+<p>string 6[votes ‘string 6 ‘]}votes</p>
+<p>string 7 [votes ‘string 7 ‘]}votes</p>
+<p>string 8[votes ‘string 8 ‘]}votes</p>
+<p>string 9 [votes ‘string 9 ‘]}votes</p>
+<p>string 10 [votes ‘string 10 ‘]}votes</p>
+<p>string 11[votes ‘string 11 ‘]}votes</p>
+<p>string 12 [votes ‘string 12 ‘]}votes</p>
+<p>string 13 [votes ‘string 13 ‘]}votes</p>
+<p>string 14 [votes ‘string 14 ‘]}votes</p>
+<p>string 15 [votes ‘string 15 ‘]}votes</p>
+<p>string 16 [votes ‘string 16 ‘]}votes</p>
+<subheading.html>
+first round  concatenated string advancing 
+the code designed to advancing winning concatenated strings 
+advance to next round (strings to advance)
+sorted strings=(strings.sort(string1,string2) strings 1 votes string 2 votes)
+advancing strings= sorted strings.slice(0,num to 8)
+Return advancing strings 
+Percentage calculator
+Part= number of votes per day in round 
+Whole= total number of votes for string
+calculate {part,whole}
+return (part/whole)*100
+display (part,whole)
+percentage= this.calculate(part,whole)
+return {part} is {percentage} of {whole}
+result= percentagecalculator.display()
+console log result 
+if result matchup1>=.5
+if result matchup2>=.5
+if result matchup3>=.5
+if result matchup4>=.5
+if result matchup5>=.5
+if result matchup6>=.5
+if result matchup7>=.5
+if result matchup8>=.5
+newwindow= window.open(current round)
+currentround= first round
+window.close(current round)
+window.vote= function(index)
+candidates [index] votes++;
+next round button.add eventlistener(‘click’,()
+if(currentround<totalrounds)
+currentround++
+else
+alert(‘voting has ended)
+if nextroundbutton.disabled= true
+conclude voting for  first round
+<header.html>
+second round
+the second round of fan voting
+render round
+roundcontainer.innerhtml=<h2 round {second round} <h2>
+candidates foreach((candidate,index)
+candidatediv.innerhtml
+<p> {candidate name} {candidate votes} votes </p>
+<button on click= “vote {index} >”vote for {candidate name} </button>
+round container.appendchild(candidatediv)
+add event listener (‘dom content loaded)
+let current round= round2
+total rounds= 5
+round container= document.get element by id(‘round-container’)
+nextroundbutton= document.get element by id(‘next-round’)
+window open 
+window vote function (index)
+candidates [index] votes++
+commence round .addeventlistener(click)
+if current round == round 2
+commence round 2
+else
+remain 
+string numbers[non-concatenated strings :name ‘string pair1’ votes 
+name ‘string pair2’ votes
+name ‘string pair3’ votes
+name ’string pair4’ votes
+string numbers[concatenated strings :name ‘string air1’ votes 
+name ‘string pair 2’ votes
+name ‘string pair3’ votes
+name ’string pair4’ votes
+non-concatenated strings
+name string1 votes
+name string2 votes
+name string3 votes
+name string4 votes
+name string5 votes
+name string6 votes
+name string7 votes
+name string8 votes
+<subheading.html>
+second round non-concatenated string advancing 
+the code designed to advancing winning non-concatenated strings 
+advance to next round (strings to advance)
+sorted strings=(strings.sort(string1,string2) strings 1 votes string 2 votes)
+advancing strings= sorted strings.slice(0,num to 4)
+percentage calculator
+part= number of votes per day in round 
+whole= total number of votes for string
+calculate {part,whole}
+return (part/whole)*100
+display (part,whole)
+percentage= this.calculate(part,whole)
+return {part} is {percentage} of {whole}
+result= percentagecalculator.display()
+console log result 
+return advancing strings 
+if result matchup1>=.5
+if result matchup2>=.5
+if result matchup3>=.5
+if result matchup4>=.5
+concatenated strings 
+name string1 votes
+name string2 votes
+name string3 votes
+name string4 votes
+name string5 votes
+name string6 votes
+name string7 votes
+name string8 votes
+<subheading.html>
+second round concatenated string advancing 
+advance to next round (strings to advance)
+sorted strings=(strings.sort(string1,string2) strings 1 votes string 2 votes)
+advancing strings= sorted strings.slice(0,num to 4)
+return advancing strings
+percentage calculator
+part= number of votes per day in round 
+whole= total number of votes for string
+calculate {part,whole}
+return (part/whole)*100
+display (part,whole)
+percentage= this.calculate(part,whole)
+return {part} is {percentage} of {whole}
+result= percentagecalculator.display()
+console log result  
+if result matchup1>=.5
+if result matchup2>=.5
+if result matchup3>=.5
+if result matchup4>=.5
+newwindow= window.open(current round)
+currentround= first round
+window.close(current round)
+window.cote= function(index)
+candidates [index] votes++;
+next round button.addeventlistener(‘click’,()
+if(currentround<totalrounds)
+currentround++
+else
+alert(‘voting has ended)
+if nextroundbutton.disabled= true
+conclude voting for  second round
+<header.html>
+third round
+the third round of fan voting
+render round
+roundcontainer.innerHtml=<h3 round {third round} <h3>
+candidates foreach((candidate,index)
+candidatediv.innerhtml
+<p> {candidate name} {candidate votes} votes </p>
+<button on click= “vote {index} >”vote for {candidate name} </button>
+round container.appendchild(candidatediv)
+add event listener (‘dom content loaded)
+let current round= round3
+total rounds= 5
+round container= document.get element by id(‘round-container’)
+nextroundbutton= document.get element by id(‘next-round’)
+window open 
+window vote function (index)
+candidates [index] votes++
+commence round .addeventlistener(click)
+if current round == round 3:
+commence round 3
+else
+remain 
+string numbers[non-concatenated strings :name  ‘string pair1’ votes 
+name ‘string pair2’ votes
+string numbers[concatenated strings : name  ‘string pair1’ votes 
+name ‘string pair2’ votes
+name string1 votes
+name string2 votes
+name string3 votes
+name string4 votes
+<Subheading.Html>
+third round non-concatenated string advancing 
+the code designed to advancing winning non-concatenated strings 
+advance to next round (strings to advance)
+sorted strings=(strings.sort(string1,string2) strings 1 votes string 2 votes)
+advancing strings= sorted strings.slice(0,num to 2)
+return advancing strings
+percentage calculator
+part= number of votes per day in round 
+whole= total number of votes for string
+calculate {part,whole}
+return (part/whole)*100
+display (part,whole)
+percentage= this.calculate(part,whole)
+return {part} is {percentage} of {whole}
+result= percentagecalculator.display()
+console log result  
+if result matchup1>=.5
+if result matchup2>=.5
+name string1 votes
+name string2 votes
+name string3 votes
+name string4 votes
+<subheading.html>
+third round concatenated string advancing 
+the code designed to advancing winning concatenated strings 
+advance to next round (strings to advance)
+sorted strings=(strings.sort(string1,string2) strings 1 votes string 2 votes)
+advancing strings= sorted strings.slice(0,num to 2)
+return advancing strings 
+percentage calculator
+part= number of votes per day in round 
+whole= total number of votes for string
+calculate {part,whole}
+return (part/whole)*100
+display (part,whole)
+percentage= this.calculate(part,whole)
+return {part} is {percentage} of {whole}
+Result= percentagecalculator.display()
+console log result 
+if result matchup1>=.5
+if result matchup2>=.5
+newwindow= window.open(current round)
+window.close(current round)
+window.vote= function(index)
+candidates [index] votes++;
+next round button.addeventlistener(‘click’,()
+if(currentround <totalrounds)
+currentround++
+else
+alert(‘voting has ended)
+if nextroundbutton.disabled= true
+conclude voting for third round 
+<header.html>
+fourth round
+the fourth round of fan voting
+render round
+roundcontainer.innerhtml=<h4 round {fourth round} <H4>
+candidates foreach((candidate,index)
+candidatediv.innerhtml
+<p> {candidate name} {candidate votes} votes </p>
+<button on click= “vote {index} >”vote for {candidate name}</button>
+round container.appendchild(candidatediv)
+add event listener (‘dom content loaded)
+window open 
+window vote function (index)
+candidates [index] votes++
+commence round.addeventlistener(click)
+if current round == round 4:
+commence round 4
+else
+remain 
+let current round= round 4
+total rounds= 5
+round container= document.get element by id(‘round-container’)
+nextroundbutton= document.get element by id(‘next-round’)
+string numbers[non-concatenated strings : name ‘string pair1’ votes 
+string numbers[concatenated strings :name ‘string pair1’ votes 
+name string1 votes
+name string2 votes
+<subheading.html>
+fourth round non-concatenated string advancing 
+the code designed to advancing winning non-concatenated strings 
+advance to next round (strings to advance)
+sorted strings=(strings.sort(string1,string2)strings 1 votes string 2 votes)
+advancing strings= sorted strings.slice(last concatenated string last non-concatenated string )
+return advancing strings 
+percentage calculator
+part= number of votes per day in round 
+whole= total number of votes for string
+calculate {part,whole}
+return (part/whole)*100
+display (part,whole)
+percentage= this.calculate(part,whole)
+return {part} is {percentage} of {whole}
+result= percentage calculator.display()
+console log result 
+if result matchup1>=.5
+name string1 votes
+name string2 votes
+<subheading.html>
+fourth round concatenated string advancing 
+the code designed to advancing winning concatenated strings 
+advance to next round (strings to advance)
+sorted strings=(strings.sort(string1,string2) strings 1 votes string 2 votes)
+advancing strings= sorted strings.slice(last concatenated string Last non-concatenated string)
+return advancing strings 
+percentage calculator
+part= number of votes per day in round 
+whole= total number of votes for string
+calculate {part,whole}
+return (part/whole)*100
+display (part,whole)
+percentage= this.calculate(part,whole)
+return {part} is {percentage} of {whole}
+result= percentage calculator.display()
+console log result 
+if result matchup1>=.5
+NewWindow= window.open(current round)
+window.close(current round)
+window.vote= function(index)
+candidates [index] votes++;
+next round button.addeventlistener(‘click’,()
+if(currentround <totalrounds)
+currentround++
+else
+alert(‘voting has ended)
+if nextroundbutton.disabled= true
+conclude voting for fourth round 
+<header.html>
+fifth round
+the fifth round of fan voting
+render round
+roundcontainer.innerhtml=<h5 round {fifth round} <h5>
+candidates foreach((candidate,index)
+candidatediv.innerhtml
+<p> {candidate name} {candidate votes} votes</p>
+<button on click= “vote {index}>”vote for {candidate name} </button>
+round container.appendchild(candidatediv)
+add event listener (‘dom content loaded)
+window open 
+window vote function (index)
+candidates [index] votes++
+commence round.addeventlistener(click)
+if current round == round 5:
+commence round 5
+else
+remain 
+let current round= round 5
+total rounds= 5
+round container= document.get element by id(‘round-container’)
+nextroundbutton= document.get element by id(‘next-round’)
+string numbers[name ‘string pair votes‘]
+last remaining non-concatenated string 
+last remaining concatenated string 
+<subheading.html>
+covid strings fan voting victory
+the end result of fan voting 
+advance to next round (strings to advance)
+sorted strings=(strings.sort(string1,string2) strings 1 votes string 2 votes)
+advancing strings= sorted strings.slice(winner string)
+return winner
+last remaining non-concatenated string= last non-concatenated string variable left in fan voting
+last remaining concatenated string= last concatenated string variable left in fan voting
+return advancing strings 
+percentage calculator
+part= number of votes per day in round 
+whole= total number of votes for string
+calculate {part,whole}
+return (part/whole)*100
+display (part,whole)
+percentage= this.calculate(part,whole)
+return {part} is {percentage} of {whole}
+result= percentage calculator.display()
+console log result 
+if last remaining non-concatenated string>=.5
+if last remaining concatenated string>=.5
+newwindow= window.open(current round)
+window.close(current round)
+window.vote= function(index)
+candidates [index] votes++;
+next round button.addeventlistener(‘click’,()
+if(currentround <totalrounds)
+currentround++
+else
+alert(‘voting has ended)
+if nextroundbutton.disabled= true
+conclude voting for fifth round 
+return filename
