@@ -30,7 +30,7 @@ filename=covid strings1 fan voting.js
 <style>
 vote button
 margin: 5px;
-Padding: 10px;
+padding: 10px;
 background-color: 4caf50
 color:white;
 border:none;
@@ -110,7 +110,7 @@ matchup2= string 2 vs string 15
 <p> string 2 <span id= "votes string 2 >0</span> votes <p>
 <p> string 15 <span id= "votes string 15 >0</span> votes <p>
 <div>
-matchup3= String 7 Vs String 10
+matchup3= string 7 vs string 10
 <button id vote string 7 "vote for string 7” </button>
 <button id vote string 10 "vote for string 10” </button>
 <div class ="results”>
@@ -133,7 +133,7 @@ matchup5= string 8 vs string 9
 <div>
 matchup6= string 1 vs string 16
 <button id vote string 1 "vote for string 1” </button>
-<button id votestring 16 "vote for string 16” </button>
+<button id vote string 16 "vote for string 16” </button>
 <div class ="results”>
 <p>string 1 <span id="votes string 1 >0</span> votes <p>
 <p> string 16 <span id="votes string 16 >0</span> votes <p>
@@ -141,7 +141,7 @@ matchup6= string 1 vs string 16
 matchup7= string 4 vs string 13
 <button id vote string 4 "vote for string 4”  </button>
 <button id vote string 13 "vote for string 13” </button>
-<div class =”Results”>
+<div class =”results”>
 <p> string 4 <span id= "votes string 4 >0</span> votes <p>
 <p> string 13 <span id="votes string 13 >0</span> votes <p>
 <div>
@@ -177,7 +177,7 @@ matchup3= String 8 Vs String 9
 matchup4= string 1 vs string 16
 <button id vote string 1 “vote for string 1” </button>
 <button id vote string 16 “vote for string 16” </button>
-<div class =”Results”>
+<div class =”results”>
 <p> string 1 <span id= “votes string 1 >0</span> votes <p>
 <p> string 16 <span id= “votes string 16 >0</span> votes <p>
 matchup5= string 7 vs string 10
@@ -292,8 +292,8 @@ if result matchup7>=.5
 if result matchup8>=.5
 <header.html>
 concatenated string variables
-concatenated strings In Covid Strings
-concatenated string List=[1:phrase “snl”+”nailed”+”a”+”rona”+”christmas”,2:phrase ”you”+”should”+”get”+”tested”,3:phrase ”pfizer”+”is”+”95”+”percent”+”effective”,4: phrase ”you”+”should”+”not”+”forget”+”your”+”flu”+”shot”,5: math problem ”a”+”knock”+”off”+”vaccine”+”company”+”promises”+”to”+”deliver”+”a”+”vaccine”+”within”+”2”+”weeks”+”if”+”the”+”standard”+”timeline”+”is”+”4”+”weeks”+”how”+”much”+”damage”+”can”+”happen?”, 6:Math Problem”if”+”the”+”knock”+”off”+”showed”+”side”+”effects”+”within”+”3”+”days”+”involving”+”goosebumps”+”and”+”the”+”actual”+”vaccine”+”only”+”showed”+”slight”+”chills”+”what”+”vaccine”+”should”+”you”+”take”?,7: phrase ”some”+”of”+”these”+”effects”+”include”+”suicide”, 8:math problem”if”+”875”+”people”+”were”+”reported”+”to”+”a”+”covid”+”hotline”+”because”+”they”+”thought”+”injecting”+”bleach”+”cured”+”covid”+"and”+”89”+”percent”+”of”+”them”+”said”+”they”+”beleived”+”trump”+”how”+”many”+”people”+”out”+”of”+”the”+”total”+”believed”+”trump?”, 9:math problem”if”+”a”+”poll”+”on”+”this”+”question”+”showed”+”that”+”92”+”percent”+”of”+”republicans”+”thought”+”he”+”was”+”joking”+”when”+”it”+”came”+”to”+”bleach”+”how”+”many”+”risked”+”illness?”, 10:math problem ”if”+”the”+”margin”+”of”+”error”+”is”+”.505”+”percent”+”what”+”is”+”the”+”range?”,11: math problem ”a”+”news”+”report”+”suggested”+”that”+”the”+”level”+”two”+”emergency”+”will”+”continue”+”for”+”another”+”week”+”if”+”the”+”rate”+”is”+”greater”+”than”+”three”+”percent”+”if”+”it”+”is”+”currently”+”two”+”and”+”a”+”quarter”+”percent”+”would”+”it”+”continue?”,12: phrase ”there”+”have”+”been”+”some”+”negative”+”effects”,13: math problem”if”+”four”+”people”+”took”+”an”+”unknown”+”number”+”of”+”shots”+”from”+”pfizers”+”vaccine”+”at”+”3:45”+”p.m.”+”on”+”october”+”seventh”+”when”+”would”+”it”+”expire?”, 14: phrase ”the”+”best”+”thing”+”to”+”do”+”is”+”practice”+”continuity”+”safely”,15: phrase "in”+”short”+”you”+”should”+”not”+”change”+”your”+”behavoir”+”much”, 16:sentence ”the”+”most”+”obvious”+”similarity”+”between”+”covid”+”and”+”the”+”spanish”+”flu”+”is”+”that”+”they”+”were”+”global”+”pandemics”]
+concatenated strings in covid strings
+concatenated string list=[1:phrase “snl”+”nailed”+”a”+”rona”+”christmas”,2:phrase ”you”+”should”+”get”+”tested”,3:phrase ”pfizer”+”is”+”95”+”percent”+”effective”,4: phrase ”you”+”should”+”not”+”forget”+”your”+”flu”+”shot”,5: math problem ”a”+”knock”+”off”+”vaccine”+”company”+”promises”+”to”+”deliver”+”a”+”vaccine”+”within”+”2”+”weeks”+”if”+”the”+”standard”+”timeline”+”is”+”4”+”weeks”+”how”+”much”+”damage”+”can”+”happen?”, 6:Math Problem”if”+”the”+”knock”+”off”+”showed”+”side”+”effects”+”within”+”3”+”days”+”involving”+”goosebumps”+”and”+”the”+”actual”+”vaccine”+”only”+”showed”+”slight”+”chills”+”what”+”vaccine”+”should”+”you”+”take”?,7: phrase ”some”+”of”+”these”+”effects”+”include”+”suicide”, 8:math problem”if”+”875”+”people”+”were”+”reported”+”to”+”a”+”covid”+”hotline”+”because”+”they”+”thought”+”injecting”+”bleach”+”cured”+”covid”+"and”+”89”+”percent”+”of”+”them”+”said”+”they”+”beleived”+”trump”+”how”+”many”+”people”+”out”+”of”+”the”+”total”+”believed”+”trump?”, 9:math problem”if”+”a”+”poll”+”on”+”this”+”question”+”showed”+”that”+”92”+”percent”+”of”+”republicans”+”thought”+”he”+”was”+”joking”+”when”+”it”+”came”+”to”+”bleach”+”how”+”many”+”risked”+”illness?”, 10:math problem ”if”+”the”+”margin”+”of”+”error”+”is”+”.505”+”percent”+”what”+”is”+”the”+”range?”,11: math problem ”a”+”news”+”report”+”suggested”+”that”+”the”+”level”+”two”+”emergency”+”will”+”continue”+”for”+”another”+”week”+”if”+”the”+”rate”+”is”+”greater”+”than”+”three”+”percent”+”if”+”it”+”is”+”currently”+”two”+”and”+”a”+”quarter”+”percent”+”would”+”it”+”continue?”,12: phrase ”there”+”have”+”been”+”some”+”negative”+”effects”,13: math problem”if”+”four”+”people”+”took”+”an”+”unknown”+”number”+”of”+”shots”+”from”+”pfizers”+”vaccine”+”at”+”3:45”+”p.m.”+”on”+”october”+”seventh”+”when”+”would”+”it”+”expire?”, 14: phrase ”the”+”best”+”thing”+”to”+”do”+”is”+”practice”+”continuity”+”safely”,15: phrase "in”+”short”+”you”+”should”+”not”+”change”+”your”+”behavoir”+”much”, 16:sentence ”the”+”most”+”obvious”+”similarity”+”between”+”covid”+”and”+”the”+”spanish”+”flu”+”is”+”that”+”they”+”were”+”global”+”pandemics”]
 concatenated string1= phrase ”snl”+”nailed”+”a”+”rona”+”christmas”,
 concatenated string2= phrase ”you”+”should”+”get”+”tested”
 concatenated string3= phrase ”pfizer”+”is”+”95”+”percent”+”effective”
@@ -315,8 +315,8 @@ chapter inner html
 replace ‘ with/ 
 for apostrophe in covid strings1fan voting 
 select characters
-edit Diffuse Property
-desired Color=Green
+edit diffuse property
+desired color=green
 <p>string 1[votes ‘string 1 ‘]}votes</p>
 <p>string 2[votes ‘string 2 ‘]}votes</p>
 <p>string 3 [votes ‘string 3 ‘]}votes</p>
@@ -339,10 +339,10 @@ the code designed to advancing winning concatenated strings
 advance to next round (strings to advance)
 sorted strings=(strings.sort(string1,string2) strings 1 votes string 2 votes)
 advancing strings= sorted strings.slice(0,num to 8)
-Return advancing strings 
-Percentage calculator
-Part= number of votes per day in round 
-Whole= total number of votes for string
+return advancing strings 
+percentage calculator
+part= number of votes per day in round 
+whole= total number of votes for string
 calculate {part,whole}
 return (part/whole)*100
 display (part,whole)
@@ -541,7 +541,7 @@ return (part/whole)*100
 display (part,whole)
 percentage= this.calculate(part,whole)
 return {part} is {percentage} of {whole}
-Result= percentagecalculator.display()
+result= percentagecalculator.display()
 console log result 
 if result matchup1>=.5
 if result matchup2>=.5
@@ -621,7 +621,7 @@ return {part} is {percentage} of {whole}
 result= percentage calculator.display()
 console log result 
 if result matchup1>=.5
-NewWindow= window.open(current round)
+new window= window.open(current round)
 window.close(current round)
 window.vote= function(index)
 candidates [index] votes++;
