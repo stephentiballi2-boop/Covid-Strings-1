@@ -170,7 +170,6 @@ button class operator on click =choose operation (division) button
 button class =”button equal on click compute ()=</button>
 button class = “button clear” on click =clear display button >c< /button>
 div
-div
 src= “calculator.js”><
 <script>
 </body>
