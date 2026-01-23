@@ -67,62 +67,62 @@ subheading56=covid strings version that updates an existing newsletter file inst
 subheading57=covid strings version that updates specific sections in an html newsletter by targeting elements (like <div id=main-content>) using a dom parser so you can make structured rdits instead of raw text replacement
 subheading58=covid strings safe, transactional bulk update script that works directly with your newsletter json files so you can update multiple sections without risking data loss 
 subheading59=covid strings online reference pull request
-Subheading60=Covid Strings Automatically Creating A Branch From A Commit Reference And Then Opens The PR To Make It A Full Online Reference PR Workflow
-Subheading61=Covid Strings  GitHub Action Version So This Workflow Runs Automatically When You Push A Commit Reference
-Subheading62=Covid Strings Versioned Branches For Older Non-Default Versions And Main Or Master For The Latest Supported Version
-Subheading63=Covid Strings Automatic Branch Creation To Make Version Management Hands-Free
-Subheading64=Fan Voting Request
-Subheading65=Covid Strings Upgrading To A Real Time Online Voting System
-Subheading66=Covid Strings Including A Live Chart So Votes  Update Visually In Real Time 
-Subheading67=Covid Strings WebSocket-Enabled Version So The Chart Updates Instantly When Someone Votes From Another Device
-Subheading68=Covid Strings Single-File Self-Hosting Version For A Fan Voting Pull Request 
-Subheading69=Covid Strings Supporting Multiple Polls In One File Or Exports/Imports Votes For Sharing Results Across Devices
-Subheading70=Image Gif Request
-Subheading71=GitHub Action Workflow Version So The GIF PR Is Created Automatically When You Push A Branch
-Subheading72=Covid Strings Extending This Workflow So That It Adds A GIF Automatically To The PR Description When It’s Created
-Subheading73=Covid Strings Node.Js Standalone Executable Using The Official SEA Feature
-Subheading74=Covid Strings Creating A One-Command Build Script So You Can Compile And Package Your Node.Js App Into A Standalone Binary Automatically
-Subheading75=Covid Strings Attaching The Gif Directly To The Pull Request 
-Subheading76=Covid Strings Hosting The Gif On An External Service Like Giphy Or Github Pages
-Subheading77=Covid Strings Secure Node.Js Proxy Version That Hides Your Giphy API Key But Still Lets The Browser Upload Directly 
-Subheading78=Covid Strings Version With HTTPS + API Key Rotation
-Subheading79=Covid Strings Upgrading To Real Azure Key Vault API Key Rotation 
-Subheading80=Covid Strings Typescript Version With Full Type Safety And IntelliSense For Azure Key Vault Key Rotation
-Subheading81=Covid Strings Automatic Scheduled Rotation So The Key Rotates On A Schedule Without Manual Execution 
-Subheading82=Covid Strings Installing A AWS KMS And A Custom Rotation Schedule Instead Of The Default Yearly Rotation
-Subheading83=Covid Strings Installing A Pure AWS SDK JavaScript Script Without CDK That You Can Run From A Server Or Lambda To Rotate Keys On Demand
-Subheading84=Covid Strings Lambda-Ready Version That Automatically Stores The New Key In AWS Secrets Manager
-Subheading85=Covid Strings Version That Integrates With AWS Secrets Manager’s Built-In Rotation Schedule
-Subheading86=Covid Strings Version That Automatically Updates An RDS Database Password During Rotation 
-Subheading87= Covid Strings Installing A Lambda Rotation Function That Updates The Secret Automatically In AWS Secrets Manager
-Subheading88=Covid Strings Regularly Rotating RDS Credentials So It Updates Both Secrets Manager And The Database Automatically
-<Header.Html>
-Pull Request Overview
-How To Create An Overview Of A Covid Strings Pull Request
+subheading60=covid strings automatically creating a branch from a commit reference and then opens the pr to make it a full online reference pr workflow
+subheading61=covid strings github action version so this workflow runs automatically when you push a commit reference
+subheading62=covid strings versioned branches for older non-default versions and main or master for the latest supported version
+subheading63=covid strings automatic branch creation to make version management hands free
+subheading64=fan voting request
+subheading65=covid strings upgrading to a real time online voting system
+subheading66=covid strings including a live chart so votes update visually in real time 
+subheading67=covid strings websocket-enabled version so the chart updates instantly when someone votes from another device
+subheading68=covid strings single-file self-hosting version for a fan voting pull request 
+subheading69=covid strings supporting multiple polls in one file or exports/imports votes for sharing results across devices
+subheading70=image gif request
+subheading71=gitHub action workflow version so the gif pr is created automatically when you push a branch
+subheading72=covid strings extending this workflow so that it adds a gif automatically to the pr description when it’s created
+subheading73=covid strings node.js standalone executable using the official sea feature
+subheading74=covid strings creating a one-command build script so you can compile and package your node.js app into a standalone binary automatically
+subheading75=covid strings attaching the gif directly to the pull request 
+subheading76=covid strings hosting the gif on an external service like giphy or github pages
+subheading77=covid strings secure node.js proxy version that hides your giphy api key but still lets the browser upload directly 
+subheading78=covid strings version with https + api key rotation
+subheading79=covid strings upgrading to real azure key vault api key rotation 
+subheading80=covid strings typescript version With full type safety and intellisense for azure key vault key rotation
+subheading81=covid strings automatic scheduled rotation so the key rotates on a schedule without manual execution 
+subheading82=covid strings installing a aws kms and a custom rotation schedule instead of the default yearly rotation
+subheading83=covid strings installing a pure aws sdk javascript script without cdk that you can run from a server or lambda to rotate keys on demand
+subheading84=covid strings lambda-ready version that automatically stores the new key in aws secrets manager
+subheading85=covid strings version that integrates with aws secrets manager’s built-in rotation schedule
+subheading86=covid strings version that automatically updates an rds database password during rotation 
+subheading87=covid strings installing a lambda rotation function that updates the secret automatically in aws secrets manager
+subheading88=covid strings regularly rotating rds credentials so it updates both secrets manager and the database automatically
+<header.html>
+pull request overview
+how to create an overview of a covid strings pull request
 /**
- * Pull Request Overview Script
- * Fetches and displays pull request details from a GitHub repository.
+ * pull request overview script
+ * fetches and displays pull request details from a github repository.
  * 
- * Requirements:
- *   - Node.js v18+ (for built-in fetch)
- *   - A GitHub Personal Access Token (optional but recommended for higher rate limits)
+ * requirements:
+ *   - node.js v18+ (for built-in fetch)
+ *   - a github personal access token (optional but recommended for higher rate limits)
  */
-Const GITHUB_API_URL = Https://Api.Github.Com/Repos;
+const github_api_url = https://api.github.com/repos;
 /**
- * Fetch pull requests for a given repository
- * @param {string} owner - GitHub username or organization
- * @param {string} repo - Repository name
- * @param {string} [token] - Optional GitHub personal access token
+ * fetch pull requests for a given repository
+ * @param {string} owner - github username or organization
+ * @param {string} repo - repository name
+ * @param {string} [token] - optional github personal access token
  */
-Async Function GetPullRequests(Owner, Repo, Token = "") {
-Try {
-// Validate inputs
-If (!Owner || !Repo) {
-Throw New Error(Owner And Repository Name Are Required.);
+async function getpullrequests(owner, repo, token = "") {
+try {
+// validate inputs
+if (!owner || !repo) {
+throw new error(owner and repository name are required.);
 }
-Const Url = ${GITHUB_API_URL}/${EncodeURIComponent(Owner)}/${EncodeURIComponent(Repo)}/Pulls?State=All;
-Const Headers = {
-Accept: Application/Vnd.Github.V3+Json,
+const url = ${github_api_url}/${encodeuricomponent(owner)}/${encodeuricomponent(repo)}/pulls?state=all;
+const headers = {
+accept: application/vnd.github.v3+json,
 ...(Token ? {Authorization: Token ${Token} } : {})
 };
 Const Response = Await Fetch(Url, {Headers });
