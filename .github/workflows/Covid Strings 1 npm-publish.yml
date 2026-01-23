@@ -1,11 +1,1106 @@
 # This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
 # For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-name: Node.Js Package
-on: Node
-release: Package 
+<doc.type.html>
+<html lang en>
+<script>
+<header.html>
+heading for heading variables
+the heading numbers that determine where each heading and subheading go
+heading1= covid strings website homepage 
+heading2= covid strings workflow overview
+heading3=covid strings jobs 
+heading4=covid strings workflow test
+heading5=covid strings website development 
+heading6=build archive
+heading7=color directory
+heading8=covid strings map 
+heading9=covid strings scene creation 
+heading10=covid strings file transfers 
+heading11=covid strings firewall
+heading12=covid strings overriding the firewall
+heading13=covid strings node search 
+subheading1=covid strings website navigation
+subheading2=responsive navigation menu 
+subheading3=covid strings animated sliding menu 
+subheading4=input category subtasks
+subheading5=superkey subtasks
+subheading6=file exportation subtasks
+subheading7=bonus question subheading
+subheading8=scrambled phrase subheading
+subheading9=covid strings string subcategories
+subheading10=dropdown display
+subheading11=superkey file
+subheading12=phrase superkey
+subheading13=math Problem Superkey
+subheading14=sentence Superkey 
+subheading15=phrase Superkey
+subheading16=math problem superkey
+subheading17=sentence superkey
+subheading18=file exportation
+subheading19=covid strings background file exportation
+subheading20=covid strings first round file exportation
+subheading21=covid strings second round file exportation
+subheading22=covid strings championship file exportation
+subheading23=covid strings game code file exportation
+subheading24=covid strings fan voting file exportation
+subheading25=covid strings key word file exportation
+subheading26=covid strings website file exportation
+subheading27=covid strings homepage
+subheading28=covid strings tabs
+subheading29=covid strings menu scene creation
+subheading30=covid strings background scene code
+subheading31=covid strings first round scene code
+subheading32=covid strings second round scene code
+subheading33=covid strings championship round scene code
+subheading34=covid strings background file transfer
+subheading35=covid strings background overview
+subheading36=covid strings background functions
+subheading37=covid strings background code
+subheading38=covid strings first round file transfer
+subheading39=covid strings first round overview
+subheading40=covid strings first round seeding
+subheading41=covid strings first round matchups
+subheading42=covid strings first round questions
+subheading43=covid strings first round team stealing
+subheading44=covid strings advancing rounds
+subheading45=covid strings result for matchup 1
+subheading46=covid strings result for matchup 2
+subheading47=covid strings result for matchup 3
+subheading48=covid strings result for matchup 4
+subheading49=covid strings second round file transfer
+subheading50=covid strings second round overview
+subheading51=covid strings second round questions
+subheading52=covid strings second round team stealing
+subheading53=covid strings result for matchup 1
+subheading54=covid strings result for matchup 2
+subheading55=covid strings championship file transfer
+subheading56=covid strings championship overview
+subheading57=covid strings championship code
+subheading58=covid strings championship round questions
+subheading59=covid strings championship file transfer
+subheading60=covid strings championship round team stealing
+subheading61=victory
+subheading62=result for championship matchup
+subheading63=covid strings game code file transfer
+subheading64=covid strings phrase list
+subheading65=covid strings math problems list
+subheading66=covid strings sentence list
+subheading67=covid strings answer checker
+subheading68=covid strings fan voting file transfer
+subheading69=file interactivity
+subheading70=readline module
+subheading71=fan voting rounds
+subheading72=string voting
+subheading73=first round
+subheading74=non-concatenated string variables
+subheading75=non-concatenated string apostrophes and contractions
+subheading76=concatenated string variables
+subheading77=concatenated string apostrophes and contractions
+subheading78=second round
+subheading79=second round non-concatenated string advancing 
+subheading80=second round concatenated string advancing
+subheading81=third round
+subheading82=third round non-concatenated string advancing
+subheading83=third round concatenated string advancing 
+subheading84=fourth round
+subheading85=fourth round non-concatenated string advancing
+subheading86=fourth round concatenated string advancing
+subheading87=fifth round
+subheading88=covid strings fan voting victory
+subheading89=covid strings key words file transfer
+subheading90=uploading mammoth js
+subheading91=covid strings key word file transfer
+subheading92=key words
+subheading93=online references
+subheading94=covid strings keyword search engine
+subheading95=script templates
+subheading96=script a
+subheading97=script b
+subheading98=script c
+subheading99=script d
+subheading100=script e
+subheading101=script f
+subheading102=script g
+subheading103=script h
+subheading104=script i
+subheading105=script j 
+subheading106=script k
+subheading107=script l
+subheading108=covid strings website file transfer 
+subheading109=covid strings file upload with multer
+subheading110=reading the uploaded file
+subheading111=web index
+subheading112=fonts
+subheading113=tab creation
+subheading114=newsletter
+subheading115=user0opinion 
+subheading116=video incorporation
+subheading117=about us tab
+subheading118=mission statement
+subheading119=fan voting tab
+subheading120=covid strings buffalo fan voting
+subheading121=eris variant strings fan voting tab
+subheading122=covid strings buffalo tab
+subheading123=eris variant strings tab
+subheading124=redirection
+subheading125=covid strings shopping cart
+subheading126=covid strings careers
+subheading127=covid strings career page slogan
+subheading128= covid strings ai career slogan generation
+subheading129=covid strings introduction to career tab
+subheading130=fonts for covid strings career tab
+subheading131=project concern organizer
+subheading132=mongoose database implementation
+subheading133=department controller
+subheading134=covid strings department service layer
+subheading135=department routes
+subheading136=covid strings department code notes
+subheading137=covid strings departments
+subheading138=covid strings sales department
+subheading139=covid strings sales values
+subheading140=covid strings sales validation
+subheading141=covid strings sales firebase installation
+subheading142=covid strings sales database
+subheading143=covid strings firebase authentication
+subheading144=covid strings sales app deployment
+subheading145=covid strings bootstrap application for sales
+subheading146=covid strings product list
+subheading147=covid strings cart user interface
+subheading148=covid strings human resources department
+subheading149=firebase installation
+subheading150=firebase initialization
+subheading151=firebase test messaging
+subheading152=covid strings legal department
+subheading153=covid strings marketing department
+subheading154=covid strings lead capture form
+subheading155=covid strings campaign tracker
+subheading156=scrolling for covid strings marketing website
+subheading157=covid strings engineering and it department
+subheading158=covid strings graphics department
+subheading159=rectangle drawing
+subheading160=line drawing
+subheading161=updating position
+subheading162=covid strings scouting department
+subheading163=covid strings scouting for firebase implementation
+subheading164=firebase creation
+subheading165=authenticating firebase users
+subheading166=displaying scouting data
+subheading167=covid strings search functionality
+subheading168=covid strings references to input and field item list
+subheading169=covid strings chart js implementation
+subheading170=covid strings bootstrap installation
+subheading171=customizing bootstrap through sass
+subheading172=covid strings esport analytics department
+subheading173=covid strings multiplayer win rate
+subheading174=covid strings heat map
+subheading175=covid strings pandascore axios installation
+subheading176=covid strings esports analysis integration into an api
+subheading177=covid strings esport analysis frontend integration
+subheading178=covid strings esports management department
+subheading179=covid strings esports management department backend integration
+subheading180=covid strings esports management department frontend integration
+subheading181=covid strings team addition through api fetch
+subheading182=covid strings tournament scheduling 
+subheading183=covid strings player scheduling
+subheading184=covid strings websocket
+subheading185=covid strings esports management websocket database integration
+subheading186=frontend websocket client
+subheading187=covid strings communications department
+subheading188=covid strings websocket messaging application
+subheading189=frontend messaging application
+subheading190=username feature
+subheading191=encryption
+subheading192=backend messaging application
+subheading193=application structure
+subheading194=covid strings real time messaging
+subheading195=covid strings communication announcements
+subheading196=user management
+subheading197=covid strings backend integration
+subheading198=vercel installation
+subheading199=covid strings front end vercel integration
+subheading200=covid strings vercel dns settings
+subheading201=deleting records in vercel
+subheading202=covid strings vercel domain verification
+subheading203=covid strings vercel domain Testing 
+subheading204=covid strings accounting department
+subheading205=covid strings transactions
+subheading206=covid strings accounting report
+subheading207=covid strings expense tracker
+subheading208=covid strings expense tracker functionality
+subheading209=local storage implementation
+subheading210=covid strings accounting expense categories
+subheading211=covid string javascript expense update
+subheading212=covid strings accounting of spending through chart js
+subheading213=line chart configuration
+subheading214=covid strings athletic training department
+subheading215=training session tracker
+subheading216=performance analysis 
+subheading217=covid strings athletic training department Database Integration
+subheading218=covid strings esports science department 
+subheading219=covid strings esports science user interface enhancing 
+subheading220=chart js implementation for esports science user interface
+subheading221=covid strings data storage for esport science
+subheading222=covid strings esport dbms installation 
+subheading223=visualizing data with chart js
+subheading224=real time data tracking 
+subheading225=covid strings my sports feed analytics installation 
+subheading226=covid strings esports medicine department
+subheading227=covid strings database backed system for a full stack node js and mongo db app so the esports medicine department can store and retrieve player health data persistently 
+subheading228=covid strings public relations department
+subheading229=covid strings managing pr contacts
+subheading230=covid strings scheduling pr events
+subheading231=covid strings mongo db public relations installation
+subheading232=managing press releases 
+subheading233=covid strings public relations error handling
+subheading234=custom error handling with throw
+subheading235=using finally for cleanup
+subheading236=covid strings authentication and validation
+subheading237=covid strings pr backend api
+subheading238=covid strings pr media contacts
+subheading239=saving contacts to covid strings pr database
+subheading240=frontend code(html+javascript)
+subheading241=covid strings pr validation and authentication
+subheading242=integrating and validation
+subheading243=covid strings editing and deleting contacts 
+subheading244=local storage for covid strings pr contacts
+subheading245=covid strings analyzing campaign performance data
+subheading246=covid strings pr advanced tracking with event logging
+subheading247=sending covid strings server data to a server for analysis
+subheading248=covid strings custom event tracking
+subheading249=using the covid strings performance api for page load metrics
+subheading250=tracking scroll depth
+subheading251=covid strings pr campaign performance tracking backend
+subheading252=covid strings pr campaign performance frontend
+subheading253=covid strings real time backend pr application
+subheading254=covid strings real time updates frontend pr application
+subheading255=covid strings department of player personnel
+subheading256=covid strings player personnel persistent data storage
+subheading257=covid strings player personnel indexed db
+subheading258=searching or filtering by team or role 
+subheading259=covid strings partial text search in indexed db
+subheading260=covid strings department of business administration
+subheading261=covid strings esport business admin full interactive admin panel 
+subheading262=covid strings audio department
+subheading263=covid strings play pause button
+subheading264=covid strings volume control progress bar and full screen toggle
+subheading265=covid strings seek progress bar and play pause button
+subheading266=covid strings elapsed time and total duration
+subheading267=covid strings async/await function elapsed time
+subheading268=covid strings measuring multiple async calls
+subheading269=covid strings measuring async calls individually 
+subheading270=covid strings browser compatible version for measuring async calls through performance now without perf hook
+subheading271=covid strings research and development department
+subheading272=covid strings full r&d web based dashboard for browser interface
+subheading273=covid strings real time backend connected r&d dashboard
+subheading274=covid strings research and development live charts 
+subheading275=covid strings pulling real time data from a server or iot device
+subheading276=covid strings mqtt data transfer to playcanvas
+subheading277=covid strings self-contained mqtt client
+subheading278=covid strings cybersecurity department
+subheading279=covid strings extension into full cybersecurity dashboard with password strength meter hashing tool and basic encryption and decryption utility 
+subheading280=covid strings esport finance department
+subheading281=covid strings frontend integration of a personal finance tracker
+subheading282=covid strings full stack version of a finance tracker
+subheading283=covid strings transcription department
+subheading284=covid strings real time transcription dashboard
+subheading285=covid strings enhanced transcription dashboard
+subheading286=covid strings live transcription mode real time transcription inclusion with websockets
+subheading287=covid strings node js backend and browser client for transcription
+subheading288=covid strings whisper ai for transcribing file upload 
+subheading289=covid strings transcription speaker diarization
+subheading290=covid strings browser based javascript version for diarization directly run in a web app
+subheading291=covid strings whisper and diarization combination of browser code
+subheading292=covid strings fully working docker setup for whisper and diarization with docker compose up
+subheading293=covid strings real time diarization streaming using websockets
+subheading294=covid strings assembly api for transcription and diarization
+subheading295=covid strings browser based real time transcription and diarization using websockets
+subheading296=covid strings node js backend proxy for ensuring an api key isnt exposed in the browser
+subheading297=covid strings version for supporting post requests and streaming responses
+subheading298=covid strings node js server example that sends a streaming response for testing the client code locally
+subheading299=covid strings matching client side javascript example that reads this stream in real time using fetch and readable stream
+subheading300=covid strings version that uses await of for cleaner async iteration
+subheading301=covid strings word by word transcription
+subheading302=covid strings node js  open ai whisper for real time word by word transcription
+subheading303=covid strings optimized version that buffers overlapping audio chunks
+subheading304=covid strings database storage for transcripts 
+subheading305=covid strings node js version that stores transcripts in sq lite data
+subheading306=covid strings full express rest api for storing and retrieving transcripts over http
+subheading307=covid strings authentication for multi-user dashboard for transcription
+subheading308=covid strings file upload and transcription task assignment
+subheading309=covid strings esport concessions department
+subheading310=covid strings tracking inventory for a concessions department
+subheading311=covid strings adding stock alerts and editing capability
+subheading312=covid strings real time stock api integration for stock price monitoring of esport concessions
+subheading313=covid strings websocket real time feed of esport concession stock prices
+subheading314=covid strings redis pub snub production grade deployment for esport concession data
+subheading315=covid strings redis docker compose deployment for esport concessions
+subheading316=covid strings dockerizing  node js app for redis and javascript running in the same docker compose Network
+subheading317=covid strings nodemon installation 
+subheading318=covid strings full stack live reload setup where the nodemon restarts and the browser refreshes Automatically For Frontend Changes
+subheading319=covid strings instant reload and css injection with browser sync
+subheading320=covid strings gulp 4 downloading for compiling sass and injecting css
+subheading321=covid strings sourcemap implementation for debugging scss and js
+subheading322=covid strings gulp alternative for scss and js sourcemaps
+subheading323=covid strings production ready webpack configuration that generates separate scss and js source maps
+subheading324=covid strings dual configuration setup with webpack dev js and webpack prod js
+subheading325=covid strings typescript compatible version of the dual config setup separating webpack dev js and webpack prod js 
+subheading326=covid strings configuring webpack configs to typescript
+subheading327=covid strings version that merges multiple base configs dynamically  
+subheading328=covid strings version that loads multiple json config files from a directory and automatically merges them in order 
+subheading329=covid strings deep merge version
+subheading330=covid strings benchmark comparison between string builder and string join
+subheading331=covid strings browser compatible version with performance now
+subheading332=covid strings saving esport concession orders to local storage
+subheading333=covid strings allowing discounts for an esport concessions department
+subheading334=covid strings browser based Version of allowing discounts for cashiers to enter discounts via web form and the system auto calculating totals
+subheading335=covid strings multi item support with a running total
+subheading336=covid strings browser based version with html input fields so the running total updates
+subheading337=covid strings version that adds new input fields can be added dynamically and the total still updates  
+subheading338=covid strings esport economics department 
+subheading339=covid strings web app with charts and forms for visual management of esport economics 
+subheading340=covid strings multi-chart esport economics dashboard with persistent storage
+subheading341=covid strings pulling live esport economics data from an api
+subheading342=covid strings browser based version using fetch for esport economics
+subheading343=covid strings live data version for esports prize pool and revenue data using pandascore
+subheading344=covid strings historical revenue and aggregate data totals
+subheading345=covid strings csv reading of historical revenue data and computing the aggregates automatically
+subheading346=covid strings browser version that reads a csv file and computes the aggregate without node js
+subheading347=covid strings handling csv and large files efficiently 
+subheading348=covid strings processing csv in parallel using worker threads
+subheading349=covid strings optimized streaming version that processes huge csv files without loading them entirely into memory
+subheading350=covid strings esports scheduling department
+subheading351=covid strings full web based esports scheduling dashboard 
+subheading352=covid strings full backend version of web based esports scheduling
+subheading353=covid strings event planning department
+subheading354=covid strings full stack event planning system
+subheading355=covid strings user authentication in esport event planning
+subheading356-covid strings role based authorization for ensuring that administrators can create or delete events
+subheading357=covid strings multiple roles for esport event planning
+subheading358=covid strings frontend role based ui for esport event planning
+subheading359=covid strings firebase role powered ui for esport event planning
+subheading360=covid srings adding event creation and registration features to the firebase role based esports planner
+subheading361=covid strings real time event list with ui
+subheading362=covid strings real time list ui across multiple users through websockets
+subheading363=covid strings extending the real time event list to be upgraded through socket io
+subheading364=covid strings real time event list upgraded to a database backed real time system
+subheading365=covid strings postgresql node js and websocket version that uses listen/notify for real time updates
+subheading366=covid strings pushing updates on update and delete for websocket clients to get full crud real time sync
+subheading367=covid strings database backed real time sync to automatically push updates when db changes occur
+subheading368=covid strings translation department
+subheading369=covid strings loading translations from json files dynamically
+subheading370=covid strings node js express version that serves translations dynamically from the backend
+subheading371=covid strings version that automatically reloads translations from jSON files without restarting The Server
+subheading372=covid strings translation i18 next version
+subheading373=covid strings payroll department
+subheading374=covid strings multi-employee payroll manager
+subheading375=covid strings data persistence and editing features for payroll
+subheading376=covid strings upgrading to a node ks and my sql payroll system with persistent editing
+subheading377=covid strings browser based editable payroll table
+subheading378=covid strings server side storage for payroll data
+subheading379=covid strings version that uses mongo db for production use of payroll server side data storage
+subheading380=covid strings adding jwt authentication so this payroll api is secure for production use
+subheading381=covid strings adding role based access control to the jwt secured payroll
+subheading382=covid strings database backed roll system for payroll
+subheading383=covid strings frontend html js payroll dashboard
+subheading384=covid strings physical security department
+subheading385=covid strings extending this into a web based dashboard with html css and javascript so the physical security department can manage everything visually
+subheading386=covid strings league administration department
+subheading387=covid strings mongo db version for esport league administration
+subheading388=covid strings extending this into a rest api with express.js so you can manage the esports league via http requests instead of running scripts
+subheading389=covid strings upgrading the rest api to include a leaderboard
+subheading390=covid strings upgrading the leaderboard to mongo db
+subheading391=covid strings updating the mongo db leaderboard to real times updates using socket io
+subheading392=covid strings extending the mongo db leaderboard to mongo db change streams
+subheading393=covid strings websocket esport leaderboard installation
+subheading394=covid strings leaderboard frontend sending score updates through websockets and the server broadcasts them instantly
+subheading395=covid strings scoring leaderboard data in redis for scores to persist after the server starts
+subheading396=covid strings rdb and aof combining for minimizing data loss
+subheading397=covid strings docker compose setup for running redis with rdb and aof enabled 
+subheading398=covid strings esport social media department
+subheading399=covid strings auto posting to twitter and discord
+subheading400=covid strings event esport social media feed that posts automatically instead of running the script
+subheading401=covid strings upgrading an event driven social media feed that posts automatically instead of manually running the script to post to real social media platforms
+subheading402=covid strings upgrading an event driven esport social media feed that posts automatically instead of manually running the script running 24/7 in the cloud and supports multiple social media apis in parallel
+subheading403=covid strings upgrading this to a fully serverless webhook driven version so it posts instantly when a match ends
+subheading404=covid strings webhook signature verification so only legitimate match end events trigger the post
+subheading405=covid strings typescript version with full type safety and replay protection
+subheading406=covid strings integrating this zod directly into your existing business logic so that invalid data never reaches your core functions
+subheading407=covid strings generic helper function that takes any zod schema and automatically infers the type for its parameters and return values
+subheading408=covid strings league performance recreation department
+subheading409=covid strings browser based html and javascript so your recreation department can enter score via a form and see the table update live
+subheading410=covid strings persistent storage so the scoreboard remembers data between sessions
+subheading411=covid strings esports recreation session storage version
+subheading412=covid strings local storage version that persists after closing the browser for esport performance recreation
+subheading413=covid strings syncing the performance recreation with a cloud database
+subheading414=covid strings esport gaming house department
+subheading415=covid strings full crud system with persistent storage for an esports gaming house
+subheading416=covid strings search and filter feature for an esports gaming house
+subheading417=covid strings esport images and ranking
+subheading418=covid strings gaming house real time ranking updates
+subheading419=covid strings gaming house database ranking storage
+subheading420=covid strings live updating the leaderboard using websockets for an esport gaming house
+subheading421=covid strings persistent production ready version of an esport gaming house that includes persistent storage in mongo db authentication for score updates and animated transitions for leaderboard changes
+subheading422=covid strings side by side diff viewer with syntax highlighting for better readability
+subheading423=covid strings enhanced version with line numbers scroll sync between panes and language auto detection
+subheading424=covid strings mark down rendering with syntax highlighting so that the preview pane shows formatted Text Instead Of Raw Code
+subheading425=covid strings version with github flavored markdown tables task lists and emoji support for a richer preview experience
+subheading426=covid strings version with live preview so you can type markdown 
+subheading427=covid strings disability compliance department
+subheading428=covid strings server side disability compliance server
+subheading429=covid strings identifying and fixing issues that affect accessibility and compliance like broken links or inaccessible content 
+subheading430=covid strings running full wcag compliance checks using axe core and automatically fix some issues like adding missing alt attributes or converting broken links to plain text
+subheading431=covid strings version that runs in playwright and outputs
+subheading432=covid strings extending this so that the html report includes before/after code snippets for suggested fixes making it even more actionable
+subheading433=covid strings showing inline diffs instead of full before after blocks
+subheading434=covid strings hybrid workflow where you get the speed of inline diffs but still have html review for big changes
+subheading435=covid strings full featured markdown editor with dark mode toggle m persistent storage (save markdown in local storage) and drag and drop image upload 
+subheading436=covid strings supporting github flavored markdown with syntax highlighting for code blocks
+subheading437=covid strings markdown into a text area and seeing live highlighted output without node js
+subheading438=covid strings markdown syntax inside the text area itself (like an ide) using code mirror that would give you true live highlighted editing
+subheading439=covid strings showing a live rendered markdown preview side by side
+subheading440=covid strings enhanced version with code mirror for better editing experience and line numbers
+subheading441=covid strings javascript autocompletion and linting for disability compliance
+subheading442=covid strings diversity training department
+subheading443=covid strings browser based version with html forms so hr staff can manage diversity training via A Web Page
+subheading444=covid strings search and csv export for filtering and downloading training records
+subheading445=covid strings diversity hr fetcher
+subheading446=covid strings streaming results in real time for very large datasets instead of loading them all into memory
+subheading447=covid strings diversity training version that streams from a database query in real time
+subheading448=covid strings upgrading to true push streaming using postgresql listen/notify so updates are pushed instantly without polling for more real time diversity training dashboards
+subheading449=covid strings websocket push streaming for a diversity training dashboard
+subheading450=covid strings filtering updates per department for diversity training
+subheading451=covid strings filtering updates by department and keyword that only contain diversity in the title
+subheading452=covid strings version that works directly on a webpage with a search box and dropdown for department
+subheading453=covid strings version with live search suggestions that appear in a dropdown as you type
+subheading454=covid strings diversity training fetching suggestions from an api
+subheading455=covid strings diversity training server working with a real external api instead of a static dataset so your diversity training suggestions come from a live database
+subheading456=covid strings next js version using get server side props so the diversity training suggestions load server side in a web prop
+subheading457=covid strings next js api route that serves these suggestions so you can test it locally without an external api
+subheading458=covid strings frontend react component that calls this api and displays the suggestions in real time for diversity training
+subheading459=covid strings websocket based real time updates for diversity training
+subheading460=covid strings real time polls and quiz questions for diversity training
+subheading461=covid strings timed questions scoring and leaderboards for diversity training that include a fair scoring system and designing leaderboards for inclusivity
+subheading462=covid strings including browser version with a visual leaderboard and accessible ui in diversity training
+subheading463=covid strings multi-user real-time diversity leaderboard with websockets node js and redis
+subheading464=covid strings extending this leaderboard to include diversity categories and filtering in real time
+subheading465=covid strings diversity training enhanced hr fetcher
+subheading466=covid strings esports insurance department
+subheading467=covid strings frontend ui for an esport insurance system
+subheading468=covid strings maintenance and support department
+subheading469=covid strings upgrading into a full web based maintenance tracker using javascript express and mongo db so it works in a browser with a proper ui
+subheading470=covid strings maintenance and support user authentication
+subheading471=covid strings database backed authentication system for maintenance and support
+subheading472=covid strings role based access control server for simulating authentication for maintenance and Support
+subheading473=covid strings jwt role based access control for maintenance and support
+subheading474=covid strings database backed role based access control for maintenance and support
+subheading475=covid strings extending this rbac system to use jwt authentication instead of a simple x-user header So Its Production Ready
+subheading476=covid strings using refresh tokens and database backed user storage for maintenance and support
+subheading477=covid strings using postgresql with sequelize orm for Better maintainability in production
+subheading478=covid strings installing sequelize migration + seed setup so your production changes are version controlled
+subheading479=covid strings installing github actions ci/cd script so migrations run automatically on production deploy
+subheading480=covid strings docker based github actions ci/cd version
+subheading481=covid strings extending this workflow so that after building the docker image it automatically deploys to a server via ssh
+subheading482=covid strings pure node js ssh deployment
+subheading483=covid strings configuring nvm in auto nvm use mode for maintenance and support
+subheading484=covid strings installing a cross shell universal script that works for bash zsh and fish without separate configs
+subheading485=covid strings installing  a multi-shell version with starship for all three shells at once instead of just the current one
+subheading486=covid strings node js multi shell starship installer
+subheading487=covid strings typescript version with type safety and async/await for better maintainability
+subheading488=covid strings generic function for fetching and parsing a json typescript in api
+subheading489=covid strings version with runtime type validation so even in javascript you can ensure the api response matches the expected shape
+subheading490=covid strings manual validation version to manually validate the shape
+subheading491=covid strings validate arrays and optional fields so it works like a mini schema validator
+subheading492=covid strings supporting nested schemas so you can validate arrays of objects or deeply nested structures Like A Real Schema Library
+subheading493=covid strings supporting optional chaining default values and async validation for maintenance and support
+subheading494=covid strings including real api calls and logging for maintenance tracking
+subheading495=covid string retry logic and daily log rotation for maintenance and support 
+subheading496=covid strings real api calls (e.g. fetch or axios) and automatically rotates logs at midnight
+subheading497=covid strings version with jitter to avoid thundering herd problems in distributed systems
+subheading498=covid strings decorrelated jitter version for maintenance and support
+subheading499=covid strings typescript version with full type safety for maintenance and support
+subheading500=covid strings maintenance and support compiler options
+subheading501=covid strings creating a step-by-step js ts migration checklist that works for both small and large codebases
+subheading502=covid strings automatically scanning your js project and suggests a custom migration order based on file count and dependencies
+subheading503= detecting and resolving circular dependencies before suggesting the migration order
+subheading504=covid strings cycle detection and suggestion tool
+subheading505=covid strings detecting and refractoring circular dependencies during development
+subheading506=covid strings employee union
+subheading507=covid strings esports union browser with a user interface
+subheading508=covid strings upgrading into a single full page app with react js and live esports integration
+subheading509=covid strings upgrade this to include websocket live score updates so matches refresh in real time Without Page Reload
+subheading510=covid strings upgrading to multi-match live scoreboards
+subheading511=covid strings real time api powered version for a multi match scoreboard
+subheading512=covid strings socket io and real api integration
+subheading513=covid strings typescript version with full type safety for socket.io and the esport api
+subheading514=covid strings esport players association
+subheading515=covid strings frontend interface for an esport players association 
+subheading516=covid strings storing  esport player association data persistently in the browser 
+subheading517=covid strings cloud syncing esport player association data to a backend
+subheading518=covid strings division of labor
+subheading519=covid strings sales department division of labor
+subheading520=covid strings legal department division of labor
+subheading521=covid strings engineering and it department division of labor
+subheading522=covid strings graphics department division of labor
+subheading523=covid strings scouting department division of labor
+subheading524=adding players in teams
+subheading525=covid strings esports analysis division of labor
+subheading526=covid strings prioritizing esports analysis tasks
+subheading527=covid strings multiple roles per player
+subheading528=covid strings esports analysis permissions
+subheading529=covid strings hierarchical roles for esports analysis
+subheading530=covid strings esports management division of labor
+subheading531=covid strings team models
+subheading532=covid strings team routes
+subheading533=covid strings tournament routes
+subheading534=covid strings rout integration
+subheading535=covid strings esport management server testing
+subheading536=covid strings esport management authentication
+subheading537=covid strings esport management error handling and validation
+subheading538=covid strings esport management real time updates
+subheading539=covid strings match score update
+subheading540=covid strings real time update integration into mongo db
+subheading541=covid strings real time database front end
+subheading542=covid strings communications department division of labor
+subheading543=covid strings accounting department division of labor
+subheading544=covid strings athletic training department division of labor
+subheading545=covid strings athletic department assigning tasks
+subheading546=covid strings athletic training department performance tracker
+subheading547=covid strings esport bex Api installation
+subheading548=covid strings esport science department division of labor
+subheading549=covid strings dynamic task distribution
+subheading550=advanced with priority levels
+subheading551=covid strings esport science database
+subheading552=covid strings esport science database authentication
+subheading553=https and rate limiting
+subheading554=covid strings esport science mongo db installation
+subheading555=covid strings esports medicine division of labor 
+subheading556=covid strings automatically assigning tasks based on a role through a mapping system
+subheading557=covid strings version that works with a database so the role to assignee mapping is dynamic instead of hardcoded
+subheading558=covid strings esport medicine next js api route
+subheading559=covid strings version with query parameters so your frontend can request specific mappings instead of fetching all 
+subheading560=covid strings typescript version with full type safety so your esport medicine query parameters are validated before sending
+subheading561=covid strings pure typescript esports medicine application with full type safety for your esport medicine query parameters are validated before sending
+subheading562=covid strings public relations division of labor
+subheading563=fecthing department of labor press releases for covid strings
+subheading564=parsing the dol feed into json
+subheading565=covid strings parsing the dol rss feed into xm112 js
+subheading566=covid strings xm112 js browser compatibility
+subheading567=node js browser compatible version
+subheading568=covid strings esports department of player personnel division of labor
+subheading569=covid strings esport player personnel persistence installation
+subheading570=covid strings persistence backend server system
+subheading571=covid strings real time roster system with websockets
+subheading572=covid strings persistent storage with mongo db
+subheading573=covid strings docker compose setup for esports player personnel
+subheading574=react frontend for covid strings esport player personnel manager
+subheading575=covid strings esport business administration division of labor
+subheading576=covid strings fetching of labor data for esport business administration
+subheading577=covid strings esport business admin standard occupational classification
+subheading578=covid strings fetching live soc data from the bls public api
+subheading579=covid strings auto soc lookup and live data fetch
+subheading580=covid strings websocket version for soc data updates without polling
+subheading581=covid strings real ev battery telemetry for streaming soc data
+subheading582=covid strings mqtt broker for real ev telemetry
+subheading583=covid strings ev telemetry storage in a database
+subheading584=covid strings mongo db upgrade with real time websocket streaming
+subheading585=covid strings fastify with websockets
+subheading586=covid strings research and development division of labor
+subheading587=covid strings browser based r&d division of labor
+subheading588=covid strings kanban board upgrade for dividing r&d labor
+subheading589=covid strings persistent and aware team version
+subheading590=covid strings browser based team dashboard for research and development
+subheading591=covid strings real time websocket updates for research and development
+subheading592=covid strings fault tolerance and reconnection logic
+subheading593=node js version with websockets library with same fault-reconnection logic
+subheading594=covid strings typescript version of websocket library fault tolerance reconnection logic
+subheading595=covid strings ping pong heartbeat websocket addition
+subheading596=covid strings chart js implementation for research and development
+subheading597=covid strings r&d data dynamic uploading of r&d data from a csv or an api
+subheading598=covid strings conditional statements for loading csv
+subheading599=covid strings chunked streaming for huge csv’s
+subheading600=covid strings r&d searching and filtering
+subheading601=covid strings multi criteria filtering
+subheading602=covid strings partial text messages
+subheading603=covid strings authentication for sensitive server data
+subheading604=covid strings pure frontend backend integration for authenticating sensitive server data
+subheading605=covid strings refreshing tokens and secure cookie storage
+subheading606=covid strings frontend fetch for automatically refreshing tokens
+subheading607=covid strings react hook for a react frontend for refreshing tokens
+subheading608=covid strings typescript version for full type safety and intellisense
+subheading609=covid strings vite react typescript starter
+subheading610=covid strings absolute imports path aliases and tailwind css for a ui stack
+subheading611=covid strings ready to clone github repository with vite react tailwind css preconfigured absolute imports via alias and vs code support
+subheading612=covid strings packing the cloned github repository with vite react tailwind css preconfigured absolute imports via alias and vs code support
+subheading613=covid strings auto push to a ready to clone repository
+subheading614=covid strings esports broadcasting division of labor 
+subheading615=covid strings node js version that uses worker threads to broadcast division of labor between workers
+subheading616=covid strings full interworker broadcasting
+subheading617=covid strings supporting multiple tabs for esports broadcasting
+subheading618=covid strings cybersecurity department division of labor
+subheading619=covid strings code for exact dol cybersecurity dataset endpoint and giving a ready to run javascript script
+subheading620=covid strings cybersecurity browser based html version of a dol endpoint for running without node js
+subheading621=covid strings updating the browser based html and javascript version of a dol cybersecurity dataset endpoint for running without node js with an exact working dol cybersecurity endpoint
+subheading622=covid strings finance division of labor
+subheading623=covid strings full html and javascript app for finance department
+subheading624=covid strings full stack finance app with node js database and charts
+subheading625=covid strings react and node js full stack finance app with authentication and multiple chart types
+subheading626=covid strings transcription division of labor notes
+subheading627=covid strings balancing by total minutes for more equal workloads
+subheading628=covid strings esport concessions department division of labor
+subheading629=covid strings shift scheduling and task rotation for esport concessions
+subheading630=covid strings browser based interactive scheduler for esport concessions
+subheading631=covid strings calendar based interactive version for esport concessions
+subheading632=covid strings upgrading to include an event modal for adding and storing events in local storage
+subheading633=covid strings esport economics division of labor
+subheading634=covid strings workload balanced esports economics task scheduler
+subheading635=covid strings new scheduler post task api for workload balanced esport economics task scheduler
+subheading636=covid strings esports scheduling division of labor
+subheading637=covid strings date based esports match schedule with automatic labor assignment
+subheading638=covid strings enhanced version that reads teams dates and staff from a json or csv file supports multiple matches per day and balances staff workload by role
+subheading639=covid strings extending the enhanced version so the number of matches per day is configurable via a settings file and it avoids assigning the same staff twice in one  day for different roles
+subheading640=covid strings extending the schedule for multiple days and persisting the schedule to a file 
+subheading641=covid strings esport event planning division of labor
+subheading642=covid strings browser based interactive tool for esports event planning
+subheading643=covid strings calender based drag and drop esports planner
+subheading644=covid strings saving events to a backend and persisting after refresh
+subheading645=covid strings editing and deleting events to make a fully crud capable esports event planner
+subheading646=covid strings esport crud calender based drag and drop event planner
+subheading647=covid strings event planning encrypted database storage
+subheading648=covid strings centralized storage for esport event planning data
+subheading649=covid strings translation division of labor 
+subheading650=covid strings async real time version to simulate real time job assignment
+subheading651=covid strings continuous streaming version so jobs continuously arrive in real time
+subheading652=covid strings version that connects to kafka or websockets so it works with actual real time job feeds for translation
+subheading653=covid strings payroll division of labor
+subheading654=covid strings payroll real time data entry forms
+subheading655=covid strings full stack real time payroll system
+subheading656=covid strings physical security department division of labor
+subheading657=covid strings automatically balancing workload by evenly distributing tasks among available staff
+subheading658=covid strings dynamic load balancing for esports physical security
+subheading659=covid strings extending the code to use websockets so that security staff get live updates when tasks are assigned or nodes go offline
+subheading660=covid strings extending the code to use https and wss with tls encryption so updates are secure even over the internet
+subheading661=covid strings jwt authentication over wss
+subheading662=covid strings version that send the jwt in a custom websocket subprotocol or header instead of the query string
+subheading663=covid strings hybrid version where the server accepts both subprotocol and header based jwt authentication so it works for browsers and node js clients in the same codebase
+subheading664=covid strings esport league administration division of labor 
+subheading665=covid strings esports league administration web based ui
+subheading666=covid strings full stack version with node js and mongo db for permanent data storage for an esport league
+subheading667=covid strings react frontend version with live updates and better ui for the esports league
+subheading669=covid strings team logos with dark mode
+subheading670=covid strings automatic team logo swapping for dark mode
+subheading671=covid strings remembering the user’s choice even if they reload the page 
+subheading672=covid strings auto saving for esport league administration
+subheading673=covid strings esport social media division of labor
+subheading674=covid strings dynamic task assignment and progress tracking
+subheading675=covid strings storing tasks in local storage so they persist after page reload
+subheading676=covid strings version with checkboxes so tasks can be marked as completed and still persist after reload
+subheading677=covid strings version with drag and drop reordering that still persists after reload
+subheading678=covid strings esport social media drag and drop version using sortable js
+subheading679=covid strings version that saves the new order to local storage
+subheading680=covid strings saving sorting criteria that defines the order of the data
+subheading681=covid strings saving and switching multiple sorting presets
+subheading682=covid strings ui extension for you to switch presets via dropdown in the browser
+subheading683=covid strings esport performance recreation department division of labor
+subheading684=covid strings automatic workload balancing for esports performance recreation
+suhbeading685=covid strings real time esports workload balancer that integrates with player performance apis and live event schedules so tasks adjust dynamically
+subheading686=covid strings workload powered ai balancer
+subheading687=covid strings real time adaptive ai load balancer for esport performance recreation
+subheading688=covid strings ai driven decision making for esports performance recreation
+subheading689=covid strings websocket integration so the ai can make decisions live during a match
+subheading690=covid strings esports gaming house division of labor
+subheading691=covid strings workload balanced version for an esports house
+subheading692=covid strings real time browser based tracker with websockets
+subheading693=covid strings esport house extending to include persistent storage so workloads survive server restarts
+subheading694=covid strings disability compliance division of labor
+subheading695=covid strings browser based interactive dashboard for a disability compliance department
+subheading696=covid strings fetching disability compliance from a backend Api
+subheading697=covid strings long term support version of node js to periodically fetch compliance for data logging Or Monitoring
+subheading698=covid strings pushing compliance data to a monitoring dashboard instead of just logging to a file
+subheading699=covid strings diversity training division of labor
+subheading700=covid strings web based visual task board that includes automatic workload balancing deadlines and scheduling web based interactive dashboard for diversity training division Of Labor
+subheading701=covid strings upgrading this into a fully interactive drag and drop kanban board with real time scheduling and google calendar integration so deadlines sync automatically
+subheading702=covid strings extending this into a complete working project with oauth login popup for google calendar persistent task storage in a database and automatic deadline sync both ways
+subheading703=covid strings esport insurance department division of labor
+subheading704=extending this code to include real time task assignment from user input workload balancing between employees and database integration for persistent storage in esport insurance division of labor
+subheading705=covid strings extending this further to include priority based rask assignment and employee skill matching along with adding authentication for secure task assignment implementing task completion tracking and automatic workload decrement and deploying with docker for production use in esport insurance division of labor
+subheading706=covid strings maintenance and support division of labor
+subheading707=covid strings browser based interactive version with html and css for maintenance and support division of labor
+subheading708=covid strings extending this so tasks can be edited deleted and stored in browser localstorage so they persist after refresh
+subheading709=covid strings labor union representation
+subheading710=covid strings browser based interactive simulation with charts for vote tracking
+subheading711=covid strings live multi-user voting
+subheading712=covid strings union voting secure database version with persistence admin dashboard and authentication
+subheading713=covid strings union constitution
+subheading714=covid strings creating a version that generates a fully formatted pdf directly in the browser so members can download a professional-Looking Constitution Without Needing Word
+subheading715=covid strings enhancing this so it automatically adds: a cover page with your logo, page numbers and a table of contents
+subheading716=covid strings scanning an html document, extracting headings, and building the toc automatically before generating the pdf 
+subheading717=covid strings creating a fully styled html-to-pdf with toc using puppeteer
+subheading718=covid strings extending this script so that the toc includes page numbers in the pdf
+subheading719=covid strings using js pdfs built in page numbers into your pdf documents
+subheading720=covid strings creating an optimized version that supports dynamic headers/footers and multi-page tables with html2pdf.js
+subheading721=covid strings creating a version that streams the pdf in chunks for very large datasets so it doesn’t freeze the browser 
+subheading722=covid strings ensuring all css and javascript resources are downloaded before rendering begins
+subheading723=covid strings version that Works even if you have multiple css and js files dynamically listed
+subheading724=covid strings creating a hybrid solution that auto-detects files in dev but generates a static, optimized list for production
+subheading725=covid strings automatically run generatefilelist.js before vite build using a plugin
+subheading726=covid strings version of the plugin that runs both in vite dev and vite build so your file list is always fresh during development
+subheading727=covid strings creating a typescript version with type safety and better intellisense for vite’s plugin hooks
+subheading728=covid strings creating a well structured and type safe plugin that follows the vite plugin api guidelines 
+subheading729=covid strings creating a typescript version of this plugin that’s even stricter and can be published as an npm package 
+subheading730=covid strings inter-department collaboration
+subheading731=covid strings player career progress
+subheading732=covid strings esports league
+subheading733=covid strings tv network
+subheading734=covid strings tv program guide 
+subheading735=covid strings tv clickable  programs
+subheading736=covid strings tv channel navigability
+subheading737=react tv navigation
+subheading738=react tv with focusable
+subheading739=covid strings tv volume control
+subheading740=covid strings current volume
+subheading741=covid strings tv livestreaming competitions
+subheading742=covid strings tv error handling
+subheading743=covid strings tv optimizing performance
+subheading744=covid strings device compatibility
+subheading745=covid strings use the firewall api to programmatically update the rules as needed
+subheading746=covid strings installing a ready-to-use azure firewall–specific version of this script with authentication via azure ad
+subheading747=covid strings manually creating the vnet, subnet, and public ips to ensure proper configuration and control
+subheading748=covid strings installing a load balancer or a nat gateway to forward traffic to the private ip of the vm within the virtual network 
+subheading749=covid strings initializing a node js project for overriding the firewall 
+subheading750=covid strings creating a full aws sdk + vpc endpoint setup so you can work entirely inside a private network without touching the public internet
+subheading751=covid strings creating a version that uses aws cdk so you can deploy the whole private network + endpoints in one command
+subheading752=covid strings deploying ec2 instances inside the private network that automatically use these endpoints
+subheading753=covid strings creating ready-to-run cloudformation template that creates a vpc, vpc endpoints, and an ec2 instance in one stack 
+filename=covid strings 1 build and test.yml
+<heading.html>
+covid strings website homepage
+the homepage for the covid strings website
+<!doc type html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content=width=device-width,initial-scale=1.0>
+<title>homepage</title>
+<link rel=stylesheet href=styles.css>
+</head>
+<body>
+<header>
+<h1>welcome to my website</h1>
+<p>your one-stop destination for amazing content!</p>
+</header>
+<main>
+<button id=colorbutton>change background color</button>
+</main>
+<footer>
+<p>&copy; 2025 my website. all rights reserved.</p>
+</footer>
+<script src=script.js><script>
+</body>
+</html>
+body {
+font-family: arial,sans-serif;
+margin: 0;
+padding: 0;
+text-align:center;
+background-color:#f4f4f4;
+}
+header {
+background-color: #4caf50;
+color:white;
+padding: 20px;
+}
+main {
+margin: 20px;
+}
+button {
+padding: 10px 20px;
+font-size: 16px;
+Background-Color: #4CAF50;
+Color:White;
+Border: None;
+Border-Radius:5Px;
+Cursor: Pointer;
+}
+Button:Hover {
+Background-Color:#45A049;
+}
+Footer {
+Background-Color: #333;
+Color:White;
+Padding: 10Px;
+Position: Fixed;
+Bottom: 0;
+Width: 100%;
+}
+// Select the button
+Const ColorButton=Document.GetElementById(ColorButton);
+// Array of colors to cycle through
+Const Colors=[#FF5733,#33FF57, #3357FF, #F3FF33, #FF33A8];
+// Add event listener to the button
+ColorButton.AddEventListener(Click, () => {
+// Generate a random color from the array
+Const RandomColor=Colors[Math.Floor(Math.Random() *Colors.Length)];
+// Change the background color of the body
+Document.Body.Style.BackgroundColor=RandomColor;
+});
+<Subheading.Html>
+Covid Strings Website Navigation
+How To Navigate The Covid Strings Website
+!DOCTYPE Html>
+<Html Lang=En>
+<Head>
+<Style>
+.Menu {
+List-Style: None;
+Padding: 0;
+}
+.Menu >Li {
+Position: Relative;
+Display: Inline-Block;
+Margin-Right: 20Px;
+}
+.Submenu {
+Display:None;
+Position: Absolute;
+Top: 100%;
+Left: 0;
+Background: #F0f0f0;
+List-Style:None;
+Padding: 10Px;
+}
+.Menu > Li:Hover.Submenu {
+Display:Block;
+}
+</Style>
+</Head>
+<Body>
+<Ul Class=Menu>
+<Li>Home</Li>
+<Li>About
+<Ul Class=Submenu>
+<Li>Team</Li>
+<Li>History</Li>
+</Ul>
+</Li>
+<Li>Contact</Li>
+</Ul>
+</Body>
+</Html>
+<Subheading.Html>
+Responsive Navigation Menu (Toggle Button)
+How To Create An Easily Responsible Website Navigating  Menu
+<!DOCTYPE Html>
+<Html Lang=En>
+<Head>
+<Style>
+.Nav {
+Display:Flex;
+Flex-Direction:Column;
+Background: #333;
+Color:White;
+Padding: 10Px;
+}
+.Nav A {
+Color: White;
+Text-Decoration: None;
+Padding:10Px;
+}
+.Nav A:Hover {
+Background: #575757;
+}
+.Nav.Hidden {
+Display:None;
+}
+.Toggle-Btn {
+Background: #333;
+Color:White;
+Border:None;
+Padding:10Px;
+Cursor:Pointer;
+}
+</Style>
+</Head>
+<Body>
+<Button Class=Toggle-Btn Onclick=ToggleMenu()>☰ Menu</Button>
+<Div Class=Nav Hidden Id=NavMenu>
+<A Href=#>Home</A>
+<A Href=#>Services</A>
+<A Href=#>Contact</A>
+</Div>
+<Script>
+Function ToggleMenu() {
+Const Nav=Document.GetElementById(NavMenu);
+Nav.ClassList.Toggle(Hidden);
+}
+<Script>
+</Body>
+</Html>
+<Subheading.Html>
+Covid Strings Animated Sliding Menu
+How To Create An Animated Sliding Menu For Covid Strings 
+<!DOCTYPE Html>
+<Html Lang=En>
+<Head>
+<Style>
+.Menu {
+Width: 200Px;
+Background: #333;
+Color: White;
+Position:Fixed;
+Top: 0;
+Left: -200Px;
+Height: 100%;
+Transition: Left 0.3S Ease;
+}
+.Menu A {
+Display: Block;
+Padding:15Px;
+Text-Decoration:None;
+Color:White;
+}
+.Menu A:Hover {
+Background: #575757;
+}
+.Menu.Open {
+Left: 0;
+}
+.Toggle-Btn {
+Position:Absolute;
+Top:20Px;
+Left:20Px;
+Background: #333;
+Color:White;
+Border:None;
+Padding:10Px;
+Cursor:Pointer;
+}
+</Style>
+</Head>
+<Body>
+<Button Class=Toggle-Btn Onclick=ToggleMenu()>☰ Open Menu</Button>
+<Div Class=Menu Id=SideMenu>
+<A Href=#>Home</A>
+<A Href=#>About</A>
+<A Href=#>Services</A>
+<A Href=#>Contact</A>
+</Div>
+<Script>
+Function ToggleMenu() {
+Const Menu=Document.GetElementById(SideMenu);
+Menu.ClassList.Toggle(Open);
+}
+<Script>
+</Body>
+</Html>
+<Header.Html>
+Covid Strings Workflow Overview
+An Overview Of A Covid Strings Build 
+Purpose Node Js Package
+On Node
+Release:Package
+Types:Multiple Choice Math Problems True False For Some Versions
+<Header.Html>
+Covid Strings Jobs 
+The Types Of Jobs Programmed Into A Covid Strings Workflow 
+Jobs:Input Category Superkey File Exportation 
+<Header.Html>
+Covid Strings 1 Job Variables 
+The Variables For Job Performed In Covid Strings 1 
+Main Variables 
+Input Category=The Place To Input String  And Parent Categories 
+Superkey=Key For Strings In Covid Strings
+File Exportation =Exporting Files In Covid Strings
+<Subheading.Html>
+Input Category Subtasks
+Subtasks Involving The Input Category Job In Covid Strings 1 
+Input Category Subtask1=Filter Non-Concatented String Phrases 
+Input Category Subtask2=Filter Non-Concatenated String Math Problems
+Input Category Subtask3=Filter Non-Concatenated String Sentences
+Input Category Subtask4=Filter Non-Concatented String Bonus Question 
+Input Category Subtask5=Filter Concatenated String Phrases
+Input Category Subtask6=Filter Concatented String Math Problems
+Input Category Subtask7=Filter Concatenated String Sentences 
+Input Category Subtask8=Establish String Subcategories To Filter Individual Strings 
+<Subheading.Html>
+Superkey Subtasks  
+Subtasks For The Superkey Job In Covid Strings 1 
+Superkey Subtask1=Create Covid Strings 1 Non-Concatenated Phrases Superkey 
+Superkey Subtask2=Create Covid Strings 1 Non-Concatenated Math Problems Superkey
+Superkey Subtask3=Create Covid Strings 1 Non-Concatenated Sentences Superkey
+Superkey Subtask4=Create Covid Strings 1 Concatenated Phrases Superkey
+Superkey Subtask5=Create Covid Strings 1 Concatenated Math Problems Superkey 
+Superkey Subtask6=Create Covid Strings 1 Concatenated Sentences Superkey
+<Subheading.Html>
+File Exportation Subtasks 
+Subtasks For The File Exportation Job In Covid Strings 1 
+File Exportation Subtask1=Covid Strings Background File Exportation
+File Exportation Subtask2=Covid Strings First Round File Exportation
+File Exportation Subtask3=Covid Strings Second Round File Exportation
+File Exportation Subtask4=Covid Strings Championship Round File Exportation
+File Exportation Subtask5=Covid Strings Game Code File Exportation
+File Exportation Subtask6=Covid Strings Fan Voting File Exportation
+File Exportation Subtask7=Covid Strings Key Words File Exportation
+File Exportation Subtask8=Covid Strings Website File Exportation
+<Subheading.Html>
+Input Category
+The Category For Input In Covid Strings
+<Doc.Type.Html>
+<Html Lang En>
+<Head>
+<Meta Charset Utf 8>
+<Meta Name Viewport Content Width Device Width Initial Scale 1>
+<Title> Category Filter <Title>
+<Style>
+.Item {Margin:5Px}
+.Hidden{Display:None}
+</Style>
+</Head>
+<Body>
+<H1 Filter By Category</H1>
+<Input Type=”Text” Id=“CategoryInput” Placeholder=”Search Categories 
+<Ul  Id ”ItemList”>
+<Li Class =”Item” Data-Category=”Non-Concatenated String”>Phrase>/Li>
+<Li Class =”Item” Data-Category=”Non-Concatenated String”>Math Problem>/Li>
+<Li Class =”Item” Data-Category=”Non-Concatenated String”>Sentence> /Li>
+<Li Class =”Item” Data-Category=”Non-Concatenated String”>Bonus Question>/Li>
+<Li Class =”Item” Data-Category=”Concatenated String”>Phrase> /Li>
+<Li Class =”Item” Data-Category=”Concatenated String”>/Math Problem >/Li>
+<Li Class =”Item” Data-Category=”Concatenated String”>Sentence>/Li>
+</Ul>
+<Script>
+Const Input=Document.GetElementById(CategoryInput)
+Const Items=Document.QuerySelectorAll(‘.Item’)
+Input.AddEventListener(‘Input’,()=>
+Const Filter=Input.Value.ToLowerCase()
+Items.ForEach(Item=>
+Const Category=Item.GetAttribute(‘Data-Category’).ToLowerCase()
+If(Category.Includes(Filter))
+Item.ClassList.Remove(‘Hidden’)
+Else
+Item.ClassList.Add(‘Hidden’)
+}
+});
+});
+<Script>
+<Body>
+<Html>
+Header {
+Background-Color: #4CAF50;
+Color:White;
+Padding: 20Px;
+}
+Main {
+Margin: 20Px;
+}
+Button {
+Padding: 10Px 20Px;
+Font-Size: 16Px;
+name: node.js package
+on: node
+release: package 
 types: multiple choice, math problems
 jobs: input  category superkey
-build: Covid Strings 1 
+build: covid strings 1 
 runs-on: ubuntu-latest
 steps:
 - uses: actions/checkout@v4
@@ -34,8 +1129,8 @@ map:color.directory
 covid strings 1 color list=[red,blue,green,yellow,indigo,orange,teal,magenta,white,black,pink,purple,violet]
 create color file 
 color.wrapper 
-ansiColor('xterm') {
-        // Just some echoes to show the ANSI color.
+ansicolor('xterm') {
+        // just some echoes to show the ANSI color.
         stage "\u001B[31mI'm Red\u001B[0m Now not"
         seperate color list from team list 
 stage "create build output"
@@ -47,7 +1142,7 @@ read me directory (background.readme.md,first round readme.md,second round readm
 archiveArtifacts artifacts: 'output/*.txt', excludes: 'output/*.md'
 node {
 git url: 'https://github.com/jfrogdev/project-examples.git
-def server = Artifactory.server "SERVER_ID"
+def server = artifactory.server "SERVER_ID"
 def downloadSpec 
 "files": 
 "pattern": "libs-snapshot-local/*.zip",
@@ -62,18 +1157,18 @@ def uploadSpec =
 "pattern": "resources/Frogger.*",
 "target": "libs-snapshot-local"
  def buildInfo2 = server.upload spec: uploadSpec
- buildInfo1.append buildInfo2
-    server.publishBuildInfo buildInfo1
+ buildinfo1.append buildInfo2
+    server.publishbuildinfo buildinfo1
 "package.json"
   "description": "",
   "version": "1.0.0",
   "dependencies": {
     "jquery": "1.2.3",
-    "myPrivateLibFromNpmFury": "0.0.4"
+    "myprivatelibfromnpmfury": "0.0.4"
 open registry
 ffi require
 var advApi = ffi.Library
-result=RegOpenCurrentUser(Key_Read)
+result=RegOpenCurrentUser(key_read)
 file divide covid strings 1 
 covid strings1filelist=(covid strings 1 background, first round, second round, championship, game code)
 open github files 
