@@ -240,326 +240,326 @@ how to use structured logging frameworks that support json output for covid stri
 const bunyan = require(bunyan);
 const logger = bunyan.createlogger({Name: Inventory-Service});
 logger.info({productid: a123, stock: 50 }, Stock Updated);
-<Subheading.Html>
-Covid Strings Version With Log Rotation And Pretty Printing For Development While Keeping Json Output In Production
-How To Develop A Version With Log Rotation And Pretty Printing That Keeps Json Output In Production For Covid Strings
+<subheading.html>
+covid strings version with log rotation and pretty printing for development while keeping json output in production
+how to develop a version with log rotation and pretty printing that keeps json output in production for covid strings
 /**
- * Logger with:
- *  - Pretty printing in development
- *  - JSON output in production
- *  - Log rotation (daily)
+ * logger with:
+ *  - pretty printing in development
+ *  - json output in production
+ *  - log rotation (daily)
  */
-Const Pino = Require(Pino);
-Const Rfs = Require(Rotating-File-Stream);
-Const Path = Require(Path);
-Const Fs = Require(Fs);
-// Ensure logs directory exists
-Const LogDirectory = Path.Join(__ Dirname, Logs);
-If (!Fs.ExistsSync(LogDirectory)) {
-Fs.MkdirSync(LogDirectory);
+const pino = require(pino);
+const rfs = require(rotating-file-stream);
+const path = require(path);
+const fs = require(fs);
+// ensure logs directory exists
+const logdirectory = path.join(__ dirname, logs);
+if (!fs.existssync(logdirectory)) {
+fs.mkdirsync(logdirectory);
 }
-// Create a rotating file stream (daily rotation)
-Const AccessLogStream = Rfs.CreateStream(App.Log, {
-Interval: 1D, // rotate daily
-Size: 10M,    // or rotate every 10 MegaBytes
-Compress: Gzip, // compress rotated files
-Path: LogDirectory
+// create a rotating file stream (daily rotation)
+const accesslogstream = rfs.createstream(app.log, {
+interval: 1d, // rotate daily
+Size: 10m,    // or rotate every 10 MegaBytes
+compress: gzip, // compress rotated files
+path: logdirectory
 });
-// Determine environment
-Const IsProduction =Process.Env.NODE_ENV === Production;
-// Configure Pino transport
-Let Transport;
-If (!IsProduction) {
-// Development: pretty-print logs to console
-Transport = Pino.Transport({
-Target: Pino-Pretty,
-Options: {
-Colorize: True,
-TranslateTime: SYS:Standard,
-Ignore: Pid,Hostname'
+// determine environment
+const isproduction=process.env.node_env === production;
+// configure pino transport
+let transport;
+if (!isproduction) {
+// development: pretty-print logs to console
+transport = pino.transport({
+target: pino-pretty,
+options: {
+colorize: true,
+translatetime: sys:standard,
+ignore: pid,hostname'
 }
 });
-} Else {
-// Production: JSON logs to rotating file
-Transport = Pino.Transport({
-Targets: [
+} else {
+// production: json logs to rotating file
+transport = pino.transport({
+targets: [
 {
-Target: Pino/File,
-Options: {Destination: AccessLogStream.Path }
+target: pino/file,
+options: {destination: accesslogstream.path }
 }
 ]
 });
 }
-// Create logger instance
-Const Logger = Pino(
+// create logger instance
+const logger = pino(
 {
-Level: Process.Env.LOG_LEVEL || Info,
-Base: {Pid: False } // remove pid for cleaner logs
+level: process.env.log_level || info,
+base: {pid: false } // remove pid for cleaner logs
 },
-Transport
+transport
 );
-Module.Exports = Logger;
-Usage Example: App.Js
-Const Logger = Require(./Logger);
-// Example logs
-Logger.Info(Server Starting...);
-Logger.Warn({Port: 3000 }, Low Memory Warning);
-Logger.Error(New Error(Something Went Wrong!));
-// Simulate structured logging
-Logger.Info({UserId: 123, Action: Login}, User Logged In);
-Npm Install Pino Pino-Pretty Rotating-File-Stream
-# Development (Pretty Logs)
-NODE_ENV=Development Node App.Js
-# Production (JSON Logs With Rotation)
-NODE_ENV=Production Node App.Js
-<Header.Hmtl>
-Covid Strings Organization Declaration
-The Code To Declare Covid Strings An Organization 
-<Subheading.Html>
-Covid Strings Organization Declaration 
-How To Declare Covid Strings To Be An Organization
-// Declare a namespace (organization) for your game
-Var MyGameOrg = Covid Strings 1  || {};
-// Add metadata about your organization and game
-MyGameOrg.Info = {
-OrganizationName: Covid Strings 1,
-GameName: Covid Strings,
-Version: 1.0.0",
-Author: Stephen Tiballi,
-License: MIT
+module.exports = logger;
+usage example: app.js
+const logger = require(./logger);
+// example logs
+logger.info(server starting...);
+logger.warn({port: 3000 }, low memory warning);
+logger.error(new error(something went wrong!));
+// simulate structured logging
+logger.info({userid: 123, action: login}, user logged in);
+npm install pino pino-pretty rotating-file-stream
+# development (pretty logs)
+node_env=development node app.js
+# production (json logs With Rotation)
+node_env=production Node App.Js
+<header.hmtl>
+covid strings organization declaration
+the code to declare covid strings an organization 
+<subheading.html>
+covid strings organization declaration 
+how to declare covid strings to be an organization
+// declare a namespace (organization) for your game
+var mygameorg = covid strings 1  || {};
+// add metadata about your organization and game
+mygameorg.info = {
+organizationname: covid strings 1,
+gamename: covid strings,
+version: 1.0.0",
+author: stephen tiballi,
+license: mit
 };
-// Example: Game object inside the organization namespace
-MyGameOrg.Game = {
-// Initialize the game
-Init: Function () {
-Console.Log(Initializing ${MyGameOrg.Info.GameName} By ${MyGameOrg.Info.OrganizationName});
-This.Score = 0;
-This.IsRunning = True;
+// example: game object inside the organization namespace
+mygameorg.game = {
+// initialize the game
+init: function () {
+console.log(initializing ${mygameorg.info.gamename} by ${mygameorg.info.organizationname});
+this.score = 0;
+this.isrunning = True;
 },
 // Start the game
-Start: Function () {
-If (!This.IsRunning) {
-Console.Error(Game Is Not Initialized.);
-Return;
+start: function () {
+if (!this.isrunning) {
+console.error(game is not initialized.);
+return;
 }
-Console.Log(Game Started!);
-// Game loop or logic would go here
+console.log(game started!);
+// game loop or logic would go here
 },
-// End the game
-End: Function () {
-This.IsRunning = False;
-Console.Log(Game Over! Final Score: ${This.Score});
+// end the game
+end: function () {
+this.isrunning = false;
+console.log(game over! final score: ${this.score});
 }
 };
-// Example usage:
-MyGameOrg.Game.Init();
-MyGameOrg.Game.Start();
-MyGameOrg.Game.Score = 42; // Update score
-MyGameOrg.Game.End();
-<Subheading.Html>
-Covid Strings Modern Es6 Module Version
-How To Use Module Es6 For Covid Strings To Be Structured Professionally For Larger Projects
-/Game
-  ├── Index.Html
-  ├── Main.Js
-  ├── Game.Js
-  ├── Player.Js
-  └── Utils.Js
-Index.Html
-Html
-<!DOCTYPE Html>
-<Html Lang=En>
-<Head>
-<Meta Charset=UTF-8/>
-<Meta Name=Viewport Content=Width=Device-Width, Initial-Scale=1.0/>
-<Title>ES6 Module Game</Title>
-</Head>
-<Body>
-<H1>My ES6 Module Game</H1>
-<Canvas Id=GameCanvas Width=600 Height=400></Canvas>
-<!-- Main Entry Point -->
-<Script Type=Module Src=./Main.Js><Script>
-</Body>
-</Html>
-Utils.Js
-// Utility functions module
-Export Function RandomInt(Min, Max) {
-If (Typeof Min !== Number || Typeof Max !== Number) {
-Throw New Error(RandomInt Requires Numeric Arguments);
+// example usage:
+mygameorg.game.init();
+mygameorg.game.start();
+mygameorg.game.score = 42; // update score
+mygameorg.game.end();
+<subheading.html>
+covid strings modern es6 module version
+how to use module es6 for covid strings to be structured professionally for larger projects
+/game
+  ├── index.html
+  ├── main.js
+  ├── game.js
+  ├── player.js
+  └── utils.js
+index.html
+html
+<!doc type html>
+<html lang=en>
+<head>
+<meta charset=utf-8/>
+<meta name=viewport content=width=device-width, initial-scale=1.0/>
+<title>es6 module game</title>
+</head>
+<body>
+<h1>my es6 module game</h1>
+<canvas id=gamecanvas width=600 height=400></canvas>
+<!-- main entry point -->
+<script type=module src=./main.js><script>
+</body>
+</html>
+utils.js
+// utility functions module
+export function randomint(min, max) {
+if (typeof min !== number || typeof max !== number) {
+throw new error(randomint requires numeric arguments);
 }
-Return Math.Floor(Math.Random() * (Max - Min + 1)) + Min;
+return math.floor(math.random() * (max - min + 1)) + min;
 }
-Export Function ClearCanvas(Ctx, Width, Height) {
-Ctx.ClearRect(0, 0, Width, Height);
+export function clearcanvas(ctx, width, height) {
+ctx.clearrect(0, 0, width, height);
 }
-Player.Js
-// Player class module
-Export Default Class Player {
-Constructor(X, Y, Color = Blue) {
-If (Typeof X !== Number || Typeof Y !== Number) {
-Throw New Error(Player Coordinates Must Be Numbers);
+player.js
+// player class module
+export default class player {
+constructor(x, y, color = blue) {
+if (typeof x !== number || typeof y !== number) {
+throw new error(player coordinates must be numbers);
 }
-This.X = X;
-This.Y =Y ;
-This.Size = 20;
-This.Color = Color;
+this.x = x;
+this.y =y ;
+this.size = 20;
+this.color =color;
 }
-Draw(Ctx) {
-Ctx.FillStyle = This.Color;
-Ctx.FillRect(This.X, This.Y, This.Size, This.Size);
+draw(ctx) {
+ctx.fillstyle = this.color;
+ctx.fillrect(this.x, this.y, this.size, this.size);
 }
-Move(Dx, Dy) {
-This.X += Dx;
-This.Y += Dy;
-}
-}
-Game.Js
-Import Player From ./Player.Js;
-Import {RandomInt, ClearCanvas } From ./Utils.Js;
-Export Default Class Game {
-Constructor(CanvasId) {
-Const Canvas = Document.GetElementById(CanvasId);
-If (!Canvas) Throw New Error(Canvas With Id ${CanvasId} Not Found);
-This.Canvas = Canvas;
-This.Ctx = Canvas.GetContext(2D);
-// Create a player at a random position
-This.Player = New Player(RandomInt(0, Canvas.Width - 20), RandomInt(0, Canvas.Height - 20));
-// Bind keyboard events
-Window.AddEventListener(Keydown, (E) => This.HandleKey(E));
-}
-HandleKey(E) {
-Const Step = 5;
-Switch (E.Key) {
-Case ArrowUp: This.Player.Move(0, -Step); Break;
-Case ArrowDown: This.Player.Move(0, Step); Break;
-Case ArrowLeft: This.Player.Move(-Step, 0); Break;
-Case ArrowRight: This.Player.Move(Step, 0); Break;
+move(dx, dy) {
+this.x += dx;
+this.y += dy;
 }
 }
-Update() {
-ClearCanvas(This.Ctx, This.Canvas.Width, This.Canvas.Height);
-This.Player.Draw(This.Ctx);
+game.js
+import player from ./player.js;
+import {randomint, clearcanvas } from ./utils.js;
+export default class game {
+constructor(canvasid) {
+const canvas = document.getelementbyid(canvasid);
+if (!canvas) throw new error(canvas with id ${canvasid} not found);
+this.canvas = canvas;
+this.ctx = canvas.getcontext(2d);
+// create a player at a random position
+this.player = new player(randomint(0, canvas.width - 20), randomint(0, canvas.height - 20));
+// bind keyboard events
+window.addeventlistener(keydown, (e) => this.handlekey(e));
 }
-Start() {
-Const Loop = () => {
-This.Update();
-RequestAnimationFrame(Loop);
+handlekey(e) {
+const step = 5;
+switch (e.key) {
+case arrowup: this.player.move(0, -step); break;
+case arrowdown: this.player.move(0, step); break;
+case arrowleft: this.player.move(-step, 0); break;
+case arrowright: this.player.move(step, 0); break;
+}
+}
+update() {
+clearcanvas(this.ctx, this.canvas.width, this.canvas.height);
+this.player.draw(this.ctx);
+}
+start() {
+const loop = () => {
+this.update();
+requestanimationframe(loop);
 };
-Loop();
+loop();
 }
 }
-Main.Js
-Import Game From ./Game.Js;
-// Initialize and start the game
-Try {
-Const Game = New Game(GameCanvas);
-Game.Start();
-} Catch (Err) {
-Console.Error(Game Initialization Failed:, Err.Message);
+main.js
+import game From ./game.js;
+// initialize and start the game
+try {
+const game = new game(gamecanvas);
+game.start();
+} catch (err) {
+console.error(game initialization failed:, err.message);
 }
-<Subheading.Html>
-Covid Strings Collision Detection 
-How To Use Collision Detection To Turn Covid Strings Into A Multi-Level Game
-<!DOCTYPE Html>
-<Html>
-<Head>
-<Meta Charset=UTF-8>
-<Title>Multi-Level Game With Collision Detection</Title>
-<Style>
-Canvas {Background: #222; Display: Block; Margin: Auto; }
-</Style>
-</Head>
-<Body>
-<Canvas Id=GameCanvas Width=600 Height=400></Canvas>
-<Script>
+<subheading.html>
+covid Strings collision detection 
+how to use collision detection to turn covid strings into a multi-level game
+<!doc type html>
+<html>
+<head>
+<meta Charset=UTF-8>
+<title>Multi-Level Game With Collision Detection</Title>
+<style>
+canvas {Background: #222; Display: Block; Margin: Auto; }
+</style>
+</head>
+<body>
+<canvas id=gamecanvas width=600 height=400></canvas>
+<script>
 // =====================
-// Game Setup
+// game setup
 // =====================
-Const Canvas = Document.GetElementById(GameCanvas);
-Const Ctx = Canvas.GetContext(2D);
-// Player object
-Const Player = {
-X: 50,
-Y: 50,
-Width: 20,
-Height: 20,
-Speed: 3,
-Color: Lime
+const canvas = document.getelementbyid(gamecanvas);
+const ctx = canvas.getcontext(2d);
+// player object
+const player = {
+x: 50,
+y: 50,
+width: 20,
+height: 20,
+speed: 3,
+color: lime
 };
-// Levels with their own collision objects
-Const Levels = [
-{ // Level 1
-Walls: [
-{ X: 100, Y: 100, Width: 200, Height: 20 },
-{ X: 300, Y: 200, Width: 20, Height: 150 }
+// levels with their own collision objects
+const levels = [
+{ // level 1
+walls: [
+{ x: 100, y: 100, width: 200, height: 20 },
+{ X: 300, y: 200, width: 20, height: 150 }
 ]
 },
-{ // Level 2
-Walls: [
-{ X: 50, Y: 50, Width: 500, Height: 20 },
-{ X: 200, Y: 150, Width: 20, Height: 200 },
-{ X: 400, Y: 100, Width: 150, Height: 20 }
+{ // level 2
+walls: [
+{ x: 50, y: 50, width: 500, height: 20 },
+{ x: 200, y: 150, width: 20, height: 200 },
+{ x: 400, y: 100, width: 150, height: 20 }
 ]
 }
 ];
-Let CurrentLevel = 0;
+let currentlevel = 0;
 // =====================
-// Collision Detection
+// collision detection
 // =====================
-Function IsColliding(Rect1, Rect2) {
-Return (
-Rect1.X < Rect2.X + Rect2.Width &&
-Rect1.X + Rect1.Width > Rect2.X &&
-Rect1.Y < Rect2.Y + Rect2.Height &&
-Rect1.Y + Rect1.Height > Rect2.Y
+function iscolliding(rect1, rect2) {
+return (
+rect1.x < rect2.x + rect2.width &&
+rect1.x + rect1.width > rect2.x &&
+rect1.y < rect2.y + rect2.height &&
+rect1.y + rect1.height > rect2.y
 );
 }
-// Check if player collides with any wall in current level
-Function CheckCollision(NewX, NewY) {
-Const NewPlayerRect = {X: NewX, Y: NewY, Width: Player.Width, Height: Player.Height };
-For (Let Wall Of Levels[CurrentLevel].Walls) {
-If (IsColliding(NewPlayerRect, Wall)) {
-Return True; // Collision detected
+// check if player collides with any wall in current level
+function checkcollision(newX, newy) {
+const newplayerrect = {x: newx, y: newy, width: player.width, height: player.height };
+for (let wall Of Levels[CurrentLevel].Walls) {
+if (iscolliding(newplayerrect, wall)) {
+return true; // collision detected
 }
 }
-Return False;
+return false;
 }
 // =====================
-// Input Handling
+// input handling
 // =====================
-Const Keys = {};
-Window.AddEventListener(Keydown, E => Keys[E.Key] = True);
-Window.AddEventListener(Keyup, E => Keys[E.Key] = False);
+const keys = {};
+window.addeventlistener(keydown, e => keys[e.key] = true);
+window.addeventlistener(keyup, e => keys[e.key] = false);
 // =====================
-// Game Loop
+// game loop
 // =====================
-Function Update() {
-Let NewX = Player.X;
-Let NewY = Player.Y;
-If (Keys[ArrowUp]) NewY -= Player.Speed;
-If (Keys[ArrowDown]) NewY += Player.Speed;
-If (Keys[ArrowLeft]) NewX -= Player.Speed;
-If (Keys[ArrowRight]) NewX += Player.Speed;
-// Only move if no collision
-If (!CheckCollision(NewX, NewY)) {
-Player.X = NewX;
-Player.Y = NewY;
+function update() {
+let newx = player.x;
+let newy = player.y;
+if (keys[arrowup]) newy -= player.speed;
+if (keys[arrowdown]) newy += player.speed;
+if (keys[arrowleft]) newx -= player.speed;
+if (keys[arrowright]) newx += player.speed;
+// only move if no collision
+if (!checkcollision(newx, newy)) {
+player.x = newx;
+player.y = newy;
 }
-// Example: Level change trigger
-If (Player.X > Canvas.Width - Player.Width) {
-CurrentLevel = (CurrentLevel + 1) % Levels.Length;
-Player.X = 10; // Reset position
-Player.Y = 10;
+// example: level change trigger
+if (player.x > canvas.width - player.width) {
+currentlevel = (currentlevel + 1) % levels.length;
+player.x = 10; // reset position
+player.y = 10;
 }
 }
-Function Draw() {
-Ctx.ClearRect(0, 0, Canvas.Width, Canvas.Height);
-// Draw walls
-Ctx.FillStyle = Red;
-For (Let Wall Of Levels[CurrentLevel].Walls) {
-Ctx.FillRect(Wall.X, Wall.Y, Wall.Width, Wall.Height);
+function draw() {
+ctx.clearrect(0, 0, canvas.width, canvas.height);
+// draw walls
+ctx.fillstyle = red;
+for (let wall of levels[currentlevel].walls) {
+ctx.fillrect(wall.x, wall.y, wall.width, wall.height);
 }
-// Draw player
+// draw player
 ctx.fillstyle = player.color;
 ctx.fillrect(player.x, player.y, player.width, player.height);
 // draw level text
@@ -675,13 +675,13 @@ ctx.clearRect(0, 0, Canvas.Width, Canvas.Height);
 moveplayer();
 player.draw(ctx);
 for (let obs of obstacles) {
-Obs.Update(Canvas);
-Obs.Draw(Ctx);
-// Collision detection
+obs.update(canvas);
+obs.draw(ctx);
+// collision detection
 if (circlescollide(player, obs)) {
 ctx.fillstyle =yellow;
 ctx.font = 20px arial;
-ctx.filltext(Collision!, 10, 20);
+ctx.filltext(collision!, 10, 20);
 }
 }
 requestanimationframe(gameloop);
@@ -706,7 +706,7 @@ const {octokit }=require(@octokit/rest);
 require(dotenv).config();
 // validate environment variables
 if (!process.env.github_token) {
-console.error(❌ missing github_token In .env file);
+console.error(❌ missing github_token in .env file);
 process.exit(1);
 }
 // initialize octokit with authentication
@@ -749,529 +749,529 @@ replace placeholders (owner, repo, head, base) with your actual github details.
 run:
 bash
 node create-pr.js
-<Subheading.Html>
-Covid Strings Documentation Update Optimization 
-An Update On The Covid Strings  Repository 
-Description
-To  Try And Give An Up To Date Version Of Covid Strings 1 To The Public Before Publishing 
-Added Test
-Related Tickets And Documents
-File For Code Of Conduct 
-File For Licensing To Specifically Mention The Version’s Copyright 
-Closes
-Mobile And Desktop Screenshots
-Use Covid Image In Background As A Screenshot To Let The User Know Covid Is The Subject Of The Game 
-<!DOCTYPE Html>
-<Html Lang=En>
-<Head>
-<Meta Charset=UTF-8>
-<Title>Optimized DOM Updates</Title>
-<Style>
-Body {Font-Family: Arial, Sans-Serif; }
-#List {Margin-Top: 10Px; }
-</Style>
-</Head>
-<Body>
-<H2>Optimized DOM Update Demo</H2>
-<Button Id=UpdateBtn>Add 10,000 Items</Button>
-<Ul Id=List></Ul>
-<Script>
-// Utility: Create a large number of list items efficiently
-Function AddItemsEfficiently(Count) {
-// Use DocumentFragment to avoid multiple reflows
-Const Fragment = Document.CreateDocumentFragment();
-For (Let I = 1; I <= Count; I++) {
-Const Li = Document.CreateElement(Li);
-Li.TextContent = Item ${I};
-Fragment.AppendChild(Li);
+<subheading.html>
+covid strings documentation update optimization 
+an update on the covid strings  repository 
+description
+to  try and give an up to date version of ccvid strings 1 to the public before publishing 
+added test
+related Tickets and documents
+file for code of conduct 
+file for licensing to specifically mention the version’s copyright 
+closes
+mobile and desktop screenshots
+use covid image in background as a screenshot to let the user know covid is the subject of the game 
+<! doc type html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<title>optimized dom updates</title>
+<style>
+body {font-family: arial, sans-serif; }
+#list {margin-top: 10px; }
+</style>
+</head>
+<body>
+<h2>optimized dom update demo</h2>
+<button id=updatebtn>Add 10,000 items</button>
+<ul id=list></ul>
+<script>
+// utility: create a large number of list items efficiently
+function additemsefficiently(count) {
+// use documentFragment to avoid multiple reflows
+const fragment = document.createdocumentfragment();
+for (let i = 1; i <= count; i++) {
+const li = document.createelement(li);
+li.textcontent = item ${i};
+fragment.appendchild(li);
 }
-// Append all at once
-Document.GetElementById(List).AppendChild(Fragment);
+// append all at once
+document.getelementbyid(list).appendchild(fragment);
 }
 // Event listener for button click
-Document.GetElementById(UpdateBtn).AddEventListener(Click, () => {
-Const Start = Performance.Now();
-// Clear existing list in one operation
-Const List = Document.GetElementById(List);
-List.TextContent = ''; // Faster than removing children in a loop
-// Batch DOM updates
-AddItemsEfficiently(10000);
-Const End = Performance.Now();
-Console.Log(DOM Update Completed In ${(End - Start).ToFixed(2)} Ms);
+document.getelementbyid(updatebtn).addeventlistener(click, () => {
+const start = Performance.Now();
+// clear existing list in one operation
+const list = document.getelementbyid(list);
+list.textcontent = ''; // faster than removing children in a loop
+// batch dom updates
+additemsefficiently(10000);
+const end = performance.now();
+console.log(dom update completed in ${(end - start).tofixed(2)} ms);
 });
-<Script>
-</Body>
-</Html>
-<Subheading.Html>
-Covid Strings Incremental Rendering Version
-How To Create An Incremental Rendering Version For Covid Strings 
+<script>
+</body>
+</html>
+<subheading.html>
+covid strings incremental rendering version
+how to create an incremental rendering version for covid strings 
 // pages/index.js
-Export Default Function Home({Time }) {
-Return (
-<Main Style={{FontFamily: Arial, Padding: 20Px}}>
-<H1>Incremental Static Regeneration Example</H1>
-<P>This Page Was Generated At:</P>
-<Pre>{Time}</Pre>
-<P>Refresh The Page To See If It Regenerates After The Set Interval.</P>
-</Main>
+export default function home({time }) {
+return (
+<main style={{fontfamily: arial, padding: 20px}}>
+<h1>incremental static regeneration example</h1>
+<p>this page was generated at:</p>
+<pre>{time}</pre>
+<p>refresh the page to see if it regenerates after the set interval.</p>
+</main>
 );
 }
-// This function runs at build time and then regenerates the page
+// this function runs at build time and then regenerates the page
 // in the background every `revalidate` seconds.
-Export Async Function GetStaticProps() {
-Try {
-Const CurrentTime = New Date().ToISOString();
-Return {
-Props: {
-Time: CurrentTime
+export async function getstaticprops() {
+try {
+const currenttime = new date().toisostring();
+return {
+props: {
+time: currenttime
 },
-// Revalidate every 10 seconds
-Revalidate: 10
+// revalidate every 10 seconds
+revalidate: 10
 };
-} Catch (Error) {
-Console.Error(Error Generating Static Props:, Error);
-Return {
-Props: {
-Time: Error Fetching Time
+} catch (error) {
+console.error(error generating static props:, error);
+return {
+props: {
+time: error fetching time
 },
-Revalidate: 10
+revalidate: 10
 };
 }
 }
-# 1. Create A Next.Js App
-Npx Create-Next-App Isr-Demo
-Cd Isr-Demo
-# 2. Replace Pages/Index.Js With The Code Above
-# 3. Run The Dev Server
-Npm Run Dev
-Http://Localhost:3000
-<Subheading.Html>
-Covid Strings Version That Fetches Live Api Data
-How To Fetch Live Api Data For Covid Strings Document Optimization
-<!DOCTYPE Html>
-<Html Lang=En>
-<Head>
-<Meta Charset=UTF-8>
-<Meta Name=Viewport Content=Width=Device-Width, Initial-Scale=1.0>
-<Title>Fetch Live API Data</Title>
-<Style>
-Body {Font-Family: Arial, Sans-Serif; Padding: 20Px; }
-.Post {Border: 1Px Solid #Ccc; Padding: 10Px; Margin-Bottom: 10Px; Border-Radius: 5Px; }
-.Error {Color: Red; }
-</Style>
-</Head>
-<Body>
-<H1>Live API Data Example</H1>
-<Div Id=Posts></Div>
-<P Id=Error Class=Error></P>
-<Script>
-// API endpoint
-Const API_URL = Https://Jsonplaceholder.Typicode.Com/Posts;
-// Function to fetch and display posts
-Async Function FetchPosts() {
-Try {
-Const Response = Await Fetch(API_URL);
-// Check if the response is OK
-If (!Response.Ok) {
-Throw New Error(HTTP Error! Status: ${Response.Status});
+# 1. create a next.js app
+npx create-next-app isr-demo
+cd isr-demo
+# 2. replace pages/index.js with the code above
+# 3. run the dev server
+npm run dev
+http://localhost:3000
+<subheading.html>
+covid strings version that fetches live api data
+how to fetch live api data for covid strings document optimization
+<! doc type html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content=width=device-width, initial-scale=1.0>
+<title>fetch live api data</title>
+<style>
+body {font-family: arial, sans-serif; padding: 20px; }
+.post {border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
+.error {color: red; }
+</style>
+</head>
+<body>
+<h1>live api data example</h1>
+<div id=posts></div>
+<p id=error class=error></p>
+<script>
+// api endpoint
+const api_url = https://jsonplaceholder.typicode.com/posts;
+// function to fetch and display posts
+async function fetchposts() {
+try {
+const response = await fetch(api_url);
+// check if the response is ok
+if (!response.ok) {
+throw new error(http error! status: ${response.status});
 }
-Const Data = Await Response.Json();
-// Display posts
-Const PostsContainer = Document.GetElementById(Posts);
-PostsContainer.InnerHTML = ""; // Clear previous content
-Data.Slice(0, 5).ForEach(Post => { // Limit to first 5 posts
-Const PostElement = Document.CreateElement(Div);
-PostElement.ClassList.Add(Post);
-PostElement.InnerHTML = 
-<H3>${Post.Title}</H3>
-<P>${Post.Body}</P>
+const data = await response.json();
+// display posts
+const postscontainer = document.getelementbyid(posts);
+postscontainer.innerhtml = ""; // clear previous content
+data.slice(0, 5).foreach(Post => { // limit to first 5 posts
+const postelement =document.createelement(div);
+postelement.classlist.add(post);
+postelement.innerhtml = 
+<h3>${post.title}</h3>
+<p>${post.body}</p>
 ;
-PostsContainer.AppendChild(PostElement);
+postscontainer.appendchild(postelement);
 });
-} Catch (Error) {
-Document.GetElementById(Error).TextContent = Failed To Fetch Data:  + Error.Message;
+} catch (error) {
+document.getelementbyid(error).textcontent = failed to fetch data:  + error.message;
 }
 }
-// Fetch posts on page load
-FetchPosts();
-<Script>
-</Body>
-</Html>
-<Subheading.Html>
-Covid Strings Version That Fetches Live Weather Data From Open Weather Map
-How To Create A Version That Fetches Live Weather Data From Open Weather Map For Covid Strings 
-<!DOCTYPE Html>
-<Html Lang=En>
-<Head>
-<Meta Charset=UTF-8>
-<Meta Name=Viewport Content=Width=Device-Width, Initial-Scale=1.0>
-<Title>Live Weather App</Title>
-<Style>
-Body {
-Font-Family: Arial, Sans-Serif;
-Background: #F0f4f8;
-Text-Align: Center;
-Padding: 20Px;
+// fetch posts on page load
+fetchposts();
+<script>
+</body>
+</html>
+<subheading.html>
+covid strings version that fetches live weather data from open weather map
+how to create a version that fetches live weather data from open weather map for covid strings 
+<! doc type html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content=width=device-width, initial-scale=1.0>
+<title>live weather app</title>
+<style>
+body {
+font-family: arial, sans-serif;
+background: #f0f4f8;
+text-align: center;
+padding: 20px;
 }
-Input, Button {
-Padding: 10Px;
-Margin: 5Px;
-Font-Size: 16Px;
+input, button {
+padding: 10px;
+margin: 5px;
+font-size: 16px;
 }
-.Weather {
-Margin-Top: 20Px;
-Padding: 15Px;
-Background: White;
-Border-Radius: 8Px;
-Display: Inline-Block;
-Min-Width: 250Px;
-Box-Shadow: 0 2Px 6Px Rgba(0,0,0,0.1);
+.weather {
+margin-top: 20px;
+padding: 15px;
+background: white;
+border-radius: 8px;
+display: inline-block;
+min-width: 250px;
+box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-.Error {
-Color: Red;
-Font-Weight: Bold;
+.error {
+color: red;
+font-weight: bold;
 }
-</Style>
-</Head>
-<Body>
-<H1>🌤 Live Weather App</H1>
-<Input Type=Text Id=City Placeholder=Enter City Name>
-<Button Onclick=GetWeather()>Get Weather</Button>
-<Div Id=Result></Div>
-<Script>
-Const API_KEY = YOUR_API_KEY_HERE; // Replace with your OpenWeatherMap API key
-Async Function GetWeather() {
-Const City = Document.GetElementById(City).Value.Trim();
-Const ResultDiv = Document.GetElementById(Result);
-ResultDiv.InnerHTML = ""; // Clear previous results
-// Input validation
-If (!City) {
-ResultDiv.InnerHTML = <P Class=Error>Please Enter A City Name.</P>;
-Return;
+</style>
+</head>
+<body>
+<h1>🌤 live weather app</h1>
+<input type=text id=city placeholder=enter city name>
+<button onclick=getweather()>get weather</button>
+<div id=result></div>
+<script>
+const api_key = your_api_key_here; // replace with your openweathermap api key
+async function getweeather() {
+const city = document.getelementbyid(city).value.trim();
+const resultdiv = document.getelementbyid(result);
+resultdiv.innerhtml = ""; // clear previous results
+// input validation
+if (!city) {
+resultdiv.inner html= <p class=error>please enter a city name.</p>;
+return;
 }
-Try {
-Const Response = Await Fetch(
-Https://Api.Openweathermap.Org/Data/2.5/Weather?Q=${EncodeURIComponent(City)}&Appid=${API_KEY}&Units=Metric
+try {
+const response = await fetch(
+https://api.openweathermap.org/data/2.5/weather?q=${encodeuricomponent(city)}&appid=${api_key}&units=metric
 );
-If (!Response.Ok) {
-If (Response.Status === 404) {
-Throw New Error(City Not Found. Please Check The Spelling.);
-} Else {
-Throw New Error(Unable To Fetch Weather Data.);
+if (!response.ok) {
+if (response.status === 404) {
+throw new error(city not found. please check the spelling.);
+} else {
+throw new error(unable to fetch weather data.);
 }
 }
-Const Data = Await Response.Json();
-// Display weather info
-ResultDiv.InnerHTML = 
-<Div Class=Weather>
-<H2>${Data.Name}, ${Data.Sys.Country}</H2>
-<P><Strong>Temperature:</Strong> ${Data.Main.Temp}°C</P>
-<P><Strong>Condition:</Strong> ${Data.Weather[0].Description}</P>
-<P><Strong>Humidity:</Strong> ${Data.Main.Humidity}%</P>
-<P><Strong>Wind Speed:</Strong> ${Data.Wind.Speed} M/S</P>
-</Div>
+const data = await response.json();
+// display weather info
+resultdiv.innerhtml = 
+<div class=weather>
+<h2>${data.name}, ${data.sys.country}</h2>
+<p><strong>temperature:</strong> ${data.main.temp}°c</p>
+<p><strong>condition:</strong> ${data.weather[0].description}</p>
+<p><strong>humidity:</strong> ${data.main.humidity}%</p>
+<p><strong>wind speed:</strong> ${data.wind.speed} m/s</p>
+</div>
 ;
-} Catch (Error) {
-ResultDiv.InnerHTML = <P Class=Error>${Error.Message}</P>;
+} catch (error) {
+resultdiv.innerhtml=<p class=error>${error.message}</p>;
 }
 }
-<Script>
-</Body>
-</Html>
-<Subheading.Html>
-Covid Strings Weather CLI APP
-How To Create A CLI Weather App For Covid Strings 
+<script>
+</body>
+</html>
+<subheading.html>
+covid strings weather cli app
+how to create a cli weather app for covid strings 
 /**
- * Weather CLI App
- * Fetches current weather for a given city from OpenWeatherMap API
- * Run: node weather.js "City Name"
+ * weather cli app
+ * fetches current weather for a given city from openweathermap api
+ * run: node weather.js "city name"
  */
-Import Fetch From Node-Fetch; // For Node < 18; in Node 18+, you can use global fetch
-Import Process From Process;
-// ====== CONFIGURATION ======
-Const API_KEY = YOUR_OPENWEATHERMAP_API_KEY; // Get it from https://openweathermap.org/api
-Const BASE_URL = Https://Api.Openweathermap.Org/Data/2.5/Weather;
-// ====== INPUT VALIDATION ======
-If (Process.Argv.Length < 3) {
-Console.Error(Usage: Node Weather.Js City Name);
-Process.Exit(1);
+import fetch from node-fetch; // for node < 18; in node 18+, you can use global fetch
+import process from process;
+// ====== configuration ======
+const api_key = your_open weather map _api_key; // get it from https://openweathermap.org/api
+const base_url = https://api.openweathermap.org/data/2.5/weather;
+// ====== input validation ======
+if (process.argv.length < 3) {
+console.error(usage: bode weather.js city name);
+process.exit(1);
 }
-Const City = Process.Argv.Slice(2).Join(' ');
-// ====== FETCH WEATHER FUNCTION ======
-Async Function GetWeather(CityName) {
-Try {
-Const Url =${BASE_URL}?Q=${EncodeURIComponent(CityName)}&Appid=${API_KEY}&Units=Metric;
-Const Response = Await Fetch(Url);
-If (!Response.Ok) {
-Throw New Error(API Request Failed: ${Response.Status} ${Response.StatusText});
+const city=process.argv.slice(2).join(' ');
+// ====== fetch weather function ======
+async function getweather(cityname) {
+try {
+const url =${base_url}?Q=${encodeuricomponent(cityname)}&appid=${api_key}&yunits=metric;
+const response = await fetch(url);
+if (!response.ok) {
+throw new error(api request failed: ${response.status} ${response.statustext});
 }
-Const Data = Await Response.Json();
-// Handle case where city is not found
-If (Data.Cod !== 200) {
-Throw New Error(Data.Message || Unknown Error);
+const data =await response.json();
+// handle case where city is not found
+if (data.cod !== 200) {
+throw new error(data.message|| unknown error);
 }
-// Display weather info
-Console.Log(\NWeather For ${Data.Name}, ${Data.Sys.Country}:);
-Console.Log(Temperature: ${Data.Main.Temp}°C);
-Console.Log(Feels Like: ${Data.Main.Feels_like}°C);
-Console.Log(Condition: ${Data.Weather[0].Description});
-Console.Log(Humidity: ${Data.Main.Humidity}%);
-Console.Log(Wind Speed: ${Data.Wind.Speed} M/S\N);
-} Catch (Err) {
-Console.Error(Error: ${Err.Message});
+// display weather info
+console.log(\nweather for ${data.name}, ${data.sys.country}:);
+console.log(temperature: ${data.main.temp}°c);
+console.log(feels like: ${data.main.feels_like}°C);
+console.log(condition: ${data.weather[0].description});
+console.log(humidity: ${data.main.humidity}%);
+console.log(wind speed: ${data.wind.speed} m/s\n);
+} catch (err) {
+console.error(error: ${err.message});
 }
 }
-// ====== RUN SCRIPT ======
-GetWeather(City);
-Npm Init -Y
-Npm Install Node-Fetch
-Node Weather.Js New York
-Weather For New York, US:
-Temperature: 5°C
-Feels Like: 2°C
-Condition: Clear Sky
-Humidity: 60%
-Wind Speed: 3.6 M/S
-<Subheading.Html>
-Covid Strings Caching Results To Avoid Hitting The Api Too Often
-How To Caching Results To Avoid Hitting The Api Too Often For Covid Strings Document Optimization
+// ====== run script ======
+getweather(city);
+npm init-y
+npm install node-fetch
+node weather.js new york
+weather for new york, us:
+temperature: 5°c
+feels like: 2°c
+condition: clear sky
+humidity: 60%
+wind speed: 3.6 m/s
+<subheading.html>
+covid strings caching results to avoid hitting the api too often
+how to caching results to avoid hitting the api too often for covid strings document optimization
 /**
- * API fetcher with in-memory caching to reduce API calls.
- * Works in Node.js and browsers.
+ * api fetcher with in-memory caching to reduce api calls.
+ * works in node.js and browsers.
  */
-Const Fetch = (...Args) => Import(Node-Fetch).Then(({Default: Fetch }) => Fetch(...Args)); // For Node.js
-Class APICache {
-Constructor(TtlMs = 60000) { // Default TTL: 60 seconds
-This.Ttl = TtlMs;
-This.Cache = New Map();
+const fetch = (...args) => import(node-fetch).then(({default: fetch }) => fetch(...args)); // for node.js
+class apicache {
+constructor(ttlms = 60000) { // default ttl: 60 seconds
+this.ttl = ttlms;
+this.cache =new map();
 }
 /**
-* Generates a unique cache key based on URL and options.
+* generates a unique cache key based on url and options.
 */
-_ GetCacheKey(Url, Options) {
-Return ${Url}:${JSON.Stringify(Options || {})};
+_ getcachekey(url, options) {
+return ${url}:${json.stringify(options || {})};
 }
 /**
- * * Fetch data with caching.
-* @param {string} url - API endpoint
+ * * fetch data with caching.
+* @param {string} url - api endpoint
 * @param {object} options - fetch options
 */
-Async Fetch(Url, Options = {}) {
-Const Key = This._ GetCacheKey(Url, Options);
-Const Now = Date.Now();
-// Check if cached and still valid
-If (This.Cache.Has(Key)) {
-Const {Expiry, Data } = This.Cache.Get(Key);
-If (Now < Expiry) {
-Console.Log(✅ Returning Cached Result For:, Url);
-Return Data;
-} Else {
-This.Cache.Delete(Key); // Expired
+async fetch(url,options = {}) {
+const key = this._ getcachekey(url, options);
+const now = date.now();
+// check if cached and still valid
+if (this.cache.has(key)) {
+const {expiry, data } = this.cache.get(key);
+if (now <expiry) {
+console.log(✅ returning cached result for:, url);
+return data;
+} else {
+this.cache.delete(key); // expired
 }
 }
-Try {
-Console.Log(🌐 Fetching From API:, Url);
-Const Response = Await Fetch(Url, Options);
-If (!Response.Ok) {
-Throw New Error(API Request Failed With Status ${Response.Status});
+try {
+console.log(🌐 fetching from api:, url);
+const response = await fetch(url, options);
+if (!response.ok) {
+throw new error(api request failed with status ${response.status});
 }
-Const Data = Await Response.Json();
-// Store in cache
-This.Cache.Set(Key, {
-Data,
-Expiry: Now + This.Ttl
+const data =await response.json();
+// store in cache
+this.cache.set(key, {
+data,
+expiry: now + this.ttl
 });
-Return Data;
-} Catch (Error) {
-Console.Error(❌ API Fetch Error:, Error.Message);
-Throw Error;
+return data;
+} catch (error) {
+console.error(❌ api fetch error:, error.message);
+throw error;
 }
 }
 /**
-* Clears the entire cache.
+* clears the entire cache.
 */
-Clear() {
-This.Cache.Clear();
+clear() {
+this.cache.clear();
 }
 }
-// Example usage
-(Async () => {
-Const Api = New APICache(10000); // Cache for 10 seconds
-Const Url = Https://Api.Coindesk.Com/V1/Bpi/Currentprice.Json;
-Try {
-Const FirstCall = Await Api.Fetch(Url);
-Console.Log(First Call:, FirstCall.Bpi.USD.Rate);
-// This will return cached data
-Const SecondCall = Await Api.Fetch(Url);
-Console.Log(Second Call:, SecondCall.Bpi.USD.Rate);
-// Wait for cache to expire
-SetTimeout(Async () => {
-Const ThirdCall = Await Api.Fetch(Url);
-Console.Log(Third Call (After Cache Expiry):, ThirdCall.Bpi.USD.Rate);
+// example usage
+(async () => {
+const api = new apicache(10000); // cache for 10 seconds
+const url = https://api.coindesk.com/v1/bpi/currentprice.json;
+try {
+const firstcall =await api.fetch(url);
+console.log(first call:, firstcall.bpi.usd.rate);
+// this will return cached data
+const secondcall = await api.fetch(url);
+console.log(second call:, secondcall.bpi.usd.rate);
+// wait for cache to expire
+settimeout(async () => {
+const thirdcall = await api.fetch(url);
+console.log(third call (after cache expiry):, thirdcall.bpi.usd.rate);
 }, 11000);
-} Catch (Err) {
-Console.Error(Error:, Err.Message);
+} catch (err) {
+console.error(error:, err.message);
 }
 })();
-<Subheading.Html>
-Covid Strings Persistent Caching Version That Stores Results In Local Storage Or A File So The Cache Survives Restarts
-How To Create Persistent Caching That Stores Results In Local Storage Or A File So The Cache Survives Restarts For Document Optimization In Covid Strings  
+<subheading.html>
+covid strings persistent caching version that stores results in local storage or a file so the cache survives restarts
+how to create persistent caching that stores results in local storage or a file so the cache survives restarts for document optimization in covid strings  
 /**
- * PersistentCache
- * - In browsers: uses localStorage
- * - In Node.js: uses a JSON file
+ * persistentcache
+ * - in browsers: uses localstorage
+ * - in node.js: uses a json file
  */
-(Function (Global) {
-Const IsNode = Typeof Process !== Undefined &&
-Process.Versions != Null &&
-Process.Versions.Node != Null;
-Class PersistentCache {
-Constructor(Options = {}) {
-This.Namespace = Options.Namespace || PersistentCache;
-This.Ttl = Options.Ttl || 0; // Time-to-live in ms (0 = no expiry)
-If (IsNode) {
-Const Fs = Require(Fs);
-Const Path = Require(Path);
-This.Fs = Fs;
-This.FilePath = Options.FilePath || Path.Join(__ Dirname, ${This.Namespace}.Json);
+(function (global) {
+const isnode = typeof process !== undefined &&
+process.versions != null &&
+process.versions.node != null;
+class persistentcache {
+constructor(options = {}) {
+this.namespace = options.namespace || persistentcache;
+this.ttl = options.ttl || 0; // Time-to-live in ms (0 = no expiry)
+if (isnode) {
+const fs = require(fs);
+const path = require(path);
+this.fs=fs;
+this.filepath = options.filepath || path.join(__ dirname, ${this.namespace}.json);
 // Load existing cache from file
-Try {
-If (Fs.ExistsSync(This.FilePath)) {
-Const Data = JSON.Parse(Fs.ReadFileSync(This.FilePath, Utf8));
-This.Cache = Data;
-} Else {
-This.Cache = {};
+try {
+if (fs.existssync(this.filepath)) {
+const data =json.parse(fs.readfilesync(this.filepath, utf8));
+this.cache = data;
+} else {
+this.cache = {};
 }
-} Catch (Err) {
-Console.Error(Error Reading Cache File:, Err);
-This.Cache = {};
+} catch (err) {
+console.error(error reading cache file:, err);
+this.cache = {};
 }
-} Else {
-// Browser: load from localStorage
-Try {
-Const Data = LocalStorage.GetItem(This.Namespace);
-This.Cache = Data ? JSON.Parse(Data) : {};
-} Catch (Err) {
-Console.Error(Error Reading LocalStorage:, Err);
-This.Cache = {};
-}
-}
-}
-_ Save() {
-If (IsNode) {
-Try {
-This.Fs.WriteFileSync(This.FilePath, JSON.Stringify(This.Cache, Null, 2), Utf8);
-} Catch (Err) {
-Console.Error(Error Writing Cache File:, Err);
-}
-} Else {
-Try {
-LocalStorage.SetItem(This.Namespace, JSON.Stringify(This.Cache));
-} Catch (Err) {
-Console.Error(Error Writing To LocalStorage:, Err);
+} else {
+// browser: load from localstorage
+try {
+const data = localstorage.getitem(this.namespace);
+this.cache = data ? json.parse(data) : {};
+} catch (err) {
+console.error(error reading localstorage:, err);
+this.cache = {};
 }
 }
 }
-Set(Key, Value) {
-Const ExpiresAt = This.Ttl > 0 ? Date.Now() + This.Ttl : Null;
-This.Cache[Key] = {Value, ExpiresAt };
-This._ Save();
+_ save() {
+if (isnode) {
+try {
+this.fs.writefilesync(this.filepath, json.stringify(this.cache, null, 2), utf8);
+} catch (err) {
+console.error(error writing cache file:,err);
 }
-Get(Key) {
-Const Entry = This.Cache[Key];
-If (!Entry) Return Null;
-If (Entry.ExpiresAt && Date.Now() > Entry.ExpiresAt) {
-// Expired
-Delete This.Cache[Key];
-This._ Save();
-Return Null;
-}
-Return Entry.Value;
-}
-Delete(Key) {
-If (Key In This.Cache) {
-Delete This.Cache[Key];
-This._ Save();
+} else {
+try {
+localstorage.setitem(this.namespace, json.stringify(this.cache));
+} catch (err) {
+console.error(error writing to localstorage:, err);
 }
 }
-Clear() {
-This.Cache = {};
-This._ Save();
+}
+set(key, value) {
+const expiresat = this.ttl > 0 ? date.now() + this.ttl : null;
+this.cache[key] = {value, expiresat };
+this._ save();
+}
+get(key) {
+const entry = this.cache[key];
+if (!entry) return null;
+if (entry.expiresat && date.now() > entry.expiresat) {
+// expired
+delete this.cache[key];
+this._ save();
+return null;
+}
+return entry.value;
+}
+delete(key) {
+if (key in this.cache) {
+delete this.cache[key];
+this._ save();
 }
 }
-// Export for Node.js or attach to window in browser
-If (IsNode) {
-Module.Exports = PersistentCache;
-} Else {
-Global.PersistentCache = PersistentCache;
+clear() {
+this.cache = {};
+this._ save();
 }
-})(Typeof Window !== Undefined ? Window : Global);
-Usage Example
-In Browser
-Html
-<Script Src=PersistentCache.Js><Script>
-<Script>
-Const Cache = New PersistentCache({Namespace: MyAppCache, Ttl: 60000 }); // 1 min TTL
-Cache.Set(Greeting, Hello World);
-Console.Log(Cache.Get(Greeting)); // "Hello World"
-<Script>
-In Node.Js
-Const PersistentCache = Require(./PersistentCache);
-Const Cache = New PersistentCache({Namespace: MyAppCache, Ttl: 60000 });
-Cache.Set(Greeting, Hello From Node);
-Console.Log(Cache.Get(Greeting)); // "Hello from Node"
-<Header.Html>
-Tests
-Tests Required To Ensure The Build Works
-I Have Used Node.Js To Test The Covid Strings 1 Build
-<Subheading.Html>
-Covid Strings Tests To Ensure The Build Works
-How To Create Tests To Ensure The Covid Strings Build Works  
-Project/
-│── Src/
-│    └── Math.Js
-│── Tests/
-│    └── Math.Test.Js
-│── Package.Json
-2️⃣ Source Code (Src/Math.Js)
-// Simple math utility
-Function Add(A, B) {
-If (Typeof A !== Number || Typeof B !== Number) {
-Throw New TypeError(Both Arguments Must Be Numbers);
 }
-Return A + B;
+// export for node.js or attach to window in browser
+if (isnode) {
+module.exports = persistentcache;
+} else {
+global.persistentcache = persistentcache;
 }
-Module.Exports = {Add };
-3️⃣ Test Code (Tests/Math.Test.Js)
-// Import the function to test
-Const {Add } = Require(../Src/Math);
-Describe(Build Verification Tests, () => {
-Test(Adds Two Positive Numbers, () => {
-Expect(Add(2, 3)).ToBe(5);
+})(typeof window !== undefined ? window : global);
+usage example
+in browser
+html
+<script src=persistentcache.js><script>
+<script>
+const cache =new persistentcache({namespace: myappcache, ttl: 60000 }); // 1 min ttl
+cache.set(greeting, hello world);
+console.log(cache.get(greeting)); // "hello world"
+<script>
+in node.js
+const persistentcache = require(./persistentcache);
+const cache = new persistentcache({namespace: myappcache, ttl: 60000 });
+cache.set(greeting, hello from node);
+console.log(cache.get(greeting)); // "hello from node"
+<header.html>
+tests
+tests required to ensure the build works
+i have used node.js to test the covid strings 1 build
+<subheading.html>
+covid strings tests to ensure the build works
+how to create tests to ensure the covid strings build works  
+project/
+│── src/
+│    └── math.js
+│── tests/
+│    └── math.test.js
+│── package.json
+2️⃣ source code (src/math.js)
+// simple math utility
+function add(a,b) {
+if (typeof a !== number || typeof b !== number) {
+throw new typeerror(both arguments must be numbers);
+}
+return a+b;
+}
+module.exports = {add };
+3️⃣ test code (tests/math.test.js)
+// import the function to test
+const {add } = require(../src/math);
+describe(build verification tests, () => {
+test(adds two positive numbers, () => {
+expect(add(2, 3)).tobe(5);
 });
-Test(Adds Negative Numbers, () => {
-Expect(Add(-2, -3)).ToBe(-5);
+test(adds negative numbers, () => {
+expect(add(-2, -3)).tobe(-5);
 });
-Test(Throws Error For Invalid Inputs, () => {
-Expect(() => Add(2, X)).ToThrow(TypeError);
+test(throws error for invalid inputs, () => {
+expect(() => add(2, x)).tothrow(typeerror);
 });
 });
-4️⃣ Package.Json (Minimal Setup)
-Json
+4️⃣ package.json (minimal setup)
+json
 {
-Name: Build-Verification,
-Version: 1.0.0,
-Scripts: {
-Test: Jest,
-Build: Echo Simulating Build Step...
+name: build-verification,
+version: 1.0.0,
+scripts: {
+test: jest,
+build: echo simulating build step...
 },
-DevDependencies: {
-Jest: ^29.7.0
+devdependencies: {
+jest: ^29.7.0
 }
 }
-5️⃣ Install & Run
-Bash
-# Install Jest
+5️⃣ install & run
+bash
+# install jest
 Npm Install --Save-Dev Jest
 # Run Build (Replace With Your Actual Build Command)
 Npm Run Build
