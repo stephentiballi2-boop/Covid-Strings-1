@@ -235,11 +235,11 @@ renderlist();
 </body>
 </html>
 <subheading.html>
-Covid Strings Structured Logging Frameworks That Support Json Output
-How To Use Structured Logging Frameworks That Support Json Output For Covid Strings
-Const Bunyan = Require(Bunyan);
-Const Logger = Bunyan.CreateLogger({Name: Inventory-Service});
-Logger.Info({ ProductId: A123, Stock: 50 }, Stock Updated);
+covid strings structured logging frameworks rhat support json output
+how to use structured logging frameworks that support json output for covid strings
+const bunyan = require(bunyan);
+const logger = bunyan.createlogger({Name: Inventory-Service});
+logger.info({productid: a123, stock: 50 }, Stock Updated);
 <Subheading.Html>
 Covid Strings Version With Log Rotation And Pretty Printing For Development While Keeping Json Output In Production
 How To Develop A Version With Log Rotation And Pretty Printing That Keeps Json Output In Production For Covid Strings
