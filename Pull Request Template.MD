@@ -99,7 +99,7 @@ subheading88=covid strings regularly rotating rds credentials so it updates both
 <header.html>
 pull request overview
 how to create an overview of a covid strings pull request
-/**
+/
  * pull request overview script
  * fetches and displays pull request details from a github repository.
  * 
@@ -108,7 +108,7 @@ how to create an overview of a covid strings pull request
  *   - a github personal access token (optional but recommended for higher rate limits)
  */
 const github_api_url = https://api.github.com/repos;
-/**
+/
  * fetch pull requests for a given repository
  * @param {string} owner - github username or organization
  * @param {string} repo - repository name
@@ -243,7 +243,7 @@ logger.info({productid: a123, stock: 50 }, Stock Updated);
 <subheading.html>
 covid strings version with log rotation and pretty printing for development while keeping json output in production
 how to develop a version with log rotation and pretty printing that keeps json output in production for covid strings
-/**
+/
  * logger with:
  *  - pretty printing in development
  *  - json output in production
@@ -253,24 +253,24 @@ const pino = require(pino);
 const rfs = require(rotating-file-stream);
 const path = require(path);
 const fs = require(fs);
-// ensure logs directory exists
+ensure logs directory exists
 const logdirectory = path.join(__ dirname, logs);
 if (!fs.existssync(logdirectory)) {
 fs.mkdirsync(logdirectory);
 }
-// create a rotating file stream (daily rotation)
+create a rotating file stream (daily rotation)
 const accesslogstream = rfs.createstream(app.log, {
 interval: 1d, // rotate daily
-Size: 10m,    // or rotate every 10 MegaBytes
+size: 10m,    // or rotate every 10 MegaBytes
 compress: gzip, // compress rotated files
 path: logdirectory
 });
-// determine environment
+determine environment
 const isproduction=process.env.node_env === production;
-// configure pino transport
+configure pino transport
 let transport;
 if (!isproduction) {
-// development: pretty-print logs to console
+development: pretty-print logs to console
 transport = pino.transport({
 target: pino-pretty,
 options: {
@@ -280,7 +280,7 @@ ignore: pid,hostname'
 }
 });
 } else {
-// production: json logs to rotating file
+production: json logs to rotating file
 transport = pino.transport({
 targets: [
 {
@@ -290,7 +290,7 @@ options: {destination: accesslogstream.path }
 ]
 });
 }
-// create logger instance
+create logger instance
 const logger = pino(
 {
 level: process.env.log_level || info,
@@ -301,11 +301,11 @@ transport
 module.exports = logger;
 usage example: app.js
 const logger = require(./logger);
-// example logs
+example logs
 logger.info(server starting...);
 logger.warn({port: 3000 }, low memory warning);
 logger.error(new error(something went wrong!));
-// simulate structured logging
+simulate structured logging
 logger.info({userid: 123, action: login}, user logged in);
 npm install pino pino-pretty rotating-file-stream
 # development (pretty logs)
@@ -320,7 +320,7 @@ covid strings organization declaration
 how to declare covid strings to be an organization
 // declare a namespace (organization) for your game
 var mygameorg = covid strings 1  || {};
-// add metadata about your organization and game
+add metadata about your organization and game
 mygameorg.info = {
 organizationname: covid strings 1,
 gamename: covid strings,
@@ -328,15 +328,15 @@ version: 1.0.0",
 author: stephen tiballi,
 license: mit
 };
-// example: game object inside the organization namespace
+example: game object inside the organization namespace
 mygameorg.game = {
 // initialize the game
 init: function () {
 console.log(initializing ${mygameorg.info.gamename} by ${mygameorg.info.organizationname});
 this.score = 0;
-this.isrunning = True;
+this.isrunning = true;
 },
-// Start the game
+start the game
 start: function () {
 if (!this.isrunning) {
 console.error(game is not initialized.);
@@ -345,13 +345,13 @@ return;
 console.log(game started!);
 // game loop or logic would go here
 },
-// end the game
+end the game
 end: function () {
 this.isrunning = false;
 console.log(game over! final score: ${this.score});
 }
 };
-// example usage:
+example usage:
 mygameorg.game.init();
 mygameorg.game.start();
 mygameorg.game.score = 42; // update score
@@ -463,10 +463,10 @@ how to use collision detection to turn covid strings into a multi-level game
 <!doc type html>
 <html>
 <head>
-<meta Charset=UTF-8>
-<title>Multi-Level Game With Collision Detection</Title>
+<meta charset=utf-8>
+<title>multi-level game with collision detection</title>
 <style>
-canvas {Background: #222; Display: Block; Margin: Auto; }
+canvas {background: #222; display: block; margin: auto; }
 </style>
 </head>
 <body>
@@ -517,7 +517,7 @@ rect1.y + rect1.height > rect2.y
 // check if player collides with any wall in current level
 function checkcollision(newX, newy) {
 const newplayerrect = {x: newx, y: newy, width: player.width, height: player.height };
-for (let wall Of Levels[CurrentLevel].Walls) {
+for (let wall of levels[currentlevel].walls) {
 if (iscolliding(newplayerrect, wall)) {
 return true; // collision detected
 }
@@ -1272,348 +1272,348 @@ jest: ^29.7.0
 5️⃣ install & run
 bash
 # install jest
-Npm Install --Save-Dev Jest
-# Run Build (Replace With Your Actual Build Command)
-Npm Run Build
-# Run Tests
-Npm Test
-<Subheading.Html>
-Covid Strings Production Ready Express Server For A Vite Build
-How To Create A Production Ready Express Server For A Covid Strings Vite Build
-Npm Run Build
-This Generates A Dist/Folder Containing Your Optimized Static Files.
-2. Production Express Server (Server.Js)
+npm install --save-dev jest
+# run build (replace with your actual build command)
+npm run build
+# run tests
+npm test
+<subheading.html>
+covid strings production ready express server for a vite build
+how to create a production ready express server for a covid strings vite build
+npm run build
+this generates a dist/folder containing your optimized static files.
+2. production express server (server.js)
 // server.js
-Import Express From Express;
-Import Path From Path;
-Import {FileURLToPath } From Url;
-Import Compression From Compression;
-Import Helmet From Helmet;
-Const __ Filename = FileURLToPath(Import.Meta.Url);
-Const __ Dirname = Path.Dirname(__ Filename);
-Const App = Express();
-Const PORT = Process.Env.PORT || 3000;
-// Security middleware
-App.Use(Helmet());
-// Gzip compression for faster load times
-App.Use(Compression());
-// Serve static files from Vite's build output
-Const DistPath = Path.Join(__ Dirname, Dist);
-App.Use(Express.Static(DistPath, {
-MaxAge: 1Y, // Cache static assets for 1 year
-Etag: True
+import express from express;
+import path from path;
+import {fileurltopath } from url;
+import compression from compression;
+import helmet from helmet;
+const __ filename = fileurltopath(import.meta.url);
+const __ dirname = Path.Dirname(__ Filename);
+const app = express();
+const port = process.env.port || 3000;
+// security middleware
+app.use(helmet());
+// gzip compression for faster load times
+app.use(compression());
+// serve static files from vite's build output
+const distpath = path.join(__ dirname, dist);
+app.use(express.static(distpath, {
+maxage: 1y, // cache static assets for 1 year
+etag: true
 }));
-// Fallback to index.html for SPA routes
-App.Get(*, (Req, Res) => {
-Res.SendFile(Path.Join(DistPath, Index.Html));
+// fallback to index.html for spa routes
+app.get(*, (req, res) => {
+res.sendfile(path.join(distpath, index.html));
 });
-// Error handling middleware
-App.Use((Err, Req, Res, Next) => {
-Console.Error(Server Error:, Err);
-Res.Status(500).Json({Error: Internal Server Error});
+// error handling middleware
+app.use((err, req, res, next) => {
+console.error(server error:, rrr);
+res.status(500).json({error: internal server error});
 });
-App.Listen(PORT, () => {
-Console.Log(✅ Server Running In Production On Http://Localhost:${PORT});
+app.listen(port, () => {
+console.log(✅ server running in production on http://localhost:${port});
 });
-3. Package.Json Scripts
-Json
+3. package.json scripts
+json
 {
-Scripts: {
-Dev: Vite,
-Build: Vite Build,
-Serve: Node Server.Js
+scripts: {
+dev: vite,
+build: vite build,
+serve: node server.js
 },
-Type: Module,
-Dependencies: {
-Compression: ^1.7.4,
-Express: ^4.18.2,
-Helmet: ^7.0.0
+type: module,
+dependencies: {
+compression: ^1.7.4,
+express: ^4.18.2,
+helmet: ^7.0.0
 }
 }
-<Subheading.Html>
-Covid Strings Dockerfile Deployment With One Command
-How To Deploy A Dockerfile With One Command Using Node Js For Covid Strings 
-#!/Usr/Bin/Env Node
+<subheading.html>
+covid strings dockerfile deployment with one command
+how to deploy a dockerfile with one command using node js for covid strings 
+#!/usr/bin/env node
 /**
- * Deploy a Dockerfile with one command using Node.js
- * Usage: node deploy-docker.js <imageName> [portMapping]
- * Example: node deploy-docker.js myapp 3000:3000
+ * deploy a dockerfile with one command using node.js
+ * usage: node deploy-docker.js <imageName> [portmapping]
+ * example: node deploy-docker.js myapp 3000:3000
  */
-Const {ExecSync } = Require(Child_Process);
-Const Fs = Require(Fs);
-Function RunCommand(Command) {
-Try {
-Console.Log(\N> ${Command});
-Const Output = ExecSync(Command, {Stdio: Inherit});
-Return Output;
-} Catch (Err) {
-Console.Error(\N❌ Error Executing: ${Command});
-Process.Exit(1);
+const {execsync} = require(child_process);
+const fs = require(fs);
+function runcommand(command) {
+try {
+console.log(\n> ${command});
+const output = execsync(command, {stdio: inherit});
+return output;
+} catch (err) {
+console.error(\N❌ Error Executing: ${Command});
+process.exit(1);
 }
 }
-// Validate arguments
-If (Process.Argv.Length < 3) {
-Console.Error(Usage: Node Deploy-Docker.Js <ImageName> [PortMapping]);
-Process.Exit(1);
+// validate arguments
+if (process.argv.length < 3) {
+console.error(usage: node deploy-docker.js <imagename> [portmapping]);
+process.exit(1);
 }
-Const ImageName = Process.Argv[2];
-Const PortMapping = Process.Argv[3] || Null;
-// Check if Dockerfile exists
-If (!Fs.ExistsSync(Dockerfile)) {
-Console.Error(❌ No Dockerfile Found In The Current Directory.);
-Process.Exit(1);
+const imagename = process.argv[2];
+const portmapping = process.argv[3] || null;
+// check if dockerfile exists
+if (!fs.existssync(dockerfile)) {
+console.error(❌ no dockerfile found in the current directory.);
+process.exit(1);
 }
-// Check if Docker is installed
-Try {
-ExecSync(Docker --Version, {Stdio: Ignore});
-} Catch {
-Console.Error(❌ Docker Is Not Installed Or Not In PATH.);
-Process.Exit(1);
+// check if docker is installed
+try {
+execsync(docker --version, {stdio: ignore});
+} catch {
+console.error(❌ docker is not installed or not in path.);
+process.exit(1);
 }
-// Build Docker image
-Console.Log(\N🚀 Building Docker Image: ${ImageName});
-RunCommand(Docker Build -T ${ImageName} .);
-// Run Docker container
-Console.Log(\N🏃 Running Docker Container From Image: ${ImageName});
-Let RunCmd = Docker Run -D ${PortMapping ? -P ${PortMapping} : } --Name ${ImageName}-Container ${ImageName};
-RunCommand(RunCmd);
-Console.Log(\N✅ Deployment Complete!);
-Console.Log(Image: ${ImageName});
-Console.Log(Container Name: ${ImageName}-Container);
-If (PortMapping) Console.Log(   Port Mapping: ${PortMapping});
-How To Use
-Save The Script As Deploy-Docker.Js In The Same Folder As Your Dockerfile.
-Make It Executable (Optional For Linux/Mac):
-Bash
-Chmod +X Deploy-Docker.Js
-Run:
-Bash
-Node Deploy-Docker.Js Myapp 3000:3000
-Myapp → Docker Image Name.
-3000:3000 → Maps Host Port 3000 To Container Port 3000 (Optional).
-Example Output
-🚀 Building Docker Image: Myapp
-> Docker Build -T Myapp .
-🏃 Running Docker Container From Image: Myapp
-> Docker Run -D -P 3000:3000 --Name Myapp-Container Myapp
-✅ Deployment Complete!
-Image: Myapp
-Container Name: Myapp-Container
-Port Mapping: 3000:3000
-<Subheading.Html>
-Covid Strings Adding Docker Hub Push Support To Make It Truly Deployable Anywhere
-How To Add Docker Hub Push Support To Make It Truly Deployable Anywhere For Covid Strings 
+// build docker image
+console.log(\n🚀 building docker image: ${imagename});
+runcommand(docker build -t ${imagename} .);
+// run docker container
+console.log(\n🏃 running docker container from image: ${imagename});
+let runcmd = docker run -d ${portmapping ? -p ${portmapping} : } --name ${imagename}-container ${imagename};
+runcommand(runcmd);
+console.log(\n✅ deployment complete!);
+console.log(image: ${imagename});
+console.log(container name: ${imagename}-container);
+if (portmapping) console.log(port mapping: ${portmapping});
+how to use
+save the script as deploy-docker.js in the same folder as your dockerfile.
+make it executable (optional for linux/mac):
+bash
+chmod +x deploy-docker.js
+run:
+bash
+node deploy-docker.js myapp 3000:3000
+myapp → docker image name.
+3000:3000 → maps host port 3000 to container port 3000 (optional).
+example output
+🚀 building docker image: myapp
+> docker build -t myapp .
+🏃 running docker container from image: myapp
+> docker run -d -p 3000:3000 --name myapp-container myapp
+✅ deployment complete!
+image: myapp
+container name: myapp-container
+port mapping: 3000:3000
+<subheading.html>
+covid strings adding docker hub push support to make it truly deployable anywhere
+how to add docker hub push support to make it truly deployable anywhere for covid strings 
 // index.js
-Const Http = Require(Http);
-Const PORT = Process.Env.PORT || 3000;
-Const Server=Http.CreateServer((Req, Res) => {
-Res.WriteHead(200, {Content-Type: Text/Plain });
-Res.End(Hello From Dockerized Node.Js App!\N);
+const http = require(http);
+const port = process.env.port || 3000;
+const server=http.createserver((req, res) => {
+res.writehead(200, {content-type: text/plain });
+res.end(hello from dockerized node.js app!\n);
 });
-Server.Listen(PORT, () => {
-Console.Log(Server Running On Port ${PORT});
+server.listen(port, () => {
+console.log(server running on port ${port});
 });
-2️⃣ Dockerfile
-Dockerfile
-# Use Official Node.Js LTS Image
-FROM Node:18-Alpine
-# Create App Directory
-WORKDIR /Usr/Src/App
-# Copy Package Files First (For Caching)
-COPY Package*.Json ./
-# Install Dependencies
-RUN Npm Install --Only=Production
-# Copy The Rest Of The App
-COPY . .
-# Expose Port
-EXPOSE 3000
-# Start The App
-CMD [Node, Index.Js]
-3️⃣ GitHub Actions Workflow (.Github/Workflows/Docker-Publish.Yml)
-Yaml
-Name: Build And Push Docker Image
-On:
-Push:
-Branches:
-- Main  # Trigger On Pushes To Main Branch
-Jobs:
-Docker:
-Runs-On: Ubuntu-Latest
-Steps:
-# Checkout Repository
-- Name: Checkout Code
-Uses: Actions/Checkout@V4
-# Log In To Docker Hub
-- Name: Log In To Docker Hub
-Uses: Docker/Login-Action@V3
-With:
-Username: ${{Secrets.DOCKERHUB_USERNAME }}
-Password: ${{Secrets.DOCKERHUB_TOKEN }}
-# Build And Push Docker Image
-- Name: Build And Push
-Uses: Docker/Build-Push-Action@v5
-With:
-Context: .
-Push: True
-Tags: ${{Secrets.DOCKERHUB_USERNAME }}/My-Node-App:Latest
-Docker Run -P 3000:3000 Your-Dockerhub-Username/My-Node-App:Latest
-<Subheading.Html>
-Covid Strings Multi-Arch Node Installation
-How To Install A Multiarch Node For Covid Strings
-// server.js
-Const Http = Require(Http);
-Const PORT = Process.Env.PORT || 3000;
-Const Server = Http.CreateServer((Req, Res) => {
-Res.WriteHead(200, {Content-Type: Text/Plain});
-Res.End(Hello From Multi-Arch Node.Js! Running On ${Process.Arch}\N);
+2️⃣ dockerfile
+dockerfile
+# use official node.js lts image
+from node:18-alpine
+# create app directory
+workdir/usr/src/app
+# copy package files first (for caching)
+copy package*.json ./
+# install dependencies
+run npm install --only=production
+# copy the Rest of the app
+copy . .
+# expose port
+expose 3000
+# start the app
+cmd [node, index.js]
+3️⃣ github actions workflow (.github/workflows/docker-publish.yml)
+yaml
+name: build and push docker image
+on:
+push:
+branches:
+-main  # trigger on pushes to main branch
+jobs:
+docker:
+runs-on: ubuntu-latest
+steps:
+# checkout repository
+- name: checkout code
+uses: actions/checkout@v4
+# log in to docker hub
+- name: log in to docker hub
+uses: docker/login-action@v3
+with:
+username: ${{secrets.docker hub_username}}
+password: ${{secrets.docker hub_token}}
+# build and push docker image
+- name: build and push
+uses: docker/build-push-action@v5
+with:
+context: .
+push: true
+tags: ${{secrets.dockerhub_username}}/my-node-app:latest
+docker run -p 3000:3000 your-dockerhub-username/my-node-app:latest
+<subheading.html>
+covid strings multi-arch node installation
+how to install a multiarch node for covid strings
+server.js
+const http =require(http);
+const port=process.env.port || 3000;
+const server=http.createserver((req,res) => {
+res.writehead(200,{content-type: text/plain});
+res.end(hello from multi-arch node.js! running on ${process.arch}\n);
 });
-Server.Listen(PORT, () => {
-Console.Log(Server Running On Port ${PORT});
+server.listen(port, () => {
+console.log(server running on port ${port});
 });
-2️⃣ Package.Json
-Json
+2️⃣ package.json
+json
 {
-Name: Multi-Arch-Node,
-Version: 1.0.0,
-Main: Server.Js,
-Scripts: {
-Start: Node Server.Js
+name: multi-arch-node,
+version: 1.0.0,
+main: server.js,
+scripts: {
+start: node server.js
 }
 }
-3️⃣ Multi-Arch Dockerfile
-Dockerfile
-# Use Official Node.Js Image (Works On ARM & X86)
-FROM Node:18-Alpine
-# Set Working Directory
+3️⃣ multi-arch dockerfile
+dockerfile
+# use official node.js image (works on arm & x86)
+from node:18-alpine
+# set working directory
+workdir/app
+# copy package files and install dependencies
+copy package*.json ./
+run npm install --only=production
+# copy app source
+copy . .
+# expose port
+expose 3000
+# start the app
+cmd [npm, start]
+4️⃣ build & push multi-arch image
+run these commands once to enable multi-arch builds:
+bash
+# enable experimental buildx
+docker buildx create --use
+# build and push for arm64 (raspberry pi) and amd64 (x86 servers)
+docker buildx build \
+--platform linux/amd64,linux/arm64 \
+-t your-dockerhub-username/multi-arch-node:latest \
+--push .
+5️⃣ run anywhere
+on x86 Server:
+bash
+docker run -p 3000:3000 your-dockerhub-username/multi-arch-node
+on raspberry pi (arm):
+bash
+docker run -p 3000:3000 your-dockerhub-username/multi-arch-node
+<subheading.html>
+covid strings github actions ci/cd workflow so every push automatically builds and publishes your image
+how to use a github actions ci/cd workflow so every push automatically builds and publishes your image for covid strings 
+name: ci/cd - build & push multi-arch Docker image
+on:
+push:
+branches:
+-** # runs on every branch push
+jobs:
+build-and-push:
+runs-on: ubuntu-latest
+steps:
+# 1. checkout repository
+- name: checkout source code
+uses: actions/checkout@v4
+# 2. set up qemu for multi-arch builds
+- name: set up qemu
+uses: docker/setup-qemu-action@v3
+# 3. set up docker buildx
+- name: set up docker buildx
+uses: docker/setup-buildx-action@v3
+# 4. log in to docker hub (use github secrets)
+- name: log in to docker hub
+uses: docker/login-Action@V3
+with:
+username: ${{secrets.docker_username}}
+password: ${{secrets.docker_password }}
+# 5. build and push multi-arch image
+- name: build and push docker image
+uses: docker/build-push-action@v5
+with:
+context: .
+file: ./dockerfile
+push: true
+platforms: linux/amd64,linux/arm64
+tags: |
+your-dockerhub-username/your-image-name:latest
+your-dockerhub-username/your-image-name:${{github.sha }}
+cache-from: type=registry,ref=your-dockerhub-username/your-image-name:buildcache
+cache-to: type=registry,ref=your-dockerhub-username/your-image-name:buildcache,mode=max
+dockerfile example (for a node.js app)
+dockerfile
+# use official node.js lts image
+from node:20-alpine
+# set working directory
 WORKDIR/App
-# Copy Package Files And Install Dependencies
-COPY Package*.Json ./
-RUN Npm Install --Only=Production
-# Copy App Source
-COPY . .
-# Expose Port
-EXPOSE 3000
-# Start The App
-CMD [Npm, Start]
-4️⃣ Build & Push Multi-Arch Image
-Run These Commands Once To Enable Multi-Arch Builds:
-Bash
-# Enable Experimental Buildx
-Docker Buildx Create --Use
-# Build And Push For ARM64 (Raspberry Pi) And AMD64 (X86 Servers)
-Docker Buildx Build \
---Platform Linux/Amd64,Linux/Arm64 \
--T Your-Dockerhub-Username/Multi-Arch-Node:Latest \
---Push .
-5️⃣ Run Anywhere
-On X86 Server:
-Bash
-Docker Run -P 3000:3000 Your-Dockerhub-Username/Multi-Arch-Node
-On Raspberry Pi (ARM):
-Bash
-Docker Run -P 3000:3000 Your-Dockerhub-Username/Multi-Arch-Node
-<Subheading.Html>
-Covid Strings Github Actions Ci/Cd Workflow So Every Push Automatically Builds And Publishes Your Image
-How To Use A Github Actions Ci/Cd Workflow So Every Push Automatically Builds And Publishes Your Image For Covid Strings 
-Name: CI/CD - Build & Push Multi-Arch Docker Image
-On:
-Push:
-Branches:
--** # Runs On Every Branch Push
-Jobs:
-Build-And-Push:
-Runs-On: Ubuntu-Latest
-Steps:
-# 1. Checkout Repository
-- Name: Checkout Source Code
-Uses: Actions/Checkout@V4
-# 2. Set Up QEMU For Multi-Arch Builds
-- Name: Set Up QEMU
-Uses: Docker/Setup-Qemu-Action@V3
-# 3. Set Up Docker Buildx
-- Name: Set Up Docker Buildx
-Uses: Docker/Setup-Buildx-Action@V3
-# 4. Log In To Docker Hub (Use GitHub Secrets)
-- Name: Log In To Docker Hub
-Uses: Docker/Login-Action@V3
-With:
-Username: ${{Secrets.DOCKER_USERNAME }}
-Password: ${{Secrets.DOCKER_PASSWORD }}
-# 5. Build And Push Multi-Arch Image
-- Name: Build And Push Docker Image
-Uses: Docker/Build-Push-Action@V5
-With:
-Context: .
-File: ./Dockerfile
-Push: True
-Platforms: Linux/Amd64,Linux/Arm64
-Tags: |
-Your-Dockerhub-Username/Your-Image-Name:Latest
-Your-Dockerhub-Username/Your-Image-Name:${{Github.Sha }}
-Cache-From: Type=Registry,Ref=Your-Dockerhub-Username/Your-Image-Name:Buildcache
-Cache-To: Type=Registry,Ref=Your-Dockerhub-Username/Your-Image-Name:Buildcache,Mode=Max
-Dockerfile Example (For A Node.Js App)
-Dockerfile
-# Use Official Node.Js LTS Image
-FROM Node:20-Alpine
-# Set Working Directory
-WORKDIR/App
-# Copy Package Files And Install Dependencies
-COPY Package*.Json ./
-RUN Npm Ci --Only=Production
-# Copy Application Source
-COPY . .
-# Expose Port And Start App
-EXPOSE 3000
-CMD [Npm, Start]
-<Subheading.Html>
-Covid Strings Automated Tests Before The Docker Build For Document Optimization
-How To Automate Tests Before The Docker Build For Covid Strings Document Optimization 
+# copy package files and install dependencies
+copy package*.json ./
+run npm ci --only=production
+# copy application source
+copy . .
+# expose port and start app
+expose 3000
+cmd [npm, start]
+<subheading.html>
+covid strings automated tests before the docker build for document optimization
+how to automate tests before the docker build for covid strings document optimization 
 {
-Name: Doc-Optimizer,
-Version: 1.0.0,
-Type: Module,
-Scripts: {
-Test: Jest --RunInBand,
-Optimize: Node Optimize.Js
+name: doc-optimizer,
+version: 1.0.0,
+type: module,
+scripts: {
+test: jest --runinband,
+optimize: node optimize.js
 },
-DevDependencies: {
-Jest: ^29.7.0,
-Html-Minifier-Terser: ^7.2.0
+devdependencies: {
+jest: ^29.7.0,
+html-minifier-terser: ^7.2.0
 }
 }
-Optimize.Js – Document Optimization Script
-Import {Minify } From Html-Minifier-Terser;
-Import Fs From Fs/Promises;
-Import Path From Path;
-Const InputFile = Path.Resolve(Document.Html);
-Const OutputFile = Path.Resolve(Document.Min.Html);
-Async Function OptimizeDocument() {
-Try {
-Const Html = Await Fs.ReadFile(InputFile, Utf8);
-Const Minified = Await Minify(Html, {
-CollapseWhitespace: True,
-RemoveComments: True,
-MinifyCSS: True,
-MinifyJS: True
+optimize.js – document optimization script
+import {minify } from html-minifier-terser;
+import fs from fs/promises;
+import path from path;
+const inputfile = path.resolve(document.html);
+const outputfile =path.resolve(document.min.html);
+async function optimizedocument() {
+try {
+const html = await fs.readfile(inputfile, utf8);
+const minified = await minify(html, {
+collapsewhitespace: true,
+removecomments: true,
+minifycss: true,
+minifyjs: true
 });
-Await Fs.WriteFile(OutputFile, Minified, Utf8);
-Console.Log(✅ Document Optimized: ${OutputFile});
-} Catch (Err) {
-Console.Error(❌ Optimization Failed:, Err.Message);
-Process.Exit(1);
+await fs.writefile(outputfile, minified, utf8);
+console.log(✅ document optimized: ${outputfile});
+} catch (err) {
+console.error(❌ optimization failed:, err.message);
+process.exit(1);
 }
 }
-If (Import.Meta.Url === File://${Process.Argv[1]}) {
-OptimizeDocument();
+if (import.meta.url === file://${process.argv[1]}) {
+optimizedocument();
 }
-Export Default OptimizeDocument;
-Optimize.Test.Js – Automated Tests
-Import Fs From Fs/Promises;
-Import Path From Path;
-Import OptimizeDocument From ./Optimize.Js;
-Const InputFile = Path.Resolve(Document.Html);
-Const OutputFile = Path.Resolve(Document.Min.Html);
+export default optimizedocument;
+optimize.test.js – automated tests
+import fs from fs/promises;
+import path from path;
+import optimizedocument from ./optimize.js;
+const inputfile =path.resolve(document.html);
+const outputfile =path.resolve(document.min.html);
 BeforeAll(Async () => {
 // Create a sample HTML file for testing
 Const SampleHTML = 
