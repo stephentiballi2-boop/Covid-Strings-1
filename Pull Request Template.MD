@@ -8,6 +8,7 @@ heading2=covid strings organization declaration
 heading3=type of pull request
 heading4=tests
 heading5=owners suggestions
+heading6=covid strings quick pr owner check style script
 subheading1=covid strings browser‑based ui for human‑friendly review and a console output for automation/debugging that includes search, filtering, and live status updates
 subheading2=covid strings structured logging frameworks that support json output
 subheading3=covid strings version With log rotation and pretty printing for development while keeping json output in production
@@ -6654,17 +6655,16 @@ Id => Meta.VersionIdsToStages[Id].Includes(AWSCURRENT)
 };
 }
 {
-Username: Dbuser,
-Password: Oldpassword,
-Engine: Postgres,
-Host: Mydb.Cluster-Xxxx.Us-East-1.Rds.Amazonaws.Com,
-Port: 5432,
-Dbname: Mydatabase
+username: dbuser,
+password: oldpassword,
+engine: postgres,
+host: Mydb.Cluster-Xxxx.Us-East-1.Rds.Amazonaws.Com,
+port: 5432,
+dbname: mydatabase
 }
-Attach IAM Permissions:
-Secretsmanager:GetSecretValue
-Secretsmanager:PutSecretValue
-Secretsmanager:UpdateSecretVersionStage
-Rds-Db:Connect
-Return Filename
- 
+attach iam permissions:
+secretsmanager:getsecretvalue
+secretsmanager:putsecretvalue
+secretsmanager:updatesecretversionstage
+rds-db:connect
+return filename
