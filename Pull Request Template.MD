@@ -96,6 +96,33 @@ subheading85=covid strings version that integrates with aws secrets manager’s 
 subheading86=covid strings version that automatically updates an rds database password during rotation 
 subheading87=covid strings installing a lambda rotation function that updates the secret automatically in aws secrets manager
 subheading88=covid strings regularly rotating rds credentials so it updates both secrets manager and the database automatically
+subheading89=covid strings also checking for missing documentation and test coverage before allowing a pr
+subheading90=covid strings testing framework that automatically generates unit tests for new functions as they are added to the codebase
+subheading91=covid strings how to integrate an api so that your script automatically fetches diverse test inputs and then self verifies them before adding them to your test suite
+subheading92=covid strings automatically appending verified tests to a jest or mocha test file while keeping a separate human review queue for flagged cases
+subheading93=covid strings full jest/mocha compatible script that:runs verification Appends passing tests automatically writes failing ones to a pending_review/folder works in both local dev and ci pipelines
+subheading94=covid strings extending this script so that it automatically retries failing tests before moving them-useful for flaky tests in ci
+subheading95=covid strings version that retries only specific failing steps instead of the whole test-this can make ci run faster
+subheading96=covid strings using playwright built-in fixtures and test extend method to create reusable and maintainable tests 
+subheading97=covid strings split this into a separate fixtures.js file so multiple test files can share the same login fixture
+subheading98=covid strings using playwright’s built in test functions and hooks to manage the login process
+subheading99=covid strings creating a version that uses a global setup file so the login happens before the test suite starts working across multiple test files
+subheading100=covid strings pull request typescript strict mode
+subheading101=covid strings pull request math utils installation
+subheading102=covid strings creating a full working before-and-after project folder so you can drop it in your own repo and migrate faster
+subheading103=covid strings using a before script to set up the necessary environment variables and configurations before the migration work begins
+subheading104=covid strings creating a docker based version so the migration runs in an isolated container with preloaded configs
+subheading105=covid strings extending this so that the migration container automatically versions itself
+subheading106=covid strings auto run and track applied versions
+subheading107=covid strings creating a git integrated version that automatically commits and tags each version so its tracked in your repository history
+subheading108=covid strings extending this so it parses commit messages and decides whether to bump patch, minor, or major automatically (semantic versioning style)
+subheading109=covid strings pull request semantic release lite
+subheading110=covid strings extending this further so it also generates a github release with changelog notes-making it a full semantic release lite workflow
+subheading111=covid strings extending this further so it also publishes to npm after creating the github release - making it a full ci/cd pipeline
+subheading112=covid strings extending this further so it automatically bumps the version in package json and tags it before running this pipeline-making it a fully automated release flow
+subheading113=covid strings extend this script so it automatically detects the bump type from commit messages and applies semantic versioning without manual bump_type_setting -making it truly hands off
+subheading114=covid strings extend this into a github actions workflow so release happen hands off
+subheading115=covid strings automating and tagging docker images to maintain a clear and manageable container registry
 <header.html>
 pull request overview
 how to create an overview of a covid strings pull request
