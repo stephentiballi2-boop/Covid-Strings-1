@@ -450,9 +450,9 @@ const canvas = document.getelementbyid(canvasid);
 if (!canvas) throw new error(canvas with id ${canvasid} not found);
 this.canvas = canvas;
 this.ctx = canvas.getcontext(2d);
-// create a player at a random position
+create a player at a random position
 this.player = new player(randomint(0, canvas.width - 20), randomint(0, canvas.height - 20));
-// bind keyboard events
+bind keyboard events
 window.addeventlistener(keydown, (e) => this.handlekey(e));
 }
 handlekey(e) {
@@ -478,7 +478,7 @@ loop();
 }
 main.js
 import game From ./game.js;
-// initialize and start the game
+initialize and start the game
 try {
 const game = new game(gamecanvas);
 game.start();
@@ -532,7 +532,7 @@ walls: [
 ];
 let currentlevel = 0;
 // =====================
-// collision detection
+collision detection
 // =====================
 function iscolliding(rect1, rect2) {
 return (
@@ -783,7 +783,7 @@ an update on the covid strings  repository
 description
 to  try and give an up to date version of ccvid strings 1 to the public before publishing 
 added test
-related Tickets and documents
+related tickets and documents
 file for code of conduct 
 file for licensing to specifically mention the version’s copyright 
 closes
@@ -804,7 +804,7 @@ body {font-family: arial, sans-serif; }
 <button id=updatebtn>Add 10,000 items</button>
 <ul id=list></ul>
 <script>
-// utility: create a large number of list items efficiently
+utility: create a large number of list items efficiently
 function additemsefficiently(count) {
 // use documentFragment to avoid multiple reflows
 const fragment = document.createdocumentfragment();
@@ -813,10 +813,10 @@ const li = document.createelement(li);
 li.textcontent = item ${i};
 fragment.appendchild(li);
 }
-// append all at once
+append all at once
 document.getelementbyid(list).appendchild(fragment);
 }
-// Event listener for button click
+event listener for button click
 document.getelementbyid(updatebtn).addeventlistener(click, () => {
 const start = Performance.Now();
 // clear existing list in one operation
@@ -904,7 +904,7 @@ if (!response.ok) {
 throw new error(http error! status: ${response.status});
 }
 const data = await response.json();
-// display posts
+display posts
 const postscontainer = document.getelementbyid(posts);
 postscontainer.innerhtml = ""; // clear previous content
 data.slice(0, 5).foreach(Post => { // limit to first 5 posts
@@ -1016,16 +1016,16 @@ how to create a cli weather app for covid strings
  */
 import fetch from node-fetch; // for node < 18; in node 18+, you can use global fetch
 import process from process;
-// ====== configuration ======
+====== configuration ======
 const api_key = your_open weather map _api_key; // get it from https://openweathermap.org/api
 const base_url = https://api.openweathermap.org/data/2.5/weather;
-// ====== input validation ======
+====== input validation ======
 if (process.argv.length < 3) {
 console.error(usage: bode weather.js city name);
 process.exit(1);
 }
 const city=process.argv.slice(2).join(' ');
-// ====== fetch weather function ======
+====== fetch weather function ======
 async function getweather(cityname) {
 try {
 const url =${base_url}?Q=${encodeuricomponent(cityname)}&appid=${api_key}&yunits=metric;
@@ -1038,7 +1038,7 @@ const data =await response.json();
 if (data.cod !== 200) {
 throw new error(data.message|| unknown error);
 }
-// display weather info
+display weather info
 console.log(\nweather for ${data.name}, ${data.sys.country}:);
 console.log(temperature: ${data.main.temp}°c);
 console.log(feels like: ${data.main.feels_like}°C);
@@ -1049,7 +1049,7 @@ console.log(wind speed: ${data.wind.speed} m/s\n);
 console.error(error: ${err.message});
 }
 }
-// ====== run script ======
+====== run script ======
 getweather(city);
 npm init-y
 npm install node-fetch
@@ -1073,7 +1073,7 @@ constructor(ttlms = 60000) { // default ttl: 60 seconds
 this.ttl = ttlms;
 this.cache =new map();
 }
-/**
+/
 * generates a unique cache key based on url and options.
 */
 _ getcachekey(url, options) {
@@ -1144,7 +1144,7 @@ console.error(error:, err.message);
 <subheading.html>
 covid strings persistent caching version that stores results in local storage or a file so the cache survives restarts
 how to create persistent caching that stores results in local storage or a file so the cache survives restarts for document optimization in covid strings  
-/**
+/
  * persistentcache
  * - in browsers: uses localstorage
  * - in node.js: uses a json file
@@ -1451,7 +1451,7 @@ workdir/usr/src/app
 copy package*.json ./
 # install dependencies
 run npm install --only=production
-# copy the Rest of the app
+# copy the rest of the app
 copy . .
 # expose port
 expose 3000
@@ -1733,775 +1733,774 @@ const branchname=pr.head.ref;
 path to documentation file
 const docfilepath =path.join(__ dirname, docs.md);
 create or update documentation content
-const newdoccontent = # documentation update\n\nUpdated On: ${New Date().ToISOString()}\N\N- Added Details For New Features.\N- Updated API Usage Examples.\N;
-fs.writefileSync(docfilepath, newdoccontent, utf8);
+const newdoccontent = # documentation update\n\nupdated on: ${new date().toisostring()}\n\n-added details for new features.\n- updated api usage examples.\n;
+fs.writefilesync(docfilepath, newdoccontent, utf8);
 read file content for commit
-Const ContentBase64 = Buffer.From(NewDocContent).ToString(Base64);
-// Check if DOCS.md exists in repo
-Let Sha;
-Try {
-Const {Data: FileData } =Await Octokit.Repos.GetContent({
-Owner: REPO_OWNER,
-Repo: REPO_NAME,
-Path: DOCS.Md,
-Ref: BranchName,
+const contentbase64 =buffer.from(newdoccontent).tostring(base64);
+// check if docs.md exists in repo
+let sha;
+try {
+const {data: filedata}=await octokit.repos.getcontent({
+owner: repo_owner,
+repo: repo_name,
+path: docs.md,
+ref: branchname,
 });
-Sha = FileData.Sha; // Existing file SHA for update
-}Catch {
-Sha = Undefined; // File doesn't exist, will create
+sha =filedata.sha; // existing file sha for update
+}catch {
+sha = undefined; // file doesn't exist, will create
 }
-// Commit the documentation update to the PR branch
-Await Octokit.Repos.CreateOrUpdateFileContents({
-Owner: REPO_OWNER,
-Repo: REPO_NAME,
-Path: DOCS.Md,
-Message: Docs: Update Documentation For Pr,
-Content: ContentBase64,
-Branch: BranchName,
-Sha, // undefined if creating new file
+// commit the documentation update to the PR branch
+await octokit.repos.createorupdatefilecontents({
+owner: repo_owner,
+repo: repo_name,
+path: docs.md,
+message: docs: update documentation for pr,
+content: contentbase64,
+branch: branchname,
+sha, // undefined if creating new file
 });
-Console.Log(✅ Documentation Updated In Branch: ${BranchName});
-} Catch (Error) {
-Console.Error(❌ Error Updating Documentation:, Error.Message);
-Process.Exit(1);
+console.log(✅ Documentation Updated In Branch: ${BranchName});
+}catch (error) {
+console.error(❌ Error Updating Documentation:, Error.Message);
+process.exit(1);
 }
 })();
-Usage
-Bash
-Export GITHUB_TOKEN=Your_token_here
-Export REPO_OWNER=Your_username_or_org
-Export REPO_NAME=Your_repo
-Export PR_NUMBER=42
-Node Update-Docs-In-Pr.Js
-<Subheading.Html>
-Covid Strings Template Github Actions Yaml That’s Both Functional And Self Documenting For Your Specific Tech Stack
-How To Create A Template Github Actions Yaml That’s Both Functional And Self Documenting For Covid Strings
-Name: CI Pipeline (JavaScript/Node.Js)
-# Trigger Workflow On Pushes To Main And All Pull Requests
-On:
-Push:
-Branches: [Main]
-Pull_request:
-Branches: [ Main]
-# Define Environment Variables For All Jobs
-Env:
-NODE_VERSION: 20 # LTS Version Of Node.Js
-Jobs:
-Build-And-Test:
-Name: Build, Lint, And Test
-Runs-On: Ubuntu-Latest
-Steps:
-# 1️⃣ Check Out The Repository Code
-- Name: Checkout Repository
-Uses: Actions/Checkout@V4
-# 2️⃣ Set Up Node.Js With Caching For Npm Dependencies
-- Name: Set Up Node.Js ${{Env.NODE_VERSION }}
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: ${{Env.NODE_VERSION }}
-Cache: Npm # Speeds Up Installs By Caching Node_modules
-# 3️⃣ Install Dependencies (With Clean Install For Reproducibility)
-- Name: Install Dependencies
-Run: Npm Ci
-# 4️⃣ Run Linting To Enforce Code Style And Catch Errors Early
-- Name: Run ESLint
-Run: Npm Run Lint
-Continue-On-Error: False # Fail The Build If Linting Fails
-# 5️⃣ Run Tests With Coverage
-- Name: Run Tests
-Run: Npm Test -- --Coverage
-# 6️⃣ Build The Project (If Applicable)
-- Name: Build Project
-Run: Npm Run Build
-# 7️⃣ Upload Test Coverage Report As An Artifact
-- Name: Upload Coverage Report
-Uses: Actions/Upload-Artifact@V4
-With:
-Name: Coverage-Report
-Path: Coverage/
-How To Use
-Create The File:
-Save This As.Github/Workflows/Ci.Yml In Your Repository.
-Ensure Scripts Exist In Your Package.Json:
-Json
+usage
+bash
+export github_token=your_token_here
+export repo_owner=your_username_or_org
+export repo_name=your_repo
+export pr_number=42
+node update-docs-in-pr.js
+<subheading.html>
+covid strings template github actions yaml that’s both functional and self documenting for your specific tech stack
+how to create a template github actions yaml that’s both functional and self documenting for covid strings
+name: ci pipeline (javascript/node.js)
+# trigger workflow on pushes to main and all pull requests
+on:
+push:
+branches: [main]
+pull_request:
+branches: [main]
+# define environment variables for all jobs
+env:
+node_version: 20 # lts version of node.js
+jobs:
+build-and-test:
+name: build, lint, and test
+runs-on: ubuntu-latest
+steps:
+# 1️⃣ check out the repository code
+-name: checkout repository
+uses: actions/checkout@v4
+# 2️⃣ set up node.js with caching for npm dependencies
+-name: set up node.js ${{env.node_version}}
+uses: actions/setup-node@v4
+with:
+node-version: ${{env.node_version}}
+cache: npm # speeds up installs by caching node_modules
+# 3️⃣ install dependencies (with clean install for reproducibility)
+- name: install dependencies
+run: npm ci
+# 4️⃣ run linting to enforce code style and catch errors early
+-name: run eslint
+run: npm run lint
+continue-on-error: false # fail the build if linting fails
+# 5️⃣ run tests with coverage
+-name: run tests
+run: npm test -- --coverage
+# 6️⃣ build the project (if applicable)
+- name: build project
+run: npm run build
+# 7️⃣ upload test coverage report as an artifact
+-name: upload coverage report
+uses: actions/upload-artifact@v4
+with:
+name: coverage-report
+path: coverage/
+how to use
+create the file:
+save this as.github/workflows/ci.yml in your repository.
+ensure scripts exist in your package.json:
+json
 {
-Scripts: {
-Lint: Eslint .,
-Test: Jest,
-Build: Webpack --Mode Production
+scripts: {
+lint: eslint .,
+test: jest,
+build: webpack --mode production
 }
 }
-<Subheading.Html>
-Covid Strings Multi-Version Ci Template 
-How To Create A Multi-Version Ci Template For Covid Strings 
-Name: Node.Js Multi-Version CI
-On:
-Push:
-Branches: [Main ]
-Pull_request:
-Branches: [Main ]
-Jobs:
-Build-And-Test:
-Runs-On: Ubuntu-Latest
-# Test Against Multiple Node.Js Versions
-Strategy:
-Matrix:
-Node-Version: [16.x, 18.x, 20.x]
-Fail-Fast: False
-Steps:
- # Step 1: Checkout Repository
-- Name: Checkout Code
-Uses: Actions/Checkout@V4
-# Step 2: Use The Node.Js Version From The Matrix
-- Name: Setup Node.Js ${{Matrix.Node-Version }}
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: ${{Matrix.Node-Version }}
-Cache: Npm
-# Step 3: Install Dependencies
-- Name: Install Dependencies
-Run: Npm Ci
-# Step 4: Run Linting
-- Name: Run ESLint
-Run: Npm Run Lint --If-Present
-# Step 5: Run Tests
-- Name: Run Tests
-Run: Npm Test
-# Step 6: Build Project (If Applicable)
-- Name: Build Project
-Run: Npm Run Build --If-Present
-How It Works
-Matrix Strategy
-Runs The Workflow For Node.Js 16, 18, And 20 In Parallel.
-Caching
-Uses Actions/Setup-Node With Cache: Npm To Speed Up Installs.
-Lint, Test, Build
-Runs Npm Run Lint If Defined In Package.Json.
-Runs Npm Test For Your Test Suite.
-Runs Npm Run Build If Applicable.
-Fail-Fast Disabled
-Ensures All Node.Js Versions Run Even If One Fails.
-Example Package.Json Scripts
-Json
+<subheading.html>
+covid strings multi-version ci template 
+how to create a multi-version ci template for covid strings 
+name: node.js multi-version ci
+on:
+push:
+branches: [main]
+pull_request:
+branches: [main]
+jobs:
+build-and-test:
+runs-on: ubuntu-latest
+# test against multiple node.js versions
+strategy:
+matrix:
+node-version: [16.x, 18.x, 20.x]
+fail-fast: false
+steps:
+ # step 1: checkout repository
+-name: checkout code
+uses: actions/checkout@v4
+# step 2: use the node.js Version from the matrix
+-name: setup node.js ${{matrix.node-version}}
+uses: actions/setup-node@v4
+with:
+node-version: ${{matrix.node-version }}
+cache: npm
+# step 3: install dependencies
+-name: install dependencies
+run: npm ci
+# step 4: run linting
+- name: run eslint
+run: npm run lint --if-present
+# step 5: run tests
+- name: run tests
+run: npm test
+# step 6: build project (if applicable)
+- name: build project
+run: npm run build --if-present
+how it works
+matrix strategy
+runs the workflow for node.js 16, 18, and 20 in parallel.
+caching
+uses actions/setup-node with cache: npm to speed up installs.
+lint, test, build
+runs npm run lint if defined in package.json.
+runs npm test for your test suite.
+runs npm run build if applicable.
+fail-fast disabled
+ensures all node.js versions run even if one fails.
+example package.json scripts
+json
 {
-Scripts: {
-Lint: Eslint .,
-Test: Jest --Coverage,
-build: Webpack --Mode Production
+scripts: {
+lint: eslint .,
+test: jest --coverage,
+build: webpack --mode production
 }
 }
 //i do try and keep the code coverage percent at 80 percent  
 <header.html>
 covid strings owners suggestions
 suggestions from the covid strings repository owner 
-owners suggestions
-#!/Usr/Bin/Env Node
-/For Game Itself Extend The Audio In The Background Code To The Game Itself 
- * Pull Request Owner Suggestions Generator
+#!/usr/bin/env node
+/for game itself extend the audio in the background code to the game itself 
+ * pull request owner suggestions generator
  * ----------------------------------------
- * This Script Analyzes A PR Object And Outputs Suggestions For Improvement.
- * Can Be Integrated Into CI/CD Or Run Locally.
+ * this script analyzes a pr object and outputs suggestions for improvement.
+ * can be integrated into ci/cd or run locally.
  */
-Const Fs = Require(Fs);
+const fs=require(fs);
 /
- * Generate Suggestions For A Pull Request
- * @Param {Object} Pr - Pull Request Data
- * @Param {String} Pr.Title - PR Title
- * @Param {String} Pr.Description - PR Description
- * @Param {String[]} Pr.ChangedFiles - List Of Changed File Paths
- * @Param {String} Pr.Author - PR Author Username
- * @Returns {String[]} - List Of Suggestions
+ * generate suggestions for a pull request
+ * @param {object} pr - pull request data
+ * @param {string} pr.title - pr title
+ * @param {string} pr.description - pr description
+ * @param {string[]} pr.changedfiles - list of changed file paths
+ * @param {string} pr.author - pr author username
+ * @returns {string[]} - list of suggestions
  */
-Function GenerateSuggestions(Pr) {
-Const Suggestions = [];
-Validate PR Object
-If (!Pr || Typeof Pr !== Object) {
-Throw New Error(Invalid PR Data: Must Be An Object.);
+function generatesuggestions(pr) {
+const suggestions = [];
+validate pr object
+if (!pr || typeof pr !== object) {
+throw new error(invalid pr data: must be an object.);
 }
-Title Check
-If (!Pr.Title || Pr.Title.Trim().Length < 5) {
-Suggestions.Push(Use A Descriptive PR Title (At Least 5 Characters).);
+title check
+if (!pr.title || pr.title.trim().length < 5) {
+suggestions.push(use a descriptive pr title (at least 5 characters).);
 }
-Description Check
-If (!Pr.Description || Pr.Description.Trim().Length < 15) {
-Suggestions.Push(Add A Detailed PR Description Explaining The Changes And Reasoning.);
+description check
+if (!pr.description || pr.description.trim().length < 15) {
+suggestions.push(add a detailed pr description explaining the changes and reasoning.);
 }
-File Changes Check
-If (!Array.IsArray(Pr.ChangedFiles) || Pr.ChangedFiles.Length === 0) {
-Suggestions.Push(No Files Changed — Verify That Commits Are Included.);
-} Else {
-Check For Missing Tests
-Const HasTestChanges = Pr.ChangedFiles.Some(File =>
-File.ToLowerCase().Includes(Test)
+file changes check
+if (!array.isarray(pr.changedfiles) || pr.changedfiles.length === 0) {
+suggestions.push(no files changed —verify that commits are included.);
+} else {
+check for missing tests
+const hastestchanges = pr.changedfiles.some(file =>
+file.tolowercase().includes(test)
 );
-If (!HasTestChanges) {
-Suggestions.Push(Consider Adding Or Updating Tests For Your Changes.);
+if (!hastestchanges) {
+suggestions.push(Consider Adding Or Updating Tests For Your Changes.);
 }
-Check For Large PR
-If (Pr.ChangedFiles.Length > 20) {
-Suggestions.Push(This PR Changes Many Files — Consider Splitting Into Smaller PRs.);
+check for large pr
+if (pr.changedfiles.length > 20) {
+suggestions.push(this pr changes many files — consider splitting into smaller prs.);
 }
 }
-Author Check
-If (!Pr.Author) {
-Suggestions.Push(PR Author Is Missing — Ensure Commit Attribution Is Correct.);
+author check
+if (!pr.author) {
+suggestions.push(pr author is missing — ensure commit attribution is correct.);
 }
-Return Suggestions.Length > 0
-? Suggestions
-: [Looks Good! No Major Suggestions.];
+return suggestions.length > 0
+? suggestions
+: [looks good! no major suggestions.];
 }
-Example Usage
-Try {
-Const ExamplePR = {
-Title: Fix Bug,
-Description: Fixes An Issue.,
-ChangedFiles: [Src/App.Js, Src/Utils/Helper.Js],
-Author: DevUser123
+example usage
+try {
+const examplepr = {
+title: fix bug,
+description: fixes an issue.,
+changedfiles: [src/app.js, src/utils/helper.js],
+author: devuser123
 };
-Const Suggestions =GenerateSuggestions(ExamplePR);
-Console.Log(=== Owner Suggestions ===);
-Suggestions.ForEach((S, I) =>Console.Log(${I + 1}. ${S}));
-Optionally Save To File
-Fs.WriteFileSync(Pr_suggestions.Txt, Suggestions.Join(\N), Utf8);
-Console.Log(\NSuggestions Saved To Pr_suggestions.Txt);
-} Catch (Err) {
-Console.Error(Error:, Err.Message);
+const suggestions=generatesuggestions(examplepr);
+console.log(=== owner suggestions ===);
+suggestions.foreach((s, i) =>console.log(${i + 1}. ${s}));
+optionally save to file
+fs.writefilesync(pr_suggestions.txt, suggestions.join(\n), utf8);
+console.log(\nsuggestions saved to pr_suggestions.txt);
+}catch (err) {
+console.error(error:, err.message);
 }
-<Subheading.Html>
-Covid Strings Posting A Comment On A Github Pull Request As The Repository Owner 
-How To Post A Comment On A Github Pull Request As The Covid Strings Repository Owner
+<subheading.html>
+covid strings posting a comment on a github pull request as the repository owner 
+how to post a comment on a github pull request as the covid strings repository owner
 /
- * Post A Comment On A GitHub Pull Request As The Repository Owner.
- * Requires: Npm Install @Octokit/Rest Dotenv
+ * post a comment on a github pull request as the repository owner.
+ * requires: npm install @octokit/rest dotenv
  */
-Const { Octokit } = Require(@Octokit/Rest);
-Require(Dotenv).Config(); // For loading environment variables from .env
-Load Environment Variables
-Const GITHUB_TOKEN = Process.Env.GITHUB_TOKEN; // Personal Access Token
-Const OWNER = Process.Env.REPO_OWNER;          // e.g., "octocat"
-Const REPO = Process.Env.REPO_NAME;            // e.g., "Hello-World"
-Const PR_NUMBER = ParseInt(Process.Env.PR_NUMBER, 10); // e.g., 42
-Const COMMENT_BODY = Process.Env.COMMENT_BODY || This Is An Automated Owner Suggestion.;
-Validate Required Inputs
-If (!GITHUB_TOKEN || !OWNER || !REPO || !PR_NUMBER) {
-Console.Error(❌ Missing Required Environment Variables. Please Set GITHUB_TOKEN, REPO_OWNER, REPO_NAME, And PR_NUMBER.);
-Process.Exit(1);
+const {octokit}=require(@octokit/rest);
+require(dotenv).config(); // For loading environment variables from .env
+load environment variables
+const github_token=process.env.github_token; // personal access token
+const owner=process.env.repo_owner;          // e.g., "octocat"
+const repo=process.env.repo_name;            // e.g., "hello-world"
+const pr_number= parseint(process.env.pr_number, 10); // e.g., 42
+const comment_body=process.env.comment_body|| this is an automated owner suggestion.;
+validate required inputs
+if (!github_token || !owner || !repo || !pr_number) {
+console.error(❌ missing required environment variables. please set github_token, repo_owner, repo_name, and pr_number.);
+process.exit(1);
 }
-Initialize Octokit With Authentication
-Const Octokit = New Octokit({
-Auth: GITHUB_TOKEN,
-UserAgent: Github-Pr-Comment-Script V1.0,
-TimeZone: UTC
+initialize octokit with authentication
+const Octokit = New Octokit({
+auth: GITHUB_TOKEN,
+useragent: Github-Pr-Comment-Script V1.0,
+timezone: UTC
 });
-(Async () => {
-Try {
-Post The Comment
-Const Response = Await Octokit.Issues.CreateComment({
-Owner: OWNER,
-Repo: REPO,
-Issue_number: PR_NUMBER, // PRs are treated as issues in GitHub API
-Body: COMMENT_BODY
+(async () => {
+try {
+post the comment
+const response = await octokit.issues.createcomment({
+owner: owner,
+repo: repo,
+issue_number: pr_number, // prs are treated as issues in github api
+body: comment_body
 });
-Console.Log(✅ Comment Posted Successfully: ${Response.Data.Html_url});
-} Catch (Error) {
-If (Error.Status === 404) {
-Console.Error(❌ Pull Request Not Found Or Insufficient Permissions.);
-} Else If (Error.Status === 401) {
-Console.Error(❌ Authentication Failed. Check Your GITHUB_TOKEN.);
-} Else {
-Console.Error(❌ Error Posting Comment:, Error);
+console.log(✅ comment posted successfully: ${response.data.html_url});
+} catch (error) {
+if (error.status === 404) {
+console.error(❌ pull request not found or insufficient permissions.);
+} else if (error.status === 401) {
+console.error(❌ authentication failed. check your github_token.);
+} else {
+console.error(❌ error posting comment:, error);
 }
-Process.Exit(1);
+process.exit(1);
 }
 })();
-Setup Instructions
-Install Dependencies
-Bash
-Npm Init-Y
-Npm Install @Octokit/Rest Dotenv
-Create A .Env File In The Same Directory:
-Env
-GITHUB_TOKEN=Ghp_your_personal_access_token_here
-REPO_OWNER=Your-Username-Or-Org
-REPO_NAME=Your-Repo
-PR_NUMBER=123
-COMMENT_BODY=Hello! This Is My Owner Suggestion.
-Your Personal Access Token Must Have At Least Repo Scope For Private Repos Or Public_repo For Public Repos.
-Run The Script
-Bash
-Node Post-Pr-Comment.Js
-Notes
-Owner Suggestion: If You Want To Post A Code Suggestion Instead Of Plain Text, Format The Comment Body Like:
-Markdown
-Suggestion
-Your Suggested Code Here
-This Will Appear As A GitHub Suggestion Block In The PR Review.
-<Subheading.Html>
-Covid Strings Managing Permissions And Granting Write Access To Trusted Users Or Groups 
-How To Manage Permissions And Grant Write Access To Only Trusted Users Or Groups For Covid Strings 
+setup instructions
+install dependencies
+bash
+npm init-y
+npm install @octokit/rest dotenv
+create a .env file in the same directory:
+env
+github_token=ghp_your_personal_access_token_here
+repo_owner=your-username-or-org
+repo_name=your-repo
+pr_number=123
+comment_body=hello! this is my owner suggestion.
+your personal access token must have at least repo scope for private repos or public_repo for public repos.
+run the script
+bash
+node post-pr-comment.js
+notes
+owner suggestion: if you want to post a code suggestion instead of plain text,format the comment body like:
+markdown
+suggestion
+your suggested code here
+this will appear as a github suggestion block in the pr review.
+<subheading.html>
+covid strings managing permissions and granting write access to trusted users or groups 
+how to manage permissions and grant write access to only trusted users or groups for covid strings 
 /
- * Permission Management Example
- * Only Grants Write Access To Trusted Users Or Groups
+ * permission management example
+ * only grants write access to trusted users or groups
  */
-Example Trusted Users And Groups
-Const TrustedUsers = New Set([Alice, Bob, Charlie]);
-Const TrustedGroups = New Set([Admins, Editors]);
-Example User Database (In Real Apps, Fetch From DB)
-Const Users = [
-{ Username: Alice, Groups: [Admins] },
-{ Username: Bob, Groups: [Editors] },
-{ Username: Eve, Groups: [Viewers] }
+example trusted users and groups
+const trustedusers = new set([alice, bob, charlie]);
+const trustedgroups = new set([admins, editors]);
+example user database (in real apps, fetch from db)
+const users = [
+{username: alice, groups: [admins] },
+{username: bob, groups: [editors] },
+{username: eve, groups: [viewers] }
 ];
 /
- * Checks If A User Has Write Access
- * @Param {String} Username - The Username To Check
- * @Returns {Boolean} - True If Write Access Is Granted
+ * checks if a user has write access
+ * @param {string} username - the username to check
+ * @returns {boolean} - true if write access is granted
  */
-Function CanWrite(Username) {
-Validate Input
-If (Typeof Username !== String || Username.Trim() === "") {
-Throw New Error(Invalid Username);
+function canwrite(username) {
+validate input
+if (typeof username !== string || username.trim() === "") {
+throw new error(invalid username);
 }
-Find User In Database
-Const User = Users.Find(U => U.Username === Username);
-If (!User) {
-Return False; // User not found
+find user in database
+const user = users.find(u => u.username ===username);
+if (!user) {
+return false; //user not found
 }
-Check If User Is In Trusted Users List
-If (TrustedUsers.Has(User.Username)) {
-Return True;
+check if user is in trusted users list
+if (trustedusers.has(user.username)) {
+return true;
 }
-Check If Any Of The Users Groups Are Trusted
-Return User.Groups.Some(Group => TrustedGroups.Has(Group));
+check if any of the users groups are trusted
+return user.groups.some(group =>trustedgroups.has(group));
 }
 /
- * Example Usage
+ * example usage
  */
-Try {
-Const TestUsers = [Alice, Bob, Eve, Mallory];
-TestUsers.ForEach(User => {
-Console.Log(
-${User}: ${CanWrite(User) ? ✅ Write Access : ❌ No Write Access}
+try {
+const testusers = [alice, bob, eve, mallory];
+testusers.foreach(user => {
+console.log(
+${user}: ${canwrite(user) ? ✅ write access : ❌ no write access}
 );
 });
-} Catch (Err) {
-Console.Error(Error:, Err.Message);
+}catch (err) {
+console.error(error:, err.message);
 }
-Alice: ✅ Write Access
-Bob: ✅ Write Access
-Eve: ❌ No Write Access
-Mallory: ❌ No Write Access
-<Subheading.Html>
-Covid Strings Integrating With Express Js Middleware So That Write Access Is Automatically Enforced On API Routes 
-How To Integrate With Express Js Middleware So Write Access Is Automatically Enforced On Api Routes For Covid Strings
-App.Js
-Const Express = Require(Express);
-Const App = Express();
-App.Use(Express.Json()); // Parse JSON bodies
+alice: ✅ write access
+bob: ✅ write access
+eve: ❌ no write access
+mallory: ❌ no write access
+<subheading.html>
+covid strings integrating with express js middleware so that write access is automatically enforced on api routes 
+how to integrate with express js middleware so write access is automatically enforced on api routes for covid strings
+app.js
+const express=require(express);
+const app=express();
+app.use(express.json()); // parse json bodies
 /
- * Mock Authentication Middleware
- * In A Real App, Replace This With JWT/Session Validation
+ * mock authentication middleware
+ * in a real app, replace this with jwt/session validation
  */
-Function MockAuth(Req,Res,Next) {
-Simulate A Logged-In User Object
-Req.User = {
-Id: 1,
-Username: John_doe,
-Permissions: [Read, Write] // Change to ['read'] to test denial
+function mockauth(req,res,next) {
+simulate a logged-in user object
+req.user = {
+id: 1,
+username: john_doe,
+permissions: [read, write] // change to ['read'] to test denial
 };
-Next();
+next();
 }
 /
- * Middleware To Enforce Write Access
- * Blocks POST, PUT, PATCH, DELETE If User Lacks Write Permission
+ * middleware to enforce write access
+ * blocks post, put, patch, delete if user lacks write permission
  */
-Function EnforceWriteAccess(Req,Res,Next) {
-Try {
-Const WriteMethods = [POST, PUT, PATCH, DELETE];
-// Only enforce for write methods
-If (WriteMethods.Includes(Req.Method)) {
-If (!Req.User || !Req.User.Permissions.Includes(Write)) {
-Return Res.Status(403).Json({
-Error: Forbidden: Write Access Required
+function enforcewriteaccess(req,res,next) {
+try {
+const writemethods = [post, put, patch, delete];
+// only enforce for write methods
+if (writemethods.includes(req.method)) {
+if (!req.user || !req.user.permissions.includes(write)) {
+return res.status(403).json({
+error: forbidden: write access required
 });
 }
 }
-Next();
-} Catch (Err) {
-Console.Error(Error In EnforceWriteAccess Middleware:, Err);
-Res.Status(500).Json({Error: Internal Server Error});
+next();
+}catch (err) {
+console.error(error in enforcewriteaccess middleware:, err);
+res.status(500).json({error: internal server error});
 }
 }
-Apply Authentication First
-App.Use(MockAuth);
-Apply Write Access Enforcement Globally
-App.Use(EnforceWriteAccess);
-Example Routes
-App.Get(/Data, (Req,Res) => {
-Res.Json({Message: Read Access Granted, User: Req.User });
+apply authentication first
+app.use(mockauth);
+apply write access enforcement globally
+app.use(enforcewriteaccess);
+example routes
+app.get(/data, (req,res) => {
+res.json({message: read access granted, user: req.user });
 });
-App.Post(/Data, (Req,Res) => {
-Res.Json({Message: Write Access Granted, Data: Req.Body });
+app.post(/data, (req,res) => {
+res.json({message: write access granted, data: req.body });
 });
-App.Put(/Data/:Id, (Req,Res) => {
-Res.Json({Message: Updated Item ${Req.Params.Id}, Data: Req.Body });
+app.put(/data/:id, (req,res) => {
+res.json({message: updated item ${req.params.id}, data: req.body });
 });
-Start Server
-Const PORT = Process.Env.PORT || 3000;
-App.Listen(PORT, () => {
-Console.Log(Server Running On Http://Localhost:${PORT});
-# Read Request (Allowed)
-Curl -X GET Http://Localhost:3000/Data
-# Write Request (Allowed If User Has Write)
-Curl -X POST Http://Localhost:3000/Data -H Content-Type: Application/Json -D {Name:Test}
-# Write Request (Denied If User Lacks Write)
-# Change Permissions In MockAuth To [Read] And Retry
-<Subheading.Html>
-Covid Strings Role Based Version Where Write Access Is Tied To Specific Roles (E.G., Admin, Editor) Instead Of Just A Write Permission Flag 
-How To Create A Role Based Version Where Write Access Is Tied To Specific Roles (E.G., Admin, Editor) Instead Of Just A Write Permission Flag For Covid Strings 
+start server
+const port=process.env.port || 3000;
+app.listen(port, () => {
+console.log(server running on http://localhost:${port});
+# read request (allowed)
+curl -x get http://localhost:3000/data
+# write request (allowed if user has write)
+curl -x post http://localhost:3000/data -h content-type: application/json -d {name:test}
+# write request (denied if user lacks write)
+# change permissions in mockauth to [read] and retry
+<subheading.html>
+covid strings role based version where write access is tied to specific roles (E.G., Admin, Editor) Instead Of Just A Write Permission Flag 
+how to create a role based version where write access is tied to specific roles (E.G., Admin, Editor) Instead Of Just A Write Permission Flag For Covid Strings 
 /
- * Role-Based Access Control (RBAC) Example
+ * role-based access control (rbac) example
  * -----------------------------------------
- * This Example Ties Write Access To Specific Roles (Admin, Editor)
- * And Read Access To All Authenticated Users.
+ * this example ties write access to specific roles (admin, editor)
+ * and read access to all authenticated users.
  */
-Const Express = Require(Express);
-Const App = Express();
-App.Use(Express.Json());
-Example User Database (In Real Apps, Use A DB)
-Const Users = [
-{Id: 1, Name: Alice, Role: Admin},
-{Id: 2, Name: Bob, Role: Editor},
-{Id: 3, Name: Charlie, Role: Viewer}
+const express =require(express);
+const app=express();
+app.use(express.json());
+example user database (in real apps, use a db)
+const users = [
+{id: 1, name: alice, role: admin},
+{id: 2, name: bob, role: editor},
+{id: 3, name: charlie, role: viewer}
 ];
-Middleware To Simulate Authentication
-Function Authenticate(Req, Res, Next) {
-Const UserId = ParseInt(Req.Header(X-User-Id), 10);
-Const User = Users.Find(U => U.Id === UserId);
-If (!User) {
-Return Res.Status(401).Json({Error: Unauthorized: Invalid User});
+middleware to simulate authentication
+function authenticate(req, res, next) {
+const userid = parseint(req.header(x-user-id), 10);
+const user = users.find(u => u.id === userid);
+if (!user) {
+return res.status(401).json({error: unauthorized: invalid user});
 }
-Req.User = User;
-Next();
+req.user =user;
+next();
 }
-Middleware For Role-Based Authorization
-Function AuthorizeRoles(...AllowedRoles) {
-Return (Req, Res, Next) => {
-If (!Req.User || !AllowedRoles.Includes(Req.User.Role)) {
-Return Res.Status(403).Json({Error: Forbidden: Insufficient Role});
+middleware for role-based authorization
+function authorizeroles(...allowedroles) {
+return (req, res, next) => {
+if (!req.user || !allowedroles.includes(req.user.role)) {
+return res.status(403).json({error: forbidden: insufficient role});
 }
-Next();
+next();
 };
 }
-Public Route (No Auth)
-App.Get(/, (Req, Res) => {
-Res.Send(Welcome To The API);
+public route (no auth)
+app.get(/, (req, res) => {
+res.send(welcome to the api);
 });
-Read Route (Any Authenticated User)
-App.Get(/Data, Authenticate, (Req, Res) => {
-Res.Json({Message: Hello ${Req.User.Name}, You Can Read This Data.});
+read route (any authenticated user)
+app.get(/data, authenticate, (req, res) => {
+res.json({message: hello ${req.user.name}, you can read this data.});
 });
-/Write Route (Only Admin Or Editor)
-App.Post(/Data, Authenticate, AuthorizeRoles(Admin, Editor), (Req, Res) => {
-Const {Content } = Req.Body;
-If (!Content || Typeof Content !== String) {
-Return Res.Status(400).Json({Error: Invalid Content});
+/write route (only admin or editor)
+app.post(/data, authenticate, authorizeroles(admin, editor), (req, res) => {
+const {content } = req.body;
+if (!content || typeof content !== string) {
+return res.status(400).json({error: invalid content});
 }
-Res.Json({Message: Data Written By ${Req.User.Name},Content });
+res.json({message: data written by ${req.user.name}, content });
 });
-Start Server
-Const PORT = 3000;
-App.Listen(PORT, () => {
-Console.Log(Server Running On Http://Localhost:${PORT});
+start server
+const port = 3000;
+app.listen(port, () => {
+console.log(server running on http://localhost:${port});
 });
-# Read As Viewer (OK)
-Curl -H X-User-Id: 3 Http://Localhost:3000/Data
-# Write As Viewer (Forbidden)
-Curl -X POST -H X-User-Id: 3 -H Content-Type: Application/Json \
--D {Content:Test} Http://Localhost:3000/Data
-# Write As Editor (OK)
-Curl -X POST -H X-User-Id: 2 -H Content-Type: Application/Json \
--D {Content:Test} Http://Localhost:3000/Data
-<Subheading.Html>
-Covid Strings Pull Request To Extend The Audio In The Background Code To The Game Itself 
-How To Create A Pull Request To Extend The Audio In The Background Code To The Game Itself For Covid Strings
-BackgroundAudio.Js
-Create And Configure The Audio Element
-Const BackgroundAudio = New Audio(Assets/Audio/Background.Mp3);
-BackgroundAudio.Loop = True;
-BackgroundAudio.Volume = 0.5; // Adjust volume as needed
-Function To Start Audio (Must Be Triggered By User Interaction Due To Browser Policies)
-Function StartBackgroundAudio() {
-Try {
-BackgroundAudio.Play().Catch(Err => {
-Console.Warn(Autoplay Blocked. Waiting For User Interaction., Err);
+# read as viewer (ok)
+curl -h x-user-id: 3 http://localhost:3000/data
+# write as viewer (forbidden)
+curl -x post -h x-user-id: 3 -h content-type: application/json \
+-d {content:test} http://localhost:3000/data
+# write as editor (ok)
+curl -x post -h x-user-id: 2 -h content-type: application/json \
+-d {content:test} http://localhost:3000/data
+<subheading.html>
+covid strings pull request to extend the audio in the background code to the game itself 
+how to create a pull request to extend the audio in the background code to the game itself for covid strings
+backgroundaudio.js
+create and configure the audio element
+const backgroundaudio = new audio(assets/audio/background.mp3);
+backgroundaudio.loop = True;
+backgroundaudio.volume = 0.5; // adjust volume as needed
+function to start audio (must be triggered by user interaction due to browser policies)
+function startbackgroundaudio() {
+try {
+backgroundaudio.play().catch(err => {
+console.warn(autoplay blocked. waiting for user interaction., err);
 });
-} Catch (Error) {
-Console.Error(Error Starting Background Audio:, Error);
-}
-}
-Function To Stop Audio
-Function StopBackgroundAudio() {
-Try {
-BackgroundAudio.Pause();
-BackgroundAudio.CurrentTime = 0;
-} Catch (Error) {
-Console.Error(Error Stopping Background Audio:, Error);
+} catch (error) {
+console.error(error starting background audio:, error);
 }
 }
-Example: Start Audio When Game Starts
-Document.GetElementById(StartGameBtn).AddEventListener(Click, () => {
-StartBackgroundAudio();
-StartGame(); // Your existing game start function
+fyunction to stop audio
+function stopbackgroundaudio() {
+try {
+backgroundaudio.pause();
+backgroundaudio.currenttime = 0;
+} catch (error) {
+console.error(error stopping background audio:, error);
+}
+}
+example: start audio when game starts
+document.getelementbyid(startgamebtn).addeventlistener(click, () => {
+startbackgroundaudio();
+startgame(); // your existing game start function
 });
-Example: Stop Audio When Game Ends
-Document.AddEventListener(GameOver, () => {
-StopBackgroundAudio();
+example: stop audio when game ends
+document.addeventlistener(gameover, () => {
+stopbackgroundaudio();
 });
-2. Node.Js Script To Create A Pull Request
-You Can Use The GitHub REST API With @Octokit/Rest To Automate PR Creation.
-CreatePullRequest.Js
-Const { Octokit } = Require(@Octokit/Rest);
-Require(Dotenv).Config();
-(Async () => {
-Try {
-Const Octokit = New Octokit({Auth: Process.Env.GITHUB_TOKEN });
-Const Owner = Your-Username; // GitHub username or org
-Const Repo = Your-Repo;      // Repository name
-Const BranchName = Extend-Audio-Feature;
-Const BaseBranch = Main;
-1. Create A New Branch From Main
-Const {Data: RefData } = Await Octokit.Git.GetRef({
-Owner,
-Repo,
-Ref: Heads/${BaseBranch}
+2. node.js script to create a pull request
+you can use the github rest api with @octokit/rest to automate pr creation.
+createpullrequest.js
+const {octokit} =require(@octokit/rest);
+require(dotenv).config();
+(async () => {
+try {
+const octokit = new octokit({auth: process.env.github_token});
+const owner =your-username; // github username or org
+const repo =your-repo;      // repository name
+const branchname =extend-audio-feature;
+const basebranch =main;
+1. create a new branch from main
+const {data: refdata } =await octokit.git.getref({
+owner,
+repo,
+ref: heads/${basebranch}
 });
-Await Octokit.Git.CreateRef({
-Owner,
-Repo,
-Ref: Refs/Heads/${BranchName},
-Sha: RefData.Object.Sha
+await octokit.git.createref({
+owner,
+repo,
+ref: refs/heads/${branchname},
+sha: refdata.object.sha
 });
-2. Commit Your Updated BackgroundAudio.Js File
-Const FilePath = Src/BackgroundAudio.Js;
-Const FileContent = Require(Fs).ReadFileSync(FilePath, Utf8);
-Const EncodedContent = Buffer.From(FileContent).ToString(Base64);
-Await Octokit.Repos.CreateOrUpdateFileContents({
-Owner,
-Repo,
-Path: FilePath,
-Message: Extend Background Audio Into Gameplay,
-Content: EncodedContent,
-Branch: BranchName
+2. commit your updated backgroundaudio.js file
+const filepath =src/backgroundaudio.js;
+const filecontent=require(fs).readfilesync(filepath, utf8);
+const encodedcontent=buffer.from(filecontent).tostring(base64);
+await octokit.repos.createorupdatefilecontents({
+owner,
+repo,
+path: filepath,
+message: extend background audio into gameplay,
+content: encodedcontent,
+branch: branchname
 });
-3. Create The Pull Request
-Const {Data: Pr } = Await Octokit.Pulls.Create({
-Owner,
-Repo,
-Title: Extend Background Audio Into Gameplay,
-Head: BranchName,
-Base: BaseBranch,
-Body: This PR Ensures Background Audio Continues During Gameplay And Loops Until The Game Ends.
+3. create the pull request
+const {data:pr}=await octokit.pulls.create({
+owner,
+repo,
+title: extend background audio into gameplay,
+head: branchname,
+base: basebranch,
+body: this pr ensures background audio continues during gameplay and loops until the game ends.
 });
-Console.Log(✅ Pull Request Created: ${Pr.Html_url});
-} Catch (Error) {
-Console.Error(❌ Error Creating Pull Request:, Error);
+console.log(✅ pull request created: ${pr.html_url});
+}catch (error) {
+console.error(❌ error creating pull request:, error);
 }
 })();
-Setup:
-Install Dependencies:
-Bash
-Npm Install @Octokit/Rest Dotenv
-Create A .Env File:
-GITHUB_TOKEN=Your_personal_access_token
-(Token Must Have Repo Scope.)
-Run:
-Bash
-Node CreatePullRequest.Js
-<Subheading.Html>
-Covid Strings Merge These Steps Into A Single Automated Script That Edits The Game File And Immediately Opens The PR In One Go 
-How To Merge These Steps Into A Single Automated Script That Edits The Game File And Immediately Opens The PR In One Go 
+setup:
+install dependencies:
+bash
+npm install @octokit/rest dotenv
+create a .env file:
+github_token=your_personal_access_token
+(token must have repo scope.)
+run:
+bash
+node createpullrequest.js
+<subheading.html>
+covid strings merge these steps into a single automated script that edits the game file and immediately opens the pr in one go 
+how to merge these steps into a single automated script that edits the game file and immediately opens the pr in one go 
 /
- * Automated Script To:
- * 1. Edit A Game File
- * 2. Commit & Push Changes To A New Branch
- * 3. Open A Pull Request On GitHub
+ * automated script to:
+ * 1. edit a game file
+ * 2. commit & push changes to a new branch
+ * 3. open a pull request on github
  *
- * Requirements:
- *   Npm Install Simple-Git @Octokit/Rest
- *   Set Environment Variables:
- *     GITHUB_TOKEN   - Personal Access Token With Repo Permissions
- *     GITHUB_OWNER   - Repository Owner (Username Or Org)
- *     GITHUB_REPO    - Repository Name
+ * requirements:
+ *   npm install simple-git @octokit/rest
+ *   set environment variables:
+ *     github_token   - personal access token with repo permissions
+ *     github_owner   - repository owner (username or org)
+ *     github_repo    - repository name
  */
-Const Fs = Require(Fs);
-Const Path = Require(Path);
-Const SimpleGit = Require(Simple-Git);
-Const { Octokit } = Require(@Octokit/Rest);
-(Async () => {
-Try {
---- CONFIG ---
-Const GITHUB_TOKEN = Process.Env.GITHUB_TOKEN;
-Const OWNER =Process.Env.GITHUB_OWNER;
-Const REPO =Process.Env.GITHUB_REPO;
-Const BASE_BRANCH = Main; // or "master"
-Const NEW_BRANCH = Auto-Edit-${Date.Now()};
-Const FILE_PATH = Path.Join(__ Dirname, Game.Json); // Example file
-If (!GITHUB_TOKEN || !OWNER || !REPO) {
-Throw New Error(Missing Required Environment Variables.);
+const fs = require(fs);
+const path = require(path);
+const simplegit = require(simple-git);
+const {octokit } = require(@octokit/rest);
+(async () => {
+try {
+--- config ---
+const github_token =process.env.github_token;
+const owner=process.env.github_owner;
+const repo=process.env.github_repo;
+const base_branch =main; // or "master"
+const new_branch =auto-edit-${date.now()};
+const file_path=path.join(__ dirname, game.json); // example file
+if (!github_token || !owner || !repo) {
+throw new error(missing required environment variables.);
 }
---- STEP 1: Edit The Game File ---
-If (!Fs.ExistsSync(FILE_PATH)) {
-Throw New Error(File Not Found: ${FILE_PATH});
+--- step 1: edit the game file ---
+if (!fs.existssync(file_path)) {
+throw new error(file not found: ${file_path});
 }
-Let GameData = JSON.Parse(Fs.ReadFileSync(FILE_PATH, Utf8));
-GameData.LastUpdated = New Date().ToISOString(); // Example change
-Fs.WriteFileSync(FILE_PATH, JSON.Stringify(GameData, Null, 2));
-Console.Log(✅ Edited ${FILE_PATH});
---- STEP 2: Commit & Push Changes ---
-Const Git = SimpleGit();
-Await Git.Fetch();
-Await Git.Checkout(BASE_BRANCH);
-Await Git.Pull(Origin, BASE_BRANCH);
-Await Git.CheckoutLocalBranch(NEW_BRANCH);
-Await Git.Add(FILE_PATH);
-Await Git.Commit(Auto-Update Game File At ${New Date().ToISOString()});
-Await Git.Push(Origin, NEW_BRANCH);
-Console.Log(✅ Changes Pushed To Branch: ${NEW_BRANCH});
---- STEP 3: Open A Pull Request ---
-Const Octokit = New Octokit({Auth: GITHUB_TOKEN });
-Const Pr = Await Octokit.Pulls.Create({
-Owner: OWNER,
-Repo: REPO,
-Title: Automated Game File Update,
-Head: NEW_BRANCH,
-Base: BASE_BRANCH,
-Body: This PR Was Created Automatically By A Script.
+let gamedata =json.parse(fs.readfilesync(file_path, utf8));
+gamedata.lastupdated=new date().toisostring(); // example change
+fs.writefilesync(file_path, json.stringify(gamedata, null, 2));
+console.log(✅ edited ${file_path});
+--- step 2: commit & push changes ---
+const git =simplegit();
+await git.fetch();
+await git.checkout(base_branch);
+await git.pull(origin, base_branch);
+await git.checkoutlocalbranch(new_branch);
+await git.add(file_path);
+await git.commit(auto-update game file at ${new date().toisostring()});
+await git.push(origin, new_branch);
+console.log(✅ changes pushed to branch: ${new_branch});
+--- step 3: open a pull request ---
+const octokit = new octokit({auth: github_token});
+const pr=await octokit.pulls.create({
+owner: owner,
+repo: repo,
+title: automated game file update,
+head: new_branch,
+base: base_branch,
+body: this pr was created automatically by a script.
 });
-Console.Log(✅ Pull Request Created: ${Pr.Data.Html_url});
-} Catch (Err) {
-Console.Error(❌ Error:, Err.Message);
-Process.Exit(1);
+console.log(✅ pull request created: ${pr.data.html_url});
+} catch (err) {
+console.error(❌ error:, err.message);
+process.exit(1);
 }
 })();
-Setup Instructions
-Install Dependencies:
-Bash
-Npm Install Simple-Git @Octokit/Rest
-Set Environment Variables:
-Bash
-Export GITHUB_TOKEN=Your_personal_access_token
-Export GITHUB_OWNER=Your_github_username
-Export GITHUB_REPO=Your_Repo_Name
-Run The Script:
-Bash
-Node Auto_pr.Js
-<Subheading.Html>
-Covid Strings Pull Request For Game Progress 
-How To Create A Pull Request For Covid Strings Progress 
-GameProgress.Js
+setup instructions
+install dependencies:
+bash
+npm install simple-git @octokit/rest
+set environment variables:
+bash
+export github_token=your_personal_access_token
+export github_owner=your_github_username
+export github_repo=your_repo_name
+run the script:
+bash
+node auto_pr.js
+<subheading.html>
+covid strings pull request for game progress 
+how to create a pull request for covid strings progress 
+gameprogress.js
 /
- * Game Progress Tracker
- * Stores And Retrieves Player Progress Using LocalStorage
- * Handles Score, Level, And Achievements
+ * game progress tracker
+ * stores and retrieves player progress using localstorage
+ * handles score, level, and achievements
  */
-Validate LocalStorage Availability
-Function IsStorageAvailable() {
-Try {
-Const TestKey = __ Test__;
-LocalStorage.SetItem(TestKey, 1);
-LocalStorage.RemoveItem(TestKey);
-Return True;
-} Catch (E) {
-Console.Error(Local Storage Is Not Available:, E);
-Return False;
+validate localstorage availability
+function isstorageavailable() {
+try {
+const testkey = __ test__;
+localstorage.setitem(testkey, 1);
+localstorage.removeitem(testkey);
+return true;
+} catch (e) {
+console.error(local storage is not available:, e);
+return false;
 }
 }
-Class GameProgress {
-Constructor() {
-This.Progress = {
-Score: 0,
-Level: 1,
-Achievements: []
+class gameprogress {
+constructor() {
+this.progress = {
+score: 0,
+level: 1,
+achievements: []
 };
-This.LoadProgress();
+this.loadprogress();
 }
-Increase Score
-AddScore(Points) {
-If (Typeof Points !== Number || Points <= 0) {
-Console.Warn(Invalid Score Increment);
-Return;
+increase score
+addscore(points) {
+if (typeof points !== number || points <= 0) {
+console.warn(invalid score increment);
+return;
 }
-This.Progress.Score +=Points;
-This.SaveProgress();
+this.progress.score+=points;
+this.saveprogress();
 }
-Advance To Next Level
-NextLevel() {
-This.Progress.Level += 1;
-This.SaveProgress();
+advance to next level
+nextlevel() {
+this.progress.level += 1;
+this.saveprogress();
 }
-Add Achievement
-AddAchievement(Name) {
-If (!Name || Typeof Name !== String) {
-Console.Warn(Invalid Achievement Name);
-Return;
+add achievement
+addachievement(name) {
+if (!name || typeof name !== string) {
+console.warn(invalid achievement name);
+return;
 }
-If (!This.Progress.Achievements.Includes(Name)) {
-This.Progress.Achievements.Push(Name);
-This.SaveProgress();
-}
-}
-Save To LocalStorage
-SaveProgress() {
-If (IsStorageAvailable()) {
-LocalStorage.SetItem(GameProgress, JSON.Stringify(This.Progress));
+If (!this.progress.achievements.includes(name)) {
+this.progress.achievements.push(name);
+this.saveprogress();
 }
 }
-Load From LocalStorage
-LoadProgress() {
-If (IsStorageAvailable()) {
-Const Saved = LocalStorage.GetItem(GameProgress);
-If (Saved) {
-Try {
-This.Progress = JSON.Parse(Saved);
-} Catch (E) {
-Console.Error(Error Parsing Saved Progress:, E);
+save to localstorage
+saveprogress() {
+if (isstorageavailable()) {
+localstorage.setitem(gameprogress, json.stringify(this.progress));
+}
+}
+load from localstorage
+loadprogress() {
+if (isstorageavailable()) {
+const saved =localstorage.getitem(gameprogress);
+if (saved) {
+try {
+this.progress =json.parse(saved);
+}catch (e) {
+console.error(error parsing saved progress:, e);
 }
 }
 }
 }
-Reset Progress
-ResetProgress() {
-This.Progress = {Score: 0, Level: 1, Achievements: [] };
-This.SaveProgress();
+reset progress
+resetprogress() {
+this.progress = {score: 0, level: 1, achievements: [] };
+this.saveprogress();
 }
 }
-Example Usage
-Const Player = New GameProgress();
-Player.AddScore(50);
-Player.NextLevel();
-Player.AddAchievement(First Win);
-Console.Log(Current Progress:, Player.Progress);
-2️⃣ How To Commit & Create A Pull Request
-Step-By-Step:
-Bash
-# 1. Clone The Repository
-Git Clone Https://Github.Com/Username/Game-Project.Git
-Cd Game-Project
-# 2. Create A New Branch For Your Feature
-Git Checkout -B Feature/Game-Progress
-# 3. Add Your New File
-Cp /Path/To/GameProgress.Js./Src/GameProgress.Js
-Git Add Src/GameProgress.Js
-# 4. Commit Your Changes
-Git Commit -M Add Game Progress Tracking System
-# 5. Push Your Branch To GitHub
-Git Push Origin Feature/Game-Progress
-<Subheading.Html>
-Covid Strings Github Actions Workflow So That Your Pull Request Automatically Runs Tests For The Game Progress Code Before Merging
-How To Create A GitHub Actions Workflow So That Your Pull Request Automatically Runs Tests For The Game Progress Code Before Merging
-Name: Run Game Progress Tests
-# Trigger Workflow On Pull Requests Targeting The Main Branch
+example usage
+const player = new gameprogress();
+player.addscore(50);
+player.nextlevel();
+player.addachievement(first win);
+console.log(current progress:, player.progress);
+2️⃣ how to commit & create a pull request
+step-by-step:
+bash
+# 1. clone the repository
+git clone https://github.com/username/game-project.git
+cd game-project
+# 2. create a new branch for your feature
+git checkout -b feature/game-progress
+# 3. add your new file
+cp /path/to/gameprogress.js./src/gameprogress.js
+git add src/gameprogress.js
+# 4. commit your changes
+git commit -m add game progress tracking system
+# 5. push your branch to github
+git push origin feature/game-progress
+<subheading.html>
+covid strings github actions workflow so that your pull request automatically runs tests for the game progress code before merging
+how to create a github actions workflow so that your pull request automatically runs tests for the game progress code before merging
+name: run game progress tests
+# trigger workflow on pull requests targeting the main branch
 On:
 Pull_request:
 Branches:
@@ -6667,4 +6666,1972 @@ secretsmanager:getsecretvalue
 secretsmanager:putsecretvalue
 secretsmanager:updatesecretversionstage
 rds-db:connect
-return filename
+<Header.Html>
+Covid Strings Quick PR Style Check Script
+How To Create A Quick Style Check Script For A Covid Strings Pull Request 
+#!/Usr/Bin/Env Node
+/**
+ * Quick PR Style Check Script
+ * ---------------------------------
+ * Runs ESLint and Prettier checks to ensure code style compliance
+ * before submitting a Pull Request.
+ *
+ * Usage:
+ *   1. Install dependencies:
+ *      npm install --save-dev eslint prettier
+ *   2. Make this file executable:
+ *      chmod +x pr-style-check.js
+ *   3. Run:
+ *      node pr-style-check.js
+ */
+Const {ExecSync } = Require(Child_process);
+Function RunCommand(Command, Description) {
+Try {
+Console.Log(\N🔍 Running: ${Description}...);
+ExecSync(Command, {Stdio: Inherit});
+Console.Log(✅ ${Description} Passed);
+} Catch (Error) {
+Console.Error(❌ ${Description} Failed);
+Process.Exit(1); // Exit with failure
+}
+}
+Console.Log(🚀 Starting PR Style Checks...);
+// 1. ESLint check (no auto-fix)
+RunCommand(Npx Eslint . --Ext .Js,.Jsx,.Ts,.Tsx, ESLint Style Check);
+// 2. Prettier check (no write)
+RunCommand(Npx Prettier --Check ., Prettier Formatting Check);
+Console.Log(\N🎉 All Style Checks Passed! Ready For PR Submission.);
+Setup Instructions
+Install ESLint & Prettier
+Bash
+Npm Install --Save-Dev Eslint Prettier
+Configure ESLint
+Bash
+Npx Eslint--Init
+Configure Prettier
+Create .Prettierrc:
+Json
+{
+SingleQuote: True,
+Semi: True,
+TrailingComma: Es5
+}
+Run The Script Before Pushing:
+Bash
+<Subheading.Html>
+Covid Strings  Also Checking For Missing Documentation And Test Coverage Before Allowing A PR 
+How To Also Check For Missing Documentation And Test Coverage Before Allowing A PR
+#!/Usr/Bin/Env Node
+/**
+ * PR Validation Script
+ * --------------------
+ * 1. Checks if documentation changes are present when code changes are made.
+ * 2. Checks if test coverage meets the minimum threshold.
+ *
+ * Usage:
+ *   node pr-check.js <coverageThreshold>
+ *
+ * Example:
+ *   node pr-check.js 80
+ */
+Const {ExecSync } = Require(Child_process);
+Const Fs = Require(Fs);
+Const CoverageThreshold =ParseInt(Process.Argv[2] || 80, 10);
+If (IsNaN(CoverageThreshold) || CoverageThreshold <= 0 || CoverageThreshold > 100) {
+Console.Error(❌ Invalid Coverage Threshold. Must Be Between 1 And 100.);
+Process.Exit(1);
+}
+Try {
+Console.Log(🔍 Checking Changed Files In PR...);
+Const ChangedFiles = ExecSync(Git Diff --Name-Only Origin/Main...HEAD, {Encoding: Utf8})
+.Split(\N)
+.Filter(Boolean);
+Const CodeFiles =ChangedFiles.Filter(F =>F.EndsWith(.Js) || F.EndsWith(.Ts));
+Const DocFiles =ChangedFiles.Filter(F => F.StartsWith(Docs/) || F.ToLowerCase().Includes(Readme));
+If (CodeFiles.Length> 0 && DocFiles.Length === 0) {
+Console.Error(❌ Code Changes Detected But No Documentation Updates Found.);
+Console.Error(Please Update README Or Docs/Accordingly.);
+Process.Exit(1);
+} Else {
+Console.Log(✅ Documentation Check Passed.);
+}
+Console.Log(📊 Running Test Coverage Check...);
+ExecSync(Npx Jest --Coverage --CoverageReporters=Json-Summary, {Stdio: Inherit});
+Const CoverageSummaryPath = ./Coverage/Coverage-Summary.Json;
+If (!Fs.ExistsSync(CoverageSummaryPath)) {
+Console.Error(❌ Coverage Summary File Not Found. Ensure Tests Generate Coverage.);
+Process.Exit(1);
+}
+Const CoverageData = JSON.Parse(Fs.ReadFileSync(CoverageSummaryPath, Utf8));
+Const StatementsCoverage =CoverageData.Total.Statements.Pct;
+If (StatementsCoverage <CoverageThreshold) {
+Console.Error(❌ Test Coverage Too Low: ${StatementsCoverage}% (Minimum ${CoverageThreshold}%));
+Process.Exit(1);
+}
+Console.Log(✅ Test Coverage Check Passed: ${StatementsCoverage}%);
+Console.Log(🎉 All PR Checks Passed!);
+Process.Exit(0);
+} Catch (Err) {
+Console.Error(❌ Error Running PR Checks:,Err.Message);
+Process.Exit(1);
+}
+Integration In GitHub Actions
+Yaml
+Name: PR Checks
+On:
+Pull_request:
+Branches: [Main ]
+Jobs:
+Validate-Pr:
+Runs-On: Ubuntu-Latest
+Steps:
+-Uses: Actions/Checkout@V3
+-Uses: Actions/Setup-Node@V3
+With:
+Node-Version: 18
+-Run: Npm Install
+-Run: Node Pr-Check.Js 80
+<Subheading.Html>
+Covid Strings Testing Framework That Automatically Generates Unit Tests For New Functions As They Are Added To The Codebase 
+How To Test The Framework That Automatically Generates Unit Tests For New Functions As They Are Added To The Codebase 
+Npm Init-Y
+Npm Install Jest Chokidar Fs-Extra --Save-Dev
+2. Project Structure
+Project/
+Src/
+Math.Js
+Tests/
+Auto-Test-Generator.Js
+Package.Json
+3. Example Source File (Src/Math.Js)
+// Example function
+Function Add(A, B) {
+Return A + B;
+}
+// Another function
+Function Multiply(A, B) {
+Return A * B;
+}
+Module.Exports={Add, Multiply };
+4. Auto Test Generator (Auto-Test-Generator.Js)
+/**
+ * Auto Test Generator
+ * Watches the src/ folder for new JS files and generates Jest test stubs
+ */
+Const Chokidar=Require(Chokidar);
+Const Fs = Require(Fs-Extra);
+Const Path = Require(Path);
+Const SRC_DIR = Path.Join(__ Dirname, Src);
+Const TEST_DIR = Path.Join(__ Dirname, Tests);
+Function GenerateTestTemplate(FilePath) {
+Const FileName = Path.Basename(FilePath, .Js);
+Const RelativeImport = ../Src/${FileName};
+Const FileContent =Fs.ReadFileSync(FilePath, Utf-8);
+// Extract function names using regex
+Const FunctionNames = [...FileContent.MatchAll(/function\s+([a-zA-Z0-9_]+)/g)]
+.Map(Match => Match[1]);
+Let TestContent = Const { ${FunctionNames.Join(", ")} } =Require(${RelativeImport});
+Describe(${FileName} Module, () => {
+${FunctionNames.Map(Fn => Test(${Fn} Should Work Correctly, () => {
+// TODO: Implement test for ${fn}
+Expect(${Fn}()).ToBeDefined();
+});).Join(\N)}
+});
+;
+Return TestContent;
+}
+// Watch for new files
+Chokidar.Watch(SRC_DIR, {IgnoreInitial: True })
+.On(Add, FilePath => {
+If (Path.Extname(FilePath) === .Js) {
+Const FileName = Path.Basename(FilePath, .Js);
+Const TestFilePath = Path.Join(TEST_DIR, ${FileName}.Test.Js);
+If (!Fs.ExistsSync(TestFilePath)) {
+Console.Log(Generating Test For ${FileName}...);
+Const TestTemplate =GenerateTestTemplate(FilePath);
+Fs.OutputFileSync(TestFilePath, TestTemplate);
+Console.Log(Test File Created: ${TestFilePath});
+}
+}
+});
+Console.Log(Watching For New JS Files In Src/...);
+5. Add Scripts To Package.Json
+Json
+{
+Scripts: {
+Test: Jest,
+Watch-Tests: Node Auto-Test-Generator.Js
+}
+}
+6. Run The Watcher
+Bash
+Npm Run Watch-Tests
+When You Add A New.Js File In Src/,A Matching .Test.Js File Will Be Created In Tests/With Jest Test Stubs.
+7. Run Tests
+Bash
+Npm Test
+<Subheading.Html>
+Covid Strings How To Integrate An AI API So That Your Script Automatically Fetches Diverse Test Inputs And Then Self‑Verifies Them Before Adding Them To Your Test Suite While ,Let AI Suggests Inputs. Let Your Code Compute The Expected Outputs. Keep Human Review In The Loop For Edge Cases And Logic Changes
+How To Integrate An AI API So That Your Script Automatically Fetches Diverse Test Inputs And Then Self‑Verifies Them Before Adding Them To Your Test Suite While Let AI Suggests Inputs. Let Your Code Compute The Expected Outputs. Keep Human Review In The Loop For Edge Cases And Logic Changes
+/**
+ * Example: AI-assisted test input generation with self-verification
+ * Requirements:
+ *   npm install openai dotenv
+ *   Create a .env file with: OPENAI_API_KEY=your_api_key_here
+ */
+Import OpenAI From Openai;
+Import Dotenv From Dotenv;
+Dotenv.Config();
+// Initialize OpenAI client
+Const Openai = New OpenAI({
+ApiKey: Process.Env.OPENAI_API_KEY
+});
+// Example function under test
+Function SumArray(Arr) {
+If (!Array.IsArray(Arr)) Throw New Error(Input Must Be An Array);
+Return Arr.Reduce((Acc, Val) => {
+If (Typeof Val !== Number) Throw New Error(Array Must Contain Only Numbers);
+Return Acc + Val;
+}, 0);
+}
+// Local function to compute expected output
+Function ComputeExpected(Input) {
+Return SumArray(Input);
+}
+// Validate AI-suggested input
+Function IsValidInput(Input) {
+Return Array.IsArray(Input) && Input.Every(N => Typeof N === Number);
+}
+// Fetch diverse test inputs from AI
+Async Function FetchTestInputsFromAI() {
+Const Prompt = 
+Generate 5 Diverse JavaScript Array Inputs For Testing A SumArray Function.
+Include Edge Cases Like Empty Arrays, Negatives, Large Numbers, And Mixed Lengths.
+Return ONLY A JSON Array Of Arrays, No Explanations.
+;
+Const Response =Await Openai.Chat.Completions.Create({
+Model: Gpt-4O-Mini, // lightweight, fast model
+Messages: [{Role: User, Content: Prompt }],
+Temperature: 0.7
+});
+Try {
+Const JsonText =Response.Choices[0].Message.Content.Trim();
+Const Parsed = JSON.Parse(JsonText);
+Return Parsed;
+} Catch (Err) {
+Console.Error(Failed To Parse AI Response:,Err);
+Return [];
+}
+}
+// Main workflow
+Async Function Main() {
+Console.Log(Fetching AI-Suggested Test Inputs...);
+Const AiInputs =Await FetchTestInputsFromAI();
+Const VerifiedTests = [];
+For (Const Input Of AiInputs) {
+If (!IsValidInput(Input)) {
+Console.Warn(Skipping Invalid Input (Needs Human Review):, Input);
+Continue;
+}
+Try {
+Const Expected =ComputeExpected(Input);
+VerifiedTests.Push({Input, Expected});
+} Catch (Err) {
+Console.Warn(Error Computing Expected Output (Needs Human Review):, Input, Err.Message);
+}
+}
+Console.Log(\N✅ Verified Tests Ready To Add To Suite:);
+Console.Log(JSON.Stringify(VerifiedTests, Null, 2));
+Console.Log(\N⚠️ Inputs Needing Human Review Were Skipped.);
+}
+Main().Catch(Err =>Console.Error(Fatal Error:,Err));
+How It Works
+AI Suggestion
+Uses OpenAI To Generate Diverse Test Inputs In JSON Format.
+Prompt Ensures No Explanations, Only Raw Data.
+Local Verification
+IsValidInput() Ensures The AI Output Matches The Expected Input Type.
+ComputeExpected() Calculates The True Expected Output Locally.
+Human Review Loop
+Any Invalid Or Unprocessable Inputs Are Skipped And Flagged For Review.
+This Prevents Bad AI Suggestions From Polluting Your Test Suite.
+Safe Integration
+AI Is Only Used For Input Diversity, Not Correctness.
+Expected Results Are Computed By Trusted Local Logic.
+Example Output
+Copy Code
+Fetching AI-Suggested Test Inputs...
+✅ Verified Tests Ready To Add To Suite:
+[
+{Input: [1, 2, 3], Expected: 6 },
+{Input: [], Expected: 0 },
+{Input: [-5, 5], Expected: 0 },
+{Input: [1000000, 2000000], Expected: 3000000 }
+]
+⚠️ Inputs Needing Human Review Were Skipped.
+<Subheading.Html>
+Covid Strings Automatically Appending Verified Tests To A Jest Or Mocha Test File While Keeping A Separate Human-Review Queue For Flagged Cases
+How To Automatically Append Verified Tests To A Jest Or Mocha Test File While Keeping A Separate Human-Review Queue For Flagged Cases For Covid Strings
+Const Fs = Require(Fs);
+Const Path = Require(Path);
+Function AppendTest(TestName, TestBody, OutputFile) {
+Const FilePath = Path.Resolve(OutputFile);
+// Ensure file exists
+If (!Fs.ExistsSync(FilePath)) {
+Fs.WriteFileSync(FilePath, // Auto-generated tests\n\n', 'utf8');
+}
+// Append test
+Const TestCode = Test(${TestName}, Async () => {\N${TestBody}\N});\N\N;
+Fs.AppendFileSync(FilePath, TestCode, Utf8);
+}
+// Example usage
+AppendTest(
+Should Return Correct Sum,
+Expect(1 + 2).ToBe(3);,
+./Auto_generated_tests.Spec.Js
+);
+<Subheading.Html>
+Covid Strings Full Jest/Mocha-Compatible Script That: Runs Verification Appends Passing Tests Automatically Writes Failing Ones To A Pending_review/Folder Works In Both Local Dev And CI Pipelines 
+How To Create A Full Jest/Mocha-Compatible Script That: Runs Verification Appends Passing Tests Automatically Writes Failing Ones To A Pending_review/Folder Works In Both Local Dev And CI Pipelines For Covid Strings
+#!/Usr/Bin/Env Node
+/**
+ * Cross-compatible Jest/Mocha test runner
+ * - Runs tests
+ * - Appends passing test names to verified_tests.json
+ * - Writes failing test files to pending_review/ folder
+ * - Works in local dev and CI
+ */
+Const {ExecSync } =Require(Child_process);
+Const Fs = Require(Fs);
+Const Path = Require(Path);
+// Configurable paths
+Const VERIFIED_FILE =Path.Resolve(__ Dirname, Verified_tests.Json);
+Const PENDING_DIR =Path.Resolve(__ Dirname, Pending_review);
+// Ensure pending_review folder exists
+If (!Fs.ExistsSync(PENDING_DIR)) {
+Fs.MkdirSync(PENDING_DIR, {Recursive: True });
+}
+// Load existing verified tests
+Let VerifiedTests = [];
+If (Fs.ExistsSync(VERIFIED_FILE)) {
+Try {
+VerifiedTests = JSON.Parse(Fs.ReadFileSync(VERIFIED_FILE, Utf8));
+} Catch {
+VerifiedTests = [];
+}
+}
+// Detect test framework
+Function DetectFramework() {
+If (Fs.ExistsSync(Path.Resolve(Node_modules, Jest))) Return Jest;
+If (Fs.ExistsSync(Path.Resolve(Node_modules, Mocha))) Return Mocha;
+Console.Error(❌ No Supported Test Framework Found (Install Jest Or Mocha).);
+Process.Exit(1);
+}
+// Run tests and capture results
+Function RunTests(Framework) {
+Console.Log(▶ Running Tests With ${Framework}...);
+Let Output;
+Try {
+If (Framework === Jest) {
+Output =ExecSync(Npx Jest --Json --OutputFile=Jest-Results.Json, {Stdio: Pipe}).ToString();
+Return JSON.Parse(Fs.ReadFileSync(Jest-Results.Json, Utf8));
+} Else If (Framework === Mocha) {
+Output =ExecSync(Npx Mocha --Reporter Json, {Stdio: Pipe}).ToString();
+Return JSON.Parse(Output);
+}
+} Catch (Err) {
+// Even if tests fail, Mocha/Jest still produce JSON output
+If (Framework === Jest && Fs.ExistsSync(Jest-Results.Json)) {
+Return JSON.Parse(Fs.ReadFileSync(Jest-Results.Json, Utf8));
+}
+If (Framework === Mocha && Err.Stdout) {
+Return JSON.Parse(Err.Stdout.ToString());
+}
+Console.Error(❌ Failed To Run Tests:, Err.Message);
+Process.Exit(1);
+}
+}
+// Process results
+Function ProcessResults(Framework, Results) {
+Let Passed = [];
+Let Failed = [];
+If (Framework === Jest) {
+Results.TestResults.ForEach(TestFile => {
+TestFile.AssertionResults.ForEach(Assertion => {
+If (Assertion.Status === Passed) {
+Passed.Push(Assertion.FullName);
+}Else If (Assertion.Status === Failed) {
+Failed.Push(TestFile.Name);
+}
+});
+});
+} Else If (Framework === Mocha) {
+Passed = Results.Passes.Map(T => T.FullTitle);
+Failed = Results.Failures.Map(F => F.File || F.FullTitle);
+}
+// Append new passing tests
+Const NewPasses =Passed.Filter(T => !VerifiedTests.Includes(T));
+If (NewPasses.Length > 0) {
+VerifiedTests.Push(...NewPasses);
+Fs.WriteFileSync(VERIFIED_FILE, JSON.Stringify(VerifiedTests, Null, 2));
+Console.Log(✅ Added ${NewPasses.Length} Passing Tests To Verified List.);
+}
+// Move failing test files to pending_review/
+Failed.ForEach(FilePath => {
+If (!FilePath) Return;
+Const FileName =Path.Basename(FilePath);
+Const DestPath =Path.Join(PENDING_DIR,FileName);
+Try {
+If (Fs.ExistsSync(FilePath)) {
+Fs.CopyFileSync(FilePath, DestPath);
+Console.Log(⚠ Moved Failing Test To Pending_review/: ${FileName});
+}
+} Catch (Err) {
+Console.Error(❌ Could Not Move ${FilePath}:, Err.Message);
+}
+});
+// Exit with proper code for CI
+If (Failed.Length > 0) {
+Console.Log(❌ ${Failed.Length} Test(S) Failed.);
+Process.Exit(1);
+} Else {
+Console.Log(🎉 All Tests Passed!);
+Process.Exit(0);
+}
+}
+// Main execution
+(Function Main() {
+Const Framework = DetectFramework();
+Const Results = RunTests(Framework);
+ProcessResults(Framework, Results);
+})();
+Usage
+Bash
+# Install Dependencies
+Npm Install --Save-Dev Jest Mocha
+# Make Script Executable
+Chmod +X Test-Runner.Js
+# Run
+./Test-Runner.Js
+Example Output
+▶ Running Tests With Jest...
+✅ Added 3 Passing Tests To Verified List.
+⚠ Moved Failing Test To Pending_review/: Math.Test.Js
+❌ 1 Test(S) Failed.
+<Subheading.Html>
+Covid Strings  Extending This Script So That It Automatically Retries Failing Tests Before Moving Them — Useful For Flaky Tests In CI
+How To Extend This Script So That It Automatically Retries Failing Tests Before Moving Them — Useful For Flaky Tests In CI
+// playwright.config.js
+// Global configuration for Playwright tests
+// This will retry each failing test up to 2 times in CI
+Const Config = {
+Retries: Process.Env.CI ? 2 : 0, // Enable retries only in CI
+Use: {
+Headless: True, // Run in headless mode for CI
+Screenshot: Only-On-Failure, // Capture screenshot on failure
+Video: Retain-On-Failure, // Keep Video For Debugging
+},
+Reporter: [[List], [Html, {Open: Never}]], // Multiple reporters
+};
+Module.Exports=Config;
+// example.spec.js
+Const {Test, Expect } =Require(@Playwright/Test);
+Test.Describe(Flaky Test Handling, () => {
+// Retry only this test 3 times (overrides global retries)
+Test.Retry(3);
+Test(Should Handle Flaky Behavior Gracefully,Async ({Page }, TestInfo) => {
+Console.Log(Running Attempt #${TestInfo.Retry + 1});
+Await Page.Goto(Https://Example.Com);
+// Simulate flaky behavior: randomly fail
+Const RandomFail = Math.Random() < 0.5;
+If (RandomFail) {
+Throw New Error(Simulated Flaky Failure);
+}
+// Actual assertion
+Await Expect(Page.Locator(H1)).ToHaveText(Example Domain);
+});
+});
+<Subheading.Html>
+Covid Strings Version That Retries Only Specific Failing Steps Instead Of The Whole Test — This Can Make CI Runs Faster
+How To Create A Version That Retries Only Specific Failing Steps Instead Of The Whole Test Which Can Make CI Runs Faster
+// tests/retry-specific-step.spec.js
+Const {Test,Expect }=Require(@Playwright/Test);
+/
+ * Retry A Function Up To MaxRetries Times With A Delay Between Attempts.
+ * @Param {Function} Fn - The Async Function To Retry.
+ * @Param {Number} MaxRetries - Number Of Retries.
+ * @Param {Number} DelayMs - Delay Between Retries In Milliseconds.
+ */
+Async Function RetryStep(Fn, MaxRetries = 3, DelayMs = 500) {
+Let LastError;
+For (Let Attempt = 1; Attempt <= MaxRetries; Attempt++) {
+Try {
+Return Await Fn();
+} Catch (Err) {
+LastError = Err;
+Console.Warn(Step Failed (Attempt ${Attempt}/${MaxRetries}): ${Err.Message});
+If (Attempt < MaxRetries) {
+Await New Promise(Res =>SetTimeout(Res, DelayMs));
+}
+}
+}
+Throw LastError; // Throw after all retries fail
+}
+Test(Only Retry The Flaky Step, Async ({Page }) => {
+// Step 1: Navigate (no retry needed)
+Await Page.Goto(Https://Example.Com);
+// Step 2: Login (stable step)
+Await Page.Fill(#Username, Testuser);
+Await Page.Fill(#Password, Password123);
+Await Page.Click(#Login);
+// Step 3: Flaky element click — retry only this step
+Await RetryStep(Async () => {
+Await Page.Click(#Sometimes-Fails, {Timeout: 2000 });
+Await Expect(Page.Locator(#Success-Message)).ToBeVisible();
+}, 3, 1000);
+// Step 4: Verify final state
+Await Expect(Page.Locator(#Dashboard)).ToBeVisible();
+});
+<Subheading.Html>
+Covid Strings Using Playwrights Built-In Fixtures And Test Extend Method To Create Reusable And Maintainable Tests
+How To Use Playwrights Built-In Fixtures And Test Extend Method To Create Reusable And Maintainable Tests
+// @ts-check
+Const {Test: Base, Expect } = Require(@Playwright/Test);
+/
+ * Extend The Built-In Test With A Custom Fixture: AuthenticatedPage
+ * This Fixture Logs In Once Before Each Test And Provides The Logged-In Page.
+ */
+Const Test=Base.Extend({
+AuthenticatedPage: Async ({Page }, Use) => {
+Navigate To Login Page
+Await Page.Goto(Https://Example.Com/Login);
+Perform Login (Replace Selectors With Your Apps)
+Await Page.Fill(#Username, Testuser);
+Await Page.Fill(#Password, Password123);
+Await Page.Click(Button[Type=Submit]);
+// Wait for navigation or a logged-in element
+Await Page.WaitForSelector(#Dashboard);
+// Provide the logged-in page to the test
+Await Use(Page);
+}
+});
+// Example test using the custom fixture
+Test(Should Display Dashboard For Logged-In User, Async ({AuthenticatedPage}) => {
+Await Expect(AuthenticatedPage.Locator(#Welcome-Message)).ToContainText(Welcome);
+});
+// Another test reusing the same fixture
+Test(Should Allow User To Navigate To Profile, Async ({AuthenticatedPage}) => {
+Await AuthenticatedPage.Click(#Profile-Link);
+Await Expect(AuthenticatedPage.Locator(H1)).ToHaveText(Your Profile);
+});
+Running The Test
+Bash
+Npx Playwright Test Example.Spec.Js
+<Subheading.Html>
+Covid Strings Split This Into A Separate Fixtures.Js File So Multiple Test Files Can Share The Same Login Fixture 
+How To Split This Into A Separate Fixtures.Js File So Multiple Test Files Can Share The Same Login Fixture 
+Fixtures.Js
+Shared Login Fixture For Multiple Test Files
+/
+ * Simulates Or Performs A Login Action.
+ * Replace With Your Actual Login Logic (API Call, UI Automation, Etc.)
+ * @Param {Object} Page - Optional Page Object If Using Playwright/Puppeteer
+ * @Param {String} Username
+ * @Param {String} Password
+ * @Returns {Promise<Object>} - Returns A User Session Object Or Token
+ */
+Async Function LoginFixture(Page, Username, Password) {
+If (!Username || !Password) {
+Throw New Error(Username And Password Are Required For LoginFixture);
+}
+// Example: Playwright login
+If (Page) {
+Await Page.Goto(Https://Example.Com/Login);
+Await Page.Fill(#Username, Username);
+Await Page.Fill(#Password, Password);
+Await Page.Click(#LoginButton);
+Await Page.WaitForSelector(#Dashboard);
+Return {Status: Logged_in, User: Username };
+}
+Example: API-Based Login
+Return {Token: Fake-Jwt-Token, User: Username };
+}
+Module.Exports = {LoginFixture };
+Test1.Spec.Js (Using The Shared Fixture)
+Const {LoginFixture } =Require(./Fixtures);
+Describe(Test Suite 1, () => {
+Test(Should Log In Successfully, Async () => {
+Const Session = Await LoginFixture(Null, TestUser, TestPass);
+Expect(Session.Status).ToBe(Logged_In);
+});
+});
+Test2.Spec.Js (Reusing The Same Fixture)
+Const {LoginFixture } = Require(./Fixtures);
+Describe(Test Suite 2, () => {
+Test(Should Return A Token, Async () => {
+Const Session = Await LoginFixture(Null, AnotherUser, AnotherPass);
+Expect(Session.Token).ToBeDefined();
+});
+});
+How To Run
+Bash
+Npm Install Jest --Save-Dev
+Npx Jest
+<Subheading.Html>
+Covid Strings Using Playwrights Built In Test Functions And Hooks To Manage The Login Process
+How To Use Playwrights Built In Test Functions And Hooks To Manage The Login Process
+Playwright.Config.Js
+Module.Exports = {
+Use: {
+Headless: True, // Set to false if you want to see the browser
+BaseURL: Https://Example.Com, // Replace with your app's base URL
+StorageState: StorageState.Json, // Store login session here
+},
+};
+Tests/Login.Spec.Js
+@Ts-Check
+Const {Test, Expect} =Require(@Playwright/Test);
+Test.Describe(Authenticated Tests, () => {
+Run Once Before All Tests In This Describe Block
+Test.BeforeAll(Async ({Browser }) => {
+Const Context = Await Browser.NewContext();
+Const Page = Await Context.NewPage();
+Navigate To Login Page
+Await Page.Goto(/Login);
+Perform Login
+Await Page.Fill(#Username, Testuser); // Replace with valid username
+Await Page.Fill(#Password, Password123); // Replace with valid password
+Await Page.Click(Button[Type=Submit]);
+Wait For Navigation Or A Specific Element That Confirms Login
+Await Page.WaitForURL(/Dashboard);
+Save Authentication State For Reuse
+Await Context.StorageState({Path: StorageState.Json});
+Await Context.Close();
+});
+Run Before Each Test
+Test.BeforeEach(Async ({Page }) => {
+The StorageState From Config Will Auto-Login The User
+Await Page.Goto(/Dashboard);
+});
+Run After Each Test
+Test.AfterEach(Async ({Page }) => {
+Example: Take A Screenshot After Each Test
+Await Page.Screenshot({Path: Screenshots/${Date.Now()}.Png});
+});
+Run Once After All Tests
+Test.AfterAll(Async () => {
+Console.Log(All Tests Completed.);
+});
+Example Test 1
+Test(Should Display Dashboard Widgets,Async ({Page }) => {
+Await Expect(Page.Locator(.Widget)).ToHaveCount(3);
+});
+Example Test 2
+Test(Should Allow Navigation To Profile Page, Async ({Page }) => {
+Await Page.Click(A[Href=/Profile]);
+Await Expect(Page).ToHaveURL(/.*\/profile/);
+});
+});
+<Subheading.Html>
+Covid Strings Creating A Version That Uses A Global Setup File So The Login Happens Before The Test Suite Starts And Works Across Multiple Test Files 
+How To Create A Version That Uses A Global Setup File So The Login Happens Before The Test Suite Starts And Works Across Multiple Test Files 
+Npm Init-Y
+Npm Install @Playwright/Test
+Npx Playwright Install
+2️⃣ Create Global-Setup.Js
+This File Will:
+Launch A Browser
+Perform Login
+Save The Authentication State To A File
+Global-Setup.Js
+Const {Chromium } = Require(@Playwright/Test);
+Const Path = Require(Path);
+Module.Exports = Async (Config) => {
+Const StorageStatePath = Path.Resolve(__ Dirname, StorageState.Json);
+Launch Browser
+Const Browser =Await Chromium.Launch();
+Const Page =Await Browser.NewPage();
+Try {
+Go To Login Page
+Await Page.Goto(Https://Example.Com/Login);
+Fill In Credentials (Replace With Real Selectors & Credentials)
+Await Page.Fill(#Username, Process.Env.TEST_USERNAME || MyUser);
+Await Page.Fill(#Password, Process.Env.TEST_PASSWORD || MyPass);
+Await Page.Click(Button[Type=Submit]);
+Wait For Navigation Or A Known Logged-In Element
+Await Page.WaitForURL(Https://Example.Com/Dashboard);
+Save Authentication State
+Await Page.Context().StorageState({Path: StorageStatePath });
+Console.Log(✅ Login State Saved To ${StorageStatePath});
+}Catch (Err) {
+Console.Error(❌ Global Setup Failed:, Err);
+Process.Exit(1);
+}Finally {
+Await Browser.Close();
+}
+};
+3️⃣ Update Playwright.Config.Js
+Tell Playwright To Run The Global Setup Before Tests And Reuse The Saved State.
+Playwright.Config.Js
+Const Path = Require(Path);
+Module.Exports = {
+TestDir: ./Tests,
+GlobalSetup: Require.Resolve(./Global-Setup.Js),
+Use: {
+BaseURL: Https://Example.Com,
+StorageState: Path.Resolve(__ Dirname, StorageState.Json), // Reuse login state
+Headless: True,
+},
+};
+4️⃣ Example Test Files
+Tests/Dashboard.Spec.Js
+Const {Test, Expect } = Require(@Playwright/Test);
+Test(Should Display Dashboard For Logged-In User, Async ({Page }) => {
+Await Page.Goto(/Dashboard);
+Await Expect(Page.Locator(H1)).ToHaveText(Dashboard);
+});
+Tests/Profile.Spec.Js
+Const {Test, Expect } = Require(@Playwright/Test);
+Test(Should Display Profile Page For Logged-In User, Async ({Page }) => {
+Await Page.Goto(/Profile);
+Await Expect(Page.Locator(H1)).ToHaveText(Profile);
+});
+5️⃣ Run Tests
+Bash
+Npx Playwright Test
+<Subheading.Html>
+Covid Strings Pull Request Typescript Strict Mode
+How To Use  Typescript Strict Mode For A Covid Strings Pull Request
+Enable Strict Mode In Tsconfig.Json For Maximum Type Safety
+{
+CompilerOptions: {
+Strict: True,
+Target: ES2020,
+Module: Commonjs
+}
+}
+/
+ * Supported Arithmetic Operations
+ */
+Type Operation = Add | Subtract | Multiply | Divide;
+/
+ * Interface For Calculation Input
+ */
+Interface CalculationInput {
+A: Number;
+B: Number;
+Operation: Operation;
+}
+/
+ * Custom Error For Invalid Operations
+ */
+Class CalculationError Extends Error {
+Constructor(Message: String) {
+Super(Message);
+This.Name = CalculationError;
+}
+}
+/
+ * Perform A Calculation With Full Type Safety
+ * @Param Input - CalculationInput Object
+ * @Returns Number Result
+ */
+Function Calculate(Input: CalculationInput): Number {
+Const {A, B, Operation } = Input;
+Input Validation
+If (Typeof A !== Number || Typeof B !== Number) {
+Throw New CalculationError(Inputs Must Be Numbers.);
+}
+Switch (Operation) {
+Case Add:
+Return A + B;
+Case Subtract:
+Return A -B;
+Case Multiply:
+Return A*B;
+Case Divide:
+If (B === 0) Throw New CalculationError(Division By Zero Is Not Allowed.);
+Return A /B;
+Default:
+This Should Never Happen Due To Type Safety
+Throw New CalculationError(Unknown Operation: ${Operation});
+}
+}
+Example Usage
+Try {
+Const Result =Calculate({A: 10, B: 5, Operation: Divide});
+Console.Log(Result: ${Result});
+} Catch (Error) {
+If (Error Instanceof CalculationError) {
+Console.Error(Calculation Error: ${Error.Message});
+} Else {
+Console.Error(Unexpected Error:, Error);
+}
+}
+}
+}# Install TypeScript Globally If Not Installed
+Npm Install -G Typescript
+# Compile TypeScript To JavaScript
+Tsc Calculator.Ts
+# Run The Compiled JavaScript
+Node Calculator.Js
+<Subheading.Html>
+Covid Strings Pull Request MathUtils Installation
+How To Install MathUtils For A Covid Strings Pull Request
+MathUtils.Js - Original JavaScript
+Function Add(A, B) {
+Return A + B;
+}
+Function Multiply(A, B) {
+Return A * B;
+}
+Module.Exports = {Add, Multiply };
+This Works Fine In JavaScript, But There’s No Type Safety — You Could Pass Strings And Get Unexpected Results.
+Step 2 — Rename To .Ts And Enable TypeScript
+Install TypeScript Locally:
+Bash
+Npm Install --Save-Dev Typescript @Types/Node
+Initialize A Tsconfig.Json:
+Bash
+Npx Tsc --Init
+Rename The File:
+MathUtils.Js → MathUtils.Ts
+Step 3 — Add Type Annotations
+Typescript
+// mathUtils.ts - Converted to TypeScript
+Export Function Add(A: Number, B: Number): Number {
+Return A+B;
+}
+Export Function Multiply(A: Number, B: Number): Number {
+Return A * B;
+}
+Changes Made:
+Added: Number Type Annotations For Parameters And Return Values.
+Switched From Module.Exports To ES Module Export Syntax.
+Step 4 — Create A TypeScript Consumer File
+Typescript
+// index.ts
+Import {Add, Multiply} From ./MathUtils;
+Const Sum =Add(5, 10);
+Const Product =Multiply(3, 4);
+Console.Log(Sum: ${Sum});
+Console.Log(Product: ${Product});
+❌ This Will Now Cause A Compile-Time Error:
+Const Wrong =Add(5, 10);
+Step 5 — Compile And Run
+Bash
+Npx Tsc
+Node Dist/Index.Js
+Output:
+Sum: 15
+Product: 12
+Step 6 — Optional: Add Interfaces For Complex Types
+If Your Functions Take Objects, You Can Define Interfaces:
+Types.Ts
+Export Interface Point {
+X: Number;
+Y: Number;
+}
+Geometry.Ts
+Import {Point } From ./Types;
+Export Function Distance(P1: Point, P2: Point): Number {
+Const Dx = P1.X - P2.X;
+Const Dy = P1.Y - P2.Y;
+Return Math.Sqrt(Dx * Dx + Dy * Dy);
+}
+<Subheading.Html>
+Covid Strings Creating A Full Working Before-And-After Project Folder So You Can Drop It Into Your Own Repo And Migrate Faster
+How To Create A Full Working Before-And-After Project Folder So You Can Drop It Into Your Own Repo And Migrate Faster
+#!/Usr/Bin/Env Node
+/
+ * Script To Create A Before And After Project Folder Structure
+ * For Migration Or Refactoring Comparisons.
+ *
+ * Usage:
+ *  Node CreateBeforeAfterFolders.Js
+ */
+Const Fs = Require(Fs);
+Const Path = Require(Path);
+Root Folder Where Before/After Will Be Created
+Const ROOT_DIR = Process.Cwd();
+Const BEFORE_DIR = Path.Join(ROOT_DIR, Before);
+Const AFTER_DIR = Path.Join(ROOT_DIR, After);
+Example Folder Structure
+Const STRUCTURE = [
+Src,
+Src/Components,
+Src/Utils,
+Tests,
+Public
+];
+// Example files to create in each folder
+Const SAMPLE_FILES = {
+Src/Index.Js: Console.Log(Hello From BEFORE Project);,
+Src/Components/App.Js: Export Default Function App() {Return <H1>Hello</H1>; },
+Src/Utils/Helpers.Js: Export Const Sum = (A, B) => A + B,
+Tests/App.Test.Js: Console.Log(Running Tests...);,
+Public/Index.Html: <!DOCTYPE Html><Html><Body><H1>Before Project</H1></Body></Html>
+};
+/
+ * Create A Folder If It Doesnt Exist
+ */
+Function EnsureDir(DirPath) {
+Try {
+If (!Fs.ExistsSync(DirPath)) {
+Fs.MkdirSync(DirPath, {Recursive: True });
+Console.Log(✅ Created Folder: ${DirPath});
+}
+} Catch (Err) {
+Console.Error(❌ Error Creating Folder ${DirPath}:, Err.Message);
+}
+}
+/
+ * Create Files With Sample Content
+ */
+Function CreateFiles(BaseDir, Files) {
+For (Const [RelativePath, Content] Of Object.Entries(Files)) {
+Const FilePath =Path.Join(BaseDir, RelativePath);
+EnsureDir(Path.Dirname(FilePath));
+Try {
+Fs.WriteFileSync(FilePath, Content, {Flag: Wx}); // 'wx' prevents overwrite
+Console.Log(📄 Created File: ${FilePath});
+}Catch (Err) {
+If (Err.Code === EEXIST) {
+Console.Warn(⚠️ File Already Exists: ${FilePath});
+} Else {
+Console.Error(❌ Error Creating File ${FilePath}:, Err.Message);
+}
+}
+}
+}
+/
+ * Main Function
+ */
+Function Main() {
+Console.Log(🚀 Creating BEFORE And AFTER Project Folders...);
+Create Before/After Directories
+[BEFORE_DIR, AFTER_DIR].ForEach(Dir => EnsureDir(Dir));
+Create Subfolders In Both
+STRUCTURE.ForEach(Folder => {
+EnsureDir(Path.Join(BEFORE_DIR, Folder));
+EnsureDir(Path.Join(AFTER_DIR, Folder));
+});
+Create Sample Files In BEFORE
+CreateFiles(BEFORE_DIR, SAMPLE_FILES);
+Create Sample Files In AFTER (Slightly Modified)
+Const AfterFiles = { ...SAMPLE_FILES };
+AfterFiles[Src/Index.Js] = Console.Log(Hello From AFTER Project);;
+AfterFiles[Public/Index.Html] = <!DOCTYPE Html><Html><Body><H1>After Project</H1></Body></Html>;
+CreateFiles(AFTER_DIR, AfterFiles);
+Console.Log(✅ Before/After Project Structure Created Successfully!);
+}
+Main();
+How To Use
+Save The Script As CreateBeforeAfterFolders.Js In Your Repo Root.
+Run:
+Bash
+Node CreateBeforeAfterFolders.Js
+It Will Create:
+Before/
+Src/
+Index.Js
+Components/App.Js
+Utils/Helpers.Js
+Tests/App.Test.Js
+Public/Index.Html
+After/
+Src/
+Index.Js
+Components/App.Js
+Utils/Helpers.Js
+Tests/App.Test.Js
+Public/Index.Html
+<Subheading.Html>
+Covid Strings Using A Before_script To Set Up The Necessary Environment Variables And Configurations Before The Migration Work Begins 
+How To Use A Before_script To Set Up The Necessary Environment Variables And Configurations Before The Migration Work Begins 
+Stages:
+-Setup
+-Migrate
+# Global Before_script For All Jobs
+Before_script:
+# Install Dependencies
+-Npm Ci
+# Set Environment Variables
+-Export NODE_ENV=Production
+-Export DB_HOST=Db.Example.Com
+-Export DB_USER=Admin
+-Export DB_PASS=Securepassword
+-Echo Environment Variables Set. Ready For Migration.
+# Migration Job
+Migrate_database:
+Stage: Migrate
+Image: Node:18
+Script:
+-Node Migration.Js
+Migration.Js (JavaScript Migration Script)
+Migration.Js
+Const {Client } =Require(Pg); // PostgreSQL client
+Require(Dotenv).Config(); // Optional: load from .env if running locally
+Validate Required Environment Variables
+Const RequiredVars = [DB_HOST, DB_USER, DB_PASS];
+For (Const V Of RequiredVars) {
+If (!Process.Env[V]) {
+Console.Error(❌ Missing Required Environment Variable: ${V});
+Process.Exit(1);
+}
+}
+Create DB Connection
+Const Client =New Client({
+Host: Process.Env.DB_HOST,
+User: Process.Env.DB_USER,
+Password: Process.Env.DB_PASS,
+Database: Process.Env.DB_NAME || My_database,
+});
+(Async () => {
+Try {
+Await Client.Connect();
+Console.Log(✅ Connected To Database.);
+Example Migration: Create A Table If Not Exists
+Await Client.Query(
+CREATE TABLE IF NOT EXISTS Users (
+Id SERIAL PRIMARY KEY,
+Name VARCHAR(100) NOT NULL,
+Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+);
+Console.Log(✅ Migration Completed Successfully.);
+} Catch (Err) {
+Console.Error(❌ Migration Failed:, Err);
+Process.Exit(1);
+} Finally {
+Await Client.End();
+}
+})();
+<Subheading.Html>
+Covid Strings Creating A Docker-Based Version So The Migration Runs In An Isolated Container With Preloaded Configs
+How To Create A Docker-Based Version So The Migration Runs In An Isolated Container With Preloaded Configs
+Project/
+│── Dockerfile
+│── Docker-Compose.Yml
+│── Package.Json
+│── Migrate.Js
+│── Config/
+│    └── Default.Json
+│── Migrations/
+│    └── 001_ Init.Js
+2️⃣ Dockerfile
+Dockerfile
+# Use Official Node.Js LTS Image
+FROM Node:18-Alpine
+# Set Working Directory
+WORKDIR/App
+# Copy Package Files First For Caching
+COPY Package*.Json ./
+# Install Dependencies
+RUN Npm Install --Only=Production
+# Copy The Rest Of The Application
+COPY . .
+# Set Environment Variables (Can Be Overridden At Runtime)
+ENV NODE_ENV=Production
+# Run Migration Script By Default
+CMD [Node, Migrate.Js]
+3️⃣ Docker-Compose.Yml
+Yaml
+Version: 3.9
+Services:
+Migration-Runner:
+Build: .
+Container_name: Migration_runner
+Environment:
+DB_HOST: Db
+DB_USER: Root
+DB_PASS: Example
+Volumes:
+- ./Migrations:/App/Migrations
+- ./Config:/App/Config
+Depends_on:
+-Db
+Command: [Node, Migrate.Js]
+Db:
+Image: Mysql:8.0
+Container_name: Migration_db
+Environment:
+MYSQL_ROOT_PASSWORD: Example
+MYSQL_DATABASE: Testdb
+Ports:
+-3306:3306
+4️⃣ Package.Json
+Json
+{
+Name: Docker-Migration-Runner,
+Version: 1.0.0,
+Main: Migrate.Js,
+Scripts: {
+Start: Node Migrate.Js
+  },
+Dependencies: {
+Mysql2: ^3.9.0,
+Config: ^3.3.9
+  }
+}
+5️⃣ Config/Default.Json
+Json
+{
+Database: {
+Host: Localhost,
+User: Root,
+Password: Example,
+Database: Testdb
+}
+}
+6️⃣ Example Migration File — Migrations/001_ Init.Js
+/
+ * Example Migration Script
+ * This Could Be Replaced With A Migration Framework Like Knex Or Sequelize
+ */
+Module.Exports =Async Function Migrate(Connection) {
+Await Connection.Execute(
+CREATE TABLE IF NOT EXISTS Users (
+Id INT AUTO_INCREMENT PRIMARY KEY,
+Name VARCHAR(255) NOT NULL
+)
+);
+Console.Log(✅ Migration 001_ Init Completed);
+};
+7️⃣ Migration Runner — Migrate.Js
+Const Mysql = Require(Mysql2/Promise);
+Const Config = Require(Config);
+Const Fs = Require(Fs);
+Const Path = Require(Path);
+(Async () => {
+Try {
+Load DB Config From Preloaded Config File
+Const DbConfig = Config.Get(Database);
+Console.Log(🔄 Connecting To Database...);
+Const Connection = Await Mysql.CreateConnection({
+Host: Process.Env.DB_HOST || DbConfig.Host,
+User: Process.Env.DB_USER || DbConfig.User,
+Password: Process.Env.DB_PASS || DbConfig.Password,
+Database: DbConfig.Database
+});
+Console.Log(✅ Connected To Database);
+Run All Migration Files In Order
+Const MigrationDir =Path.Join(__ Dirname, Migrations);
+Const Files = Fs.ReaddirSync(MigrationDir).Sort();
+For (Const File Of Files) {
+If (File.EndsWith(.Js)) {
+Console.Log(🚀 Running Migration: ${File});
+Const Migration = Require(Path.Join(MigrationDir, File));
+Await Migration(Connection);
+}
+}
+Await Connection.End();
+Console.Log(🎉 All Migrations Completed Successfully);
+} Catch (Err) {
+Console.Error(❌ Migration Failed:, Err);
+Process.Exit(1);
+}
+})();
+8️⃣ Running The Migration In Docker
+Bash
+# Build And Run Migrations In Isolated Container
+Docker-Compose Up--Build Migration-Runner
+<Subheading.Html>
+Covid Strings Extending This So That The Migration Container Automatically Versions Itself
+How To Extend This So That The Migration Container Automatically Versions Itself
+#!/Usr/Bin/Env Node
+/**
+ * Auto-versioned migration generator for TypeORM (JavaScript)
+ * Creates a migration file with a timestamp-based version number.
+ */
+Const Fs = Require(Fs);
+Const Path = Require(Path);
+CONFIGURATION
+Const MIGRATIONS_DIR = Path.Join(__ Dirname, Migrations); // Folder for migrations
+Const TEMPLATE = (ClassName) => 
+Auto-Generated Migration: ${ClassName}
+Module.Exports =Class ${ClassName} {
+Async Up(QueryRunner) {
+TODO: Add Migration Logic Here
+}
+Async Down(QueryRunner) {
+TODO: Add Rollback Logic Here
+}
+};
+;
+Ensure Migrations Directory Exists
+If (!Fs.ExistsSync(MIGRATIONS_DIR)) {
+Fs.MkdirSync(MIGRATIONS_DIR, {Recursive: True });
+}
+Get Migration Name From CLI Args
+Const MigrationName = Process.Argv[2];
+If (!MigrationName || !/^[a-zA-Z0-9_-]+$/.Test(MigrationName)) {
+Console.Error(❌ Please Provide A Valid Migration Name (Letters, Numbers, Underscores, Hyphens).);
+Process.Exit(1);
+}
+// Generate timestamp-based version
+Const Timestamp =New Date()
+.ToISOString()
+.Replace(/[-:TZ.]/g, "") // Remove unwanted chars
+.Slice(0, 14); // YYYYMMDDHHMMSS
+Const ClassName = ${MigrationName}_${Timestamp};
+Const FileName = ${Timestamp}-${MigrationName}.Js;
+Const FilePath = Path.Join(MIGRATIONS_DIR, FileName);
+Write Migration File
+Try {
+Fs.WriteFileSync(FilePath, TEMPLATE(ClassName), {Flag: Wx});
+Console.Log(✅ Migration Created: ${FilePath});
+} Catch (Err) {
+If (Err.Code === EEXIST) {
+Console.Error(❌ Migration File Already Exists.);
+} Else {
+Console.Error(❌ Error Creating Migration:, Err);
+}
+Process.Exit(1);
+}
+Usage
+Bash
+# Make Script Executable
+Chmod +X CreateMigration.Js
+# Create A Migration
+./CreateMigration.Js Add-Users-Table
+Example Output
+✅ Migration Created:/Path/To/Migrations/20260128153045-Add-Users-Table.Js
+Integration With TypeORM
+In Your Package.Json:
+Json
+{
+Scripts: {
+Migration:Create: Node CreateMigration.Js
+}
+}
+Then Run:
+Bash
+Npm Run Migration:Create Add-Products-Table
+<Subheading.Html>
+Covid Strings Auto-Run And Track Applied Versions
+How To Auto-Run And Track Applied Versions Of Covid Strings Pull Requests
+#!/Usr/Bin/Env Node
+/**
+ * Auto-run and track applied versions for a JavaScript project.
+ * Usage: node version-manager.js [major|minor|patch]
+ */
+Const Fs=Require(Fs);
+Const Path=Require(Path);
+Const PackagePath =Path.Join(__ Dirname, Package.Json);
+Const HistoryPath =Path.Join(__ Dirname, Version-History.Json);
+// Validate bump type
+Const BumpType =Process.Argv[2] || Patch;
+Const ValidBumps = [Major, Minor, Patch];
+If (!ValidBumps.Includes(BumpType)) {
+Console.Error(Invalid Bump Type. Use One Of: ${ValidBumps.Join(, )});
+Process.Exit(1);
+}
+Read Package.Json
+Let Pkg;
+Try {
+Pkg = JSON.Parse(Fs.ReadFileSync(PackagePath, Utf8));
+} Catch (Err) {
+Console.Error(Error Reading Package.Json:, Err.Message);
+Process.Exit(1);
+}
+Parse Current Version
+Let [Major, Minor, Patch] =Pkg.Version.Split(.).Map(Number);
+// Increment version
+Switch (BumpType) {
+Case Major:
+Major++;
+Minor = 0;
+Patch = 0;
+Break;
+Case Minor:
+Minor++;
+Patch = 0;
+Break;
+Case Patch:
+Patch++;
+Break;
+}
+// New version string
+Const NewVersion = ${Major}.${Minor}.${Patch};
+Pkg.Version =NewVersion;
+Save Updated Package.Json
+Try {
+Fs.WriteFileSync(PackagePath, JSON.Stringify(Pkg, Null, 2) + \N);
+Console.Log(✅ Updated Version To ${NewVersion});
+} Catch (Err) {
+Console.Error(Error Writing Package.Json:, Err.Message);
+Process.Exit(1);
+}
+Append To Version History
+Let History = [];
+If (Fs.ExistsSync(HistoryPath)) {
+Try {
+History = JSON.Parse(Fs.ReadFileSync(HistoryPath, Utf8));
+} Catch {
+History = [];
+}
+}
+History.Push({
+Version: NewVersion,
+Date: New Date().ToISOString()
+});
+Try {
+Fs.WriteFileSync(HistoryPath, JSON.Stringify(History, Null, 2) + \N);
+Console.Log(📜 Logged Version ${NewVersion} To Version-History.Json);
+} Catch (Err) {
+Console.Error(Error Writing Version History:, Err.Message);
+Process.Exit(1);
+}
+How To Use
+Save The Script As Version-Manager.Js In Your Project Root.
+Make It Executable:
+Bash
+Chmod +X Version-Manager.Js
+Add To Package.Json Scripts:
+Json
+Scripts: {
+Version:Patch: Node Version-Manager.Js Patch,
+Version:Minor: Node Version-Manager.Js Minor,
+Version:Major: Node Version-Manager.Js Major
+}
+Run:
+Bash
+Npm Run Version:Patch
+<Subheading.Html>
+Covid Strings Creating A Git-Integrated Version That Automatically Commits And Tags Each Version So It’s Tracked In Your Repository History
+How To Create A Git-Integrated Version That Automatically Commits And Tags Each Version So It’s Tracked In Your Repository History
+#!/Usr/Bin/Env Node
+/
+ * Auto Version Bump, Commit, And Tag Script For Git Repositories.
+ * Works With Node.Js Projects (Package.Json).
+ *
+ * Usage:
+ *   Node Version-Bump.Js [Patch|Minor|Major]
+ *
+ * Example:
+ *   Node Version-Bump.Js Patch
+ */
+Const Fs =Require(Fs);
+Const {ExecSync } = Require(Child_process);
+Function RunCommand(Cmd) {
+Try {
+Return ExecSync(Cmd, {Stdio: Inherit});
+} Catch (Err) {
+Console.Error(❌ Command Failed: ${Cmd});
+Process.Exit(1);
+}
+}
+// Validate arguments
+Const BumpType = Process.Argv[2];
+Const ValidBumps = [Patch, Minor, Major];
+If (!ValidBumps.Includes(BumpType)) {
+Console.Error(Usage: Node Version-Bump.Js [Patch|Minor|Major]);
+Process.Exit(1);
+}
+Ensure Package.Json Exists
+If (!Fs.ExistsSync(Package.Json)) {
+Console.Error(❌ Package.Json Not Found. Run This In A Node.Js Project Root.);
+Process.Exit(1);
+}
+Step 1: Bump Version In Package.Json
+Console.Log(📦 Bumping ${BumpType} Version...);
+RunCommand(Npm Version ${BumpType} --No-Git-Tag-Version);
+Step 2: Read New Version
+Const Pkg = JSON.Parse(Fs.ReadFileSync(Package.Json, Utf8));
+Const NewVersion = Pkg.Version;
+Console.Log(✅ New Version: ${NewVersion});
+Step 3: Commit Changes
+Console.log(💾 Committing Version Bump...);
+RunCommand(Git Add Package.Json Package-Lock.Json 2>/Dev/Null || True);
+RunCommand(Git Commit -M Chore(Release): V${NewVersion});
+Step 4: Create Git Tag
+Console.Log(🏷️ Creating Git Tag...);
+RunCommand(Git Tag -A V${NewVersion} -M Release V${NewVersion});
+Step 5: Push Commit And Tag
+Console.Log(🚀 Pushing Commit And Tag To Remote...);
+RunCommand(Git Push);
+RunCommand(Git Push Origin V${NewVersion});
+Console.Log(🎉 Version Bump Complete: V${NewVersion});
+How To Use
+Save The Script As Version-Bump.Js In Your Project Root.
+Make It Executable (Optional For Unix/Mac):
+Bash
+Chmod +X Version-Bump.Js
+Run It With:
+Bash
+Node Version-Bump.Js Patch   # Or Minor /Major
+<Subheading.Html>
+Covid Strings  Extending This So It Parses Commit Messages And Decides Whether To Bump Patch, Minor, Or Major Automatically (Semantic Versioning Style)
+How To Extend This So It Parses Commit Messages And Decides Whether To Bump Patch, Minor, Or Major Automatically (Semantic Versioning Style)
+#!/Usr/Bin/Env Node
+/
+ * Auto Semantic Version Bumper
+ * - Reads Commit Messages
+ * - Decides Bump Type (Major/Minor/Patch)
+ * - Updates Package.Json Version
+ *
+ * Requires: Node.Js 14+ And Git Installed
+ */
+Const {ExecSync} =Require(Child_process);
+Const Fs = Require(Fs);
+Const Path = Require(Path);
+Function GetCommitMessages() {
+Try {
+Get Commits Since Last Tag, Or All If No Tags
+Let Commits;
+Try {
+Const LastTag = ExecSync(Git Describe --Tags --Abbrev=0, {Encoding: Utf8}).Trim();
+Commits = ExecSync(Git Log ${LastTag}..HEAD --Pretty=Format:%s, {Encoding: Utf8});
+} Catch {
+No Tags Yet — Get All Commits
+Commits = ExecSync(Git Log --Pretty=Format:%S, {Encoding: Utf8});
+}
+Return Commits.Split(\N).Map(Msg =>Msg.Trim()).Filter(Boolean);
+} Catch (Err) {
+Console.Error(❌ Failed To Read Commit Messages:, Err.Message);
+Process.Exit(1);
+}
+}
+Function DetermineBumpType(Commits) {
+Let Bump = Patch; // default
+For (Const Msg Of Commits) {
+If (/BREAKING CHANGE/I.Test(Msg) || /^feat!/.Test(Msg) || /^fix!/.Test(Msg)) {
+Return Major; // highest priority
+}
+If (/^Feat(\(.+\))?:/I.Test(Msg)) {
+Bump =Bump === Patch ? Minor:Bump;
+}
+If (/^Fix(\(.+\))?:/I.Test(Msg) && Bump !== Minor) {
+Bump = Patch;
+}
+}
+Return Bump;
+}
+Function BumpVersion(CurrentVersion, BumpType) {
+Const Parts =CurrentVersion.Split(".").Map(Number);
+If (Parts.Length !== 3 || Parts.Some(IsNaN)) {
+Throw New Error(Invalid Version Format: ${CurrentVersion});
+}
+If (BumpType === Major) {
+Parts[0] += 1;
+Parts[1] = 0;
+Parts[2] = 0;
+} Else If (BumpType === Minor) {
+Parts[1] += 1;
+Parts[2] = 0;
+} Else {
+Parts[2] += 1;
+}
+Return Parts.Join(".");
+}
+Function UpdatePackageJson(NewVersion) {
+Const PkgPath = Path.Join(Process.Cwd(), Package.Json);
+If (!Fs.ExistsSync(PkgPath)) {
+Console.Error(❌ Package.Json Not Found In Current Directory.);
+Process.Exit(1);
+}
+Const Pkg=JSON.Parse(Fs.ReadFileSync(PkgPath, Utf8));
+Pkg.Version=NewVersion;
+Fs.WriteFileSync(PkgPath, JSON.Stringify(Pkg, Null, 2) + \N);
+Console.Log(✅ Updated Package.Json To Version ${NewVersion});
+}
+Main Execution
+(Function Main() {
+Const Commits =GetCommitMessages();
+If (Commits.Length === 0) {
+Console.Log(ℹ️ No Commits Found. No Version Bump.);
+Process.Exit(0);
+}
+Const BumpType = DetermineBumpType(Commits);
+Console.Log(📦 Detected Bump Type: ${BumpType});
+Const PkgPath=Path.Join(Process.Cwd(), Package.Json);
+Const Pkg=JSON.Parse(Fs.ReadFileSync(PkgPath, Utf8));
+Const NewVersion =BumpVersion(Pkg.Version, BumpType);
+UpdatePackageJson(NewVersion);
+})();
+Save As AutoVersionBump.Js
+Chmod +X AutoVersionBump.Js
+Node AutoVersionBump.Js
+Git Commit -M Feat: Add User Login
+Node AutoVersionBump.Js
+# 📦 Detected Bump Type: Minor
+# ✅ Updated Package.Json To Version 1.3.0
+<Subheading.Html>
+Covid Strings Pull Request Semantic Release Lite 
+How To Create A Semantic Lite Release For Covid Strings Pull Request 
+#!/Usr/Bin/Env Node
+/
+ * Semantic-Release-Lite.Js
+ * 
+ * A Lightweight Semantic Release Script:
+ * - Reads Commit Messages Since Last Tag
+ * - Bumps Version In Package.Json
+ * - Commits The Change
+ * - Creates And Pushes A Git Tag
+ */
+Const Fs =Require(Fs);
+Const {ExecSync } =Require(Child_process);
+Const Path = Require(Path);
+Function RunCmd(Cmd) {
+Try {
+Return ExecSync(Cmd, {Stdio: Pipe}).ToString().Trim();
+} Catch (Err) {
+Console.Error(❌ Command Failed: ${Cmd}\N${Err.Message});
+Process.Exit(1);
+}
+}
+Step 1: Get Last Tag
+Let LastTag;
+Try {
+LastTag =RunCmd(Git Describe --Tags --Abbrev=0);
+} Catch {
+LastTag = ''; // No tags yet
+}
+Step 2: Get Commit Messages Since Last Tag
+Const CommitRange =LastTag ? ${LastTag}..HEAD : HEAD;
+Const Commits =RunCmd(Git Log ${CommitRange} --Pretty=Format:%S).Split(\N);
+If (Commits.Length === 0) {
+Console.Log(No New Commits To Release.);
+Process.Exit(0);
+}
+Step 3: Determine Bump Type
+Let BumpType = Patch;
+If (Commits.Some(Msg => /#Major/I.Test(Msg))) BumpType = Major;
+Else If (Commits.Some(Msg => /#Minor/I.Test(Msg))) BumpType =Minor;
+Console.Log(📦 Detected Bump Type: ${BumpType});
+Step 4: Read And Bump Package.Json
+Const PkgPath = Path.Resolve(Package.Json);
+Const Pkg = JSON.Parse(Fs.ReadFileSync(PkgPath, Utf8));
+Const [Major, Minor, Patch]=Pkg.Version.Split(.).Map(Number);
+Let NewVersion;
+If (BumpType === Major) NewVersion =${Major + 1}.0.0;
+Else If (BumpType === Minor) NewVersion = ${Major}.${Minor + 1}.0;
+Else NewVersion = ${Major}.${Minor}.${Patch + 1};
+Pkg.Version = NewVersion;
+Fs.WriteFileSync(PkgPath, JSON.Stringify(Pkg,Null, 2) + \N);
+Console.Log(✅ Version Bumped To ${NewVersion});
+Step 5: Commit The Change
+RunCmd(Git Add Package.Json);
+RunCmd(Git Commit -M Chore(Release): ${NewVersion});
+Step 6: Create And Push Tag
+RunCmd(Git Tag V${NewVersion});
+RunCmd(Git Push Origin HEAD);
+RunCmd(Git Push Origin V${NewVersion});
+Console.Log(🚀 Release V${NewVersion} Pushed Successfully!);
+Usage
+Save As Semantic-Release-Lite.Js In Your Repo.
+Make It Executable:
+Bash
+Chmod +X Semantic-Release-Lite.Js
+Run After Merging PRs:
+Bash
+./Semantic-Release-Lite.Js
+Optional: GitHub Actions Automation
+You Can Run This Automatically On Main Merges:
+Yaml
+Name: Release
+On:
+Push:
+Branches:
+-Main
+Jobs:
+Release:
+Runs-On: Ubuntu-Latest
+Steps:
+-Uses: Actions/Checkout@V4
+With:
+Fetch-Depth: 0 # Needed For Tags
+-Uses: Actions/Setup-Node@V4
+With:
+Node-Version: 18
+-Run: Npm Ci
+-Run: ./Semantic-Release-Lite.Js
+Env:
+GITHUB_TOKEN: ${{Secrets.GITHUB_TOKEN }}
+<Subheading.Html>
+Covid Strings Extending This Further So It Also Generates A GitHub Release With Changelog Notes — Making It A Full Semantic-Release-Lite Workflow
+How To Extend This Further So It Also Generates A GitHub Release With Changelog Notes — Making It A Full Semantic-Release-Lite Workflow
+#!/Usr/Bin/Env Node
+/
+ * Semantic-Release-Lite With GitHub Release
+ * Requires: Npm Install @Octokit/Rest Conventional-Changelog Conventional-Recommended-Bump
+ */
+Const Fs =Require(Fs);
+Const {ExecSync } = Require(Child_process);
+Const { Octokit } = Require(@Octokit/Rest);
+Const ConventionalChangelog =Require(Conventional-Changelog);
+Const RecommendedBump =Require(Conventional-Recommended-Bump);
+--- CONFIG ---
+Const GITHUB_TOKEN = Process.Env.GITHUB_TOKEN; // Must be set in env
+Const REPO_OWNER = Your-Github-Username;
+Const REPO_NAME = Your-Repo-Name;
+--- VALIDATION ---
+If (!GITHUB_TOKEN) {
+Console.Error(❌ Missing GITHUB_TOKEN Environment Variable.);
+Process.Exit(1);
+}
+--- STEP 1: Determine Next Version ---
+RecommendedBump({Preset: Conventionalcommits}, (Err, Result) => {
+If (Err) {
+Console.Error(Error Determining Version Bump:, Err);
+Process.Exit(1);
+}
+Const Pkg = JSON.Parse(Fs.ReadFileSync(Package.Json, Utf8));
+Const CurrentVersion =Pkg.Version;
+Const Semver =Require(Semver);
+Const NewVersion =Semver.Inc(CurrentVersion, Result.ReleaseType);
+If (!NewVersion) {
+Console.Log(No Version Bump Needed.);
+Process.Exit(0);
+}
+Console.Log(📦 Bumping Version: ${CurrentVersion} → ${NewVersion});
+--- STEP 2: Update Package.Json ---
+Pkg.Version =NewVersion;
+Fs.WriteFileSync(Package.Json, JSON.Stringify(Pkg, Null, 2) + \N);
+Commit Version Bump
+ExecSync(Git Add Package.Json);
+ExecSync(Git Commit -M Chore(Release): ${NewVersion});
+ExecSync(Git Tag V${NewVersion});
+--- STEP 3: Generate Changelog ---
+Let ChangelogContent = "";
+ConventionalChangelog({Preset: Conventionalcommits})
+.On(Data, (Chunk) => {
+ChangelogContent += Chunk.ToString();
+})
+.On(End, Async () => {
+Fs.WriteFileSync(CHANGELOG.Md, ChangelogContent);
+ExecSync(Git Add CHANGELOG.Md);
+ExecSync(Git Commit --Amend --No-Edit);
+ExecSync(Git Push Origin Main --Tags);
+Console.Log(📝 Changelog Generated And Committed.);
+--- STEP 4: Create GitHub Release ---
+Const Octokit =New Octokit({Auth: GITHUB_TOKEN });
+Try {
+Await Octokit.Repos.CreateRelease({
+Owner: REPO_OWNER,
+Repo: REPO_NAME,
+Tag_name: V${NewVersion},
+Name: V${NewVersion},
+Body: ChangelogContent,
+Draft: False,
+Prerelease: False,
+});
+Console.Log(🚀 GitHub Release V${NewVersion} Created Successfully.);
+} Catch (ReleaseErr) {
+Console.Error(❌ Failed To Create GitHub Release:, ReleaseErr);
+Process.Exit(1);
+}
+});
+});
+How To Use
+Install Dependencies:
+Bash
+Npm Install @Octokit/Rest Conventional-Changelog Conventional-Recommended-Bump Semver
+Set Your GitHub Token (With Repo Scope):
+Bash
+Export GITHUB_TOKEN=Your_personal_access_token
+Update Config In The Script:
+Js
+Const REPO_OWNER = Your-Github-Username;
+Const REPO_NAME = Your-Repo-Name;
+Run The Script:
+Bash
+Node Release.Js
+<Subheading.Html>
+Covid Strings Extending This Further So It Also Publishes To Npm After Creating The GitHub Release — Making It A Full CI/CD Release Pipeline
+How To Extend This Further So It Also Publishes To Npm After Creating The GitHub Release — Making It A Full CI/CD Release Pipeline
+Name: Release And Publish
+On:
+Push:
+Tags:
+- V* # Trigger On Version Tags Like V1.0.0
+Jobs:
+Release:
+Runs-On: Ubuntu-Latest
+Steps:
+-Name: Checkout Repository
+Uses: Actions/Checkout@V4
+- Name: Setup Node.Js
+Uses: Actions/Setup-Node@V4
+With:
+Node-Version: 20
+Registry-Url: Https://Registry.Npmjs.Org
+-Name: Install Dependencies
+Run: Npm Ci
+-Name: Run Tests
+Run: Npm Test
+-Name: Create GitHub Release
+Uses: Softprops/Action-Gh-Release@V2
+With:
+Generate_release_notes: True
+Env:
+GITHUB_TOKEN: ${{Secrets.GITHUB_TOKEN }}
+- Name: Publish To Npm
+Run: Npm Publish --Access Public
+Env:
+NODE_AUTH_TOKEN: ${{Secrets.NPM_TOKEN }}
+<Subheading.Html>
+Covid Strings Extending This Further So It Automatically Bumps The Version In Package.Json And Tags It Before Running This Pipeline — Making It A Fully Automated Release Flow 
+How To Extend This Further So It Automatically Bumps The Version In Package.Json And Tags It Before Running This Pipeline — Making It A Fully Automated Release Flow 
+Name: Automated Release
+On:
+Push:
+Branches:
+-Main  # Trigger Only On Main Branch Pushes
+Jobs:
+Release:
+Runs-On: Ubuntu-Latest
+Steps:
+# 1. Checkout Repo With Full History (Needed For Tagging)
+- Name: Checkout Repository
+Uses: Actions/Checkout@V4
+With:
+Fetch-Depth: 0
+# 2. Setup Node.Js
+-Name: Setup Node.Js
+Uses: Actions/Setup-Node@V4
+With:
+Node-Version: 20
+# 3. Install Dependencies
+-Name: Install Dependencies
+Run: Npm Ci
+# 4. Run Version Bump Script
+-Name: Bump Version And Tag
+Run: Node Scripts/Bump-Version.Js
+Env:
+GITHUB_TOKEN: ${{Secrets.GITHUB_TOKEN }}
+# 5. Push Changes (Package.Json +Tag)
+-Name: Push Changes
+Run: |
+Git Config User.Name Github-Actions[Bot]
+Git Config User.Email Github-Actions[Bot]@Users.Noreply.Github.Com
+Git Push Origin Main --Follow-Tags
+Version Bump Script (Scripts/Bump-Version.Js)
+#!/Usr/Bin/Env Node
+/
+ * Script To Automatically Bump Version In Package.Json,
+ * Commit The Change, And Create A Git Tag.
+ * 
+ * Supports: Patch, Minor, Major Bumps.
+ * Can Be Extended To Parse Commit Messages For Semantic Versioning.
+ */
+Const Fs = Require(Fs);
+Const {ExecSync} =Require(Child_process);
+Try {
+Read Package.Json
+Const PkgPath = ./Package.Json;
+Const Pkg = JSON.Parse(Fs.ReadFileSync(PkgPath, Utf8));
+Decide Bump Type (Default:Patch)
+You Can Enhance This To Parse Commit Messages For Feat, Fix, Etc.
+Const BumpType =Process.Env.BUMP_TYPE || Patch;
+Run Npm Version To Bump And Tag
+ExecSync(Npm Version ${BumpType} --No-Git-Tag-Version, {Stdio: Inherit});
+Read Updated Version
+Const UpdatedPkg = JSON.Parse(Fs.ReadFileSync(PkgPath, Utf8));
+Const NewVersion = UpdatedPkg.Version;
+Commit Changes
+ExecSync(Git Add Package.Json Package-Lock.Json, {Stdio: Inherit});
+ExecSync(Git Commit -M Chore(Release): V${NewVersion}, {Stdio: Inherit});
+Create Git Tag
+ExecSync(Git Tag V${NewVersion}, {Stdio: Inherit});
+Console.Log(✅ Version Bumped To ${NewVersion} And Tagged.);
+} Catch (Err) {
+Console.Error(❌ Failed To Bump Version:,Err);
+Process.Exit(1);
+}
+<Subheading.Html>
+Covid Strings Extend This Script So It Automatically Detects The Bump Type From Commit Messages And Applies Semantic Versioning Without Manual BUMP_TYPE Setting — Making It Truly Hands-Off 
+How To Extend This Script So It Automatically Detects The Bump Type From Commit Messages And Applies Semantic Versioning Without Manual BUMP_TYPE Setting — Making It Truly Hands-Off 
+#!/Usr/Bin/Env Node
+/
+ * Auto Semantic Version Bump Script
+ * ---------------------------------
+ * Detects Bump Type From Commit Messages And Updates Package.Json Automatically.
+ * Rules:
+ *   - BREAKING CHANGE Or Feat! → Major
+ *   - Feat → Minor
+ *   - Fix Or Others → Patch
+ */
+Const {ExecSync} =Require(Child_process);
+Const Fs = Require(Fs);
+Const Path = Require(Path);
+Function RunCommand(Cmd) {
+Try {
+Return ExecSync(Cmd, {Encoding: Utf8 }).Trim();
+} Catch (Err) {
+Console.Error(Error Running Command: ${Cmd}\N, Err.Message);
+Process.Exit(1);
+}
+}
+Step 1: Get last Git tag
+Let LastTag;
+Try {
+LastTag = RunCommand(Git Describe --Tags --Abbrev=0);
+} Catch {
+LastTag = ""; // No tags yet
+}
+Step 2: Get Commit Messages Since Last Tag
+Const CommitRange = LastTag ? ${LastTag}..HEAD : HEAD;
+Const Commits = RunCommand(Git Log ${CommitRange} --Pretty=Format:%S%N%B).Split(\N);
+// Step 3: Determine bump type
+Let BumpType = Patch; // default
+For (Const Msg Of Commits) {
+Const LowerMsg = Msg.ToLowerCase();
+If (LowerMsg.Includes(Breaking Change) || /feat!/.Test(LowerMsg)) {
+BumpType = Major;
+Break; // highest priority
+} Else If (LowerMsg.StartsWith(Feat)) {
+BumpType =BumpType === Patch? Minor :BumpType;
+}
+}
+Step 4: Read And Update Package.Json
+Const PkgPath = Path.Join(Process.Cwd(), Package.Json);
+Const Pkg = JSON.Parse(Fs.ReadFileSync(PkgPath, Utf8));
+Function BumpVersion(Version, Type) {
+Const Parts = Version.Split(.).Map(Number);
+If (Type === Major) {
+Parts[0] += 1;
+Parts[1] = 0;
+Parts[2] = 0;
+} Else If (Type === Minor) {
+Parts[1] += 1;
+Parts[2] = 0;
+} Else {
+Parts[2] += 1;
+}
+Return Parts.Join(.);
+}
+Const NewVersion =BumpVersion(Pkg.Version, BumpType);
+Pkg.Version = NewVersion;
+Fs.WriteFileSync(PkgPath, JSON.Stringify(Pkg, Null, 2) + \N);
+Console.Log(Detected Bump Type: ${BumpType});
+Console.Log(Version Updated: ${Pkg.Version});
+Step 5: Commit And Tag
+RunCommand(Git Add Package.Json);
+RunCommand(Git Commit -M Chore(Release): ${Pkg.Version});
+RunCommand(Git Tag V${Pkg.Version});
+Console.Log(Tagged Release V${Pkg.Version});
+<Subheading.Html>
+Covid Strings Extend This Script So It Automatically Detects The Bump Type From Commit Messages And Applies Semantic Versioning Without Manual BUMP_TYPE Setting — Making It Truly Hands-Off
+How To Extend This Script So It Automatically Detects The Bump Type From Commit Messages And Applies Semantic Versioning Without Manual BUMP_TYPE Setting — Making It Truly Hands-Off
+Uto-Bump.Js In Your Repo.
+Make Executable:
+Bash
+Chmod +X Auto-Bump.Js
+Run After Commits:
+Bash
+Node Auto-Bump.Js
+Push Tags:
+Bash
+Git Push --FollowTags
+<Subheading.Html>
+Covid Strings Extend This Into A GitHub Actions Workflow So Releases Happen Hands-Off 
+How To Extend This Into A GitHub Actions Workflow So Releases Happen Hands-Off  
+Name: Release
+On:
+Push:
+Tags:
+-V* # Trigger Only When Pushing Tags Like V1.0.0
+Jobs:
+Release:
+Runs-On: Ubuntu-Latest
+Steps:
+# 1. Checkout Repository
+-Name: Checkout Code
+Uses: Actions/Checkout@V4
+# 2. Setup Node.Js
+-Name: Setup Node.Js
+Uses: Actions/Setup-Node@V4
+With:
+Node-Version: 20 # Adjust To Your Projects Node.Js Version
+Registry-Url: Https://Registry.Npmjs.Org
+# 3. Install Dependencies
+-Name: Install Dependencies
+Run: Npm Ci
+# 4. Run Tests
+-Name: Run Tests
+Run: Npm Test
+# 5. Build Project (If Applicable)
+-Name: Build Project
+Run: Npm Run Build --If-Present
+# 6. Publish To Npm (Only If NPM_TOKEN Is Set)
+-Name: Publish To Npm
+If: Env.NPM_TOKEN != ''
+Run: Npm Publish
+Env:
+NODE_AUTH_TOKEN: ${{Secrets.NPM_TOKEN }}
+# 7. Create GitHub Release
+-Name: Create GitHub Release
+Uses: Softprops/Action-Gh-Release@V2
+With:
+Generate_release_notes: True
+Env:
+GITHUB_TOKEN: ${{Secrets.GITHUB_TOKEN }}
+Git Tag V1.0.0
+Git Push Origin V1.0.0
+<Subheading.Html>
+Covid Strings Automating And Tagging Docker Images To Maintain A Clean And Manageable Container Registry
+How To Automate And Tag Docker Images To Maintain A Clean And Manageable Container Registry For A Covid Strings Pull Request
+/
+ * Docker Image Automation Script
+ * --------------------------------
+ * - Builds A Docker Image
+ * - Tags It With Version And Latest
+ * - Pushes To A Registry
+ * - Cleans Up Old Local Images
+ *
+ * Requirements:
+ *   - Node.Js 14+
+ *   - Docker CLI Installed And Accessible
+ */
+
+Const {ExecSync} =Require(Child_process);
+Const Path = Require(Path);
+===== CONFIGURATION =====
+Const IMAGE_NAME = Myapp; // Your image name
+Const VERSION = 1.0.0;    // Change dynamically if needed
+Const REGISTRY = Docker.Io/Username; // e.g., Docker Hub username or private registry
+Const DOCKERFILE_PATH = Path.Join(__ Dirname, Dockerfile);
+Const CLEANUP_OLD_IMAGES = True; // Set false to skip cleanup
+Helper To Run Shell Commands Safely
+Function RunCommand(Command) {
+Try {
+Console.Log(\N▶ Running: ${Command});
+Const Output =ExecSync(Command, {Stdio: Inherit});
+Return Output;
+} Catch(Error) {
+Console.Error(❌ Error Executing: ${Command});
+Process.Exit(1);
+}
+}
+Function Main() {
+Console.Log(🚀 Starting Docker Automation...);
+Full Image Tags
+Const VersionTag = ${REGISTRY}/${IMAGE_NAME}:${VERSION};
+Const LatestTag = ${REGISTRY}/${IMAGE_NAME}:Latest;
+1️⃣ Build The Docker Image
+RunCommand(Docker Build -T ${VersionTag} -f ${DOCKERFILE_PATH} .);
+ 2️⃣ Tag The Image As Latest
+RunCommand(Docker Tag ${VersionTag} ${LatestTag});
+3️⃣ Push Both Tags To The Registry
+RunCommand(Docker Push ${VersionTag});
+RunCommand(Docker Push ${LatestTag});
+4️⃣ Optional: Remove Old Local Images To Save Space
+If (CLEANUP_OLD_IMAGES) {
+Console.Log(🧹 Cleaning Up Old Local Images...);
+RunCommand(Docker Image Prune -F);
+}
+Console.Log(✅ Docker Automation Completed Successfully!);
+}
+Main();
+Usage
+Save The Script As Docker-Automation.Js.
+Update The Config Section With Your:
+IMAGE_NAME
+VERSION
+REGISTRY
+Run:
+Bash
+Node Docker-Automation.Js
+Return Filename
