@@ -907,7 +907,7 @@ const data = await response.json();
 display posts
 const postscontainer = document.getelementbyid(posts);
 postscontainer.innerhtml = ""; // clear previous content
-data.slice(0, 5).foreach(Post => { // limit to first 5 posts
+data.slice(0, 5).foreach(post => { // limit to first 5 posts
 const postelement =document.createelement(div);
 postelement.classlist.add(post);
 postelement.innerhtml = 
@@ -1585,7 +1585,7 @@ dockerfile
 # use official node.js lts image
 from node:20-alpine
 # set working directory
-WORKDIR/App
+workdir/app
 # copy package files and install dependencies
 copy package*.json ./
 run npm ci --only=production
@@ -2501,715 +2501,715 @@ covid strings github actions workflow so that your pull request automatically ru
 how to create a github actions workflow so that your pull request automatically runs tests for the game progress code before merging
 name: run game progress tests
 # trigger workflow on pull requests targeting the main branch
-On:
-Pull_request:
-Branches:
-- Main
-Types: [Opened, Synchronize, Reopened]
-Jobs:
-Test:
-Name: Run JavaScript Tests
-Runs-On: Ubuntu-Latest
-Steps:
-# Step 1: Check Out The Repository Code
-- Name: Checkout Repository
-Uses: Actions/Checkout@V4
-# Step 2: Set Up Node.Js (Adjust Version If Needed)
-- Name: Set Up Node.Js
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 18
-Cache: Npm
-# Step 3: Install Dependencies
-- Name: Install Dependencies
-Run: Npm Ci
-# Step 4: Run Tests
-- Name: Run Tests
-Run: Npm Test
-Json
-Scripts: {
-Test: Jest
+on:
+pull_request:
+branches:
+-main
+types: [opened, synchronize, reopened]
+jobs:
+test:
+name: run javascript tests
+runs-on: ubuntu-latest
+steps:
+# step 1: check out the repository code
+-name: checkout repository
+uses: actions/checkout@v4
+# step 2: set up node.js (adjust version if needed)
+- name: set up node.js
+uses: actions/setup-node@v4
+with:
+node-version: 18
+cache: npm
+# step 3: install dependencies
+- name: install dependencies
+run: npm ci
+# step 4: run tests
+- name: run tests
+run: npm test
+json
+scripts: {
+test: jest
 }
-<Subheading.Html>
-Covid Strings Es Lint Checks For Javascript Code Before Merging
-How To Use ES Lint Checks For Covid Strings Javascript Code Before Merging
-Npm Install --Save-Dev Eslint Husky Lint-Staged
-2️⃣ Initialize ESLint
-Bash
-Copy Code
-Npx Eslint --Init
-Choose:
-JavaScript Modules (Import/Export) Or CommonJS Depending On Your Game Code.
-Framework: None (Or React/Vue If Applicable).
-Style Guide: Airbnb / Standard / Google Or Custom.
-Format: JSON Or JavaScript Config.
-This Will Create.Eslintrc.Json (Or.Eslintrc.Js).
-Example.Eslintrc.Json:
-Json
+<subheading.html>
+covid strings es lint checks for javascript code before merging
+how to use es lint checks for covid strings javascript code before merging
+npm install --save-dev eslint husky lint-staged
+2️⃣ initialize eslint
+bash
+copy code
+npx eslint --init
+choose:
+javascript modules (import/export) or commonjs depending on your game code.
+framework: none (or react/vue if applicable).
+style guide: airbnb /standard /google or custom.
+format: json or javascript config.
+this will create.eslintrc.json (or.eslintrc.js).
+example.eslintrc.json:
+json
 {
-Env: {
-Browser: True,
-Es2021: True
+env: {
+browser: true,
+es2021: true
 },
-Extends: [Eslint:Recommended],
-ParserOptions: {
-EcmaVersion: Latest,
-SourceType: Module
+extends: [eslint:recommended],
+parseroptions: {
+ecmaversion: latest,
+sourcetype: module
 },
-Rules: {
-No-Unused-Vars: Warn,
-No-Console: Off,
-Eqeqeq: Error
+rules: {
+no-unused-vars:warn,
+no-console: off,
+eqeqeq: error
 }
 }
-3️⃣ Configure Package.Json For Linting Hooks
-Add This To Your Package.Json:
-Json
+3️⃣ configure package.json for linting hooks
+add this to your package.json:
+json
 {
-Scripts: {
-Lint: Eslint . --Ext .Js,.Jsx,.Mjs,.Cjs
+scripts: {
+lint: eslint . --ext .js,.jsx,.mjs,.cjs
 },
-Lint-Staged: {
-*.Js: Eslint--Fix
+lint-staged: {
+*.js: eslint--fix
 }
 }
-4️⃣ Set Up Husky Hooks
-Enable Husky:
-Bash
-Npx Husky Install
-Add A Pre-Commit Hook:
-Bash
-Npx Husky Add .Husky/Pre-Commit Npx Lint-Staged
-Add A Pre-Push Hook (Optional, To Block Pushes If Lint Fails):
-Bash
-Npx Husky Add.Husky/Pre-Push Npm Run Lint
-6️⃣ Example Run
-Bash
-Git Add Src/Game.Js
-Git Commit -M Add New Game Logic
-# Husky Runs ESLint → Fixes Issues → Commit Proceeds If No Errors Remain
-<Subheading.Html>
-Covid Strings Installing A Github Actions Workflow So ES Lint Runs Automatically On Pull Requests Before Merging
-How To Install A Github Actions Workflow So ES Lint Runs Automatically On Pull Requests Before Merging For Covid Strings
-Npm Install --Save-Dev Eslint
-.Github/Workflows/Eslint.Yml
-Eslint.Yml
-Yaml
-Name: ESLint Check
-On:
-Pull_request:
-Branches:
-- Main
-- Master
-Jobs:
-Lint:
-Name: Run ESLint
-Runs-On: Ubuntu-Latest
-Steps:
-# Step 1: Checkout The Repository Code
-- Name: Checkout Code
-Uses: Actions/Checkout@V4
-# Step 2: Set Up Node.Js
-- Name: Set Up Node.Js
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 20 # Use Your Projects Node.Js Version
-# Step 3: Install Dependencies
-- Name: Install Dependencies
-Run: Npm Ci
-# Step 4: Run ESLint
-- Name: Run ESLint
-Run: Npx Eslint . --Ext .Js,.Jsx,.Ts,.Tsx
-<Subheading.Html>
-Covid Strings Post Deployment Tasks
-How To Create Post Deployment Tasks For Covid Strings
+4️⃣ set up husky Hooks
+enable husky:
+bash
+npx husky install
+add a pre-commit hook:
+bash
+npx husky add .husky/pre-commit npx lint-staged
+add a pre-push hook (optional, to block pushes if lint fails):
+bash
+npx husky add.husky/pre-push npm run lint
+6️⃣ example run
+bash
+git add src/game.js
+git commit -m add new game logic
+# husky runs eslint → fixes issues → commit proceeds if no errors remain
+<subheading.html>
+covid strings installing a github actions workflow so es lint runs automatically on pull requests before merging
+how to install a github actions workflow so es lint runs automatically on pull requests before merging for covid strings
+npm install --save-dev eslint
+.github/workflows/eslint.yml
+eslint.yml
+yaml
+name: eslint check
+on:
+pull_request:
+branches:
+-main
+-master
+jobs:
+lint:
+name: run eslint
+runs-on: ubuntu-latest
+steps:
+# step 1: checkout the repository code
+-name: checkout code
+uses: actions/checkout@v4
+# step 2: set up node.js
+- name: set up node.js
+uses: actions/setup-node@v4
+with:
+node-version: 20 # use your projects node.js version
+# step 3: install dependencies
+- name: install dependencies
+run: npm ci
+# step 4: run eslint
+- name: run eslint
+run: npx eslint . --ext .js,.jsx,.ts,.tsx
+<subheading.html>
+covid strings post deployment tasks
+how to create post deployment tasks for covid strings
 /
- * Post-Deployment Task Runner Triggered By Pull Request Merges.
- * Works With GitHub, Azure DevOps, Or Bitbucket Webhooks.
+ * post-deployment task runner triggered by pull request merges.
+ * works with github, azure devops, or bitbucket webhooks.
  */
-Const Express = Require(Express);
-Const Crypto = Require(Crypto);
-Const {Exec } = Require(Child_process);
-Const App = Express();
-Const PORT = Process.Env.PORT || 3000;
-/Replace With Your Webhook Secret (Set In GitHub/Azure DevOps)
-Const WEBHOOK_SECRET =Process.Env.WEBHOOK_SECRET || Mysecret;
-Middleware To Parse JSON
-App.Use(Express.Json({Verify: VerifySignature }));
+const express=require(express);
+const crypto =require(crypto);
+const {exec} =require(child_process);
+const app=express();
+const port=process.env.port || 3000;
+/replace with your webhook secret (set in github/azure devops)
+const webhook_secret=process.env.webhook_secret||mysecret;
+middleware to parse json
+app.use(express.json({verify: verifysignature }));
 /
- * Verify Webhook Signature For Security
+ * verify webhook signature for security
  */
-Function VerifySignature(Req,Res,Buf) {
-Const Signature =Req.Headers[X-Hub-Signature-256] || Req.Headers[X-Hub-Signature];
-If (!Signature) Return;
-Const Hmac = Crypto.CreateHmac(Sha256, WEBHOOK_SECRET);
-Hmac.Update(Buf);
-Const Digest = Sha256=${Hmac.Digest(Hex)};
-If (Signature !== Digest) {
-Throw New Error(Invalid Webhook Signature);
+function verifysignature(req,res,buf) {
+const signature=req.headers[x-hub-signature-256] || req.headers[x-hub-signature];
+if (!signature) return;
+const hmac =crypto.createhmac(sha256, webhook_secret);
+hmac.update(buf);
+const digest = sha256=${hmac.digest(hex)};
+if (signature !== digest) {
+throw new error(invalid webhook signature);
 }
 }
 /
- * Webhook Endpoint
+ * webhook endpoint
  */
-App.Post(/Webhook, (Req, Res) => {
-Try {
-Const Event = Req.Headers[X-Github-Event] || Req.Headers[X-Event-Key] || Req.Headers[X-Ms-Event-Type];
-Example: GitHub Pull Request Merged
-If (Event === Pull_request && Req.Body.Action === Closed && Req.Body.Pull_request.Merged) {
-Console.Log(Pull Request #${Req.Body.Pull_request.Number} Merged. Running Post-Deployment Tasks...);
-RunPostDeploymentTasks();
+app.post(/webhook, (req,res) => {
+try {
+const event = req.headers[x-github-event] || req.headers[x-event-key] || req.headers[x-ms-event-type];
+example: github pull request merged
+if (event ===pull_request && req.body.action === closed && req.body.pull_request.merged) {
+console.log(pull request #${req.body.pull_request.number} merged. running post-deployment tasks...);
+runpostdeploymenttasks();
 }
-Example: Azure DevOps PR Merged
-If (Event === Git.Pullrequest.Merged) {
-Console.Log(Azure DevOps PR Merged. Running Post-Deployment Tasks...);
-RunPostDeploymentTasks();
+example: azure devops pr merged
+if (event === git.pullrequest.merged) {
+console.log(azure devops pr merged. running post-deployment tasks...);
+runpostdeploymenttasks();
 }
-Res.Status(200).Send(Webhook Received);
-} Catch (Err) {
-Console.Error(Error Processing Webhook:, Err.Message);
-Res.Status(400).Send(Invalid Request);
+res.status(200).send(webhook received);
+} catch (err) {
+console.error(error processing webhook:, err.message);
+res.status(400).send(invalid request);
 }
 });
 /
-* Post-Deployment Tasks
+* post-deployment tasks
 */
-Function RunPostDeploymentTasks() {
-Example: Clear Cache
-Console.Log(Clearing Cache...);
-Exec(Npm Run Clear-Cache, (Err, Stdout, Stderr) => {
-If (Err) {
-Console.Error(Cache Clear Failed:, Stderr);
-Return;
+function runpostdeploymentTasks() {
+example: clear cache
+console.log(clearing cache...);
+exec(npm run clear-cache, (err, stdout, stderr) => {
+if (err) {
+console.error(cache clear failed:, stderr);
+return;
 }
-Console.Log(Stdout);
-Example: Run Database Migrations
-Console.Log(Running Database Migrations...);
-Exec(Npm Run Migrate, (Err2, Stdout2, Stderr2) => {
-If (Err2) {
-Console.Error(Migration Failed:, Stderr2);
-Return;
+console.log(stdout);
+example: run database migrations
+console.log(running database migrations...);
+exec(npm run migrate, (err2, stdout2, stderr2) => {
+if (err2) {
+console.error(migration failed:, stderr2);
+return;
 }
-Console.Log(Stdout2);
-Example: Send Notification
-Console.Log(Post-Deployment Tasks Completed Successfully.);
+console.log(stdout2);
+example: send notification
+console.log(post-deployment tasks completed successfully.);
 });
 });
 }
-App.Listen(PORT, () => {
-Console.Log(Post-Deployment Server Running On Port ${PORT});
+app.listen(port, () => {
+console.log(post-deployment server running on port ${port});
 });
-Npm Init -Y
-Npm Install Express Crypto
-Export WEBHOOK_SECRET=Yoursecret
-Node Server.Js
-Https://Your-Server.Com/Webhook
-<Subheading.Html>
-Covid Strings Version That Integrates Directly With GitHub Actions So Post-Deployment Tasks Run Automatically After A PR Merge Without Needing A Separate Server
-How To Create A Version That Integrates Directly With GitHub Actions So Post-Deployment Tasks Run Automatically After A PR Merge Without Needing A Separate Server For Covid Strings 
-Name: Post-Deployment Tasks
-On:
-Pull_request:
-Types:
-- Closed
-Jobs:
-Post-Deploy:
-If: Github.Event.Pull_request.Merged == True
-Runs-On: Ubuntu-Latest
-Steps:
-- Name: Checkout Repository
-Uses: Actions/Checkout@V4
-- Name: Set Up Node.Js
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 20
-- Name: Install Dependencies
-Run: Npm Ci
-- Name: Run Post-Deployment Script
-Run: Node Scripts/PostDeploy.Js
-Scripts/PostDeploy.Js
-Example: Post-Deployment Automation
-(Async () => {
-Console.Log(🚀 Post-Deployment Tasks Starting...);
-Example: Clear Cache
-Await New Promise(Res => SetTimeout(Res, 500));
-Console.Log(🧹 Cache Cleared.);
-Example: Notify A Webhook
-Const Fetch = (Await Import(Node-Fetch)).Default;
-Await Fetch(Process.Env.DEPLOY_WEBHOOK_URL, {
-Method: POST,
-Headers: {Content-Type: Application/Json},
-Body: JSON.Stringify({Status: Deployed, Timestamp: New Date() })
+npm init-y
+npm install express crypto
+export webhook_secret=yoursecret
+node Server.Js
+https://your-server.com/webhook
+<subheading.html>
+covid strings version that integrates directly with github actions so post-deployment tasks run automatically after a pr merge without needing a separate server
+how to create a version that integrates directly with github actions so post-deployment tasks run automatically after a pr merge without needing a separate server for covid strings 
+name: post-deployment tasks
+on:
+pull_request:
+types:
+- closed
+jobs:
+post-deploy:
+if: github.event.pull_request.merged ==true
+runs-on: ubuntu-latest
+steps:
+-name: Checkout Repository
+uses: Actions/Checkout@V4
+-name: Set Up Node.Js
+uses: Actions/Setup-Node@V4
+with:
+node-version: 20
+-name: install dependencies
+run: npm ci
+-name: run post-deployment script
+run: Node Scripts/postdeploy.js
+scripts/postdeploy.js
+example: post-deployment automation
+(async () => {
+console.log(🚀 post-deployment Tasks Starting...);
+example: clear cache
+await new promise(Res => SetTimeout(Res, 500));
+console.Log(🧹 Cache Cleared.);
+example: Notify A Webhook
+const Fetch = (Await Import(Node-Fetch)).Default;
+await Fetch(Process.Env.DEPLOY_WEBHOOK_URL, {
+method: post,
+headers: {content-type:application/json},
+body: json.stringify({status: deployed, timestamp: new date() })
 });
-Console.Log(📢 Deployment Notification Sent.);
-Console.Log(✅ All Post-Deployment Tasks Completed.);
+console.log(📢 deployment notification sent.);
+console.log(✅ all post-deployment tasks completed.);
 })();
-<Subheading.Html>
-Covid Strings One Version That Runs Only On Main Merges And Another That Uses GitHub Environments For Safer Deployments
-How To Create One Version That Runs Only On Main Merges And Another That Uses GitHub Environments For Safer Deployments For Covid Strings
-Name: Deploy On Main Merge
-On:
-Push:
-Branches:
-- Main
-Jobs:
-Deploy:
-Runs-On: Ubuntu-Latest
-Steps:
-- Name: Checkout Code
-Uses: Actions/Checkout@V4
-- Name: Setup Node.Js
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 18
-- Name: Install Dependencies
-Run: Npm Ci
-- Name: Build Project
-Run: Npm Run Build
-- Name: Deploy
-Run: Node Scripts/Deploy.Js
-✅ Behavior: This Triggers Only When A Commit Is Pushed To Main (Including Merges).
-2️⃣ Uses GitHub Environments For Safer Deployments
-Yaml
-Name: Deploy With Environment Approval
-On:
-Push:
-Branches:
--Main
-Jobs:
-Deploy:
-Runs-On: Ubuntu-Latest
-Environment:
-Name: Production
-Url: Https://Your-Production-Url.Com
-Steps:
-- Name: Checkout Code
-Uses: Actions/Checkout@V4
-- Name: Setup Node.Js
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 18
-- Name: Install Dependencies
-Run: Npm Ci
-- Name: Build Project
-Run: Npm Run Build
-- Name: Deploy
-Run: Node Scripts/Deploy.Js
-<Subheading.Html>
-Covid Strings Release Branch Strategy That Allows For Final Testing Bug Fixing And Preparing Release Notes Before Merging Into The Main Branch
-How To Create A Release Branch Strategy That Allows For Final Testing Bug Fixing And Preparing Release Notes Before Merging Into The Main Branch For Covid Strings 
+<subheading.html>
+covid strings one version that runs only on main merges and another that uses github environments for safer deployments
+how to create one version that runs only on main merges and another that uses github environments for safer deployments for covid strings
+name: Deploy On Main Merge
+on:
+push:
+branches:
+-main
+jobs:
+deploy:
+runs-on: ubuntu-latest
+steps:
+-name: checkout code
+uses: actions/checkout@v4
+-name: setup node.js
+uses: actions/setup-node@v4
+with:
+node-version: 18
+-name: install dependencies
+run: npm ci
+-name: build project
+run: npm run build
+-name: deploy
+run: node scripts/deploy.js
+✅ behavior: this triggers only when a commit is pushed to main (including merges).
+2️⃣ uses github environments for safer deployments
+yaml
+name: deploy with environment approval
+on:
+push:
+branches:
+-main
+jobs:
+deploy:
+runs-on: ubuntu-latest
+environment:
+name: production
+url: https://your-production-url.com
+steps:
+-name: checkout code
+uses: actions/checkout@v4
+-name: setup node.js
+uses: actions/setup-node@v4
+with:
+node-version: 18
+-name: install dependencies
+run: npm ci
+-name: build project
+run: npm run build
+-name: deploy
+run: node scripts/deploy.js
+<subheading.html>
+covid strings release branch strategy that allows for final testing bug fixing and preparing release notes before merging into the main branch
+how to create a release branch strategy that allows for final testing bug fixing and preparing release notes before merging into the main branch for covid strings 
 /
- * Release Branch Strategy Automation Script
+ * release branch strategy automation script
  * -----------------------------------------
- * Automates:
- * 1. Creating A Release Branch From Develop
- * 2. Allowing Final Testing, Bug Fixing, And Release Notes Preparation
- * 3. Merging Into Main And Back Into Develop
+ * automates:
+ * 1. creating a release branch from develop
+ * 2. allowing final testing, bug fixing, and release notes preparation
+ * 3. merging into main and back into develop
  *
- * Requirements:
- *  Npm Install Simple-Git
+ * requirements:
+ *  npm install simple-git
  */
-Const SimpleGit = Require(Simple-Git);
-Const Path = Require(Path);
-Const Fs = Require(Fs);
-Const Git = SimpleGit();
-// Utility: Validate branch name
-Function ValidateBranchName(Name) {
-If (!/^release\/[0-9]+\.[0-9]+\.[0-9]+$/.Test(Name)) {
-Throw New Error(Invalid Branch Name. Use Format: Release/X.Y.Z (E.G., Release/1.2.0));
+const simplegit = require(simple-git);
+const path = require(path);
+const fs = require(fs);
+const git = simplegit();
+// utility: validate branch name
+function validatebranchname(name) {
+if (!/^release\/[0-9]+\.[0-9]+\.[0-9]+$/.test(name)) {
+throw new error(invalid branch name. use format: release/x.y.z (e.g., release/1.2.0));
 }
 }
- Step 1: Create A Release Branch From Develop
-Async Function CreateReleaseBranch(ReleaseBranch) {
-ValidateBranchName(ReleaseBranch);
-Console.Log(Creating Release Branch: ${ReleaseBranch} From Develop...);
-Await Git.Fetch();
-Await Git.Checkout(Develop);
-Await Git.Pull(Origin, Develop);
-Await Git.CheckoutBranch(ReleaseBranch, Develop);
-Console.Log(✅ Release Branch ${ReleaseBranch} Created.);
+step 1: create a release branch from develop
+async function createreleasebranch(releasebranch) {
+validatebranchname(releasebranch);
+console.log(creating release branch: ${releasebranch} from develop...);
+await git.fetch();
+await git.checkout(develop);
+await git.pull(origin, develop);
+await git.checkoutbranch(releasebranch, develop);
+console.log(✅ release branch ${releasebranch} created.);
 }
-Step 2: Prepare Release Notes
-Function PrepareReleaseNotes(Version) {
-Const NotesPath =Path.Join(Process.Cwd(), RELEASE_NOTES.Md);
-Const Content = # Release ${Version}\N\N- [ ] Final Testing\N- [ ] Bug Fixes\N- [ ] Documentation Updates\N\N;
-Fs.WriteFileSync(NotesPath, Content, {Flag: W });
-Console.Log(📝 Release Notes Created At ${NotesPath});
+step 2: prepare release notes
+function preparereleasenotes(version) {
+const notespath =path.join(process.cwd(), release_notes.md);
+const content = # release ${version}\n\n- [ ] final testing\n- [ ] bug fixes\n- [ ] documentation updates\n\n;
+fs.writefilesync(notespath, content, {flag: w });
+console.log(📝 release notes created at ${notespath});
 }
-Step 3: Merge Release Branch Into Main And Develop
-Async Function FinalizeRelease(ReleaseBranch) {
-Console.Log(Merging ${ReleaseBranch} Into Main...);
-Await Git.Checkout(Main);
-Await Git.Pull(Origin, Main);
-Await Git.MergeFromTo(ReleaseBranch, Main);
-Await Git.Push(Origin, Main);
-Console.Log(Merging ${ReleaseBranch} Back Into Develop...);
-Await Git.Checkout(Develop);
-Await Git.Pull(Origin, Develop);
-Await Git.MergeFromTo(ReleaseBranch, Develop);
-Await Git.Push(Origin, Develop);
-Console.Log(✅ Release ${ReleaseBranch} Finalized And Merged.);
+step 3: merge release branch into main and develop
+async function finalizerelease(releasebranch) {
+console.log(merging ${releasebranch} into main...);
+await git.checkout(main);
+await git.pull(origin, main);
+await git.mergefromto(releasebranch, main);
+await git.push(origin, main);
+console.log(merging ${releasebranch} back into develop...);
+await git.checkout(develop);
+await git.pull(origin, develop);
+await git.mergefromto(releasebranch, develop);
+await git.push(origin, develop);
+console.log(✅ release ${releasebranch} finalized and merged.);
 }
-CLI Usage
-(Async () => {
-Try {
-Const Action = Process.Argv[2];
-Const Branch = Process.Argv[3];
-If (!Action || !Branch) {
-Console.Error(Usage: Node Release.Js <Create|Finalize> <Release/X.Y.Z>);
-Process.Exit(1);
+cli usage
+(async () => {
+try {
+const action = process.argv[2];
+const branch = process.argv[3];
+if (!action || !branch) {
+console.error(usage: node release.js <create|finalize> <release/x.y.z>);
+process.exit(1);
 }
-If (Action === Create) {
-Await CreateReleaseBranch(Branch);
-PrepareReleaseNotes(Branch.Split(/)[1]);
-} Else If (Action === Finalize) {
-Await FinalizeRelease(Branch);
-} Else {
-Throw New Error(Invalid Action. Use Create Or Finalize.);
+if (action ===create) {
+await createreleasebranch(branch);
+preparereleasenotes(branch.split(/)[1]);
+} else if (action ===finalize) {
+await finalizerelease(branch);
+} else {
+throw new error(invalid action. use create or finalize.);
 }
-} Catch (Err) {
-Console.Error(❌ Error: ${Err.Message});
-Process.Exit(1);
+} catch (err) {
+console.error(❌ error: ${err.message});
+process.exit(1);
 }
 })();
-Node Release.Js Create Release/1.0.0
-Node Release.Js Finalize Release/1.0.0
-<Subheading.Html>
-Covid Strings Automatically Generating Changelogs From Commit Messages Before Merging Into Main
-How To Automatically Generate Changelog From Commit Messages Before Merging Into Main For Covid Strings 
-Npm Init-Y
-Npm Install --Save-Dev Standard-Version Husky
-2. Configure Package.Json
-Add:
-Json
+node release.js create release/1.0.0
+node release.js finalize release/1.0.0
+<subheading.html>
+covid strings automatically generating changelogs from commit messages before merging into main
+how to automatically generate changelog from commit messages before merging into main for covid strings 
+npm init-y
+npm install --save-dev standard-version husky
+2. configure package.json
+add:
+json
 {
-Scripts: {
-Changelog: Standard-Version --Skip.Tag=True --Skip.Commit=True
+scripts: {
+changelog: standard-version --skip.tag=true --skip.commit=true
 },
-Standard-Version: {
-Skip: {
-Tag: True,
-Commit: True
+standard-version: {
+skip: {
+tag: true,
+commit: true
 }
 }
 }
---Skip.Tag And --Skip.Commit Prevent Version Bumps/Tags — We Only Want The Changelog Update Before Merge.
-3. Enable Husky And Create Pre-Merge Hook
-Bash
-Npx Husky Install
-Npm Set-Script Prepare Husky Install
-Npm Run Prepare
-Create A Pre-Merge Hook:
-Bash
-Npx Husky Add.Husky/Pre-Merge Npm Run Changelog && Git Add CHANGELOG.Md
-Chmod +X .Husky/Pre-Merge
-4. Example.Husky/Pre-Merge File
-Bash
-#!/Bin/Sh
-. $(Dirname $0)/_/Husky.Sh
-Echo 🔄 Generating Changelog Before Merge...
-Npm Run Changelog
-# Stage The Updated Changelog So It Becomes Part Of The Merge Commit
-Git Add CHANGELOG.Md
-Echo ✅ Changelog Updated And Staged.
-5. Commit Message Format
-This Works Best If Commits Follow Conventional Commits, E.G.:
-Feat: Add User Authentication
-Fix: Correct Password Hashing Bug
-Docs: Update API Usage Section
-7. Example Generated CHANGELOG.Md
-Markdown
-### Features
-- Add User Authentication
-### Bug Fixes
-- Correct Password Hashing Bug
-Notes
-If You Want This To Run Only When Merging Into Main, You Can Add A Branch Check In .Husky/Pre-Merge:
-Bash
-Branch=$(Git Rev-Parse --Abbrev-ref HEAD)
-If [$ Branch = Main ]; Then
-Npm Run Changelog && Git Add CHANGELOG.Md
-<Subheading.Html>
-Covid Strings Version That Automatically Commits The Changelog And Pushes It Before Merging Into Main
-How To Automatically Commit The Change Log And Push It Before Merging Into The Main
-#!/Usr/Bin/Env Node
+--skip.tag and --skip.commit prevent version bumps/tags — we only want the changelog update before merge.
+3. enable husky and create pre-merge hook
+bash
+npx husky install
+npm set-script prepare husky install
+npm run prepare
+create a pre-merge hook:
+bash
+npx husky add.husky/pre-merge npm run changelog && git add change log.md
+chmod +x .husky/pre-merge
+4. example.husky/pre-merge file
+bash
+#!/bin/sh
+. $(dirname $0)/_/husky.sh
+echo 🔄 generating changelog before merge...
+npm run changelog
+# stage the updated changelog so it becomes part of the merge commit
+git add change log.md
+echo ✅ changelog updated and staged.
+5. commit message format
+this works best if commits follow conventional commits, e.g.:
+feat: add user authentication
+fix: correct password hashing bug
+docs: update api usage section
+7. example generated change log.md
+markdown
+### features
+- add user authentication
+### bug fixes
+- correct password hashing bug
+notes
+if you want this to run only when merging into main, you can add a branch check in.husky/pre-merge:
+bash
+branch=$(git rev-parse --abbrev-ref head)
+if [$ branch = main ]; then
+npm run changelog && git add change log.md
+<subheading.html>
+covid strings version that automatically commits the changelog and pushes it before merging into main
+how to automatically commit the change log and push it before merging into the main
+#!/usr/bin/env node
 /
- * Auto-Generate CHANGELOG.Md From Commits, Commit It, And Push To Remote.
- * Uses Conventional-Changelog For Commit Parsing.
+ * auto-generate change log.md from commits, commit it, and push to remote.
+ * uses conventional-changelog for commit parsing.
  */
-Const {ExecSync } = Require(Child_Process);
-Const Fs = Require(Fs);
-Const Path = Require(Path);
-Const CHANGELOG_FILE = Path.Join(Process.Cwd(), CHANGELOG.Md);
-Function RunCommand(Command) {
-Try {
-Return ExecSync(Command, { Stdio: Pipe }).ToString().Trim();
-} Catch (Err) {
-Console.Error(❌ Command Failed: ${Command});
-Console.Error(Err.Message);
-Process.Exit(1);
+const {execsync}=require(child_process);
+const fs = require(fs);
+const path = require(path);
+const change log_file = path.join(process.cwd(), change log.md);
+function runcommand(command) {
+try {
+return execsync(command, {stdio: pipe}).tostring().trim();
+}catch (err) {
+console.error(❌ command failed: ${command});
+console.error(err.message);
+process.exit(1);
 }
 }
-Function GenerateChangelog() {
-Console.Log(📄 Generating Changelog...);
-RunCommand(
-Npx Conventional-Changelog -P Angular -I CHANGELOG.Md -S -R 0
+function generatechangelog() {
+console.log(📄 generating changelog...);
+runcommand(
+npx conventional-changelog -p angular -i change log.md -s -r 0
 );
 }
-Function CommitAndPush() {
-Console.Log(📦 Committing Changelog...);
-RunCommand(Git Add ${CHANGELOG_FILE});
-RunCommand(Git Commit -M Docs: Update Changelog [Skip Ci] || Echo No Changes To Commit);
-Console.Log(🚀 Pushing Changes...);
-Const Branch = RunCommand(Git Rev-Parse --Abbrev-Ref HEAD);
-RunCommand(Git Push Origin ${Branch});
+function commitandpush() {
+console.log(📦 committing changelog...);
+runcommand(git add ${change log_file});
+runcommand(git commit -m docs: update changelog [skip ci] || echo no changes to commit);
+console.log(🚀 pushing changes...);
+const branch = runcommand(git rev-parse --abbrev-ref head);
+runcommand(git push origin ${branch});
 }
-(Function Main() {
-Ensure Git Is Clean Before Running
-Const Status = RunCommand(Git Status --Porcelain);
-If (Status.Includes(MERGING)) {
-Console.Error(❌ Cannot Run During A Merge Conflict.);
-Process.Exit(1);
+(function main() {
+ensure git is clean before running
+const status = runcommand(git status --porcelain);
+if (status.includes(merging)) {
+console.error(❌ cannot run during a merge conflict.);
+process.exit(1);
 }
-Ensure Changelog File Exists
-If (!Fs.ExistsSync(CHANGELOG_FILE)) {
-Fs.WriteFileSync(CHANGELOG_FILE, # Changelog\N\N, Utf8);
+ensure changelog file exists
+if (!fs.existssync(change log_file)) {
+fs.writefilesync(change log_file, # changelog\n\n, utf8);
 }
-GenerateChangelog();
-CommitAndPush();
-Console.Log(✅ Changelog Updated And Pushed Successfully!);
+generatechangelog();
+commitandpush();
+console.log(✅ changelog updated and pushed successfully!);
 })();
-Setup Instructions
-Install Dependencies:
-Bash
-Npm Install --Save-Dev Conventional-Changelog-Cli
-Make Script Executable:
-Bash
-Chmod +X Update-Changelog.Js
-Add To Package.Json Scripts:
-Json
+setup instructions
+install dependencies:
+bash
+npm install --save-dev conventional-changelog-cli
+make script executable:
+bash
+chmod +x update-changelog.js
+add to package.json scripts:
+json
 {
-Scripts: {
-Update-Changelog: Node Update-Changelog.Js
+scripts: {
+update-changelog: node update-changelog.js
 }
 }
-Optional: Run Before Merging Into Main
-With Husky:
-Bash
-Npx Husky Add .Husky/Pre-Push Npm Run Update-Changelog
-In GitHub Actions (Before Merge Step):
-Yaml
-- Name: Update Changelog
-Run: Npm Run Update-Changelog
-<Subheading.Html>
-Covid Strings Post Deployment GitHub Action Workflow That Runs This Script Automatically On Pull Request Merge Into Main So You Never Have To Run It Locally 
-How To Create A GitHub Action Workflow That Runs This Script Automatically On Pull Request Merge Into Main So You Never Have To Run It Locally For  Covid Strings Post Deployment 
-Name: Run Script On Merge To Main
-On:
-Push:
-Branches:
--Main  # Trigger Only When Changes Are Pushed To Main (After PR Merge)
-Jobs:
-Run-Script:
-Runs-On: Ubuntu-Latest
-Steps:
-# Step 1: Check Out The Repository Code
--Name: Checkout Repository
-Uses: Actions/Checkout@V4
-# Step 2: Set Up Node.Js (Adjust Version If Needed)
-- Name: Set Up Node.Js
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 18 # Or Your Required Version
-Cache: Npm
-# Step 3: Install Dependencies
-- Name: Install Dependencies
-Run: Npm Ci
-# Step 4: Run Your Script
-- Name: Run Script
-Run: Node Path/To/Your-Script.Js
-Example Project Structure
-My-Repo/
-├── .Github/
-│   └── Workflows/
-│       └── Run-Script-On-Merge.Yml
-├── Package.Json
-├── Package-Lock.Json
-└── Scripts/
-└── My-Task.Js
-If Your Script Is In Scripts/My-Task.Js, Update The Workflow:
-Yaml
-Run: Node Scripts/My-Task.Js
-Yaml
-Env:
-API_KEY: ${{Secrets.API_KEY }}
-<Subheading.Html>
-Covid Strings Merge-Only Version That Would Prevent Accidental Runs From Direct Pushes In Post Deployment
-How To Create A  Merge-Only Version That Would Prevent Accidental Runs From Direct Pushes In Post Deployment
-#!/Usr/Bin/Env Node
+optional: run before merging into main
+with husky:
+bash
+npx husky Add .Husky/Pre-Push Npm Run Update-Changelog
+in github Actions (Before Merge Step):
+yaml
+-name: update changelog
+run: npm run update-changelog
+<subheading.html>
+covid strings post deployment github action workflow that runs this script automatically on pull request merge into main so you never have to run it locally 
+how to create a github action workflow that runs this script automatically on pull request merge into main so you never have to run it locally for covid strings post deployment 
+name: run script on merge to main
+on:
+push:
+branches:
+-main  # trigger only when changes are pushed to main (after pr merge)
+jobs:
+run-script:
+runs-on: ubuntu-latest
+steps:
+# step 1: check out the repository code
+-name: checkout repository
+uses: actions/checkout@v4
+# step 2: set up node.js (adjust version if needed)
+-name: set up node.js
+uses: actions/setup-node@v4
+with:
+node-version: 18 # or your required version
+cache: npm
+# step 3: install dependencies
+- name: install dependencies
+run: npm ci
+# step 4: run your script
+- name: run script
+run: node path/to/your-script.js
+example project structure
+my-repo/
+├── .github/
+│   └── workflows/
+│       └── run-script-on-merge.yml
+├── package.json
+├── package-lock.json
+└── scripts/
+└── my-task.js
+if your script is in scripts/my-task.js, update the workflow:
+yaml
+run: node scripts/my-task.js
+yaml
+env:
+api_key: ${{secrets.api_key}}
+<subheading.html>
+covid strings merge-only version that would prevent accidental runs from direct pushes in post deployment
+how to create a merge-only version that would prevent accidental runs from direct pushes in post deployment
+#!/usr/bin/env node
 /
- * Post-Deployment Safety Check Script
- * Prevents Accidental Runs From Direct Pushes.
- * Only Allows Execution If The Last Commit Is A Merge Commit.
+ * post-deployment safety check script
+ * prevents accidental runs from direct pushes.
+ * only allows execution if the last commit is a merge commit.
  */
-Const {ExecSync } = Require(Child_process);
-Try {
-Get The Latest Commit Message
-Const CommitMessage = ExecSync(Git Log -1 --Pretty=%B, {Encoding: Utf8}).Trim();
-Get The Number Of Parents Of The Latest Commit
-Const ParentCount = ParseInt(ExecSync(Git Log -1 --Pretty=%P | Wc -W, {Encoding: Utf8}).Trim(), 10);
-Check If Commit Is A Merge Commit (2 Parents) Or Contains Merge
-Const IsMergeCommit = ParentCount > 1 || /^Merge/I.Test(CommitMessage);
-If (!IsMergeCommit) {
-Console.Error(❌ Deployment Blocked: Last Commit Is NOT A Merge Commit.);
-Console.Error(Commit Message: ${CommitMessage});
-Process.Exit(1); // Exit with error to stop deployment
+const {execsync} =require(child_process);
+try {
+get the latest commit message
+const commitmessage = execsync(git log -1 --pretty=%b, {encoding: utf8}).trim();
+get the number of parents of the latest commit
+const parentcount =parseint(execsync(git log -1 --pretty=%p | wc -w, {encoding: utf8}).trim(), 10);
+check if commit is a merge commit (2 parents) or contains merge
+const ismergecommit = parentcount > 1 || /^merge/i.test(commitmessage);
+if (!ismergecommit) {
+console.error(❌ deployment blocked: last commit is not a merge commit.);
+console.error(commit message: ${commitmessage});
+process.exit(1); // exit with error to stop deployment
 }
-Console.Log(✅ Merge Commit Detected. Proceeding With Deployment...);
-} Catch (Err) {
-Console.Error(❌ Error Checking Commit Type:, Err.Message);
-Process.Exit(1);
-Chmod +X Check-Merge.Js
-Add To Your Post-Deployment Hook Or CI/CD Job:
-Bash
-Node Check-Merge.Js && Npm Run Deploy
-Const Branch = ExecSync(Git Rev-Parse --Abbrev-Ref HEAD, {Encoding: Utf8}).Trim();
-If (Branch !== Main) {
-Console.Error(❌ Deployment Blocked: Not On Main Branch (Current: ${Branch}));
-Process.Exit(1);
+console.log(✅ merge commit detected. proceeding with deployment...);
+} catch (err) {
+console.error(❌ error checking commit type:, err.message);
+process.exit(1);
+chmod +x check-merge.js
+add to your post-deployment hook or ci/cd job:
+bash
+node check-merge.js && npm run deploy
+const branch = execsync(git rev-parse --abbrev-ref head, {encoding: utf8}).trim();
+if (branch !== main) {
+console.error(❌ deployment blocked: not on main branch (current: ${branch}));
+process.exit(1);
 }
-<Subheading.Html>
-Pull Request For Website And Newsletter
-For Website Request 
-Provide Url Via Hyperlink
-Website Domain Name
+<subheading.html>
+pull request for website and newsletter
+for website request 
+provide url via hyperlink
+website domain name
 /
- * Node.Js Script To:
- * 1. Create A GitHub Pull Request For A Website Repo.
- * 2. Send A Newsletter Email.
+ * node.js script to:
+ * 1. create a github pull request for a website repo.
+ * 2. send a newsletter email.
  *
- * Requirements:
- *  Npm Install @Octokit/Rest Nodemailer Dotenv
- *  Create A .Env File With:
- *  GITHUB_TOKEN=Your_github_personal_access_token
- *  GITHUB_OWNER=Your_github_username_or_org
- *  GITHUB_REPO=Your_repo_name
- * NEWSLETTER_EMAIL=Your_email@Example.Com
- * NEWSLETTER_PASS=Your_email_password_or_app_password
+ * requirements:
+ *  npm install @octokit/rest nodemailer dotenv
+ *  create a.env file with:
+ *  github_token=your_github_personal_access_token
+ *  github_owner=your_github_username_or_org
+ *  github_repo=your_repo_name
+ * newsletter_email=your_email@example.com
+ * newsletter_pass=your_email_password_or_app_password
  */
-Const { Octokit } = Require(@Octokit/Rest);
-Const Nodemailer = Require(Nodemailer);
-Require(Dotenv).Config();
-Validate Environment Variables
-Const RequiredEnv = [
-GITHUB_TOKEN,
-GITHUB_OWNER,
-GITHUB_REPO,
-NEWSLETTER_EMAIL,
-NEWSLETTER_PASS
+const {octokit } =require(@octokit/rest);
+const nodemailer =require(nodemailer);
+require(dotenv).config();
+validate environment variables
+const requiredenv = [
+github_token,
+github_owner,
+github_repo,
+newsletter_email,
+newsletter_pass
 ];
-For (Const Key Of RequiredEnv) {
-If (!Process.Env[Key]) {
-Console.Error(❌ Missing Environment Variable: ${Key});
-Process.Exit(1);
+for (const key of requiredenv) {
+if (!process.env[key]) {
+console.error(❌ missing environment variable: ${key});
+process.exit(1);
 }
 }
-Initialize GitHub API Client
-Const Octokit = New Octokit({Auth: Process.Env.GITHUB_TOKEN });
+initialize github api client
+const octokit =new octokit({auth: process.env.github_token});
 /
- * Create A Pull Request On GitHub
+ * create a pull request on github
  */
-Async Function CreatePullRequest(BranchName, Title, Body) {
-Try {
-Get Default Branch
-Const {Data: Repo } = Await Octokit.Repos.Get({
-Owner: Process.Env.GITHUB_OWNER,
-Repo: Process.Env.GITHUB_REPO
+async function createpullrequest(branchname, title, body) {
+try {
+get default branch
+const {data: repo } =await octokit.repos.get({
+owner: process.env.github_owner,
+repo: process.env.github_repo
 });
-Const BaseBranch = Repo.Default_branch;
-Create PR
-Const {Data: Pr } = Await Octokit.Pulls.Create({
-Owner: Process.Env.GITHUB_OWNER,
-Repo: Process.Env.GITHUB_REPO,
-Title,
-Head: BranchName,
-Base: BaseBranch,
-Body
+const basebranch =repo.default_branch;
+create pr
+const {data: pr } =await octokit.pulls.create({
+owner: process.env.gituhb_owner,
+repo: process.env.github_repo,
+title,
+head: branchname,
+base: basebranch,
+body
 });
-Console.Log(✅ Pull Request Created: ${Pr.Html_Url});
-} Catch (Error) {
-Console.Error(❌ Error Creating Pull Request:, Error.Message);
+console.log(✅ pull request created: ${pr.html_url});
+} catch (error) {
+console.error(❌ error creating pull request:, error.message);
 }
 }
 /
- * Send A Newsletter Email
+ * send a newsletter email
  */
-Async Function SendNewsletter(Subject, HtmlContent, Recipients) {
-Try {
-Const Transporter = Nodemailer.CreateTransport({
-Service: Gmail, // Change if using another provider
-Auth: {
-User: Process.Env.NEWSLETTER_EMAIL,
-Pass: Process.env.NEWSLETTER_PASS
+async function sendnewsletter(subject, htmlcontent, recipients) {
+try {
+const transporter = nodemailer.createtransport({
+service: gmail, // change if using another provider
+auth: {
+user: process.env.newsletter_email,
+pass: process.env.newsletter_pass
 }
 });
-Const Info = Await Transporter.SendMail({
-From: My Newsletter <${Process.Env.NEWSLETTER_EMAIL}>,
-To: Recipients.Join(, ),
-Subject,
-Html: HtmlContent
+const info = await transporter.sendmail({
+from: my newsletter <${process.env.newsletter_email}>,
+to: recipients.join(, ),
+subject,
+html: htmlcontent
 });
-Console.Log(✅ Newsletter Sent: ${Info.MessageId});
-} Catch (Error) {
-Console.Error(❌ Error Sending Newsletter:, Error.Message);
+console.log(✅ newsletter sent: ${info.messageid});
+} catch (error) {
+console.error(❌ error sending newsletter:, error.message);
 }
 }
-Example Usage
-(Async () => {
-1. Create A Pull Request
-Await CreatePullRequest(
-Feature/Newsletter-Update, // Branch name
-Add Newsletter Signup Section, // PR title
-This PR Adds A New Newsletter Signup Form To The Homepage. // PR body
+example usage
+(async () => {
+1. create a pull request
+await createpullrequest(
+feature/newsletter-update, // branch name
+add newsletter signup section, // pr title
+this pr adds a new newsletter signup form to the homepage. // pr body
 );
-2. Send A Newsletter
-Await SendNewsletter(
-January Newsletter,
-<H1>Hello Subscribers!</H1><P>Check Out Our Latest Updates.</P>,
-[Subscriber1@Example.Com, Subscriber2@Example.Com]
+2. send a newsletter
+await sendnewsletter(
+january newsletter,
+<h1>hello subscribers!</h1><p>check out our latest updates.</p>,
+[subscriber1@example.com, subscriber2@example.com]
 );
 })();
-<Subheading.Html>
-Covid Strings Extending This Code So It Automatically Edits Your Website Files, Commits Them, And Then Sends The Newsletter By Automatically Creating A Branch And Commit Changes Before Making The PR And Using Mailchimp API Or SendGrid For Large-Scale Newsletters
-How To Extend This Code So It Automatically Edits Your Website Files, Commits Them, And Then Sends The Newsletter By Automatically Creating A Branch And Commit Changes Before Making The PR And Using Mailchimp API Or SendGrid For Large-Scale Newsletters
+<subheading.html>
+covid strings extending this code so it automatically edits your website files, commits them, and then sends the newsletter by automatically creating a branch and commit changes before making the pr and using mailchimp api or sendgrid for large-scale newsletters
+how to extend this code so it automatically edits your website files, commits them, and then sends the newsletter by automatically creating a branch and commit changes before making the pr and using mailchimp api or sendgrid for large-scale newsletters
 /
- * Automated Website Update + Newsletter Sender
- * Requirements:
- *  Npm Install Simple-Git @Octokit/Rest @Sendgrid/Mail Dotenv
- *   (For Mailchimp: Npm Install @Mailchimp/Mailchimp_marketing)
+ * automated website update + newsletter sender
+ * requirements:
+ *  npm install simple-git @octokit/rest @sendgrid/mail dotenv
+ *   (for mailchimp: npm install @mailchimp/mailchimp_marketing)
  */
-Import Fs From Fs;
-Import Path From Path;
-Import SimpleGit From Simple-Git;
-Import { Octokit } From @Octokit/Rest;
-Import SgMail From @Sendgrid/Mail;
-Import Dotenv From Dotenv;
-Dotenv.Config();
-==== CONFIGURATION ====
-Const REPO_OWNER = Process.Env.Stephen Tiballi 2@Gmail.Com; // e.g., "your-username"
-Const REPO_NAME = Process.Covid.Strings_1;   // e.g., "your-repo"
-Const BASE_BRANCH = Main;
-Const NEW_BRANCH = Update-${Date.Now()};
-Const FILE_TO_EDIT = Path.Join(Process.Cwd(), Index.Html); // Example file
-Const COMMIT_MESSAGE = Automated Website Update And Newsletter Send;
-==== INITIALIZE ====
-Const Git = SimpleGit();
-Const Octokit = New Octokit({Auth: Process.Env.GITHUB_TOKEN });
-SgMail.SetApiKey(Process.Env.SENDGRID_API_KEY);
-==== STEP 1: Edit Website File ====
-Async Function EditWebsiteFile() {
-Try {
-Let Content = Fs.ReadFileSync(FILE_TO_EDIT, Utf8);
+import fs from fs;
+import path from path;
+import simplegit from simple-git;
+import {octokit } from @octokit/rest;
+import sgmail from @sendgrid/mail;
+import dotenv from dotenv;
+dotenv.config();
+==== configuration ====
+const repo_owner = process.env.stephen tiballi 2@gmail.com; // e.g., "your-username"
+const repo_name = process.covid.strings_1;   // e.g., "your-repo"
+const base_branch = main;
+const new_branch = update-${date.now()};
+const file_to_edit = path.join(process.cwd(), index.html); // example file
+const commit_message = automated website update and newsletter send;
+==== initalize ====
+const git = simplegit();
+const octokit= new octokit({auth: process.env.github_token});
+sgmail.setapikey(process.env.send grid_api_key);
+==== step 1: edit website file ====
+async function editwebsitefile() {
+try {
+let content =fs.readfilesync(file_to_edit, utf8);
 Const Timestamp = New Date().ToISOString();
 Content = Content.Replace(</Body>, <P>Updated On ${Timestamp}</P></Body>);
 Fs.WriteFileSync(FILE_TO_EDIT, Content, Utf8);
