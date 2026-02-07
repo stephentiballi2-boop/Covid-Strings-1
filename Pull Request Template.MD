@@ -2702,7 +2702,7 @@ console.log(post-deployment server running on port ${port});
 npm init-y
 npm install express crypto
 export webhook_secret=yoursecret
-node Server.Js
+node server.js
 https://your-server.com/webhook
 <subheading.html>
 covid strings version that integrates directly with github actions so post-deployment tasks run automatically after a pr merge without needing a separate server
@@ -2730,11 +2730,11 @@ run: Node Scripts/postdeploy.js
 scripts/postdeploy.js
 example: post-deployment automation
 (async () => {
-console.log(🚀 post-deployment Tasks Starting...);
+console.log(🚀 post-deployment tasks starting...);
 example: clear cache
-await new promise(Res => SetTimeout(Res, 500));
-console.Log(🧹 Cache Cleared.);
-example: Notify A Webhook
+await new promise(res => settimeout(res, 500));
+console.log(🧹 cache cleared.);
+example: notify a webhook
 const Fetch = (Await Import(Node-Fetch)).Default;
 await Fetch(Process.Env.DEPLOY_WEBHOOK_URL, {
 method: post,
@@ -2747,7 +2747,7 @@ console.log(✅ all post-deployment tasks completed.);
 <subheading.html>
 covid strings one version that runs only on main merges and another that uses github environments for safer deployments
 how to create one version that runs only on main merges and another that uses github environments for safer deployments for covid strings
-name: Deploy On Main Merge
+name: deploy on main merge
 on:
 push:
 branches:
@@ -3210,369 +3210,369 @@ sgmail.setapikey(process.env.send grid_api_key);
 async function editwebsitefile() {
 try {
 let content =fs.readfilesync(file_to_edit, utf8);
-Const Timestamp = New Date().ToISOString();
-Content = Content.Replace(</Body>, <P>Updated On ${Timestamp}</P></Body>);
-Fs.WriteFileSync(FILE_TO_EDIT, Content, Utf8);
-Console.Log(✅ File Updated: ${FILE_TO_EDIT});
-} Catch (Err) {
-Console.Error(❌ Error Editing File:, Err);
-Process.Exit(1);
+const timestamp=new date().toisostring();
+content =content.replace(</body>, <p>updated on ${timestamp}</P></Body>);
+fs.writefilesync(file_to_edit, content, utf8);
+console.log(✅ file updated: ${file_to_edit});
+}catch (err) {
+console.error(❌ error editing file:, err);
+process.exit(1);
 }
 }
-==== STEP 2: Git Branch, Commit, Push ====
-Async Function CommitAndPushChanges() {
-Try {
-Await Git.Checkout(BASE_BRANCH);
-Await Git.Pull(Origin, BASE_BRANCH);
-Await Git.CheckoutLocalBranch(NEW_BRANCH);
-Await Git.Add(FILE_TO_EDIT);
-Await Git.Commit(COMMIT_MESSAGE);
-Await Git.Push(Origin, NEW_BRANCH);
-Console.Log(✅ Changes Pushed To Branch: ${NEW_BRANCH});
-} Catch (Err) {
-Console.Error(❌ Git Operation Failed:, Err);
-Process.Exit(1);
+==== step 2: git branch, commit, push ====
+async function commitandpushchanges() {
+try {
+await git.checkout(base_branch);
+await git.pull(origin, base_branch);
+await git.checkoutlocalbranch(new_branch);
+await git.add(file_to_edit);
+await git.commit(commit_message);
+await git.push(origin, new_branch);
+console.log(✅ changes pushed to branch: ${new_branch});
+}catch (err) {
+console.error(❌ git operation failed:, err);
+process.exit(1);
 }
 }
-==== STEP 3: Create Pull Request ====
-Async Function CreatePullRequest() {
-Try {
-Const {Data } = Await Octokit.Pulls.Create({
-Owner: REPO_OWNER,
-Repo: REPO_NAME,
-Title: COMMIT_MESSAGE,
-Head: NEW_BRANCH,
-Base: BASE_BRANCH,
-Body: Automated Update Via Script.
+==== step 3: create pull request ====
+async function createpullrequest() {
+try {
+const {data} =await octokit.pulls.create({
+owner: repo_owner,
+repo: repo_name,
+title: commit_message,
+head: new_branch,
+base: base_branch,
+body: automated update via script.
 });
-Console.Log(✅ Pull Request Created: ${Data.Html_url});
-} Catch (Err) {
-Console.Error(❌ Failed To Create PR:, Err);
-Process.Exit(1);
+console.log(✅ pull request created: ${data.html_url});
+}catch (err) {
+console.error(❌ failed to create pr:, err);
+process.exit(1);
 }
 }
-==== STEP 4: Send Newsletter ====
-Async Function SendNewsletter() {
-Try {
-Const Msg = {
-To: Process.Env.NEWSLETTER_RECIPIENTS.Split(','), // comma-separated list
-From: Process.Env.SENDGRID_FROM_EMAIL,
-Subject: Website Update Notification,
-Html: <P>Hello,</P><P>The Website Has Been Updated. Check The Latest Changes <A Href=Https://Github.Com/${REPO_OWNER}/${REPO_NAME}/Pulls>Here</A>.</P>
+==== step 4: send newsletter ====
+async function sendnewsletter() {
+try {
+const msg = {
+to: process.env.newsletter_recipients.split(','), // comma-separated list
+from: process.env.sendgrid_from_email,
+subject: website update notification,
+html: <p>hello,</p><p>the website has been updated. check the latest changes <a href=https://github.com/${repo_owner}/${repo_name}/pulls>here</a>.</p>
 };
-Await SgMail.SendMultiple(Msg);
-Console.Log(✅ Newsletter Sent Via SendGrid);
-} Catch (Err) {
-Console.Error(❌ Failed To Send Newsletter:, Err);
-Process.Exit(1);
+await sgmail.sendmultiple(msg);
+console.log(✅ newsletter sent via sendgrid);
+}catch (err) {
+console.error(❌ failed to send newsletter:, err);
+process.exit(1);
 }
 }
-/ ==== Alternative: Mailchimp ====
-Import Mailchimp From @Mailchimp/Mailchimp_marketing;
-Mailchimp.SetConfig({ApiKey: Process.Env.MAILCHIMP_API_KEY, Server: Process.Env.MAILCHIMP_SERVER_PREFIX });
-Await Mailchimp.Campaigns.Create({ ... });
+/ ==== alternative: mailchimp ====
+import mailchimp from @mailchimp/mailchimp_marketing;
+mailchimp.setconfig({apikey: process.env.mailchimp_api_key, server: process.env.mailchimp_server_prefix});
+await mailchimp.campaigns.create({ ... });
 */
-==== MAIN EXECUTION ====
+==== main execution ====
 (Async () => {
-Await EditWebsiteFile();
-Await CommitAndPushChanges();
-Await CreatePullRequest();
-Await SendNewsletter();
+await editwebsitefile();
+await commitandpushchanges();
+await createpullrequest();
+await sendnewsletter();
 })();
-Environment Variables (.Env)
-GITHUB_TOKEN=Ghp_yourgithubtoken
-GITHUB_OWNER=Yourusername
-GITHUB_REPO=Yourrepo
-SENDGRID_API_KEY=SG.Xxxxx
-SENDGRID_FROM_EMAIL=You@Example.Com
-NEWSLETTER_RECIPIENTS=Email1@Example.Com,Email2@Example.Com
-MAILCHIMP_API_KEY=Your-Mailchimp-Key
-MAILCHIMP_SERVER_PREFIX=UsX
-<Subheading.Html>
-Covid Strings Github Actions Automation Version For A Pull Request Of A Website And Newsletter 
-How To Create A Github Actions Automation Version For A Pull Request Of A Website And Newsletter 
-Name: Website & Newsletter PR Automation
-On:
-Push:
-Branches:
--Feature/   # Runs When Pushing To Any Feature Branch
-Workflow_dispatch:  # Allows Manual Trigger From GitHub UI
-Jobs:
-Build-And-Pr:
-Runs-On: Ubuntu-Latest
-Steps:
-# 1. Checkout Repository
-- Name: Checkout Repository
-Uses: Actions/Checkout@V4
-# 2. Set Up Node.Js
-- Name: Set Up Node.Js
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 18 # Adjust To Your Projects Node Version
-# 3. Install Dependencies
-- Name: Install Dependencies
-Run: Npm Ci
-# 4. Build Website And Newsletter
-- Name: Build Website
-Run: Npm Run Build:Website
-- Name: Build Newsletter
-Run: Npm Run Build:Newsletter
-# 5. Commit Build Artifacts (If Any)
-- Name: Commit Build Output
-Run: |
-Git Config --Global User.Name Github-Actions[Bot]
-Git Config --Global User.Email Github-Actions[Bot]@Users.Noreply.Github.Com
-Git Add .
-Git Commit -M Chore: Build Website & Newsletter || Echo No Changes To Commit
-# 6. Create Pull Request
-- Name: Create Pull Request
-Uses: Peter-Evans/Create-Pull-Request@V6
-With:
-Token: ${{Secrets.GITHUB_TOKEN }}
-Commit-Message: Chore: Build Website & Newsletter
-Branch: Automation/Build-Pr
-Title: Automated PR: Website & Newsletter Update
-Body: |
-This Pull Request Was Automatically Generated By GitHub Actions.
-It Contains The Latest Build Of The Website And Newsletter.
-Labels: |
-Automated
-Website
-Newsletter
-Draft: False
-Scripts: {
-Build:Website: Your-Website-Build-Command,
-Build:Newsletter: Your-Newsletter-Build-Command
+environment variables (.env)
+github_token=ghp_yourgithubtoken
+github_owner=yourusername
+github_repo=yourrepo
+snedgrid_api_key=sg.xxxxx
+snedgrid_from_email=you@example.com
+newsletter_recipents=email1@example.com,email2@example.com
+mailchimp_api_key=your-mailchimp-key
+mailchimp_server_prefix=usx
+<subheading.html>
+covid strings github actions automation version for a pull request of a website and newsletter 
+how to create a github actions automation version for a pull request of a website and newsletter 
+name: website & newsletter pr automation
+on:
+push:
+branches:
+-feature/   # runs when pushing to any feature branch
+workflow_dispatch:  # allows manual trigger from github ui
+jobs:
+build-and-pr:
+runs-on: ubuntu-latest
+steps:
+# 1. checkout repository
+-name: checkout repository
+uses: actions/checkout@V4
+# 2. set up node.js
+-name: set up node.js
+uses: actions/Setup-Node@V4
+with:
+node-version: 18 # adjust to your projects node version
+# 3. install dependencies
+-name: install dependencies
+run: npm ci
+# 4. build website and newsletter
+- name: build website
+run: npm run build:website
+-name: build newsletter
+run: npm run build:newsletter
+# 5. commit build artifacts (if any)
+-name: commit build output
+run: |
+git config --global user.name github-actions[bot]
+git config --global user.email github-actions[bot]@users.noreply.github.com
+git add .
+git commit -m chore: build website & newsletter || echo no changes to commit
+# 6. create pull request
+- name: create pull request
+uses: peter-evans/create-pull-request@v6
+with:
+token: ${{secrets.github_token}}
+commit-message: chore: build website & newsletter
+branch: automation/build-pr
+title: automated pr: website & newsletter update
+body: |
+this pull request was automatically generated by github actions.
+it contains the latest build of the website and newsletter.
+labels: |
+automated
+website
+newsletter
+draft: false
+scripts: {
+build:website: your-website-build-command,
+build:newsletter: your-newsletter-build-command
 }
-<Subheading.Html>
-Covid Strings Extending The Workflow So It Also Deploys The Website Automatically After The PR Is Merged 
-How To Extend The Workflow So It Also Deploys The Website Automatically After The PR Is Merged 
-Name: Build And Deploy Website
-On:
-Push:
-Branches:
-- Main  # Trigger Only When PR Is Merged Into Main
-Jobs:
-Build-And-Deploy:
-Runs-On: Ubuntu-Latest
-Steps:
-# Step 1: Checkout The Repository
-- Name: Checkout Code
-Uses: Actions/Checkout@V4
-# Step 2: Set Up Node.Js
-- Name: Set Up Node.Js
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 18 # Adjust To Your Projects Node Version
-# Step 3: Install Dependencies
-- Name: Install Dependencies
-Run: Npm Ci
-# Step 4: Build The Project
-- Name: Build Project
-Run: Npm Run Build
-# Step 5: Deploy To Firebase Hosting (Example)
-- Name: Deploy To Firebase Hosting
-Uses: FirebaseExtended/Action-Hosting-Deploy@V0
-With:
-RepoToken: ${{Secrets.GITHUB_TOKEN }}
-FirebaseServiceAccount: ${{Secrets.FIREBASE_SERVICE_ACCOUNT }}
-ChannelId: Live
-ProjectId: Your-Firebase-Project-Id
-- Name: Deploy To Netlify
-Uses: Nwtgck/Actions-Netlify@V2
-With:
-Publish-Dir:./Dist
-Production-Deploy: True
-Github-Token: ${{Secrets.GITHUB_TOKEN }}
-Netlify-Auth-Token: ${{Secrets.NETLIFY_AUTH_TOKEN }}
-Netlify-Site-Id: ${{Secrets.NETLIFY_SITE_ID }}
-If You Use Vercel:
-Yaml
-- Name: Deploy To Vercel
-Run: Npx Vercel --Prod --Token=${{Secrets.VERCEL_TOKEN }}
-<Subheading.Html>
-Covid Strings Extending This Workflow So It Also Posts A Comment On The PR With The Live Deployment URL Before Merging
-How To Extend This Workflow So It Also Posts A Comment On The PR With The Live Deployment URL Before Merging For Covid Strings
-Name: Deploy Preview And Comment
-On:
-Pull_request:
-Types: [Opened, Synchronize, Reopened]
-Jobs:
-Deploy-Preview:
-Runs-On: Ubuntu-Latest
-Steps:
-# Checkout The PR Code
-- Name: Checkout Code
-Uses: Actions/Checkout@V4
-# Example: Deploy To Your Hosting (Replace With Your Actual Deploy Command)
-- Name: Deploy To Preview
-Id: Deploy
-Run: |
-# Simulate Deployment And Output URL
-DEPLOY_URL=Https://Preview.Example.Com/Pr-${{Github.Event.Pull_request.Number}}
-Echo Deploy_url=$ DEPLOY_URL >> $ GITHUB_OUTPUT
-# Post Comment With Deployment URL
-- Name: Comment On PR With Deployment URL
-Uses: Actions/Github-Script@V7
-With:
-Script: |
-Const DeployUrl = ${{Steps.Deploy.Outputs.Deploy_url }};
-Const {Context, Github } = Require(@Actions/Github);
-Await Github.Rest.Issues.CreateComment({
-Owner: Context.Repo.Owner,
-Repo: Context.Repo.Repo,
-Issue_number: Context.Issue.Number,
-Body: 🚀 Live Preview: [${DeployUrl}](${DeployUrl})
+<subheading.html>
+covid strings extending the workflow so it also deploys the website automatically after the pr is merged 
+how to extend the workflow so it also deploys the website automatically after the pr is merged 
+name: build and deploy website
+on:
+push:
+branches:
+-main  # trigger only when pr is merged into main
+jobs:
+build-and-deploy:
+runs-on: ubuntu-latest
+steps:
+# step 1: checkout the repository
+- name: checkout code
+uses: actions/checkout@v4
+# step 2: set up node.js
+- name: set up node.js
+uses: actions/setup-node@v4
+with:
+node-version: 18 # adjust To Your Projects Node Version
+# step 3: install dependencies
+- name: install dependencies
+run: npm ci
+# step 4: build the project
+- name: build project
+run: npm run build
+# step 5: deploy to firebase hosting (example)
+- name: deploy to firebase hosting
+uses: firebaseextended/action-hosting-deploy@v0
+with:
+repotoken: ${{secrets.github_token}}
+firebaseserviceaccount: ${{secrets.firebase_service_account}}
+channelid: live
+projectid: your-firebase-project-id
+-name: deploy to netlify
+uses: nwtgck/actions-netlify@v2
+with:
+publish-dir:./dist
+production-deploy: true
+github-token: ${{secrets.github_token}}
+netlify-auth-token: ${{secrets.netlify_auth_token}}
+netlify-site-id: ${{secrets.netlify_site_id}}
+if you use vercel:
+yaml
+-name: deploy to vercel
+run: npx vercel --prod --token=${{secrets.vercel_token}}
+<subheading.html>
+covid strings extending this workflow so it also posts a comment on the pr with the live deployment url before merging
+how to extend this workflow so it also posts a comment on the pr with the live deployment url before merging for covid strings
+name: deploy preview and comment
+on:
+pull_request:
+types: [opened, synchronize, reopened]
+jobs:
+deploy-preview:
+runs-on: ubuntu-latest
+steps:
+# checkout the pr code
+- name: checkout code
+uses: actions/checkout@v4
+# example: deploy to your hosting (replace with your actual deploy command)
+-name: deploy to preview
+id: deploy
+run: |
+# simulate deployment and output url
+deploy_url=https://preview.example.com/pr-${{github.event.pull_request.number}}
+echo deploy_url=$ deploy_url>> $ github_output
+# post comment with deployment url
+-name: comment on pr with deployment url
+uses: actions/github-script@v7
+with:
+script: |
+const deployurl = ${{steps.deploy.outputs.deploy_url }};
+const {context, github} =require(@actions/github);
+await github.rest.issues.createcomment({
+owner: context.repo.owner,
+repo: context.repo.repo,
+issue_number: context.issue.number,
+body: 🚀 live preview: [${deployurl}](${deployurl})
 });
-- Name: Add Or Update Deployment Comment
-Uses: Actions/Github-Script@V7
-With:
-Script: |
-Const DeployUrl = ${{Steps.Deploy.Outputs.Deploy_url }};
-Const {Context, Github } = Require(@Actions/Github);
-Find Existing Comment
-Const {Data: Comments } = Await Github.Rest.Issues.ListComments({
-Owner: Context.Repo.Owner,
-Repo: Context.Repo.Repo,
-Issue_number: Context.Issue.Number
+-name: add or update deployment comment
+uses: actions/github-script@v7
+with:
+script: |
+const deployurl = ${{steps.deploy.outputs.deploy_url }};
+const {context, github } =require(@actions/github);
+find existing comment
+const {data: comments} =await github.rest.issues.listcomments({
+owner: context.repo.owner,
+repo: context.repo.repo,
+issue_number: context.issue.number
 });
-Const BotComment = Comments.Find(C => 
-C.User.Type === Bot && C.Body.Includes(🚀 Live Preview)
+const botcomment =comments.find(c => 
+c.user.type === bot && c.body.includes(🚀 live preview)
 );
-If (BotComment) {
-Update Existing Comment
-Await Github.Rest.Issues.UpdateComment({
-Owner: Context.Repo.Owner,
-Repo: Context.Repo.Repo,
-Comment_id: BotComment.Id,
-Body: 🚀 Live Preview: [${DeployUrl}](${DeployUrl})
+if (botcomment) {
+update existing comment
+await github.rest.issues.updatecomment({
+owner: context.repo.owner,
+repo: context.repo.repo,
+comment_id: botcomment.id,
+body: 🚀 live preview: [${deployurl}](${deployurl})
 });
-} Else {
-Create New Comment
-Await Github.Rest.Issues.CreateComment({
-Owner: Context.Repo.Owner,
-Repo: Context.Repo.Repo,
-Issue_number: Context.Issue.Number,
-Body: 🚀 Live Preview: [${DeployUrl}](${DeployUrl})
+} else {
+create new comment
+await github.rest.issues.createcomment({
+owner: context.repo.owner,
+repo: context.repo.repo,
+issue_number: context.issue.number,
+body: 🚀 live preview: [${deployurl}](${deployurl})
 });
 }
-<Subheading.Html>
-Covid Strings Only Posting The Comment When The Deployment Succeeds And Fails Gracefully If Deployment Fails
-How To Only Post The Comment When The Deployment Succeeds And Fails Gracefully If Deployment Fails For Covid Strings 
-File: Post-Comment-On-Success.Js
-This Script Is Intended For Use In A GitHub Action
-It Posts A Comment To A PR Only If Deployment Succeeds
-Const Core = Require(@Actions/Core);
-Const Github = Require(@Actions/Github);
-Async Function Run() {
-Try {
-Read Inputs From Workflow
-Const Token = Core.GetInput(Github-Token, {Required: True });
-Const DeploymentStatus = Core.GetInput(Deployment-Status, {Required: True }); // "success" or "failure"
-Const CommentBody = Core.GetInput(Comment-Body) || ✅ Deployment Succeeded!;
-Fail Gracefully If Deployment Failed
-If (DeploymentStatus.ToLowerCase() !== Success) {
-Core.Warning(Deployment Failed. No Comment Will Be Posted.);
-Process.ExitCode = 1; // Mark job as failed
-Return;
+<subheading.html>
+covid strings only posting the comment when the deployment succeeds and fails gracefully if deployment fails
+how to only post the comment when the deployment succeeds and fails gracefully if deployment fails for covid strings 
+file: post-comment-on-success.js
+this script is intended for use in a github action
+it posts a comment to a pr only if deployment succeeds
+const core = require(@actions/core);
+const github=require(@actions/github);
+async function run() {
+try {
+read inputs from workflow
+const token =core.getinput(github-token, {required: true });
+const deploymentstatus = core.getinput(deployment-status, {required: true }); // "success" or "failure"
+const commentbody = core.getinput(comment-body) || ✅ deployment succeeded!;
+fail gracefully if deployment failed
+if (deploymentstatus.tolowercase() !== success) {
+core.warning(deployment failed. no comment will be posted.);
+process.exitcode = 1; // mark job as failed
+return;
 }
-Const Octokit = Github.GetOctokit(Token);
-Const Context = Github.Context;
-Ensure This Is A PR Event
-If (!Context.Payload.Pull_request) {
-Core.Warning(This Event Is Not A Pull Request. Skipping Comment.);
-Return;
+const octokit = github.getoctokit(token);
+const context = github.context;
+ensure this is a pr event
+if (!context.payload.pull_request) {
+core.warning(this event is not a pull request. skipping comment.);
+return;
 }
-Const {Owner, Repo } = Context.Repo;
-Const IssueNumber = Context.Payload.Pull_request.Number;
-Post The Comment
-Await Octokit.Rest.Issues.CreateComment({
-Owner,
-Repo,
-Issue_number: IssueNumber,
-Body: CommentBody
+const {owner, repo} =context.repo;
+const issuenumber =context.payload.pull_request.number;
+post the comment
+await octokit.rest.issues.createcomment({
+owner,
+repo,
+issue_number: issuenumber,
+body: commentbody
 });
-Core.Info(Comment Posted To PR #${IssueNumber});
-} Catch (Error) {
-Core.SetFailed(Error Posting Comment: ${Error.Message});
+core.info(comment posted to pr #${issuenumber});
+}catch (error) {
+core.setfailed(error posting comment: ${error.message});
 }
 }
-Run();
-Example Workflow (.Github/Workflows/Deploy.Yml)
-Yaml
-Name: Deploy And Comment
-On:
-Pull_request:
-Types: [Opened, Synchronize]
-Jobs:
-Deploy:
-Runs-On: Ubuntu-Latest
-Steps:
-- Uses: Actions/Checkout@V4
-# Simulate Deployment Step
-- Name: Run Deployment
-Id: Deploy
-Run: |
-Echo Status=Success>> $ GITHUB_OUTPUT
-# If Failed, Set Status=Failure
-# Post Comment Only If Deployment Succeeded
-- Name: Post PR Comment
-Uses: Actions/Github-Script@V7
-With:
-Script: |
-Const Status = ${{Steps.Deploy.Outputs.Status}};
-If (Status !== Success) {
-Core.Warning(Deployment Failed. Skipping Comment.);
-Process.Exit(1);
+run();
+example workflow (.github/workflows/deploy.yml)
+yaml
+name: deploy and comment
+on:
+pull_request:
+types: [opened, synchronize]
+jobs:
+deploy:
+runs-on: ubuntu-latest
+steps:
+-uses: actions/checkout@v4
+# simulate deployment step
+- name: run deployment
+id: deploy
+run: |
+echo status=success>> $ github_output
+# if failed, set status=failure
+# post comment only if deployment succeeded
+- name: post pr comment
+uses: actions/github-script@v7
+with:
+script: |
+const status = ${{steps.deploy.outputs.status}};
+if (status !== success) {
+core.warning(deployment failed. skipping comment.);
+process.exit(1);
 }
-Github.Rest.Issues.CreateComment({
-Owner: Context.Repo.Owner,
-Repo: Context.Repo.Repo,
-Issue_number: Context.Issue.Number,
-Body:✅ Deployment Succeeded!
+github.rest.issues.createcomment({
+owner: context.repo.owner,
+repo: context.repo.repo,
+issue_number: context.issue.number,
+body:✅ deployment succeeded!
 });
-<Subheading.Html>
-Covid Strings Version That Updates An Existing Comment Instead Of Creating A New One To Avoid PR Spam
-How To Create A Version That Updates An Existing Comment Instead Of Creating A New One To Avoid PR Spam For Covid Strings 
-Name: Update Or Create PR Comment
-On:
-Pull_request:
-Types: [Opened, Synchronize, Reopened]
-Jobs:
-Comment:
-Runs-On: Ubuntu-Latest
-Steps:
-- Uses: Actions/Checkout@V4
-- Name: Run Comment Updater
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 20
-- Run: Node .Github/Scripts/UpdateComment.Js
-Env:
-GITHUB_TOKEN: ${{Secrets.GITHUB_TOKEN }}
-.Github/Scripts/UpdateComment.Js
+<subheading.html>
+covid strings version that updates an existing comment instead of creating a new one to avoid pr spam
+how to create a version that updates an existing comment instead of creating a new one to avoid pr spam for covid strings 
+name: update or create pr comment
+on:
+pull_request:
+types: [opened, synchronize, reopened]
+jobs:
+comment:
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v4
+- name: run comment updater
+uses: actions/setup-node@v4
+with:
+node-version: 20
+-run: node .github/scripts/updatecomment.js
+env:
+github_token: ${{secrets.github_token}}
+.github/scripts/updatecomment.js
 /
- * Script To Update An Existing PR Comment Or Create A New One If It Doesnt Exist.
- * Prevents PR Spam By Reusing The Same Comment.
+ * script to update an existing pr comment or create a new one if it doesnt exist.
+ * prevents pr spam by reusing the same comment.
  */
-Const Core = Require(@Actions/Core);
-Const Github = Require(@Actions/Github);
-(Async () => {
-Try {
-Const Token = Process.Env.GITHUB_TOKEN;
-If (!Token) {
-Throw New Error(GITHUB_TOKEN Is Missing. Make Sure Its Set In Env.);
+const core = require(@actions/core);
+const github =require(@actions/github);
+(async () => {
+try {
+const token =process.env.github_token;
+if (!token) {
+throw new error(github_token is missing. make sure its set in env.);
 }
-Const Octokit = Github.GetOctokit(Token);
-Const {Context } = Github;
-If (!Context.Payload.Pull_request) {
-Console.Log(Not A Pull Request Event. Exiting.);
-Return;
+const octokit = github.getoctokit(token);
+const {context}=github;
+if (!context.payload.pull_request) {
+console.log(not a pull request event. exiting.);
+return;
 }
-Const Owner=Context.Repo.Owner;
-Const Repo =Context.Repo.Repo;
-Const Issue_number =Context.Payload.Pull_request.Number;
-Unique Identifier To Find The Comment Later
+const owner=context.repo.owner;
+const repo=context.repo.repo;
+const issue_number=context.payload.pull_request.number;
+unique identifier to find the comment later
 Const Marker = <!-- Unique-Comment-Marker -->;
 Const NewBody = ${Marker}\N✅ Build Completed Successfully At ${New Date().ToISOString()};
 1. Get Existing Comments
