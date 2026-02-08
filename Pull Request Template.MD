@@ -3573,284 +3573,284 @@ const owner=context.repo.owner;
 const repo=context.repo.repo;
 const issue_number=context.payload.pull_request.number;
 unique identifier to find the comment later
-Const Marker = <!-- Unique-Comment-Marker -->;
-Const NewBody = ${Marker}\N✅ Build Completed Successfully At ${New Date().ToISOString()};
-1. Get Existing Comments
-Const {Data: Comments } = Await Octokit.Rest.Issues.ListComments({
-Owner,
-Repo,
-Issue_number,
+const marker = <!-- unique-comment-marker -->;
+const newbody = ${marker}\n✅ build completed successfully at ${new date().toisostring()};
+1. get existing comments
+const {data: comments } =await octokit.rest.issues.listcomments({
+owner,
+repo,
+issue_number,
 });
-2. Find Existing Comment With Marker
-Const ExistingComment = Comments.Find(Comment =>
-Comment.Body && Comment.Body.Includes(Marker)
+2. find existing comment with marker
+const existingcomment =comments.find(comment =>
+comment.body && comment.body.includes(marker)
 );
-If (ExistingComment) {
-3. Update Existing Comment
-Await Octokit.Rest.Issues.UpdateComment({
-Owner,
-Repo,
-Comment_id: ExistingComment.Id,
-Body: NewBody,
+if (existingcomment) {
+3. update existing comment
+await octokit.rest.issues.updatecomment({
+owner,
+repo,
+comment_id: existingcomment.id,
+body: newbody,
 });
-Console.Log(Updated Existing Comment (ID: ${ExistingComment.Id}));
-} Else {
-4. Create New Comment
-Await Octokit.Rest.Issues.CreateComment({
-Owner,
-Repo,
-Issue_number,
-Body: NewBody,
+console.log(updated existing comment (id: ${existingcomment.id}));
+} else {
+4. create new comment
+await octokit.rest.issues.createcomment({
+owner,
+repo,
+issue_number,
+body: newbody,
 });
-Console.Log(Created New Comment.);
+console.log(created new comment.);
 }
-} Catch (Error) {
-Core.SetFailed(Error.Message);
+}catch (error) {
+core.setfailed(error.message);
 }
 })();
-<Subheading.Html>
-Covid Strings Using The Peter-Evans/Create-Or-Update-Comment Action Instead Of Writing Custom Javascript
-How To Use The Peter-Evans/Create-Or-Update-Comment Action Instead Of Writing Custom Javascript For Covid Strings 
-Name: Comment On PR
-On:
-Pull_request:
-Types: [Opened, Synchronize]
-Jobs:
-Comment:
-Runs-On: Ubuntu-Latest
-Steps:
-# Step 1: Check Out The Repository
-- Name: Checkout Repository
-Uses: Actions/Checkout@V4
-# Step 2: Create Or Update A Comment
-- Name: Create Or Update PR Comment
-Uses: Peter-Evans/Create-Or-Update-Comment@V4
-With:
-Token: ${{Secrets.GITHUB_TOKEN }} # GitHub Automatically Provides This
-Issue-Number: ${{Github.Event.Pull_request.Number }}
-Body: |
-👋 Hello @${{Github.Actor }}!
-This Is An Automated Comment From The Workflow.
-- Commit SHA: ${{Github.Sha }}
-- Branch: ${{Github.Ref }}
-Edit-Mode: Replace # Options: Append, Prepend, Replace
-- Name: Find Existing Comment
-Id: Find-Comment
-Uses: Peter-Evans/Find-Comment@V3
-With:
-Issue-Number: ${{Github.Event.Pull_request.Number }}
-Comment-Author: Github-Actions[Bot]
-Body-Includes: This Is An Automated Comment
-- Name: Create Or Update Comment
-Uses: Peter-Evans/Create-Or-Update-Comment@V4
-With:
-Token: ${{Secrets.GITHUB_TOKEN }}
-Comment-Id: ${{Steps.Find-Comment.Outputs.Comment-Id }}
-Issue-Number: ${{Github.Event.Pull_request.Number }}
-Body: |
-🔄 Updated Automated Comment For @${{Github.Actor }}.
-Commit: ${{Github.Sha }}
-Edit-Mode: Replace
-<Subheading.Html>
-Covid Strings Posting Build/Test Results Dynamically
-How To Post Build/Test Results Dynamically For Covid Strings 
+<subheading.html>
+covid strings using the peter-evans/create-or-update-comment action instead of writing custom javascript
+how to use the peter-evans/create-or-update-comment action instead of writing custom javascript for covid strings 
+name: comment on pr
+on:
+pull_request:
+types: [opened,synchronize]
+jobs:
+comment:
+runs-on: ubuntu-latest
+steps:
+# step 1: check out the repository
+-name: checkout repository
+uses: actions/checkout@v4
+# step 2: create or update a comment
+- name: create or update pr comment
+uses: peter-evans/create-or-update-comment@v4
+with:
+token: ${{secrets.github_token }} # github automatically provides this
+issue-number: ${{github.event.pull_request.number }}
+body: |
+👋 hello @${{github.actor }}!
+this is an automated comment From The Workflow.
+-commit sha: ${{github.sha }}
+-branch: ${{github.ref }}
+edit-mode: replace # options: append, prepend, replace
+-name: find existing comment
+id: find-comment
+uses: peter-evans/find-comment@v3
+with:
+issue-number: ${{github.event.pull_request.number}}
+comment-author: github-actions[bot]
+body-includes: this is an automated comment
+-name: create or update comment
+uses: peter-evans/create-or-update-comment@v4
+with:
+token: ${{secrets.github_token}}
+comment-id: ${{steps.find-comment.outputs.comment-id}}
+issue-number: ${{github.event.pull_request.number }}
+body: |
+🔄 updated automated comment for @${{github.actor }}.
+commit: ${{github.sha }}
+edit-mode: replace
+<subheading.html>
+covid strings posting build/test results dynamically
+how to post build/test results dynamically for covid strings 
 ===============================
-Pre-Request Script
+pre-request script
 ===============================
-Generate Dynamic Request Body Data
-Let UserId = Math.Floor(Math.Random() * 1000) + 1;
-Let Timestamp = New Date().ToISOString();
-Pm.Environment.Set(UserId, UserId);
-Pm.Environment.Set(Timestamp, Timestamp);
-Build Request Body Dynamically
-Let RequestBody = {
-Id: UserId,
-Name: User_${IserId},
-CreatedAt: Timestamp
+generate dynamic request body data
+let userid = math.floor(math.random() * 1000) + 1;
+let timestamp = new date().toisostring();
+pm.environment.set(userid, userid);
+pm.environment.set(timestamp, timestamp);
+build request body dynamically
+let requestbody = {
+id: userid,
+name: user_${userid},
+createdat: timestamp
 };
-Save The JSON String For The Request Body
-Pm.Environment.Set(RequestBody, JSON.Stringify(RequestBody));
-Log For Debugging
-Console.Log(Generated Request Body:, RequestBody);
+save the json string for the request body
+pm.environment.set(requestbody, json.stringify(requestbody));
+log for debugging
+console.log(generated request body:, requestbody);
 ===============================
-Tests Script
+tests script
 ===============================
-Parse JSON Response
-Let JsonData;
-Try {
-JsonData = Pm.Response.Json();
-} Catch (E) {
-Pm.Test(Response Is Valid JSON, Function () {
-Pm.Expect.Fail(Response Is Not Valid JSON);
+parse json response
+let jsondata;
+try {
+jsondata = pm.response.json();
+} catch (e) {
+pm.test(response is valid json, function () {
+pm.expect.fail(response is not valid json);
 });
 }
-1. Status Code Check
-Pm.Test(Status Code Is 200, Function () {
-Pm.Response.To.Have.Status(200);
+1. status code check
+pm.test(status code is 200, function () {
+pm.response.to.have.status(200);
 });
-2. Response Time Check
-Pm.Test(Response Time Is Under 500Ms, Function () {
-Pm.Expect(Pm.Response.ResponseTime).To.Be.Below(500);
+2. response time check
+pm.test(response time is under 500ms, function () {
+pm.expect(pm.response.responsetime).to.be.below(500);
 });
-3. Validate Required Fields
-Pm.Test(Response Contains Required Fields, Function () {
-Pm.Expect(JsonData).To.Have.Property(Id);
-Pm.Expect(JsonData).To.Have.Property(Name);
-Pm.Expect(JsonData).To.Have.Property(CreatedAt);
+3. validate required fields
+pm.test(response contains required fields, function () {
+pm.expect(jsondata).to.have.property(id);
+pm.expect(jsondata).to.have.property(name);
+pm.expect(jsondata).to.have.property(createdat);
 });
-4. Match Returned Data With Request Data
-Pm.Test(Returned ID Matches Request, Function () {Pm.Expect(JsonData.Id).To.Eql(ParseInt(Pm.Environment.Get(UserId)));
+4. match returned data with request data
+pm.test(returned id matches request, function () {pm.expect(jsondata.id).to.eql(parseint(pm.environment.get(userid)));
 });
-Pm.Test(Returned Name Matches Request, Function () {Pm.Expect(JsonData.Name).To.Eql(User_${Pm.Environment.Get(UserId)});
+pm.test(returned name matches request, function () {pm.expect(jsondata.name).to.eql(user_${pm.environment.get(userid)});
 });
-5. Save Response Data For Next Requests
-If (JsonData && JsonData.Id) {
-Pm.Environment.Set(LastCreatedUserId, JsonData.Id);
+5. save response data for next requests
+if (jsondata && jsondata.id) {
+pm.environment.set(lastcreateduserid, jsondata.id);
 }
-<Subheading.Html>
-Covid Strings Newman CLI Version So You Can Run These Dynamic Postman Tests Automatically In CI/CD Pipelines
-How To Create A Newman CLI Version So You Can Run These Dynamic Postman Tests Automatically In CI/CD Pipelines For Covid Strings 
+<subheading.html>
+covid strings newman cli version so you can run these dynamic postman tests automatically in ci/cd pipelines
+how to create a newman cli version so you can run these dynamic postman tests automatically in ci/cd pipelines for covid strings 
 /
- * Newman CLI Runner For Postman Collections
+ * newman cli runner for postman collections
  * -----------------------------------------
- * Run: Node Run-Postman.Js
+ * run: node run-postman.js
  * 
- * Requirements:
- * Npm Install Newman
+ * requirements:
+ * npm install newman
  */
-Const Newman = Require(Newman);
-Const Path = Require(Path);
-=== CONFIGURATION ===
-You Can Replace These With Environment Variables In CI/CD
-Const COLLECTION_PATH = Path.Join(__ Dirname, Collection.Json); // or a public Postman URL
-Const ENV_PATH = Path.Join(__ Dirname, Environment.Json); // optional, set to null if not needed
-=== RUN NEWMAN ===
-Try {
-Console.Log(🚀 Starting Postman Tests With Newman...);
-Newman.Run({
-Collection: COLLECTION_PATH, // or URL
-Environment: ENV_PATH || Undefined,
-Reporters: [Cli, Json], // CLI output + JSON report
-Reporter: {
-Json: {
-Export: Path.Join(__ Dirname, Newman-Report.Json) // Save report
+const newman = require(newman);
+const path = require(path);
+=== configuration ===
+you can replace these with environment variables in ci/cd
+const collection_path = path.join(__ dirname, collection.json); // or a public postman url
+const env_path =path.join(__ dirname, environment.json); // optional, set to null if not needed
+=== run newman ===
+try {
+console.log(🚀 starting postman tests with newman...);
+newman.run({
+collection: collection_path, // or url
+environment: env_path || undefined,
+reporters: [cli, json], // cli output + json report
+reporter: {
+json: {
+export: path.join(__ dirname, newman-report.json) // save report
 }
 },
-TimeoutRequest: 10000, // 10s per request
-Insecure: False, // Set true to ignore SSL errors
-Bail: True // Stop on first failure (optional)
-}, (Err, Summary) => {
-If (Err) {
-Console.Error(❌ Newman Run Failed To Start:, Err);
-Process.Exit(1);
+timeoutrequest: 10000, // 10s per request
+insecure: false, // set true to ignore ssl errors
+bail: true // stop on first failure (optional)
+}, (err, summary) => {
+if (err) {
+console.error(❌ newman run failed to start:, err);
+process.exit(1);
 }
-Check For Failed Tests
-If (Summary.Run.Failures && Summary.Run.Failures.Length > 0) {
-Console.Error(❌ ${Summary.Run.Failures.Length} Test(S) Failed.);
-Process.Exit(1); // Fail CI/CD pipeline
+check for failed tests
+if (summary.run.failures && summary.run.failures.length > 0) {
+console.error(❌ ${summary.run.failures.length} test(s) failed.);
+process.exit(1); // fail ci/cd pipeline
 }
-Console.Log(✅ All Tests Passed Successfully!);
-Process.Exit(0);
+console.log(✅ all tests passed successfully!);
+process.exit(0);
 });
-} Catch (Error) {
-Console.Error(❌ Unexpected Error:, Error);
-Process.Exit(1);
+} catch (error) {
+console.error(❌ unexpected error:, error);
+process.exit(1);
 }
-Npm Init-Y
-Npm Install Newman
-(Collection.Json) , (Environment.Json)
-Node Run-Postman.Js
-Name: API Tests
-On: [Push]
-Jobs:
-Test:
-Runs-On: Ubuntu-Latest
-Steps:
-- Uses: Actions/Checkout@V3
-- Uses: Actions/Setup-Node@V3
-With:
-Node-Version: 18
-- Run: Npm Install Newman
-- Run: Node Run-Postman.Js
-<Subheading.Html>
-Covid Strings Dynamic Postman Api Version That Fetches The Latest Postman Collection Dynamically From The Postman API
-How To Create Dynamic Postman Api Version That Fetches The Latest Postman Collection Dynamically From The Postman API For Covid Strings 
+npm init-y
+npm install newman
+(collection.json) , (environment.json)
+node run-postman.js
+name: api tests
+on: [push]
+jobs:
+test:
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v3
+- uses: actions/setup-node@v3
+with:
+node-version: 18
+- run: npm install newman
+- run: node run-postman.js
+<subheading.html>
+covid strings dynamic postman api version that fetches the latest postman collection dynamically from the postman api
+how to create dynamic postman api version that fetches the latest postman collection dynamically from the postman api for covid strings 
 /
- * Fetch The Latest Postman Collection Dynamically From The Postman API
- * Requirements:
- *   - Node.Js 16+
- *   - Environment Variable POSTMAN_API_KEY Set With Your Postman API Key
- *   - Collection UID From Your Postman Workspace
+ * fetch the latest postman collection dynamically from the postman api
+ * requirements:
+ *   - node.js 16+
+ *   - environment variable postman_api_key set with your postman api key
+ *   - collection uid from your postman workspace
  */
-Import Fetch From Node-Fetch; // Install with: npm install node-fetch
-Load Environment Variables
-Const POSTMAN_API_KEY = Process.Env.POSTMAN_API_KEY;
-Const COLLECTION_UID = Process.Env.POSTMAN_COLLECTION_UID; // e.g., "12345678-abcdef12-3456-abcdef123456"
-If (!POSTMAN_API_KEY || !COLLECTION_UID) {
-Console.Error(❌ Missing POSTMAN_API_KEY Or POSTMAN_COLLECTION_UID In Environment Variables.);
-Process.Exit(1);
+import fetch from node-fetch; // install with: npm install node-fetch
+load environment variables
+const postman_api_key = process.env.postman_api_key;
+const collection_uid = process.env.postman_collection_uid; // e.g., "12345678-abcdef12-3456-abcdef123456"
+if (!postman_api_key || !collection_uid) {
+console.error(❌ missing postman_api_key or postman_collection_uid in environment variables.);
+process.exit(1);
 }
 /
-* Fetch The Latest Collection From Postman API
+* fetch the latest collection from postman api
 */
-Async Function FetchLatestCollection() {
-Const Url = Https://Api.Getpostman.Com/Collections/${COLLECTION_UID};
-Try {
-Const Response = Await Fetch(Url, {
-Method: GET,
-Headers: {
-X-Api-Key: POSTMAN_API_KEY,
-Accept: Application/Json
+async function fetchlatestcollection() {
+const url = https://api.getpostman.com/collections/${collection_uid};
+try {
+const response =await fetch(url, {
+method: get,
+headers: {
+x-api-key: postman_api_key,
+accept: application/json
 }
 });
-If (!Response.Ok) {
-Throw New Error(HTTP ${Response.Status} - ${Response.StatusText});
+if (!response.ok) {
+throw new error(http ${response.status} - ${response.statustext});
 }
-Const Data = Await Response.Json();
-If (!Data.Collection) {
-Throw New Error(No Collection Data Found In API Response.);
+const data=await response.json();
+if (!data.collection) {
+throw new error(no collection data found in api response.);
 }
-Console.Log(✅ Latest Postman Collection Fetched Successfully!);
-Console.Log(JSON.Stringify(Data.Collection, Null, 2)); // Pretty-print JSON
-You Can Now Save This To A File Or Use It In Automated Tests
-Return Data.Collection;
-} Catch (Error) {
-Console.Error(❌ Error Fetching Collection:, Error.Message);
-Process.Exit(1);
+console.log(✅ latest postman collection fetched successfully!);
+console.log(json.stringify(data.collection, null, 2)); // pretty-print json
+you can now save this to a file or use it in automated tests
+return data.collection;
+} catch (error) {
+console.error(❌ error fetching collection:, error.message);
+process.exit(1);
 }
 }
-Run The Fetch
-FetchLatestCollection();
-Setup Instructions
-Install Dependencies:
-Bash
-Npm Init-Y
-Npm Install Node-Fetch
-Set Environment Variables (Replace With Your Actual Values):
-Bash
-Export POSTMAN_API_KEY=Your_postman_api_key_here
-Export POSTMAN_COLLECTION_UID=Your_collection_uid_here
-Run The Script:
-Bash
-Node FetchPostmanCollection.Js
-<Subheading.Html>
-Covid Strings Extend This So It Automatically Commits The Latest Collection To GitHub For Version Control In Your CI/CD Pipeline 
-How To Extend This So It Automatically Commits The Latest Collection To GitHub For Version Control In Your CI/CD Pipeline For Covid Strings 
+run the fetch
+fetchlatestcollection();
+setup instructions
+install dependencies:
+bash
+npm init-y
+npm install node-fetch
+set environment variables (replace with your actual values):
+bash
+export postman_api_key=your_postman_api_key_here
+export postman_collection_uid=your_collection_uid_here
+run the script:
+bash
+node fetchpostmancollection.js
+<subheading.html>
+covid strings extend this so it automatically commits the latest collection to github for version control in your ci/cd pipeline 
+how to extend This so it automatically commits the latest collection to github for version control in your ci/cd pipeline for covid strings 
 /
- * Auto-Commit Latest Collection To GitHub
- * Run: Node AutoCommit.Js
+ * auto-commit latest collection to github
+ * run: node autocommit.js
  */
-Const {ExecSync } = Require(Child_process);
-Const Path = Require(Path);
-Const Fs = Require(Fs);
-CONFIGURATION
-Const COLLECTION_PATH = Path.Join(__ Dirname, Collection); // folder or file to commit
-Const COMMIT_MESSAGE = Chore: Update Latest Collection [CI Skip]; // commit message
-Const BRANCH = Process.Env.GITHUB_REF_NAME || Main; // default branch
-Try {
-1. Check If Collection Exists
-If (!Fs.ExistsSync(COLLECTION_PATH)) {
-Console.Error(❌ Collection Path Not Found: ${COLLECTION_PATH});
+const {execsync } = require(child_process);
+const path = require(path);
+const fs = require(fs);
+confiugration
+const collection_path =path.join(__ dirname, collection); // folder or file to commit
+const commit_message = chore: update latest collection [ci skip]; // commit message
+const branch = process.env.github_ref_name || main; // default branch
+try {
+1. check if collection exists
+if (!fs.existssync(collection_path)) {
+console.error(❌ collection path not found: ${collection_path});
 Process.Exit(1);
 }
 2. Configure Git (Needed In CI/CD)
