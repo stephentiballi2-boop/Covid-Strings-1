@@ -3851,521 +3851,519 @@ try {
 1. check if collection exists
 if (!fs.existssync(collection_path)) {
 console.error(❌ collection path not found: ${collection_path});
-Process.Exit(1);
+process.exit(1);
 }
-2. Configure Git (Needed In CI/CD)
-ExecSync(Git Config --Global User.Name CI Bot);
-ExecSync(Git Config --Global User.Email Ci-Bot@Example.Com);
-3. Stage Changes
-ExecSync(Git Add ${COLLECTION_PATH}, {Stdio: Inherit });
-4. Check If There Are Changes To Commit
-Const Status = ExecSync(Git Status --Porcelain).ToString().Trim();
-If (!Status) {
-Console.Log(✅ No Changes Detected. Skipping Commit.);
-Process.Exit(0);
+2. configure git (needed in ci/cd)
+execsync(git config --global user.name ci bot);
+execsync(git config --global user.email ci-bot@example.com);
+3. stage changes
+execsync(git add ${collection_path}, {stdio: inherit });
+4. check if there are changes to commit
+const status =execsync(git status --porcelain).tostring().trim();
+if (!status) {
+console.log(✅ no changes detected. skipping commit.);
+process.exit(0);
 }
-5. Commit Changes
-ExecSync(Git Commit -M ${COMMIT_MESSAGE}, {Stdio: Inherit});
-6. Push Changes
-ExecSync(Git Push Origin ${BRANCH}, {Stdio: Inherit});
-Console.Log(✅ Latest Collection Committed And Pushed To GitHub.);
-} Catch (Error) {
-Console.Error(❌ Error During Auto-Commit:,Error.Message);
-Process.Exit(1);
+5. commit changes
+execsync(git commit -M ${commit_message}, {stdio: inherit});
+6. push changes
+execsync(git push origin ${branch}, {stdio: inherit});
+console.log(✅ latest collection committed and pushed to github.);
+}catch (error) {
+console.error(❌ error during auto-commit:, error.message);
+process.exit(1);
 }
-GitHub Actions Workflow Example
-Save This As .Github/Workflows/Auto-Commit.Yml:
-Yaml
-Name: Auto Commit Collection
-On:
-Push:
-Branches:
--Main
-Workflow_dispatch: # Allow Manual Trigger
-Jobs:
-Commit-Collection:
-Runs-On: Ubuntu-Latest
-Steps:
--Name: Checkout Repository
-Uses: Actions/Checkout@V4
+github actions workflow example
+save this as .github/workflows/auto-commit.yml:
+yaml
+name: auto commit collection
+on:
+push:
+branches:
+-main
+workflow_dispatch: # allow manual trigger
+jobs:
+commit-collection:
+runs-on: ubuntu-Latest
+steps:
+-name: checkout repository
+uses: actions/checkout@v4
 With:
-Persist-Credentials: True # Needed For Push
--Name: Setup Node.Js
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 18
--Name: Install Dependencies
-Run: Npm Install
-- Name: Run Auto-Commit Script
-Run: Node AutoCommit.Js
-Git Push Https://<TOKEN>@Github.Com/<USER>/<REPO>.Git ${BRANCH}
-<Subheading.Html>
-Covid Strings Only Committing When The Collection JSON Changes By Hashing The File Before Committing
-How To Condition Committing For Covid Strings When The Collection JSON Changes By Hashing The File Before Committing
-#!/Usr/Bin/Env Node
+persist-credentials: true # needed for push
+-name: setup node.js
+uses: actions/setup-node@v4
+with:
+node-version: 18
+-name: install dependencies
+run: npm install
+-name: run auto-commit script
+run: node autocommit.js
+git push https://<token>@github.com/<user>/<repo>.git ${branch}
+<subheading.html>
+covid strings only committing when the collection json changes by hashing the file before committing
+how to condition committing for covid strings when the collection json changes by hashing the file before committing
+#!/usr/bin/env node
 /
- * Commit To Git Only If A JSON Files Canonical Content Changes.
- * Usage: Node Commit-If-Json-Changed.Js Path/To/File.Json Commit Message
+ * commit to git only if a json files canonical content changes.
+ * usage: node commit-if-json-changed.js path/to/file.json commit message
  */
-Const Fs = Require(Fs);
-Const Crypto = Require(Crypto);
-Const {ExecSync }=Require(Child_process);
-Const Path =Require(Path);
-If (Process.Argv.Length < 4) {
-Console.Error(Usage: Node Commit-If-Json-Changed.Js <JsonFile> <CommitMessage>);
-Process.Exit(1);
+const fs = require(fs);
+const crypto = require(crypto);
+const {execsync }= require(child_process);
+const path=require(path);
+if (process.argv.length < 4) {
+console.error(usage: node commit-if-json-changed.js <jsonfile> <commitmessage>);
+process.exit(1);
 }
-Const JsonFile = Process.Argv[2];
-Const CommitMessage = Process.Argv[3];
-Const HashFile = ${JsonFile}.Hash;
- Validate JSON File Existence
-If (!Fs.ExistsSync(JsonFile)) {
-Console.Error(Error: File ${JsonFile} Not Found.);
-Process.Exit(1);
+const jsonfile = process.argv[2];
+const commitmessage = process.argv[3];
+const hashfile = ${jsonfile}.hash;
+validate json file existence
+if (!fs.existssync(JsonFile)) {
+console.error(error: file ${jsonfile} not found.);
+process.exit(1);
 }
-Read And Canonicalize JSON (Sort Keys To Avoid Formatting Differences)
-Function CanonicalizeJson(Obj) {
-If (Array.IsArray(Obj)) {
-Return Obj.Map(CanonicalizeJson);
-} Else If (Obj && Typeof Obj === Object) {
-Return Object.Keys(Obj)
-.Sort()
-.Reduce((Acc, Key) => {
-Acc[Key] = CanonicalizeJson(Obj[Key]);
-Return Acc;
+read and canonicalize json (sort keys to avoid formatting differences)
+function canonicalizeJson(obj) {
+if (array.isarray(obj)) {
+return obj.map(canonicalizejson);
+} else if (obj && typeof obj === object) {
+return object.keys(obj)
+.sort()
+.reduce((acc,key) => {
+acc[key] =canonicalizejson(obj[key]);
+return acc;
 }, {});
 }
-Return Obj;
+return obj;
 }
-Compute SHA-256 Hash Of Canonical JSON
-Function ComputeHash(FilePath) {
-Try {
-Const RawData = Fs.ReadFileSync(FilePath, Utf8);
-Const Parsed = JSON.Parse(RawData);
-Const Canonical = JSON.Stringify(CanonicalizeJson(Parsed));
-Return Crypto.CreateHash(Sha256).Update(Canonical).Digest(Hex);
-} Catch (Err) {
-Console.Error(Error Reading Or Parsing JSON: ${Err.Message});
-Process.Exit(1);
+compute sha-256 hash of canonical json
+function computehash(filepath) {
+try {
+const rawdata =fs.readfilesync(filepath, utf8);
+const parsed =json.parse(rawdata);
+const canonical=json.stringify(canonicalizejson(parsed));
+return crypto.createhash(sha256).update(canonical).digest(hex);
+}catch (err) {
+console.error(error reading or parsing json: ${err.message});
+process.exit(1);
 }
 }
-Const NewHash = ComputeHash(JsonFile);
-Let OldHash = Null;
-Read Old Hash If Exists
-If (Fs.ExistsSync(HashFile)) {
-OldHash =Fs.ReadFileSync(HashFile, Utf8).Trim();
+const newhash =computehash(jsonfile);
+let oldhash =null;
+read old hash if exists
+if (fs.existssync(hashfile)) {
+oldhash=fs.readfilesync(hashfile, utf8).trim();
 }
-Compare Hashes
-If (NewHash === OldHash) {
-Console.Log(No Changes Detected In JSON Content. Skipping Commit.);
-Process.Exit(0);
+compare hashes
+if (newhash === oldhash) {
+console.log(no changes detected in json content. skipping commit.);
+process.exit(0);
 }
-Save New Hash
-Fs.WriteFileSync(HashFile, NewHash, Utf8);
-Stage And Commit Changes
-Try {
-ExecSync(Git Add ${JsonFile} ${HashFile}, {Stdio: Inherit});
-ExecSync(Git Commit -M ${CommitMessage}, {Stdio: Inherit});
-Console.Log(Changes Committed Successfully.);
-} Catch (Err) {
-Console.Error(Git Commit Failed: ${Err.Message});
-Process.Exit(1);
+save new hash
+fs.writefilesync(hashfile, newhash, utf8);
+stage and commit changes
+try {
+execsync(git add ${jsonfile} ${hashfile}, {stdio: inherit});
+execsync(git commit -m ${commitmessage}, {stdio: inherit});
+console.log(changes committed successfully.);
+}catch (err) {
+console.error(git commit failed: ${err.message});
+process.exit(1);
 }
-Chmod +X Commit-If-Json-Changed.Js
-Node Commit-If-Json-Changed.Js Data.Json Update Data.Json If Changed
-<Subheading.Html>
-Covid Strings Git Pre-Commit Hook Version So This Runs Automatically Before Every Commit
-How To Git Pre-Commit Hook Version So This Runs Automatically Before Every Commit
-Npm Install Husky --Save-Dev
-Npx Husky Install
+chmod +x commit-if-json-changed.js
+node commit-if-json-changed.js data.json update data.json if changed
+<subheading.html>
+covid strings git pre-commit hook version so this runs automatically before every commit
+how to git pre-commit hook version so this runs automatically before every commit
+npm install husky --save-dev
+npx husky install
 {
-Scripts: {
-Prepare: Husky Install
+scripts: {
+prepare: husky install
 }
 }
-Npx Husky Add.Husky/Pre-Commit Npm Run Precommit-Check
-Chmod +X .Husky/Pre-Commit
-#!/Usr/Bin/Env Node
+npx husky add.husky/pre-commit npm run precommit-check
+chmod +x .husky/pre-commit
+#!/usr/bin/env node
 /
- * Pre-Commit Check Script
- * This Example Runs ESLint And Prevents Commit If There Are Errors.
+ * pre-commit check script
+ * this example runs eslint and prevents commit if there are errors.
  */
-
-Const {ExecSync} = Require(Child_process);
-Try {
-Console.Log(🔍 Running ESLint Before Commit...);
-ExecSync(Npx Eslint ., {Stdio: Inherit});
-Console.Log(✅ ESLint Passed. Proceeding With Commit...);
-Process.Exit(0);
-} Catch (Error) {
-Console.Error(❌ ESLint Failed. Commit Aborted.);
-Process.Exit(1); // Exit with error to block commit
+const {execsync} =require(child_process);
+try {
+console.log(🔍 running eslint before commit...);
+execsync(npx eslint ., {stdio: inherit});
+console.log(✅ eslint passed. proceeding with commit...);
+process.exit(0);
+}catch (error) {
+console.error(❌ eslint failed. commit aborted.);
+process.exit(1); // exit with error to block commit
 }
-4. Add Script To Package.Json
-Json
+4. add script to package.json
+json
 {
-Scripts: {
-Precommit-Check: Node Scripts/Precommit-Check.Js
+scripts: {
+precommit-check: node scripts/precommit-check.js
 }
 }
-<Subheading.Html>
-Newsletter Article Request 
-A Pull Request For A Covid Strings Newsletter Article 
-For Newsletter Article Request To Include A Read Button For The User To Read The Full Article
-Make Sure That Articles Within The Newsletter Can Include Future Versions Of This Game As Well As Present And Past Versions
+<subheading.html>
+newsletter article request 
+a pull request for a covid strings newsletter article 
+for newsletter article request to include a read button for the user to read the full article
+make sure that articles within the newsletter can include future versions of this game as well as present and past versions
 /
- * Create A Pull Request For A Newsletter Article On GitHub
- * Requirements:
- *   1. Install Dependencies: Npm Install @Octokit/Rest
- *   2. Set Environment Variables:
- *  GITHUB_TOKEN   - Personal Access Token With Repo Permissions
- *  REPO_OWNER     - Repository Owner (Username Or Org)
- *  REPO_NAME      - Repository Name
+ * create a pull request for a newsletter article on github
+ * requirements:
+ *   1. install dependencies: npm install @octokit/rest
+ *   2. set environment variables:
+ *  GITHUB_TOKEN   - personal access token with repo permissions
+ *  REPO_OWNER     - repository owner (username or org)
+ *  REPO_NAME      - repository name
  */
-Const { Octokit } =Require(@Octokit/Rest);
-Const Fs =Require(Fs);
-Const Path =Require(Path);
-(Async () => {
-Try {
-Load Environment Variables
-Const Token = Process.Env.GITHUB_TOKEN;
-Const Owner = Process.Env.REPO_OWNER;
-Const Repo = Process.Env.REPO_NAME;
-If (!Token || !Owner || !Repo) {
-Throw New Error(Missing Required Environment Variables.);
+const {octokit}=require(@octokit/rest);
+const fs=require(fs);
+const path=require(path);
+(async () => {
+try {
+load environment variables
+const token =process.env.github_token;
+const owner =process.env.repo_owner;
+const repo =process.env.repo_name;
+if (!token || !owner || !repo) {
+throw new error(missing required environment variables.);
 }
-Const Octokit =New Octokit({Auth: Token });
-Step 1: Get The Default Branch (Usually Main Or Master)
-Const {Data: RepoData } = Await Octokit.Repos.Get({Owner, Repo });
-Const BaseBranch = RepoData.Default_branch;
-Step 2: Get The Latest Commit SHA Of The Base Branch
-Const {Data: RefData } = Await Octokit.Git.GetRef({
-Owner,
-Repo,
-Ref: Heads/${BaseBranch},
+const octokit=new octokit({auth: token});
+step 1: get the default branch (usually main or master)
+const {data: repodata} = await octokit.repos.get({owner, repo });
+const basebranch = repodata.default_branch;
+step 2: get the latest commit sha of the base branch
+const {data: refdata } = await octokit.git.getref({
+owner,
+repo,
+ref: heads/${basebranch},
 });
-Const LatestCommitSha = RefData.Object.Sha;
-Step 3: Create A New Branch For The Newsletter Article
-Const BranchName = Newsletter-${Date.Now()};
-Await Octokit.Git.CreateRef({
-Owner,
-Repo,
-Ref: Refs/Heads/${BranchName},
-Sha: LatestCommitSha,
+const latestcommitsha =refdata.object.sha;
+step 3: create a new branch for the newsletter article
+const branchname =newsletter-${date.now()};
+await octokit.git.createref({
+owner,
+repo,
+ref: refs/heads/${branchname},
+sha: latestcommitsha,
 });
-Step 4: Prepare The Newsletter Article Content
-Const ArticleContent = 
-# Weekly Newsletter - ${New Date().ToLocaleDateString()}
-Hello Readers!  
-This Is Our Latest Newsletter Article.
-.Trim();
-Const FilePath = Newsletters/Article-${Date.Now()}.Md;
-Step 5: Create The File In The New Branch
-Await Octokit.Repos.CreateOrUpdateFileContents({
-Owner,
-Repo,
-Path: FilePath,
-Message: Add Newsletter Article: ${FilePath},
-Content: Buffer.From(ArticleContent, Utf8).ToString(Base64),
-Branch: BranchName,
+step 4: prepare the newsletter article content
+const articlecontent = 
+# weekly newsletter - ${new date().tolocaledatestring()}
+hello readers!  
+this is our latest newsletter article.
+.trim();
+const filepath = newsletters/article-${date.now()}.md;
+step 5: create the file in the new branch
+await octokit.repos.createorupdatefilecontents({
+owner,
+repo,
+path: filepath,
+message: add newsletter article: ${filepath},
+content: buffer.from(articlecontent, utf8).tostring(base64),
+branch: branchname,
 });
-Step 6: Create The Pull Request
-Const {Data: Pr } = Await Octokit.Pulls.Create({
-Owner,
-Repo,
-Title: Add Newsletter Article - ${New Date().ToLocaleDateString()},
-Head: BranchName,
-Base: BaseBranch,
-Body: This PR Adds The Latest Newsletter Article.,
+step 6: create the pull request
+const {data: pr } = await octokit.pulls.create({
+owner,
+repo,
+title: add newsletter article - ${new date().tolocaledatestring()},
+head: branchname,
+base: basebranch,
+body: this pr adds the latest newsletter article.,
 });
-Console.Log(✅ Pull Request Created: ${Pr.Html_url});
-} Catch (Error) {
-Console.Error(❌ Error Creating Pull Request:, Error.Message);
+console.log(✅ pull request created: ${pr.html_url});
+} catch (error) {
+console.error(❌ error creating pull request:, error.message);
 }
 })();
-Setup Instructions
-Install Dependencies
-Bash
-Npm Install @Octokit/Rest
-Create A GitHub Personal Access Token
-Go To GitHub → Settings → Developer Settings → Personal Access Tokens
-Generate A Token With Repo Scope.
-Set Environment Variables
-Bash
-Export GITHUB_TOKEN=Your_token_here
-Export REPO_OWNER=Your_username_or_org
-Export REPO_NAME=Your_repo
-Run The Script
-Bash
-Node CreateNewsletterPR.Js
-<Subheading.Html>
-Covid Strings Version That Updates An Existing Newsletter File Instead Of Creating A New One
-How To Create A Version That Updates An Existing Newsletter File Instead Of Creating A New One For Covid Strings
-Const Fs = Require(Fs);
-Const Path = Require(Path);
+setup instructions
+install dependencies
+bash
+npm install @octokit/rest
+create a github personal access token
+go to github → settings → developer settings → personal access tokens
+generate a token with repo scope.
+set environment variables
+bash
+export github_TOKEN=Your_token_here
+export repo_OWNER=Your_username_or_org
+export repo_NAME=Your_repo
+run the script
+bash
+node createnewsletterpr.js
+<subheading.html>
+covid strings version that updates an existing newsletter file instead of creating a new one
+how to create a version that updates an existing newsletter file instead of creating a new one for covid strings
+const fs = require(fs);
+const path = require(path);
 /
- * Updates An Existing Newsletter File By Replacing A Placeholder
- * Pr Appending New Content.
+ * updates an existing newsletter file by replacing a placeholder
+ *pr appending new content.
  *
- * @Param {String} FilePath - Path To The Existing Newsletter File.
- * @Param {String} NewContent - The Content To Insert Or Replace.
+ * @param {string} filepath - path to the existing newsletter file.
+ * @param {string} newcontent - the content to insert or replace.
  */
-Function UpdateNewsletter(FilePath, NewContent) {
-Try {
-Ensure The File Exists
-If (!Fs.ExistsSync(FilePath)) {
-Console.Error(Error: File ${FilePath} Does Not Exist.);
-Return;
+function updatenewsletter(filepath, newcontent) {
+try {
+ensure the file exists
+if (!fs.existssync(filepath)) {
+console.error(error: file ${filepath} does not exist.);
+return;
 }
-Read The Existing File Content
-Let FileData = Fs.ReadFileSync(FilePath, Utf8);
-Example: Replace A Placeholder {{CONTENT}} With New Content
-If (FileData.Includes({{CONTENT}})) {
-FileData = FileData.Replace({{CONTENT}}, NewContent);
-}Else {
-If No Placeholder, Append The New Content At The End
-FileData += \N${NewContent};
+read the existing file content
+let filedata=fs.readfilesync(filepath, utf8);
+example: replace a placeholder {{content}} with new content
+if (filedata.includes({{content}})) {
+filedata =filedata.replace({{content}}, newcontent);
+}else {
+if no placeholder, append the new content at the end
+filedata += \n${newcontent};
 }
-Write The Updated Content Back To The Same File
-Fs.WriteFileSync(FilePath, FileData, Utf8);
-Console.Log(✅ Newsletter Updated Successfully: ${FilePath});
-} Catch (Err) {
-Console.Error(❌ Failed To Update Newsletter: ${Err.Message});
+write the updated content back to the same file
+fs.writefilesync(filepath, filedata, utf8);
+console.log(✅ newsletter updated successfully: ${filepath});
+} catch (err) {
+console.error(❌ failed to update newsletter: ${err.message});
 }
 }
-Example Usage:
-Const NewsletterPath = Path.Join(__ Dirname, Newsletter.Html);
-Const UpdatedSection = <P>New January 2026 Updates Are Here! 🎉</P>;
-Update The Newsletter File
-UpdateNewsletter(NewsletterPath, UpdatedSection);
-<Subheading.Html>
-Covid Strings Version That Updates Specific Sections In An HTML Newsletter By Targeting Elements (Like <Div Id=Main-Content>) Using A DOM Parser So You Can Make Structured Edits Instead Of Raw Text Replacement
-How To Create A Version That Updates Specific Sections In An HTML Newsletter By Targeting Elements (Like <Div Id=Main-Content>) Using A DOM Parser So You Can Make Structured Edits Instead Of Raw Text Replacement for Covid Strings
+example usage:
+const newsletterpath =path.join(__ dirname, newsletter.html);
+const updatedsection = <p>new january 2026 updates are here! 🎉</p>;
+update the newsletter file
+updatenewsletter(newsletterpath, updatedsection);
+<subheading.html>
+covid strings version that updates specific sections in an html newsletter by targeting elements (like <div id=main-content>) using a dom parser so you can make structured edits instead of raw text replacement
+how to create a version that updates specific sections in an html newsletter by targeting elements (like <div id=main-content>) using a dom parser so you can make structured edits instead of raw text replacement for covid strings
 /
- * Example: Updating Specific Sections Of An HTML Newsletter
- * Using DOM Parsing Instead Of Raw Text Replacement.
+ * example: updating specific sections of an html newsletter
+ * using dom parsing instead of raw text replacement.
  *
- * Works In:
- *  - Browser (Uses DOMParser)
- *  - Node.Js (Requires Jsdom)
+ * works in:
+ *  - browser (uses domparser)
+ *  - node.js (requires jsdom)
  */
-Detect Environment
-Const IsNode = Typeof Window === Undefined;
-Async Function UpdateNewsletterHTML(HtmlString, Updates) {
-Let Document;
-If (IsNode) {
-Node.Js: Use Jsdom
-Const { JSDOM } = Await Import(Jsdom);
-Const Dom = New JSDOM(HtmlString);
-Document = Dom.Window.Document;
-} Else {
-Browser: Use DOMParser
-Const Parser = New DOMParser();
-Document = Parser.ParseFromString(HtmlString, Text/Html);
+detect environment
+const isnode = typeof window === undefined;
+async function updateNewsletterhtml(htmlstring, updates) {
+let document;
+if (isnode) {
+node.js: use jsdom
+const {jsdom} =await import(jsdom);
+const dom =new jsdom(htmlstring);
+document =dom.window.document;
+}else {
+browser: use domparser
+const parser=new domparser();
+document =parser.parsefromstring(htmlstring, text/html);
 }
-Apply Updates Based On Element Selectors
-For (Const Selector In Updates) {
-Const Element = Document.QuerySelector(Selector);
-If (Element) {
-Element.InnerHTML = Updates[Selector];
-} Else {
-Console.Warn(No Element Found For Selector: ${Selector});
+apply updates based on element selectors
+for (const selector in updates) {
+const element =document.queryselector(selector);
+if (element) {
+element.innerhtml =updates[selector];
+} else {
+console.warn(no element found for selector: ${selector});
 }
 }
-Return Updated HTML
-Return IsNode ? Document.DocumentElement.OuterHTML : Document.DocumentElement.OuterHTML;
-}
-Example Usage
-(Async () => {
-Const OriginalHTML = 
-<Html>
-<Head><Title>Newsletter</Title></Head>
-<Body>
-<Div Id=Header>Old Header</Div>
-<Div Id=Main-Content>Old Content</Div>
-<Div Id=Footer>Old Footer</Div>
-</Body>
-</Html>
+return updated html
+return isnode ? document.documentelement.outerhtml : document.documentelement.outerhtml;
+example usage
+(async () => {
+const originalhtml= 
+<html>
+<head><title>newsletter</title></head>
+<body>
+<div id=header>old header</div>
+<div id=main-content>old content</div>
+<div id=footer>old footer</div>
+</body>
+</html>
 ;
-Const Updates = {
-#Header: <H1>New Header Title</H1>,
-#Main-Content: <P>This Is The Updated Main Content Of The Newsletter.</P>,
-#Footer: <Small>Updated Footer © 2026</Small>
+const updates = {
+#header: <h1>new header title</h1>,
+#main-content: <p>this is the updated main content of the newsletter.</p>,
+#footer: <small>updated footer © 2026</small>
 };
-Const UpdatedHTML = Await UpdateNewsletterHTML(OriginalHTML, Updates);
-Console.Log(UpdatedHTML);
+const updatedhtml=await updatenewsletterhtml(originalhtml, updates);
+console.log(updatedhtml);
 })();
-<Subheading.Html>
-Covid Strings Safe, Transactional Bulk Update Script That Works Directly With Your Newsletter JSON Files So You Can Update Multiple Sections Without Risking Data Loss 
-How To Create A Safe, Transactional Bulk Update Script That Works Directly With Your Newsletter JSON Files So You Can Update Multiple Sections Without Risking Data Loss For Covid Strings 
+<subheading.html>
+covid strings safe, transactional bulk update script that works directly with your newsletter json files so you can update multiple sections without risking data loss 
+how to create a safe, transactional bulk update script that works directly with your newsletter json files so you can update multiple sections without risking data loss for covid strings 
 /
- * Safe, Transactional Bulk Update For Newsletter JSON Files.
+ * safe, transactional bulk update for newsletter json files.
  * 
- * Features:
- * - Creates A Timestamped Backup Before Changes.
- * - Applies Multiple Updates In Memory.
- * - Writes Atomically Using A Temp File + Rename.
- * - Full Error Handling To Prevent Data Loss.
+ * features:
+ * - creates a timestamped backup before changes.
+ * - applies multiple updates in memory.
+ * - writes atomically using a temp file + rename.
+ * - full error handling to prevent data loss.
  */
-Const Fs = Require(Fs);
-Const Path = Require(Path);
+const fs =require(fs);
+const path=require(path);
 /
- * Safely Updates A Newsletter JSON File With Multiple Changes.
- * @Param {String} FilePath - Path To The Newsletter JSON File.
- * @Param {Object} Updates - Key-Value Pairs Of Sections To Update.
+ * safely updates a newsletter json file with multiple changes.
+ * @param {string} filepath - path to the newsletter json file.
+ * @param {object} updates - key-value pairs of sections to update.
  */
-Function BulkUpdateNewsletter(FilePath, Updates) {
-Try {
-Validate File Existence
-If (!Fs.ExistsSync(FilePath)) {
-Throw New Error(File Not Found: ${FilePath});
+function bulkupdatenewsletter(filepath, updates) {
+try {
+validate file existence
+if (!fs.existssync(filepath)) {
+throw new error(file not found: ${filepath});
 }
-Read And Parse The Existing JSON
-Const OriginalData = Fs.ReadFileSync(FilePath, Utf8);
-Let Newsletter;
-Try {
-Newsletter = JSON.Parse(OriginalData);
-} Catch (Err) {
-Throw New Error(Invalid JSON Format In ${FilePath}: ${Err.Message});
+read and parse the existing json
+const originaldata =fs.readfilesync(filepath, utf8);
+let newsletter;
+try {
+newsletter=json.parse(originaldata);
+}catch (err) {
+throw new error(invalid json format in ${filepath}: ${err.message});
 }
-Create A Timestamped Backup
-Const BackupPath = ${FilePath}.Backup-${Date.Now()}.Json;
-Fs.WriteFileSync(BackupPath, OriginalData, Utf8);
-Console.Log(Backup Created: ${BackupPath});
-Apply Updates In Memory
-For (Const [Section, Content] Of Object.Entries(Updates)) {
-Newsletter[Section] = Content;
+create a timestamped backup
+const backuppath = ${filepath}.backup-${date.now()}.json;
+fs.writefilesync(backuppath, originaldata, utf8);
+console.log(backup created: ${backuppath});
+apply updates in memory
+for (const [section, content] of object.entries(updates)) {
+newsletter[section] = content;
 }
-Write To A Temporary File First
-Const TempPath = ${FilePath}.Tmp;
-Fs.WriteFileSync(TempPath, JSON.Stringify(Newsletter, Null, 2), Utf8);
-Atomically Replace The Original File
-Fs.RenameSync(TempPath, FilePath);
-Console.Log(✅ Newsletter Updated Successfully: ${FilePath});
-} Catch (Err) {
-Console.Error(❌ Update Failed: ${Err.Message});
+write to a temporary file first
+const temppath = ${filepath}.tmp;
+fs.writefilesync(temppath, json.stringify(newsletter, null, 2), utf8);
+atomically replace the original file
+fs.renamesync(temppath, filepath);
+console.log(✅ newsletter updated successfully: ${filepath});
+} catch (err) {
+console.error(❌ Update Failed: ${Err.Message});
 }
 }
-Example Usage:
-Const NewsletterPath = Path.Join(__ Dirname, Newsletter.Json);
-Define Multiple Updates
-Const Updates = {
-Headline: 🚀 Big News This Week!,
-Events: [
-{Title: Tech Conference, Date: 2026-02-15},
-{Title: Web Dev Meetup, Date: 2026-03-01}
+example Usage:
+const newsletterpath =path.join(__ dirname, newsletter.json);
+define multiple updates
+const updates = {
+headline: 🚀 big news this week!,
+events: [
+{title: tech conference, date: 2026-02-15},
+{title: web dev meetup, date: 2026-03-01}
 ],
-Footer: © 2026 My Newsletter. All Rights Reserved.
+footer: © 2026 my newsletter. all rights reserved.
 };
-Run The Bulk Update
-BulkUpdateNewsletter(NewsletterPath, Updates);
+run the bulk update
+bulkupdatenewsletter(newsletterpath, updates);
 {
-Headline: Old Headline,
-Events: [],
-Footer: Old Footer Text
+headline: old headline,
+events: [],
+footer: old footer text
 }
 {
-Headline: 🚀 Big News This Week!,
-Events: [
-{ Title: Tech Conference, Date: 2026-02-15},
-{ Title: Web Dev Meetup, Date: 2026-03-01}
+headline: 🚀 big news this week!,
+events: [
+{title: tech conference, date: 2026-02-15},
+{title: web dev meetup, date: 2026-03-01}
 ],
-Footer: © 2026 My Newsletter. All Rights Reserved.
+footer: © 2026 my newsletter. all rights reserved.
 }
-<Subheading.Html>
-Covid Strings Online Reference Pull Request
-How To Create A Pull Request For Online Articles Or Videos In Covid Strings
+<subheading.html>
+covid strings online reference pull request
+how to create a pull request for online articles or videos in covid strings
 /
- * Create A GitHub Pull Request Using JavaScript (Node.Js)
- * Requires: Npm Install @Octokit/Rest Dotenv
+ * create a github pull request using javascript (node.js)
+ * requires: npm install @octokit/rest dotenv
  */
-Const { Octokit } = Require(@Octokit/Rest);
-Require(Dotenv).Config(); // For loading environment variables from .env
-Load GitHub Token From Environment Variable For Security
-Const GITHUB_TOKEN = Process.Env.GITHUB_TOKEN;
-If (!GITHUB_TOKEN) {
-Console.Error(❌ Missing GITHUB_TOKEN In Environment Variables.);
-Process.Exit(1);
+const {octokit} =require(@octokit/rest);
+require(dotenv).config(); // for loading environment variables from .env
+load github token from environment variable for security
+const github_token =process.env.github_token;
+if (!github_token) {
+console.error(❌ missing github_token in environment variables.);
+process.exit(1);
 }
-Initialize Octokit With Authentication
-Const Octokit = New Octokit({Auth: GITHUB_TOKEN });
+initialize octokit with authentication
+const octokit=new octokit({auth: github_token});
 /
- * Create A Pull Request
- * @Param {String} Owner - Repository Owner (Username Or Org)
- * @Param {String} Repo - Repository Name
- * @Param {String} Head - Branch Name With Changes (Source)
- * @Param {String} Base - Branch To Merge Into (Target)
- * @Param {String} Title - Pull Request Title
- * @Param {String} Body - Pull Request Description
+ * create a pull request
+ * @param {string} owner - repository owner (username or org)
+ * @param {string} repo - repository name
+ * @param {string} head - branch name with changes (source)
+ * @param {string} base - branch to merge into (target)
+ * @param {string} title - pull request title
+ * @param {string} body - pull request description
  */
-Async Function CreatePullRequest(Owner,Repo,Head,Base,Title,Body) {
-Try {
-Const Response = Await Octokit.Pulls.Create({
-Owner,
-Repo,
-Head, // branch with changes
-Base, // branch to merge into
-Title,
-Body
+async function createpullrequest(owner,repo,head,base,title,body) {
+try {
+const response = await octokit.pulls.create({
+owner,
+repo,
+head, // branch with changes
+base, // branch to merge into
+title,
+body
 });
-Console.Log(✅ Pull Request Created Successfully!);
-Console.Log(🔗 URL: ${Response.Data.Html_url});
-} Catch (Error) {
-Console.Error(❌ Error Creating Pull Request:, Error.Message);
+console.log(✅ pull request created successfully!);
+console.log(🔗 url: ${response.data.html_url});
+}catch (error) {
+console.error(❌ error creating pull request:, error.message);
 }
 }
-Example Usage
-CreatePullRequest(
-Your-Username,       // GitHub username or org
-Your-Repo,           // Repository name
-Feature-Branch,      // Source branch
-Main,                // Target branch
-Add New Feature,     // PR title
-This PR Adds A New Feature With Proper Documentation. // PR description
+example usage
+createpullrequest(
+your-username,       // github username or org
+your-repo,           // repository name
+feature-branch,      // source branch
+main,                // target branch
+add new feature,     // pr title
+this pr adds a new feature with proper documentation. // pr description
 );
-Setup Instructions
-Install Dependencies
-Bash
-Npm Init -Y
-Npm Install @Octokit/Rest Dotenv
-Create .Env File (Never Commit This To GitHub)
-GITHUB_TOKEN=Ghp_Your_personal_access_token_here
-Generate A GitHub Personal Access Token
-Go To GitHub → Settings → Developer Settings → Personal Access Tokens → Tokens (Classic).
-Give It Repo Scope.
-Copy And Paste Into .Env.
-Run The Script
-Bash
-Node Create-Pr.Js
-<Subheading.Html>
-Covid Strings  Automatically Creating A Branch From A Commit Reference And Then Opens The PR To Make It A Full Online Reference PR Workflow
-How To Automatically Create A Branch From A Commit Reference And Then Opens The PR To Make It A Full Online Reference PR Workflow For Covid Strings 
+setup instructions
+install dependencies
+bash
+npm init-y
+npm install @octokit/rest dotenv
+create.env file (never commit this to github)
+github_token=ghp_your_personal_access_token_here
+generate a github personal access token
+go to github → settings → developer settings → personal access tokens → tokens (classic).
+give it repo scope.
+copy and paste into.env.
+run the script
+bash
+node create-pr.js
+<subheading.html>
+covid strings automatically creating a branch from a commit reference and then opens the pr to make it a full online reference pr workflow
+how to automatically create a branch from a commit reference and then opens the pr to make it a full online reference pr workflow for covid strings 
 /
- * Auto-Create A Branch From A Commit And Open A PR On GitHub
+ * auto-create a branch from a commit and open a pr on github
  * 
- * Requirements:
- *  Npm Install Simple-Git @Octokit/Rest
- *  Set Environment Variables:
- *     GITHUB_TOKEN   - GitHub Personal Access Token (With Repo Permissions)
- *     GITHUB_OWNER   - Repository Owner (Username Or Org)
- *     GITHUB_REPO    - Repository Name
+ * requirements:
+ *  npm install simple-git @Octokit/rest
+ *  set environment variables:
+ *     github_token   - github personal access token (with repo permissions)
+ *     github_owner   - repository owner (username or org)
+ *     github_repo    - repository name
  */
-Const SimpleGit = Require(Simple-Git);
-Const { Octokit } = Require(@Octokit/Rest);
-Const Git = SimpleGit();
-Const Octokit = New Octokit({Auth: Process.Env.GITHUB_TOKEN });
+const simplegit =require(simple-git);
+const {octokit } =require(@octokit/rest);
+const git = simplegit();
+const octokit =new octokit({auth: process.env.github_token});
 /
- * Create Branch From Commit And Open PR
- * @Param {String} CommitSha - Commit SHA To Branch From
- * @Param {String} BranchName - New Branch Name
- * @Param {String} PrTitle - Pull Request Title
- * @Param {String} PrBody - Pull Request Body
- * @Param {String} BaseBranch - Branch To Merge Into (E.G., Main)
+ * create branch from commit and open pr
+ * @param {string} commitsha - commit sha to branch from
+ * @param {string} branchname - new branch name
+ * @param {string} prtitle - pull request title
+ * @param {string} prbody - pull request body
+ * @param {string} basebranch - branch to merge into (e.g., main)
  */
-Async Function CreateBranchAndPR(CommitSha, BranchName, PrTitle, PrBody, BaseBranch = Main) {
-Try {
-Validate Environment Variables
-Const { GITHUB_OWNER, GITHUB_REPO } = Process.Env;
+async function createbranchandpr(commitsha, branchname, prtitle, prbody, basebranch = main) {
+try {
+validate environment variables
+const {github_owner, github_repo} =process.env;
 If (!Process.Env.GITHUB_TOKEN || !GITHUB_OWNER || !GITHUB_REPO) {
 Throw New Error(Missing Required Environment Variables: GITHUB_TOKEN, GITHUB_OWNER, GITHUB_REPO);
 }
