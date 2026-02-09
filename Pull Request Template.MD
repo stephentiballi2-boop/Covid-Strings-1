@@ -4364,1031 +4364,1031 @@ async function createbranchandpr(commitsha, branchname, prtitle, prbody, basebra
 try {
 validate environment variables
 const {github_owner, github_repo} =process.env;
-If (!Process.Env.GITHUB_TOKEN || !GITHUB_OWNER || !GITHUB_REPO) {
-Throw New Error(Missing Required Environment Variables: GITHUB_TOKEN, GITHUB_OWNER, GITHUB_REPO);
+if (!process.env.github_token || !github_owner || !github_repo) {
+throw new error(missing required environment variables: github_token, github_owner, github_repo);
 }
-Console.Log(Creating Branch ${BranchName} From Commit ${CommitSha}...);
-Fetch All Commits To Ensure Commit Exists Locally
-Await Git.Fetch([--All]);
-Create And Checkout New Branch From Commit
-Await Git.Checkout([CommitSha, -B, BranchName]);
-Push Branch To Remote
-Await Git.Push(Origin, BranchName);
-Console.Log(Branch ${BranchName} Pushed To Remote.);
-Create PR Via GitHub API
-Const Pr = Await Octokit.Pulls.Create({
-Owner: GITHUB_OWNER,
-Repo: GITHUB_REPO,
-Title: PrTitle,
-Head: BranchName,
-Base: BaseBranch,
-Body: PrBody
+console.log(creating branch ${branchname} from commit ${commitsha}...);
+fetch all commits to ensure commit exists locally
+await git.fetch([--all]);
+create and checkout new branch from commit
+await git.checkout([commitsha, -b, branchname]);
+push branch to remote
+await git.push(origin, branchname);
+console.log(branch ${branchname} pushed to remote.);
+create pr via github api
+const pr =await octokit.pulls.create({
+owner: github_owner,
+repo: github_repo,
+title: prtitle,
+head: branchname,
+base: basebranch,
+body: prbody
 });
-Console.Log(✅ Pull Request Created: ${Pr.Data.Html_url});
-} Catch (Error) {
-Console.Error(❌ Error:, Error.Message);
+console.log(✅ pull request created: ${pr.data.html_url});
+}catch (error) {
+console.error(❌ error:, error.message);
 }
 }
-Example Usage
-(Async () => {
-Replace With Your Values
-Const CommitSha = Abc123def4567890abcdef1234567890abcdef12; // commit hash
-Const BranchName = Feature-From-Old-Commit;
-Const PrTitle = Feature From Old Commit;
-Const PrBody = This PR Was Automatically Created From Commit  + CommitSha;
-Await CreateBranchAndPR(CommitSha, BranchName, PrTitle, PrBody, Main);
+example usage
+(async () => {
+replace with your values
+const commitsha = abc123def4567890abcdef1234567890abcdef12; // commit hash
+const branchname =feature-from-old-commit;
+const prtitle = feature from old commit;
+const prbody = this pr was automatically created from commit  + commitsha;
+await createbranchandpr(commitsha, branchname, prtitle, prbody, main);
 })();
-Setup Instructions
-Install Dependencies:
-Bash
-Npm Install Simple-Git @Octokit/Rest
-Set Environment Variables:
-Bash
-Export GITHUB_TOKEN=Your_personal_access_token
-Export GITHUB_OWNER=Stephen_Tiballi 2 @ Gmail_.Com_or_Covid Strings 1
-Export GITHUB_REPO=SGTIBAL Covid Strings 1
-Run The Script:
-Bash
-Node CreateBranchAndPR.Js
-<Subheading.Html>
-Covid Strings  GitHub Action Version So This Workflow Runs Automatically When You Push A Commit Reference
-How To Create A  GitHub Action Version So This Workflow Runs Automatically When You Push A Commit Reference
-Name: Run JavaScript On Push
-# Trigger Workflow On Any Push To Any Branch
-On:
-Push:
-Branches:
-- ** # Matches All Branches
-Jobs:
-Run-Js:
-Runs-On: Ubuntu-Latest
-Steps:
-# Step 1: Check Out The Repository Code
-- Name: Checkout Repository
-Uses: Actions/Checkout@V4
-# Step 2: Set Up Node.Js (JavaScript Runtime)
-- Name: Set Up Node.Js
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 20 # Use A Stable LTS Version
-# Step 3: Install Dependencies (If Package.Json Exists)
-- Name: Install Dependencies
-Run: |
-If [ -F Package.Json ]; Then
-Npm Install
-Else
-Echo No Package.Json Found, Skipping Npm Install.
-Fi
-# Step 4: Run Your JavaScript File
-- Name: Run JavaScript Script
-Run: |
-If [ -F Script.Js ]; Then
-Node Script.Js
-Else
-Echo No Script.Js Found. Please Add Your JS File.
-Exit 1
-Fi
-Script.Js
-Console.Log(✅ GitHub Action Triggered By Push!);
-Console.Log(Commit Processed At:, New Date().ToISOString());
-<Subheading.Html>
-Covid Strings Versioned Branches For Older Non-Default Versions And Main Or Master For The Latest Supported Version
-How To Create Versioned Branches For Older Non-Default Versions And Main Or Master For The Latest Supported Version For Covid Strings
-Name: Versioned Branch Workflow
-On:
-Push:
-Branches:
-- Main
-- Master
-- Support*   # Matches Support/1.0, Support/2.1, Etc.
-Jobs:
-Handle-Branch:
-Runs-On: Ubuntu-Latest
-Steps:
-- Name: Checkout Repository
-Uses: Actions/Checkout@V4
-- Name: Setup Node.Js
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 20
--Name: Run Branch Gandler
-Run: Node Scripts/Branch-Handler.Js
-Scripts/Branch-Handler.Js
-#!/Usr/Bin/Env Node
+setup instructions
+install dependencies:
+bash
+npm install simple-git @octokit/rest
+set environment variables:
+bash
+export github_token=your_personal_access_token
+export github_owner=stephen_tiballi 2 @ gmail_.com_or_covid strings 1
+export github_repo=sgtibal covid strings 1
+run the script:
+bash
+node createbranchandpr.js
+<subheading.html>
+covid strings  github action version so this workflow runs automatically when you push a commit reference
+how To create a github action version so this workflow runs automatically when you push a commit reference
+name: run javascript on push
+# trigger workflow on any push to any branch
+on:
+push:
+branches:
+- ** # matches all branches
+jobs:
+run-js:
+runs-on: ubuntu-latest
+steps:
+# step 1: check out the repository code
+- name: checkout repository
+uses: actions/checkout@v4
+# step 2: set up node.js (javascript runtime)
+-name: set up node.js
+uses: actions/setup-node@v4
+with:
+node-version: 20 # use a stable lts version
+# step 3: install dependencies (if package.json exists)
+-name: install dependencies
+run: |
+if [-f package.json ]; then
+npm install
+else
+echo no package.json found, skipping npm install.
+fi
+# step 4: run your javascript file
+-name: run javascript script
+run: |
+if [-f script.js]; then
+node script.js
+else
+echo no script.js found. please add your js file.
+exit 1
+fi
+script.js
+console.log(✅ github action triggered by push!);
+console.log(commit processed at:, new date().toisostring());
+<subheading.html>
+covid strings versioned branches for older non-default versions and main or master for the latest supported version
+how to create versioned branches for older non-default versions and main or master for the latest supported version for covid strings
+name: versioned branch workflow
+on:
+push:
+branches:
+-main
+-master
+-support*   # matches support/1.0, support/2.1, etc.
+jobs:
+handle-branch:
+runs-on: ubuntu-latest
+steps:
+-name: checkout repository
+uses: actions/checkout@v4
+-name: setup node.js
+uses: actions/setup-node@v4
+with:
+node-version: 20
+-name: run branch gandler
+run: node scripts/branch-handler.js
+scripts/branch-handler.js
+#!/usr/bin/env node
 /
- * Branch Handler For Versioned Branches And Main/Master.
- * This Script Determines The Branch Type And Runs The Appropriate Logic.
+ * branch handler for versioned branches and main/master.
+ * this script determines the branch type and runs the appropriate logic.
  */
-Const ExecSync =Require(Child_process).ExecSync;
-Try {
-Get The Current Branch Name From Git
-Const Branch = ExecSync(Git Rev-Parse --Abbrev-Ref HEAD).ToString().Trim();
-Console.Log(Current Branch: ${Branch});
-If (Branch === Main || Branch === Master) {
-Console.Log(✅ Latest Supported Version Branch Detected.);
-Place Your Build/Deploy Logic For The Latest Version Here
-Example:
-ExecSync(Npm Run Build && Npm Run Deploy, {Stdio: Inherit});
+const execsync=require(child_process).execsync;
+try {
+get the current branch name from git
+const branch =execsync(git rev-parse --abbrev-ref head).tostring().trim();
+console.log(current branch: ${branch});
+if (branch === main || branch === master) {
+console.log(✅ latest supported version branch detected.);
+place your build/deploy logic for the ;latest version here
+example:
+execsync(npm run build && npm run deploy, {stdio: inherit});
 }
-Else If (/^support\/\d+\.\d+$/.Test(Branch)) {
-Console.Log(📦 Older Supported Version Branch Detected.);
-Place Your Build/Deploy Logic For Older Versions Here
-Example:
-ExecSync(Npm Run Build:Legacy && Npm Run Deploy:Legacy, {Stdio: Inherit});
+else if (/^support\/\d+\.\d+$/.test(branch)) {
+console.log(📦 older supported version branch detected.);
+place your build/deploy logic for older versions here
+example:
+execsync(npm run build:legacy && npm run deploy:legacy, {stdio: inherit});
 }
-Else {
-Console.Log(ℹ️ Branch Does Not Match Versioned Or Main/Master Patterns. Skipping.);
+else {
+console.log(ℹ️ branch does not match versioned or main/master patterns. skipping.);
 }
-} Catch (Error) {
-Console.Error(❌ Error Determining Branch Type:, Error.Message);
-Process.Exit(1);
+}catch (error) {
+console.error(❌ Error Determining Branch Type:, Error.Message);
+process.exit(1);
 }
-<Subheading.Html>
-Covid Strings Automatic Branch Creation To Make Version Management Hands-Free
-How To Create An Automatic Branch Creation To Make Version Management Hands-Free For Covid Strings
-#!/Usr/Bin/Env Node
+<subheading.html>
+covid strings automatic branch creation to make version management hands-free
+how to create an automatic branch creation to make version management hands-free for covid strings
+#!/usr/bin/env node
 /
- * Automatic Release Branch Creator
+ * automatic release branch creator
  * ---------------------------------
- * - Reads Version From Package.Json
- * - Increments Version (Patch/Minor/Major)
- * - Creates And Pushes A Release Branch
+ * - reads version from package.json
+ * - increments version (patch/minor/major)
+ * - creates and pushes a release branch
  */
-Const Fs = Require(Fs);
-Const {ExecSync } = Require(Child_process);
-Const Path = Require(Path);
-Validate Arguments
-Const BumpType = Process.Argv[2]; // patch | minor | major
-If (![Patch, Minor, Major].Includes(BumpType)) {
-Console.Error(Usage: Node CreateReleaseBranch.Js <Patch|Minor|Major>);
-Process.Exit(1);
+const fs =require(fs);
+const {execsync} =require(child_process);
+const path =require(path);
+validate arguments
+const bumptype =process.argv[2]; // patch | minor | major
+if (![patch, minor, major].includes(bumptype)) {
+console.error(usage: node createreleasebranch.js <patch|minor|major>);
+process.exit(1);
 }
-Try {
-Step 1: Read Package.Json
-Const PkgPath = Path.Join(Process.Cwd(), Package.Json);
-Const Pkg = JSON.Parse(Fs.ReadFileSync(PkgPath, Utf8));
-Const OldVersion = Pkg.Version;
-Step 2: Increment Version
-Const [Major, Minor, Patch] = OldVersion.Split(".").Map(Number);
-Let NewVersion;
-If (BumpType === Patch) NewVersion = ${Major}.${Minor}.${patch + 1};
-If (BumpType === Minor) NewVersion = ${Major}.${Minor + 1}.0;
-If (BumpType === Major) NewVersion = ${Major + 1}.0.0;
-Pkg.Version = NewVersion;
-Fs.WriteFileSync(PkgPath, JSON.Stringify(Pkg, Null, 2) + \N);
-Console.Log(Version Updated: ${OldVersion} → ${NewVersion});
-Step 3: Commit Version Change
-ExecSync(Git Add Package.Json, {Stdio: Inherit});
-ExecSync(Git Commit -M Chore(Release): Bump Version To ${NewVersion}, {Stdio: Inherit});
-Step 4: Create And Push Release Branch
-Const BranchName = Release/V${NewVersion};
-ExecSync(Git Checkout -B ${BranchName}, {Stdio: Inherit});
-ExecSync(Git Push -U Origin ${BranchName}, { Stdio: Inherit});
-Console.Log(✅ Release Branch ${BranchName} Created And Pushed Successfully!);
-} Catch (Err) {
-Console.Error(❌ Error Creating Release Branch:, Err.Message);
-Process.Exit(1);
+try {
+step 1: read package.json
+const pkgpath =path.join(process.cwd(), package.json);
+const pkg = json.parse(fs.readfilesync(pkgpath, utf8));
+const oldversion =pkg.version;
+step 2: increment version
+const [major, minor, patch] =oldversion.split(".").map(number);
+let newversion;
+if (bumptype === patch) newversion = ${major}.${minor}.${patch + 1};
+if (bumptype === minor) newversion = ${major}.${minor + 1}.0;
+if (bumptype === major) newversion = ${major + 1}.0.0;
+pkg.version = newversion;
+fs.writefilesync(pkgpath, json.stringify(pkg, null, 2) + \n);
+console.log(version updated: ${oldversion} → ${newversion});
+step 3: commit version change
+execsync(git add package.json, {stdio: inherit});
+execsync(git commit -m chore(release): bump version to ${newversion}, {stdio: inherit});
+step 4: create and push release branch
+const branchname =release/V${newversion};
+execsync(git checkout -b ${branchname}, {stdio: inherit});
+execsync(git push -u origin ${branchname}, {stdio: inherit});
+console.log(✅ release branch ${branchname} created and pushed successfully!);
+}catch (err) {
+console.error(❌ error creating release branch:, err.message);
+process.exit(1);
 }
-Chmod +X CreateReleaseBranch.Js
-Node CreateReleaseBranch.Js Patch
-Node CreateReleaseBranch.Js Minor
-Node CreateReleaseBranch.Js Major
-Name: Auto Release Branch
-On:
-Push:
-Branches:
--Main
-Jobs:
-Create-Release-Branch:
-Runs-On: Ubuntu-Latest
-Steps:
-- Uses: Actions/Checkout@V4
-- Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 18
-- Run: Npm Install
-- Run: Node CreateReleaseBranch.Js Patch
-Env:
-GITHUB_TOKEN: ${{Secrets.GITHUB_TOKEN }}
-<Subuheading.Html>
-Fan Voting Request
-Create A Suggestion For Fan Voting On Covid Strings Versions To Increase User Interaction
-<!DOCTYPE Html>
-<Html Lang=En>
-<Head>
-<Meta Charset=UTF-8>
-<Meta Name=Viewport Content=Width=Device-Width, Initial-Scale=1.0>
-<Title>Fan Voting Poll</Title>
-<Style>
-Body {
-Font-Family: Arial, Sans-Serif;
-Background: #F4f4f4;
-Padding: 20Px;
+chmod +x createreleasebranch.js
+node createreleasebranch.js patch
+node createreleasebranch.js minor
+node createreleasebranch.js major
+name: auto release branch
+on:
+push:
+branches:
+-main
+jobs:
+create-release-branch:
+runs-on: ubuntu-latest
+steps:
+-uses: actions/checkout@v4
+-uses: actions/setup-node@v4
+with:
+node-version: 18
+-run: npm install
+-run: node createreleasebranch.js patch
+env:
+github_token: ${{secrets.github_token}}
+<subuheading.html>
+fan voting request
+create a suggestion for fan voting on covid strings versions to increase user interaction
+<!doc type html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content=width=device-width, initial-scale=1.0>
+<title>fan voting poll</title>
+<style>
+body {
+font-family: arial, sans-serif;
+background: #f4f4f4;
+padding: 20px;
 }
-.Poll-Container {
-Background: #Fff;
-Padding: 20Px;
-Border-Radius: 8Px;
-Max-Width: 400Px;
-Margin: Auto;
-Box-Shadow: 0 2Px 8Px Rgba(0,0,0,0.1);
+.poll-container {
+background: #fff;
+padding: 20px;
+border-radius: 8px;
+max-width: 400px;
+margin: auto;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-H2 {
-Text-Align: Center;
+h2 {
+text-align: center;
 }
-.Option {
-Display: Flex;
-Justify-Content: Space-Between;
-Margin: 10Px 0;
-Padding: 10Px;
-Background: #Eee;
-Border-Radius: 5Px;
-Cursor: Pointer;
-Transition: Background 0.3S;
+.option {
+display: flex;
+justify-content: space-between;
+margin: 10px 0;
+padding: 10px;
+background: #eee;
+border-radius: 5px;
+cursor: pointer;
+transition: background 0.3s;
 }
-.Option:Hover {
-Background: #Ddd;
+.option:hover {
+background: #ddd;
 }
-.Results {
-Margin-Top: 20Px;
+.results {
+margin-top: 20px;
 }
-.Bar {
-Height: 20Px;
-Background: #4Caf50;
-Border-Radius: 5Px;
+.bar {
+height: 20Px;
+background: #4caf50;
+border-radius: 5px;
 }
-</Style>
-</Head>
-<Body>
-<Div Class=Poll-Container>
-<H2>Vote For Your Favorite Fan Choice</H2>
-<Div Id=Options></Div>
-<Div Class=Results Id=Results></Div>
-</Div>
-<Script>
-Poll Options
-Const PollOptions = [Team A, Team B, Team C];
-Load Votes From LocalStorage Or Initialize
-Let Votes = JSON.Parse(LocalStorage.GetItem(FanVotes)) || Array(PollOptions.Length).Fill(0);
-Const OptionsContainer = Document.GetElementById(Options);
-Const ResultsContainer = Document.GetElementById(Results);
-Render Voting Buttons
-Function RenderOptions() {
-OptionsContainer.InnerHTML = "";
-PollOptions.ForEach((Option, Index) => {
-Const Btn = Document.CreateElement(Div);
-Btn.ClassName = Option;
-Btn.TextContent = Option;
-Btn.Onclick = () => CastVote(Index);
-OptionsContainer.AppendChild(Btn);
+</style>
+</head>
+<body>
+<div class=poll-container>
+<h2>vote for your favorite fan choice</h2>
+<div id=options></div>
+<div class=results id=results></div>
+</div>
+<script>
+poll options
+const polloptions = [team a, team b, team c];
+load votes from localstorage or initialize
+let votes = json.parse(localstorage.getitem(fanvotes)) || array(polloptions.length).fill(0);
+const optionscontainer=document.getelementbyid(options);
+const resultscontainer=document.getelementbyid(results);
+render voting buttons
+function renderoptions() {
+optionscontainer.innerhtml = "";
+polloptions.foreach((option,index) => {
+const btn=document.createelement(div);
+btn.classname =option;
+btn.textcontent =option;
+btn.onclick = () =>castvote(index);
+optionscontainer.appendchild(btn);
 });
 }
-Cast A Vote
-Function CastVote(Index) {
-Votes[Index]++;
-LocalStorage.SetItem(FanVotes, JSON.Stringify(Votes));
-RenderResults();
+cast a vote
+function castvote(index) {
+votes[index]++;
+localstorage.setitem(fanvotes, json.stringify(votes));
+renderresults();
 }
-Render Results With Percentage Bars
-Function RenderResults() {
-ResultsContainer.InnerHTML = <H3>Results:</H3>;
-Const TotalVotes = Votes.Reduce((A, B) => A + B, 0) || 1; // avoid division by zero
-PollOptions.ForEach((Option, Index) => {
-Const Percent = ((Votes[Index] / TotalVotes) * 100).ToFixed(1);
-ResultsContainer.InnerHTML += 
-<P>${Option}: ${Votes[Index]} Votes (${Percent}%)</P>
-<Div Class=Bar Style=Width:${Percent}%;></Div>
+render results with percentage bars
+function renderresults() {
+resultscontainer.innerhtml=<h3>results:</h3>;
+const totalvotes=votes.reduce((a, b) => a + b, 0) || 1; // avoid division by zero
+polloptions.foreach((option, index) => {
+const percent=((votes[index] /totalvotes) * 100).tofixed(1);
+resultscontainer.innerhtml+= 
+<p>${option}: ${votes[index]} votes (${percent}%)</p>
+<div class=bar style=width:${percent}%;></div>
 ;
 });
 }
-Initial Render
-RenderOptions();
-RenderResults();
-<Script>
-</Body>
-</Html>
-<Subheading.Html>
-Covid Strings Upgrading To A Real Time Online Voting System
-How To Upgrade Covid Strings Fan Voting To A Real Time Online Voting System
-Server.Js
-Const Express = Require(Express);
-Const Http = Require(Http);
-Const SocketIo = Require(Socket.Io);
-Const App = Express();
-Const Server = Http.CreateServer(App);
-Const Io = SocketIo(Server);
-Let Votes = {OptionA: 0, OptionB: 0 }; // Initial vote counts
-Serve Static Files (Frontend)
-App.Use(Express.Static(Public));
-Handle Socket Connections
-Io.On(Connection, (Socket) => {
-Console.Log(A User Connected);
-Send Current Votes To New Client
-Socket.Emit(UpdateVotes, Votes);
-Listen For Votes
-Socket.On(Vote, (Option) => {
-If (Votes.HasOwnProperty(Option)) {
-Votes[Option]++;
-Io.Emit(UpdateVotes, Votes); // Broadcast updated votes
+initial render
+renderoptions();
+renderresults();
+<script>
+</body>
+</html>
+<subheading.html>
+covid strings upgrading to a real time online voting system
+how to upgrade covid strings fan voting to a real time online voting system
+server.js
+const express =require(express);
+const http=require(http);
+const socketio=require(socket.io);
+const app =express();
+const server = http.createserver(app);
+const io =socketio(server);
+let votes = {optiona: 0, optionb: 0 }; // initial vote counts
+serve static files (frontend)
+app.use(express.static(public));
+handle socket connections
+io.on(connection, (socket) => {
+console.log(a user connected);
+send current votes to new client
+socket.emit(updatevotes, votes);
+listen for votes
+socket.on(vote,(option) => {
+if (votes.hasownproperty(option)) {
+votes[option]++;
+io.emit(updatevotes,votes); //broadcast updated votes
 }
 });
-Socket.On(Disconnect, () => {
-Console.Log(A User Disconnected);
+socket.on(disconnect, () => {
+console.log(a user disconnected);
 });
 });
-Server.Listen(3000, () => {
-Console.Log(Server Running On Http://Localhost:3000);
+server.listen(3000, () => {
+console.log(server running on http://localhost:3000);
 });
-2. Frontend (HTML + JavaScript)
-Create A Folder Named Public And Inside It, Add Index.Html:
-Html
-<!DOCTYPE Html>
-<Html>
-<Head>
-<Title>Real-Time Voting</Title>
-<Style>
-Body {Font-Family: Arial, Sans-Serif; Text-Align: Center; }
-Button {Padding: 10Px 20Px; Margin: 10Px; Font-Size: 16Px; }
-</Style>
-</Head>
-<Body>
-<H1>Vote Now!</H1>
-<Button Onclick=CastVote(OptionA)>Vote For Option A</Button>
-<Button Onclick=CastVote(OptionB)>Vote For Option B</Button>
-<H2>Results</H2>
-<P>Option A: <Span Id=VotesA>0</Span></P>
-<P>Option B: <Span Id=VotesB>0</Span></P>
-<Script Src=/Socket.Io/Socket.Io.Js><Script>
-<Script>
-Const Socket = Io();
-Send Vote To Server
-Function CastVote(Option) {
-Socket.Emit(Vote, Option);
+2. frontend (html + javascript)
+create a folder named public and inside it, add index.html:
+html
+<!doc type html>
+<html>
+<head>
+<title>real-time voting</title>
+<style>
+body {font-family: arial, sans-serif; text-align: center; }
+button {padding: 10px 20px; margin: 10px; font-size: 16px; }
+</style>
+</head>
+<body>
+<h1>vote now!</h1>
+<button onclick=castvote(optiona)>vote for option a</button>
+<button onclick=castvote(optionb)>vote for option b</button>
+<h2>results</h2>
+<p>option a: <span id=votesa>0</span></p>
+<p>option b: <span id=votesb>0</span></p>
+<script src=/socket.io/socket.io.js><script>
+<script>
+const socket =io();
+send vote to server
+function castvote(option) {
+socket.emit(vote, option);
 }
-Update Vote Counts In Real-Time
-Socket.On(UpdateVotes, (Votes) => {
-Document.GetElementById(VotesA).TextContent = Votes.OptionA;
-Document.GetElementById(VotesB).TextContent = Votes.OptionB;
+update vote counts in real-time
+socket.on(updatevotes, (votes) => {
+document.getelementbyid(votesa).textcontent =votes.optionA;
+document.getelementbyid(votesb).textcontent =votes.optionB;
 });
-<Script>
-</Body>
-</Html>
-Npm Init-Y
-Npm Install Express Socket.Io
-Node Server.Js
-Http://Localhost:3000
-<Subheading.Html>
-Covid Strings Including A Live Chart So Votes Update Visually In Real Time 
-How To Include A Live Chart So Votes Update Visually In Real Time For Covid Strings
-<!DOCTYPE Html>
-<Html Lang=En>
-<Head>
-<Meta Charset=UTF-8>
-<Meta Name=Viewport Content=Width=Device-Width, Initial-Scale=1.0>
-<Title>Live Vote Chart</Title>
-<!-- Chart.Js CDN -->
-<Script Src=Https://Cdn.Jsdelivr.Net/Npm/Chart.Js><Script>
-<Style>
-Body {
-Font-Family: Arial, Sans-Serif;
-Text-Align: Center;
-Margin: 20Px;
+<script>
+</body>
+</html>
+npm init-y
+npm install express socket.io
+node server.js
+http://localhost:3000
+<subheading.html>
+covid strings including a live chart so votes update visually in real time 
+how to include a live chart so votes update visually in real time for covid strings
+<!doc type html>
+<html lang=En>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content=width=device-width, initial-scale=1.0>
+<title>live vote chart</title>
+<!-- chart.js cdn -->
+<script src=https://cdn.jsdelivr.net/npm/chart.js><script>
+<style>
+body {
+font-family: arial, sans-serif;
+text-align: center;
+margin: 20px;
 }
-Canvas {
-Max-Width: 600Px;
-Margin: Auto;
+canvas {
+max-width: 600px;
+margin: auto;
 }
-Button {
-Margin: 5Px;
-Padding: 10Px 15Px;
-Font-Size: 16Px;
+button {
+margin: 5px;
+padding: 10px 15px;
+font-size: 16px;
 }
-</Style>
-</Head>
-<Body>
-<H2>Live Voting Chart</H2>
-<Canvas Id=VoteChart></Canvas>
-<!-- Voting Buttons -->
-<Div>
-<Button Onclick=CastVote(Option A)>Vote Option A</Button>
-<Button Onclick=CastVote(Option B)>Vote Option B</Button>
-<Button Onclick=CastVote(Option C)>Vote Option C</Button>
-</Div>
-<Script>
-Initial Vote Data
-Let VoteData = {
-Option A: 0,
-Option B: 0,
-Option C: 0
+</style>
+</head>
+<body>
+<h2>live voting chart</h2>
+<canvas id=votechart></canvas>
+<!-- voting buttons -->
+<div>
+<button onclick=castvote(option a)>vote option a</button>
+<button onclick=castvote(option b)>vote option b</button>
+<button onclick=castvote(option c)>vote option c</button>
+</div>
+<script>
+initial vote data
+let votedata = {
+option a: 0,
+option b: 0,
+option c: 0
 };
-Create Chart.Js Bar Chart
-Const Ctx = Document.GetElementById(VoteChart).GetContext(2D);
-Const VoteChart = New Chart(Ctx, {
-Type: Bar,
-Data: {
-Labels: Object.Keys(VoteData),
-Datasets: [{
-Label: Votes,
-Data: Object.Values(VoteData),
-BackgroundColor: [#4CAF50, #2196F3, #FF9800]
+create chart.js bar chart
+const ctx =document.getelementbyid(votechart).getcontext(2d);
+const votechart =new chart(ctx, {
+type: bar,
+data: {
+labels: object.keys(votedata),
+datasets: [{
+label: votes,
+data: object.values(votedata),
+backgroundcolor: [#4caf50, #2196f3, #ff9800]
 }]
 },
-Options: {
-Responsive: True,
-Animation: {
-Duration: 300 // smooth update
+options: {
+responsive: true,
+animation: {
+duration: 300 // smooth update
 },
-Scales: {
-Y: {
-BeginAtZero: True,
-Precision: 0
+scales: {
+y: {
+beginatzero: true,
+precision: 0
 }
 }
 }
 });
-Function To Cast A Vote
-Function CastVote(Option) {
-If (VoteData.HasOwnProperty(Option)) {
-VoteData[Option] += 1;
-UpdateChart();
+function to cast a vote
+function castvote(option) {
+if (votedata.hasownproperty(option)) {
+votedata[option] += 1;
+updatechart();
 }
 }
-Update Chart With New Data
-Function UpdateChart() {
-VoteChart.Data.Datasets[0].Data = Object.Values(VoteData);
-VoteChart.Update();
+update chart with new data
+function updatechart() {
+votechart.data.datasets[0].data =object.values(votedata);
+votechart.update();
 }
-Simulate Real-Time Updates (E.G., From Server)
-SetInterval(() => {
-Randomly Increment A Vote To Simulate Incoming Data
-Const Options = Object.Keys(VoteData);
-Const RandomOption = Options[Math.Floor(Math.Random() * Options.Length)];
-VoteData[RandomOption] += 1;
-UpdateChart();
+simulate real-time updates (e.g., from server)
+setinterval(() => {
+randomly increment a vote to simulate incoming data
+const options =object.keys(votedata);
+const randomoption = options[math.floor(math.random() * options.length)];
+votedata[randomoption] += 1;
+updatechart();
 }, 5000); // every 5 seconds
-<Script>
-</Body>
-</Html>
-<Subheaing.Html>
-Covid Strings WebSocket-Enabled Version So The Chart Updates Instantly When Someone Votes From Another Device
-How To Create A WebSocket-Enabled Version So The Chart Updates Instantly When Someone Votes From Another Device For Covid Strings 
-Server.Js
-Const WebSocket = Require(Ws);
-Const Http = Require(Http);
-Store Votes In Memory (Could Be Replaced With DB)
-Let Votes = {OptionA: 0, OptionB: 0 };
-Create HTTP Server (Optional, For Hosting Static Files)
-Const Server = Http.CreateServer();
-Const Wss = New WebSocket.Server({Server });
-Broadcast Helper
-Function Broadcast(Data) {
-Const Message = JSON.Stringify(Data);
-Wss.Clients.ForEach(Client => {
-If (Client.ReadyState === WebSocket.OPEN) {
-Client.Send(Message);
+<script>
+</body>
+</html>
+<subheaing.html>
+covid strings websocket-enabled version so the chart updates instantly when someone votes from another device
+how to create a websocket-enabled version so the chart updates instantly when someone votes from another device for covid strings 
+server.js
+const websocket = require(Ws);
+const http =require(http);
+store votes in memory (could be replaced with db)
+let Votes = {optionA: 0, optionB: 0 };
+create http server (optional, for hosting static files)
+const server =http.createserver();
+const wss =new websocket.server({server });
+broadcast helper
+function broadcast(data) {
+const message =json.stringify(data);
+wss.clients.foreach(client => {
+if (client.readystate === websocket.open) {
+client.send(message);
 }
 });
 }
-Wss.On(Connection, Ws => {
-Console.Log(New Client Connected);
-Send Current Votes To New Client
-Ws.Send(JSON.Stringify({Type: Update, Votes }));
-Ws.On(Message, Message => {
-Try {
-Const Data = JSON.Parse(Message);
-If (Data.Type === Vote && Data.Option) {
-If (Votes.HasOwnProperty(Data.Option)) {
-Votes[Data.Option] += 1;
-Broadcast({Type: Update, Votes });
+wss.on(connection, ws => {
+console.log(new client connected);
+send current votes to new client
+ws.send(json.stringify({type: update, votes }));
+ws.on(message, message => {
+try {
+const data = json.parse(message);
+if (data.type ===vote && data.option) {
+if (votes.hasownproperty(data.option)) {
+votes[data.option] += 1;
+broadcast({type: update, votes });
 }
 }
-} Catch (Err) {
-Console.Error(Invalid Message Received:, Err);
+} catch (err) {
+console.error(invalid message received:, err);
 }
 });
-Ws.On(Close, () => {
-Console.Log(Client Disconnected);
+ws.on(close, () => {
+console.log(client disconnected);
 });
 });
-Server.Listen(8080, () => {
-Console.Log(WebSocket Server Running On Ws://Localhost:8080);
+server.listen(8080, () => {
+console.log(websocket server running on ws://localhost:8080);
 });
-2. Client HTML + JavaScript
-Save As Index.Html (Open In Browser):
-Html
-<!DOCTYPE Html>
-<Html Lang=En>
-<Head>
-<Meta Charset=UTF-8>
-<Title>Live Voting Chart</Title>
-<Script Src=Https://Cdn.Jsdelivr.Net/Npm/Chart.Js><Script>
-<Style>
-Body {Font-Family: Arial, Sans-Serif; Text-Align: Center; }
-Button {Margin: 10Px; Padding: 10Px 20Px; Font-Size: 16Px; }
-</Style>
-</Head>
-<Body>
-<H1>Live Voting</H1>
-<Canvas Id=VoteChart Width=400 Height=200></Canvas>
-<Br>
-<Button Onclick=SendVote(OptionA)>Vote Option A</Button>
-<Button Onclick=SendVote(OptionB)>Vote Option B</Button>
-<Script>
-Let Ws;
-Let Chart;
-Connect To WebSocket Server
-Function ConnectWebSocket() {
-Ws = New WebSocket(Ws://Localhost:8080);
-Ws.Onopen = () => Console.Log(Connected To WebSocket Server);
-Ws.Onmessage = (Event) => {
-Try {
-Const Data = JSON.Parse(Event.Data);
-If (Data.Type === Update && Data.Votes) {
-UpdateChart(Data.Votes);
+2. client html + javascript
+save as index.html (open in browser):
+html
+<!doc type html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<title>live voting chart</title>
+<script src=https://cdn.jsdelivr.net/npm/chart.js><script>
+<style>
+body {font-family: arial, sans-serif; text-align: center; }
+button {margin: 10px; padding: 10px 20px; font-size: 16px; }
+</style>
+</head>
+<body>
+<h1>live voting</h1>
+<canvas id=votechart width=400 height=200></canvas>
+<br>
+<button onclick=sendvote(optiona)>vote option a</button>
+<button onclick=sendvote(optionb)>vote option b</button>
+<script>
+let ws;
+let chart;
+connect to websocket server
+function connectwebsocket() {
+ws =new websocket(ws://localhost:8080);
+ws.onopen = () =>console.log(connected to websocket server);
+ws.onmessage = (event) => {
+try {
+const data = json.parse(event.data);
+if (data.type === update && data.votes) {
+updatechart(data.votes);
 }
-} Catch (Err) {
-Console.Error(Error Parsing Message:, Err);
+} catch (err) {
+console.error(error parsing message:, err);
 }
 };
-Ws.Onclose = () => {
-Console.Log(Disconnected. Reconnecting In 3S...);
-SetTimeout(ConnectWebSocket, 3000);
+ws.onclose = () => {
+console.log(disconnected. reconnecting in 3s...);
+settimeout(connectwebsocket, 3000);
 };
 }
-Send Vote To Server
-Function SendVote(Option) {
-If (Ws && Ws.ReadyState === WebSocket.OPEN) {
-Ws.Send(JSON.Stringify({Type: Vote, Option }));
+send vote to server
+function sendvote(option) {
+if (ws && ws.readystate === websocket.open) {
+ws.send(json.stringify({type: vote, option }));
 }
 }
-Initialize Chart
-Function InitChart() {
-Const Ctx = Document.GetElementById(VoteChart).GetContext(2D);
-Chart = New Chart(Ctx, {
-Type: Bar,
-Data: {
-Labels: [Option A, Option B],
-Datasets: [{
-Label: Votes,
-Data: [0, 0],
-BackgroundColor: [#4CAF50, #2196F3]
+initialize chart
+function initchart() {
+const ctx = document.getelementbyid(votechart).getcontext(2d);
+chart =new chart(ctx, {
+type: bar,
+data: {
+labels: [option a, option b],
+datasets: [{
+label: votes,
+data: [0, 0],
+backgroundcolor: [#4caf50, #2196f3]
 }]
 },
-Options: {
-Responsive: True,
-Scales: {
-Y: {BeginAtZero: True }
+options: {
+responsive: true,
+scales: {
+y: {beginatzero: true }
 }
 }
 });
 }
-Update Chart Data
-Function UpdateChart(Votes) {
-Chart.Data.Datasets[0].Data = [Votes.OptionA, Votes.OptionB];
-Chart.Update();
+update chart data
+function updatechart(votes) {
+chart.data.datasets[0].data = [votes.optiona, votes.optionb];
+chart.update();
 }
-Start
-InitChart();
-ConnectWebSocket();
-<Script>
-</Body>
-</Html>
-How To Run
-Install Dependencies:
-Bash
-Npm Init-Y
-Npm Install Ws
-Run The WebSocket Server:
-Bash
-Node Server.Js
-Open Index.Html
-<Subheading.Html>
-Covid Strings Single-File Self-Hosting Version For A Fan Voting Pull Request 
-How To Create A Single-File Self-Hosting Version For A Covid Strings Fan Voting Pull Request 
-<!DOCTYPE Html>
-<Html Lang=En>
-<Head>
-<Meta Charset=UTF-8>
-<Title>Fan Voting Poll</Title>
-<Style>
-Body {
-Font-Family: Arial, Sans-Serif;
-Background: #F4f4f4;
-Padding: 20Px;
-Max-Width: 500Px;
-Margin: Auto;
+start
+initchart();
+connectwebsocket();
+<script>
+</body>
+</html>
+how to run
+install dependencies:
+bash
+npm init-y
+npm install ws
+run the websocket server:
+bash
+node server.js
+open index.html
+<subheading.html>
+covid strings single-file self-hosting version for a fan voting pull request 
+how to create a single-file self-hosting version for a covid strings fan voting pull request 
+<!doc type html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<title>fan voting poll</title>
+<style>
+body {
+font-family: arial, sans-serif;
+background: #f4f4f4;
+padding: 20px;
+max-width: 500px;
+margin: auto;
 }
-H1 {
-Text-Align: Center;
+h1 {
+text-align: center;
 }
-.Option {
-Background: #Fff;
-Padding: 15Px;
-Margin: 10Px 0;
-Border-Radius: 8Px;
-Cursor: Pointer;
-Border: 2Px Solid Transparent;
-Transition: 0.2S;
+.option {
+background: #fff;
+padding: 15px;
+margin: 10px 0;
+border-radius: 8px;
+cursor: pointer;
+border: 2px solid transparent;
+transition: 0.2s;
 }
-.Option:Hover {
-Border-Color: #007BFF;
+.option:hover {
+border-color: #007bff;
 }
-.Results {
-Margin-Top: 20Px;
-Background: #Fff;
-Padding: 15Px;
-Border-Radius: 8Px;
+.results {
+margin-top: 20px;
+background: #fff;
+padding: 15px;
+border-radius: 8px;
 }
-.Bar {
-Height: 20Px;
-Background: #007BFF;
-Border-Radius: 5Px;
+.bar {
+height: 20px;
+background: #007bff;
+border-radius: 5px;
 }
-</Style>
-</Head>
-<Body>
-<H1>Fan Voting Poll</H1>
-<Div Id=Poll></Div>
-<Div Class=Results Id=Results Style=Display:None;></Div>
-<Script>
-(Function() {
-Poll Configuration
-Const PollQuestion = Who Is Your Favorite Character?;
-Const PollOptions = [Alice, Bob, Charlie, Diana];
-Const StorageKey = FanVotingPoll;
-Load Votes From LocalStorage Or Initialize
-Let Votes = JSON.Parse(LocalStorage.GetItem(StorageKey)) || Array(PollOptions.Length).Fill(0);
-Let HasVoted = LocalStorage.GetItem(StorageKey + _ Voted) === True;
-Const PollContainer = Document.GetElementById(Poll);
-Const ResultsContainer = Document.GetElementById(Results);
-Render Poll
-Function RenderPoll() {
-PollContainer.InnerHTML = <H2>${PollQuestion}</H2>;
-PollOptions.ForEach((Option, Index) => {
-Const Div = Document.CreateElement(Div);
-Div.ClassName = Option;
-Div.TextContent = Option;
-Div.Onclick = () => CastVote(Index);
-PollContainer.AppendChild(Div);
+</style>
+</head>
+<body>
+<h1>fan voting poll</h1>
+<div id=poll></div>
+<div class=results id=results style=display:none;></div>
+<script>
+(function() {
+poll configuration
+const pollquestion =who is your favorite character?;
+const polloptions = [alice, bob, charlie, diana];
+const storagekey = fanvotingpoll;
+load votes from localstorage or initialize
+let votes = json.parse(localstorage.getitem(storagekey)) || array(polloptions.length).fill(0);
+let hasvoted =localstorage.getitem(storagekey + _ voted) ===true;
+const pollcontainer =document.getelementbyid(poll);
+const resultscontainer=document.getelementbyid(results);
+render poll
+function renderpoll() {
+pollcontainer.innerhtml=<h2>${pollquestion}</h2>;
+polloptions.foreach((option, index) => {
+const div =document.createelement(div);
+div.classname =option;
+div.textcontent =option;
+div.onclick = () =>castvote(index);
+pollcontainer.appendchild(div);
 });
-If (HasVoted) {
-ShowResults();
+if (hasvoted) {
+showresults();
 }
 }
-Cast A Vote
-Function CastVote(Index) {
-If (HasVoted) {
-Alert(You Have Already Voted!);
-Return;
+cast a vote
+function castvote(index) {
+if (hasvoted) {
+alert(you have already voted!);
+return;
 }
-Votes[Index]++;
-LocalStorage.SetItem(StorageKey, JSON.Stringify(Votes));
-LocalStorage.SetItem(StorageKey + _ Voted, True);
-HasVoted = True;
-ShowResults();
+votes[index]++;
+localstorage.setitem(storagekey, json.stringify(votes));
+localstorage.setitem(storagekey + _ voted, true);
+hasvoted = true;
+showresults();
 }
-Show Results
-Function ShowResults() {
-Const TotalVotes = Votes.Reduce((A, B) => A + B, 0);
-ResultsContainer.InnerHTML = <H3>Results:</H3>;
-PollOptions.ForEach((Option, Index) => {
-Const Percent = TotalVotes ? ((Votes[Index] / TotalVotes) * 100).ToFixed(1) : 0;
-ResultsContainer.InnerHTML += 
-<P>${Option}: ${Votes[Index]} Votes (${Percent}%)</P>
-<Div Class=Bar Style=Width:${Percent}%;></Div>
+show results
+function showresults() {
+const totalvotes =votes.reduce((a, b) => a + b, 0);
+resultscontainer.inner html=<h3>results:</h3>;
+polloptions.foreach((option, index) => {
+const percent =totalvotes ? ((votes[index] / totalvotes) * 100).tofixed(1) : 0;
+resultscontainer.innerhtml += 
+<p>${option}: ${votes[index]} votes (${percent}%)</p>
+<div class=bar style=width:${percent}%;></div>
 ;
 });
-ResultsContainer.Style.Display = Block;
+resultscontainer.style.display =block;
 }
-RenderPoll();
+renderpoll();
 })();
-<Script>
-</Body>
-</Html>
-<Subheading.Html>
-Covid Strings Supporting Multiple Polls In One File Or Exports/Imports Votes For Sharing Results Across Devices
-How To Support Multiple Polls In One File Or Exports/Imports Votes For Sharing Covid Strings Fan Voting Results Across Devices
-Polls.Js
-Const Fs = Require(Fs);
-Const Path = Require(Path);
-Path To Store Votes Persistently
-Const DATA_FILE = Path.Join(__ Dirname, PollData.Json);
-Load Existing Data Or Initialize
-Function LoadData() {
-Try {
-If (Fs.ExistsSync(DATA_FILE)) {
-Return JSON.Parse(Fs.ReadFileSync(DATA_FILE, Utf8));
+<script>
+</body>
+</html>
+<subheading.html>
+covid strings supporting multiple polls in one file or exports/imports votes for sharing results across devices
+how to support multiple polls in one file or exports/imports votes for sharing covid strings fan voting results across devices
+polls.js
+const fs = require(fs);
+const path = require(path);
+path to store votes persistently
+const data_file = path.join(__ dirname, polldata.json);
+load existing data or initialize
+function loaddata() {
+try {
+if (fs.existssync(data_file)) {
+return json.parse(fs.readfilesync(data_file, utf8));
 }
-} Catch (Err) {
-Console.Error(Error Loading Data:, Err);
+} catch (err) {
+console.error(error loading data:,err);
 }
-Return {}; // No data yet
+return {}; // No data yet
 }
-Save Data To File
-Function SaveData(Data) {
-Try {
-Fs.WriteFileSync(DATA_FILE, JSON.Stringify(Data, Null, 2), Utf8);
-} Catch (Err) {
-Console.Error(Error Saving Data:, Err);
+save data to file
+function savedata(data) {
+try {
+fs.writefilesync(data_file, json.stringify(data, null, 2), utf8);
+}catch (err) {
+console.error(error saving data:,err);
 }
 }
-Let Polls = LoadData();
+let polls=loaddata();
 /
- * Create A New Poll
- * @Param {String} PollId - Unique Poll Identifier
- * @Param {String} Question - Poll Question
- * @Param {String[]} Options - Array Of Answer Options
+ * create a new poll
+ * @param {string} pollid - unique poll identifier
+ * @param {string} question - poll question
+ * @param {string[]} options - array of answer options
  */
-Function CreatePoll(PollId, Question, Options) {
-If (Polls[PollId]) {
-Throw New Error(Poll With ID ${PollId} Already Exists.);
+function createPoll(PollId, Question, Options) {
+if (polls[pollid]) {
+throw new error(poll with ID ${PollId} Already Exists.);
 }
-Polls[PollId] = {
-Question,
-Options,
-Votes: Array(Options.Length).Fill(0)
+polls[pollid] = {
+question,
+options,
+votes: array(options.length).fill(0)
 };
-SaveData(Polls);
+savedata(polls);
 }
 /
- * Vote On A Poll
- * @Param {String} PollId - Poll ID
- * @Param {Number} OptionIndex - Index Of The Chosen Option
+ * vote on a poll
+ * @param {string} pollid - poll id
+ * @param {number} optionindex - index of the chosen option
  */
-Function Vote(PollId, OptionIndex) {
-If (!Polls[PollId]) Throw New Error(Poll Not Found.);
-If (OptionIndex < 0 || OptionIndex >= Polls[PollId].Options.Length) {
-Throw New Error(Invalid Option Index.);
+function vote(pollid, optionindex) {
+if (!polls[pollid]) throw new error(poll not found.);
+if (optionindex < 0 || optionindex >= polls[pollid].options.length) {
+throw new error(invalid option index.);
 }
-Polls[PollId].Votes[OptionIndex]++;
-SaveData(Polls);
+polls[pollid].votes[optionindex]++;
+savedata(polls);
 }
 /
- * Get Poll Results
- * @Param {String} PollId
- * @Returns {Object} Poll Data
+ * get poll results
+ * @param {string} pollid
+ * @returns {object} poll data
  */
-Function GetResults(PollId) {
-If (!Polls[PollId]) Throw New Error(Poll Not Found.);
-Return Polls[PollId];
+function getresults(pollid) {
+if (!polls[pollid]) throw new error(poll not found.);
+return polls[pollid];
 }
 /
- * Export All Polls To JSON String
+ * export all polls to json string
  */
-Function ExportPolls() {
-Return JSON.Stringify(Polls, Null, 2);
+function exportpolls() {
+return json.stringify(polls, null, 2);
 }
 /
- * Import Polls From JSON String
+ * import polls from json string
  */
-Function ImportPolls(JsonString) {
-Try {
-Const Imported = JSON.Parse(JsonString);
-If (Typeof Imported !== Object) Throw New Error(Invalid Data Format.);
-Polls = Imported;
-SaveData(Polls);
-} Catch (Err) {
-Throw New Error(Failed To Import Polls:  + Err.Message);
+function importpolls(jsonstring) {
+try {
+const imported = json.parse(jsonstring);
+if (typeof imported !==object) throw new error(invalid data format.);
+polls = imported;
+savedata(polls);
+} catch (err) {
+throw new error(failed to import polls: +err.message);
 }
 }
-Module.Exports = {
-CreatePoll,
-Vote,
-GetResults,
-ExportPolls,
-ImportPolls
+module.exports = {
+createpoll,
+vote,
+getresults,
+exportpolls,
+importpolls
 };
-App.Js — Example Usage
-App.Js
-Const Polls = Require(./Polls);
-Try {
-Create Multiple Polls
-Polls.CreatePoll(Poll1, Whats Your Favorite Color?, [Red, Blue, Green]);
-Polls.CreatePoll(Poll2, Best Programming Language?, [JavaScript, Python, C++]);
-Cast Votes
-Polls.Vote(Poll1, 1); // Vote for Blue
-Polls.Vote(Poll2, 0); // Vote for JavaScript
-Show Results
-Console.Log(Poll 1 Results:, Polls.GetResults(Poll1));
-Console.Log(Poll 2 Results:, Polls.GetResults(Poll2));
-Export Polls To Share
-Const ExportedData = Polls.ExportPolls();
-Console.Log(\NExported Poll Data:\N, ExportedData);
-Import Polls (Simulate Receiving From Another Device)
-Polls.ImportPolls(ExportedData);
-Console.Log(\NImported Polls:, Polls.GetResults(Poll1));
-} Catch (Err) {
-Console.Error(Error:, Err.Message);
+app.js — example usage
+app.js
+const polls = require(./polls);
+try {
+create multiple polls
+polls.createpoll(poll1, whats your favorite color?, [red, blue, green]);
+polls.createpoll(poll2, best programming language?, [javascript, python, c++]);
+cast votes
+polls.vote(poll1, 1); // vote for blue
+polls.vote(poll2, 0); // vote for javascript
+show results
+console.log(poll 1 results:, polls.getresults(poll1));
+console.log(poll 2 results:, polls.getresults(poll2));
+export polls to share
+const exporteddata = polls.exportpolls();
+console.log(\nexported poll data:\n, exporteddata);
+import polls (simulate eeceiving from another device)
+polls.importpolls(exporteddata);
+console.log(\nimported polls:, polls.getresults(poll1));
+} catch (err) {
+console.error(error:, err.message);
 }
-<Subheading.Html>
-Image Gif Request
-A Pull Request For The Image Used In Each Version Of My Playncavs File Covid Strings 1 
-Gif The Image I Use In Playcanvas For Each Version (Colors Of Rainbow In Strings For 1)
+<subheading.html>
+image gif request
+a pull request for the image used in each version of my playcanvas file covid strings 1 
+gif the image i use in playcanvas for each version (colors of rainbow in strings for 1)
 /
- * Create A GitHub Pull Request With A GIF In The Description
- * Requirements:
- *   - Node.Js 18+
- *   - Install Dependencies: Npm Install Node-Fetch
- *   - Set Environment Variables:
- *       GITHUB_TOKEN   -> GitHub Personal Access Token (Repo Scope)
- *       GITHUB_OWNER   -> Repository Owner (Username Or Org)
- *       GITHUB_REPO    -> Repository Name
- *       GIPHY_API_KEY  -> Giphy API Key (Public Beta Key Works For Testing)
+ * create a github pull request with a gif in the description
+ * requirements:
+ *   - node.js 18+
+ *   - install dependencies: npm install node-fetch
+ *   - set environment variables:
+ *       github_token   -> github personal access token (repo scope)
+ *       github_owner   -> repository owner (username or org)
+ *       github_repo    -> repository name
+ *       giphy_api_key  -> giphy api key (public beta key works for testing)
  */
-Import Fetch From Node-Fetch;
-Async Function GetGifUrl(SearchTerm) {
-Const ApiKey = Process.Env.GIPHY_API_KEY;
-Const Url = Https://Api.Giphy.Com/V1/Gifs/Search?Api_key=${ApiKey}&Q=${EncodeURIComponent(SearchTerm)}&Limit=1&Rating=G;
-Const Res = Await Fetch(Url);
-If (!Res.Ok) Throw New Error(Giphy API Error: ${Res.StatusText});
-Const Data = Await Res.Json();
-If (!Data.Data.Length) Throw New Error(No GIF Found For Search Term);
-Return Data.Data[0].Images.Original.Url;
+import fetch from node-fetch;
+async function getgifurl(searchterm) {
+const apikey = process.env.giphy_api_key;
+const url = https://api.giphy.com/v1/gifs/search?api_key=${apikey}&q=${encodeuricomponent(searchterm)}&limit=1&rating=g;
+const res = await fetch(url);
+if (!res.ok) throw new error(giphy api error: ${res.statustext});
+const data = await res.json();
+if (!data.data.length) throw new error(no gif found for search term);
+return data.data[0].images.original.url;
 }
-Async Function CreatePullRequest(BranchName, BaseBranch, Title, GifUrl) {
-Const Token = Process.Env.GITHUB_TOKEN;
-Const Owner = Process.Env.GITHUB_OWNER;
-Const Repo = Process.Env.GITHUB_REPO;
-Const ApiUrl = Https://Api.Github.Com/Repos/${Owner}/${Repo}/Pulls;
-Const Body = {
-Title,
-Head: BranchName,
-Base: BaseBranch,
-Body: Here’s A Celebratory GIF:\N\N![Celebration](${GifUrl})
+async function createpullrequest(branchname, basebranch, title, gifurl) {
+const token = process.env.github_token;
+const owner = process.env.github_owner;
+const repo = process.env.github_repo;
+const apiurl =https://api.github.com/repos/${owner}/${repo}/pulls;
+const body = {
+title,
+head: branchname,
+base: basebranch,
+body: here’s a celebratory gif:\n\n![celebration](${gifurl})
 };
-Const Res = Await Fetch(ApiUrl, {
-Method: POST,
-Headers: {
-Authorization: Token ${Token},
-Accept: Application/Vnd.Github+Json,
-Content-Type: Application/Json
+const res =await fetch(apiurl, {
+method: post,
+headers: {
+authorization: token ${token},
+accept: application/vnd.github+json,
+content-type: application/json
 },
-Body: JSON.Stringify(Body)
+body: json.stringify(body)
 });
-If (!Res.Ok) {
-Const ErrText = Await Res.Text();
-Throw New Error(GitHub API Error: ${Res.Status} - ${ErrText});
+if (!res.ok) {
+const errtext = await res.text();
+throw new error(github api error: ${res.status} - ${errtext});
 }
-Const PrData = Await Res.Json();
-Console.Log(✅ Pull Request Created: ${PrData.Html_url});
+const prdata = await res.json();
+console.log(✅ pull request created: ${prdata.html_url});
 }
-(Async () => {
-Try {
-Step 1: Get A GIF URL From Giphy
-Const GifUrl = Await GetGifUrl(Celebration);
-/Step 2: Create A Pull Request With The GIF In The Body
-Await CreatePullRequest(
-Feature-Branch, // Your branch name
-Main,           // Base branch
-Add New Feature 🎉,
-GifUrl
+(async () => {
+try {
+step 1: get a gif url from giphy
+const gifurl = await getgifurl(celebration);
+/step 2: create a pull request with the gif in the body
+await createpullrequest(
+feature-branch, // your branch name
+main,           // base branch
+add new feature 🎉,
+gifurl
 );
-} Catch (Err) {
-Console.Error(❌ Error:, Err.Message);
+} catch (err) {
+console.error(❌ error:, err.message);
 }
 })();
-Setup Instructions
-Install Dependencies:
-Bash
-Npm Install Node-Fetch
-Set Environment Variables:
-Bash
-Export GITHUB_TOKEN=Your_github_pat
-Export GITHUB_OWNER=Your_username_or_org
-Export GITHUB_REPO=Your_repo_name
-Export GIPHY_API_KEY=Your_giphy_api_key
-(You Can Use Giphy’s Public Beta Key Dc6zaTOxFJmzC For Testing.)
-Run The Script:
-Bash
-Node Create-Pr-With-Gif.Js
-<Subheading.Html>
-GitHub Action Workflow Version So The GIF PR Is Created Automatically When You Push A Branch
-How To Create A GitHub Action Workflow Version So The GIF PR Is Created Automatically When You Push A Branch
-Name: Auto Create PR On Push
-On:
-Push:
-Branches-Ignore:
--Main  # Avoid Triggering When Pushing To Main
-Jobs:
-Create-Pr:
-Runs-On: Ubuntu-Latest
-Steps:
-# Step 1: Checkout The Repository
-- Name: Checkout Repository
-Uses: Actions/Checkout@V4
-# Step 2: Set Up Node.Js (For JS Projects)
-- Name: Set Up Node.Js
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 18 # Change If Needed
-# Step 3: Install Dependencies (Optional)
-- Name: Install Dependencies
-Run: Npm Ci
-# Step 4: Run Build/Tests (Optional But Recommended)
-- Name: Run Tests
-Run: Npm Test || Echo Tests Failed, But Continuing To PR Creation
-# Step 5: Create Pull Request
-- Name: Create Pull Request
-Uses: Peter-Evans/Create-Pull-Request@V6
-With:
-Token: ${{Secrets.GITHUB_TOKEN }}
-Commit-Message: Auto PR From Branch ${{Github.Ref_name }}
-Title: Auto PR: ${{Github.Ref_name }} → Main
-Body: |
-This PR Was Automatically Created From Branch ${{Github.Ref_name }}.
-Please Review The Changes.
-Base: Main
-Branch: ${{Github.Ref_name }}
-Draft: False
-Branches-Ignore:
-- Main
-Branches:
-- Feature/
-<Subheading.Html>
-Covid Strings Extending This Workflow So That It Adds A GIF Automatically To The PR Description When It’s Created
-How To Extend This Workflow So That It Adds A GIF Automatically To The PR Description When It’s Created
-# .Github/Workflows/Add-Gif-To-Pr.Yml
-Name: Add GIF To PR
-On:
-Pull_request:
-Types: [Opened] # Trigger Only When PR Is Created
-Jobs:
-Add-Gif:
-Runs-On: Ubuntu-Latest
-Steps:
-- Name: Checkout Repository
-Uses: Actions/Checkout@V4
-- Name: Run GIF Adder Script
-Uses: Actions/Github-Script@v7
-With:
-Github-Token: ${{Secrets.GITHUB_TOKEN }}
-Script: |
-Const Fetch = Require(Node-Fetch);
-Giphy API Key Stored In GitHub Secrets
-Const GIPHY_API_KEY = Process.Env.GIPHY_API_KEY;
-If (!GIPHY_API_KEY) {
-Throw New Error(Missing GIPHY_API_KEY In Repository Secrets);
+setup instructions
+install dependencies:
+bash
+npm Install Node-Fetch
+set Environment Variables:
+bash
+export github_token=your_github_pat
+export github_owner=your_username_or_org
+export github_repo=your_repo_name
+export giphy_api_key=your_giphy_api_key
+(you can use giphy’s public beta key dc6zatoxfjmzc for testing.)
+run the script:
+bash
+node create-pr-with-gif.js
+<subheading.html>
+github action workflow version so the gif pr is created automatically when you push a branch
+how to create a github action workflow version so the gif pr is created automatically when you push a branch
+name: auto create pr on push
+on:
+push:
+branches-ignore:
+-main  # avoid triggering when pushing to main
+jobs:
+create-pr:
+runs-on: ubuntu-latest
+steps:
+# step 1: checkout the repository
+- name: checkout repository
+uses: actions/checkout@v4
+# step 2: set up node.js (for js projects)
+- name: set up node.js
+uses: actions/setup-node@V4
+with:
+node-version: 18 # change if needed
+# step 3: install dependencies (optional)
+- name: install dependencies
+run: npm ci
+# step 4: run build/tests (optional but recommended)
+- name: run tests
+run: npm test || echo tests failed, but continuing to pr creation
+# step 5: create pull request
+- name: create pull request
+uses: peter-evans/create-pull-request@v6
+with:
+token: ${{secrets.github_token}}
+commit-message: auto pr from branch ${{github.ref_name }}
+title: auto pr: ${{github.ref_name }} → main
+body: |
+this pr was automatically created from branch ${{github.ref_name }}.
+please review the changes.
+base: main
+branch: ${{github.ref_name }}
+draft: false
+branches-ignore:
+-main
+branches:
+-feature/
+<subheading.html>
+covid strings extending this workflow so that it adds a gif automatically to the pr description when it’s created
+how to extend this workflow so that it adds a gif automatically to the pr description when it’s created
+# .github/workflows/add-gif-to-pr.yml
+name: add gif to pr
+on:
+pull_request:
+types: [opened] # trigger only when pr is created
+jobs:
+add-gif:
+runs-on: ubuntu-latest
+steps:
+-name: checkout repository
+uses: actions/checkout@v4
+-name: run gif adder script
+uses: actions/github-script@v7
+with:
+github-token: ${{secrets.github_token}}
+script: |
+const fetch =require(node-fetch);
+giphy api key stored in github secrets
+const giphy_api_key = Process.Env.GIPHY_API_KEY;
+if (!giphy_api_key) {
+throw new error(missing giphy_api_key in repository secrets);
 }
-Fetch A Random GIF From Giphy
-Const Keyword = Celebration; // Change keyword as needed
-Const GiphyUrl = Https://Api.Giphy.Com/V1/Gifs/Random?Api_key=${GIPHY_API_KEY}&Tag=${EncodeURIComponent(Keyword)}&Rating=Pg;
-Let GifUrl;
-Try {
-Const Res = Await Fetch(GiphyUrl);
-If (!Res.Ok) Throw New Error(Giphy API Error: ${Res.StatusText});
-Const Data = Await Res.Json();
-GifUrl = Data.Data?.Images?.Downsized_Medium?.Url;
-If (!GifUrl) Throw New Error(No GIF Found For Keyword);
-} Catch (Err) {
-Core.SetFailed(Failed To Fetch GIF: ${Err.Message});
-Return;
+fetch a random gif from giphy
+const keyword = celebration; // change keyword as needed
+const giphyurl = https://api.giphy.com/v1/gifs/random?api_key=${giphy_api_key}&tag=${encodeuricomponent(keyword)}&rating=pg;
+let gifurl;
+try {
+const res = await fetch(giphyurl);
+if (!res.ok) throw new error(giphy api error: ${res.statustext});
+const data = await res.json();
+gifurl = data.data?.images?.downsized_medium?.url;
+if (!gifurl) throw new error(no gif found for keyword);
+} catch (err) {
+core.setfailed(failed to fetch gif: ${err.message});
+return;
 }
-Get Current PR Body
-Const {Data: Pr } = Await Github.Rest.Pulls.Get({
-Owner: Context.Repo.Owner,
-Repo: Context.Repo.Repo,
-Pull_number: Context.Payload.Pull_request.Number
+get current pr body
+const {data: pr} = await github.rest.pulls.get({
+owner: context.repo.owner,
+repo: context.repo.repo,
+pull_number: context.payload.pull_request.number
 });
-Append GIF Markdown To PR Body
-Const UpdatedBody = ${Pr.Body || ""}\N\N![Fun GIF](${GifUrl});
-Update PR Description
-Await Github.Rest.Pulls.Update({
-Owner: Context.Repo.Owner,
-Repo: Context.Repo.Repo,
-Pull_number: Context.Payload.Pull_request.Number,
-Body: UpdatedBody
+append gif markdown to pr body
+const updatedbody = ${pr.body || ""}\n\n![fun gif](${gifurl});
+update pr escription
+await github.rest.pulls.update({
+owner: context.Repo.Owner,
+repo: context.Repo.Repo,
+pull_number: context.Payload.Pull_request.Number,
+body: updatedbody
 });
-Console.Log(GIF Added To PR: ${GifUrl});
-Env:
-GIPHY_API_KEY: ${{Secrets.GIPHY_API_KEY }}
-<Subheading.Html>
-Covid Strings Node.Js Standalone Executable Using The Official SEA Feature
-How To Make Node.Js Standalone Executable For Covid Strings Using The Official SEA Feature 
-#!/Usr/Bin/Env Node
-App.Js — Your Node.Js Application Entry Point
-Robust Input Handling
-Try {
-Const Name = Process.Argv[2] || World;
-Console.Log(Hello, ${Name}! This Is A Standalone Node.Js Executable.);
-} Catch (Err) {
-Console.Error(Unexpected Error:, Err);
-Process.Exit(1);
+console.log(gif added to pr: ${gifurl});
+env:
+giphy_api_key: ${{secrets.giphy_api_key }}
+<subheading.html>
+covid strings node.js standalone executable using the official sea feature
+how to make node.js standalone executable for covid strings using the official sea feature 
+#!/usr/bin/env node
+app.js — your node.js application entry point
+robust input handling
+try {
+const name = process.argv[2] || world;
+console.log(hello, ${name}! this is a standalone node.js executable.);
+} catch (err) {
+console.error(unexpected error:, err);
+process.exit(1);
 }
-2. Create SEA Config (Sea-Config.Json)
-Json
+2. create sea config (sea-config.json)
+json
 {
-Main: App.Js,
-Output: App.Blob,
-DisableExperimentalSEAWarning: True
+main: app.js,
+output: app.blob,
+disableexperimentalseawarning: true
 }
-Main → Entry File
-Output → Blob File That Will Be Embedded Into Node Binary
-3. Generate The SEA Blob
-Run:
-Bash
-Node --Experimental-Sea-Config Sea-Config.Json
-This Creates App.Blob.
-4. Copy Node Binary & Inject Blob
+main → entry file
+output → blob file that will be embedded into node binary
+3. generate the sea blob
+run:
+bash
+node --experimental-sea-config sea-config.json
+this creates app.blob.
+4. copy node binary & inject blob
 Bash
 # Copy The Node Binary (So You Dont Overwrite Your System Node)
 Cp $(Command -V Node) App
