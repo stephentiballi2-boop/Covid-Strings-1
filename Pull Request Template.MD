@@ -4091,9 +4091,9 @@ go to github → settings → developer settings → personal access tokens
 generate a token with repo scope.
 set environment variables
 bash
-export github_TOKEN=Your_token_here
-export repo_OWNER=Your_username_or_org
-export repo_NAME=Your_repo
+export github_token=your_token_here
+export repo_owner=your_username_or_org
+export repo_name=your_repo
 run the script
 bash
 node createnewsletterpr.js
@@ -4150,7 +4150,7 @@ how to create a version that updates specific sections in an html newsletter by 
  */
 detect environment
 const isnode = typeof window === undefined;
-async function updateNewsletterhtml(htmlstring, updates) {
+async function updatenewsletterhtml(htmlstring, updates) {
 let document;
 if (isnode) {
 node.js: use jsdom
@@ -4241,7 +4241,7 @@ atomically replace the original file
 fs.renamesync(temppath, filepath);
 console.log(✅ newsletter updated successfully: ${filepath});
 } catch (err) {
-console.error(❌ Update Failed: ${Err.Message});
+console.error(❌ update failed: ${err.message});
 }
 }
 example Usage:
@@ -4342,7 +4342,7 @@ how to automatically create a branch from a commit reference and then opens the 
  * auto-create a branch from a commit and open a pr on github
  * 
  * requirements:
- *  npm install simple-git @Octokit/rest
+ *  npm install simple-git @octokit/rest
  *  set environment variables:
  *     github_token   - github personal access token (with repo permissions)
  *     github_owner   - repository owner (username or org)
@@ -4500,7 +4500,7 @@ else {
 console.log(ℹ️ branch does not match versioned or main/master patterns. skipping.);
 }
 }catch (error) {
-console.error(❌ Error Determining Branch Type:, Error.Message);
+console.error(❌ error determining branch type:, error.message);
 process.exit(1);
 }
 <subheading.html>
@@ -4833,10 +4833,10 @@ updatechart();
 covid strings websocket-enabled version so the chart updates instantly when someone votes from another device
 how to create a websocket-enabled version so the chart updates instantly when someone votes from another device for covid strings 
 server.js
-const websocket = require(Ws);
+const websocket = require(ws);
 const http =require(http);
 store votes in memory (could be replaced with db)
-let Votes = {optionA: 0, optionB: 0 };
+let Votes = {optionA: 0, optionb: 0 };
 create http server (optional, for hosting static files)
 const server =http.createserver();
 const wss =new websocket.server({server });
@@ -5099,9 +5099,9 @@ let polls=loaddata();
  * @param {string} question - poll question
  * @param {string[]} options - array of answer options
  */
-function createPoll(PollId, Question, Options) {
+function createpoll(pollid, question, options) {
 if (polls[pollid]) {
-throw new error(poll with ID ${PollId} Already Exists.);
+throw new error(poll with id ${pollid} already Exists.);
 }
 polls[pollid] = {
 question,
@@ -5389,282 +5389,282 @@ bash
 node --experimental-sea-config sea-config.json
 this creates app.blob.
 4. copy node binary & inject blob
-Bash
-# Copy The Node Binary (So You Dont Overwrite Your System Node)
-Cp $(Command -V Node) App
-# Inject The Blob Into The Copied Binary
-Npx Postject App NODE_SEA_BLOB App.Blob \
---Sentinel-Fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
-Postject Is An Official Node.Js Helper For Embedding The Blob.
-Install It If Missing:
-Bash
-Npm Install -G Postject
-5. Make Executable & Run
-Bash
-Chmod +X App
-./App Alice
-Output:
-Hello, Alice! This Is A Standalone Node.Js Executable.
-<Subheading.Html>
-Covid Strings Creating A One-Command Build Script So You Can Compile And Package Your Node.Js App Into A Standalone Binary Automatically
-How To Create  A One-Command Build Script So You Can Compile And Package Your Node.Js App Into A Standalone Binary Automatically
-Npm Install --Save-Dev Pkg
-2. Update Package.Json
-Add A Bin Entry (Entry Point) And A Build Script:
-Json
+bash
+# copy the node binary (so you dont overwrite your system node)
+cp $(command -v node) app
+# inject the blob into the copied binary
+npx postject app node_sea_blob app.blob \
+--sentinel-fuse node_sea_fuse_fce680ab2cc467b6e072b8b5df1996b2
+postject is an official node.js helper for embedding the blob.
+install it if missing:
+bash
+npm install -g postject
+5. make executable & run
+bash
+chmod +x app
+./app alice
+output:
+hello, alice! this is a standalone node.js executable.
+<subheading.html>
+covid strings creating a one-command build script so you can compile and package your node.js app into a standalone binary automatically
+how to create a one-command build script so you can compile and package your node.js app into a standalone binary automatically
+npm install --save-dev pkg
+2. update package.json
+add a bin entry (entry point) and a build script:
+json
 {
-Name: My-Node-App,
-Version: 1.0.0,
-Bin: Index.Js,
-Scripts: {
-Build: Node Build.Js
+name: my-node-app,
+version: 1.0.0,
+bin: index.js,
+scripts: {
+build: node build.js
 },
-Pkg: {
-Targets: [
-Node18-Linux-X64,
-Node18-Macos-X64,
-Node18-Win-X64
+pkg: {
+targets: [
+node18-linux-x64,
+node18-macos-x64,
+node18-win-x64
 ],
-OutputPath: Dist
+outputpath: dist
 },
-DevDependencies: {
-Pkg: ^5.8.1
+devdependencies: {
+pkg: ^5.8.1
 }
 }
-Note: Adjust Node18 To Your Desired Node.Js Version.
-3. Create Build.Js (One-Command Build Script)
-#!/Usr/Bin/Env Node
+note: adjust node18 to your desired node.js version.
+3. create build.js (one-command build script)
+#!/usr/bin/env node
 /
- * Build.Js
- * One-Command Build Script To Package Node.Js App Into Standalone Binaries.
+ * build.js
+ * one-command build script to package node.js app into standalone binaries.
  */
-Const {ExecSync } = Require(Child_process);
-Const Fs = Require(Fs);
-Const Path = Require(Path);
-Try {
-Const DistDir = Path.Join(__ Dirname, Dist);
-Clean Old Builds
-If (Fs.ExistsSync(DistDir)) {
-Fs.RmSync(DistDir, {Recursive: True, Force: True });
-Console.Log(🧹 Cleaned Old Build Files.);
+const {execsync } = require(child_process);
+const fs = require(fs);
+const path = require(path);
+try {
+const distdir = path.join(__ dirname, dist);
+clean old builds
+if (fs.existsync(distdir)) {
+fs.rmsync(distdir, {recursive: true, force: true });
+console.log(🧹 cleaned old build files.);
 }
-Run Pkg To Build Executables
-Console.Log(📦 Building Standalone Binaries...);
-ExecSync(Npx Pkg ., {Stdio: Inherit});
-Console.Log(✅ Build Complete! Files Are In ./Dist);
-} Catch (Err) {
-Console.Error(❌ Build Failed:, Err.Message);
-Process.Exit(1);
+run pkg to build executables
+console.log(📦 building standalone binaries...);
+execsync(npx pkg ., {stdio: inherit});
+console.log(✅ build complete! files are in ./dist);
+}catch (err) {
+console.error(❌ build failed:, err.message);
+process.exit(1);
 }
-4. Run The Build
-Bash
-Npm Run Build
-5. Example Output
-Dist/
- ├── My-Node-App-Linux
- ├── My-Node-App-Macos
- └── My-Node-App-Win.Exe
-<Subheading.Html>
-Covid Strings Attaching The Gif Directly To The Pull Request 
-How To Attach The Gif Used As An Image In Covid Strings Directly To The Pull Request 
+4. run the build
+bash
+npm run build
+5. example output
+dist/
+ ├── my-node-app-linux
+ ├── my-node-app-macos
+ └── my-node-app-win.exe
+<subheading.html>
+covid strings attaching the gif directly to the pull request 
+how to attach the gif used as an image in covid strings directly to the pull request 
 /
- * Attach A GIF To A GitHub Pull Request As A Comment
- * Requirements:
- *  - Node.Js 18+
- *  - Npm Install @Octokit/Rest
- *  - A GitHub Personal Access Token (With Repo Permissions)
+ * attach a gif to a github pull request as a comment
+ * requirements:
+ *  - node.js 18+
+ *  - npm install @octokit/rest
+ *  - a github personal access token (with repo permissions)
  */
-Import { Octokit } From @Octokit/Rest;
-Import Fs From Fs;
-Import Path From Path;
- ====== CONFIGURATION ======
-Const GITHUB_TOKEN = Process.Env.GITHUB_TOKEN; // Store token in env variable
-Const OWNER = Your-Username-Or-Org;          // e.g., "octocat"
-Const REPO = Your-Repo;                      // e.g., "Hello-World"
-Const PULL_NUMBER = 1;                         // PR number
-Const GIF_PATH = ./Funny.Gif;                // Path to your GIF file
+import {octokit} from @octokit/rest;
+import fs from fs;
+import path from path;
+ ====== configuration ======
+const github_token =process.env.github_token; // store token in env variable
+const owner= your-username-or-org;          // e.g., "octocat"
+const repo= your-repo;                      // e.g., "hello-world"
+const pull_number = 1;                         // pr number
+const gif_path=./funny.gif;                // path to your gif file
 ===========================
-Validate Environment
-If (!GITHUB_TOKEN) {
-Console.Error(❌ Please Set GITHUB_TOKEN In Your Environment.);
-Process.Exit(1);
+validate environment
+if (!github_token) {
+console.error(❌ please set github_token in your environment.);
+process.exit(1);
 }
-Initialize GitHub API Client
-Const Octokit = New Octokit({Auth: GITHUB_TOKEN });
-Async Function AttachGifToPR() {
-Try {
-Step 1: Read GIF File
-If (!Fs.ExistsSync(GIF_PATH)) {
-Throw New Error(GIF File Not Found: ${GIF_PATH});
+initialize github api client
+const octokit = new octokit({auth: github_token});
+async function Attachgiftopr() {
+try {
+step 1: read gif file
+if (!fs.existssync(gif_path)) {
+throw new error(gif file not found: ${gif_path});
 }
-Step 2: Upload GIF To GitHub Via Issue Comment
-GitHub Comments Support Markdown With Image Embedding
-Const GifFileName = Path.Basename(GIF_PATH);
-Const GifData = Fs.ReadFileSync(GIF_PATH);
-Option 1: Host GIF Externally (Recommended For Large Files)
-For Demo, Well Use GitHubs Own Image Hosting Via Markdown
-You Can Drag & Drop The GIF Into A Comment Manually To Get A URL
-Here, We Assume You Already Have A Hosted GIF URL:
-Const HostedGifUrl = Https://Media.Giphy.Com/Media/JIX9t2j0ZTN9S/Giphy.Gif;
-Step 3: Post Comment With GIF
-Const CommentBody = ![GIF](${HostedGifUrl});
-Await Octokit.Issues.CreateComment({
-Owner: OWNER,
-Repo: REPO,
-Issue_number: PULL_NUMBER,
-Body: CommentBody
+step 2: upload gif to github via issue comment
+gitHub comments support markdown with image embedding
+const giffilename = path.basename(gif_path);
+const gifdata =fs.readfilesync(gif_path);
+option 1: host gif externally (recommended for large files)
+for demo, well use githubs own image hosting via markdown
+you can drag & drop the gif into a comment manually to get a url
+here, we assume you already have a hosted gif url:
+const HostedGifUrl =https://media.giphy.com/media/jix9t2j0ztn9s/giphy.gif;
+step 3: post comment with gif
+const commentbody = ![gif](${hostedgifurl});
+await octokit.issues.createcomment({
+owner: owner,
+repo: repo,
+issue_number: pull_number,
+body: commentbody
 });
-Console.Log(✅ GIF Attached To PR #${PULL_NUMBER});
-} Catch (Error) {
-Console.Error(❌ Error Attaching GIF:, Error.Message);
+console.log(✅ gif attached to pr #${pull_number});
+}catch (error) {
+console.error(❌ error attaching gif:, error.message);
 }
 }
-AttachGifToPR();
-![Alt Text](GIF_URL)
-Export GITHUB_TOKEN=Your_token_here
-<Subheading.Html>
-Covid Strings Hosting The Gif On An External Service Like Giphy Or Github Pages
-How To Host  The Gif On An External Service Like Giphy Or Github Pages
+attachgiftopr();
+![alt text](gif_url)
+export github_token=your_token_here
+<subheading.html>
+covid strings hosting the gif on an external service like giphy or github pages
+how to host the gif on an external service like giphy or github pages
 /
- * Upload A GIF To Giphy Using Their API
- * Requirements:
- *   1. Install Axios: Npm Install Axios Form-Data
- *   2. Get An API Key From Https://Developers.Giphy.Com/
+ * upload a gif to giphy using their api
+ * requirements:
+ *   1. install axios: npm install axios form-data
+ *   2. get an api key from https://developers.giphy.com/
  */
-Const Axios = Require(Axios);
-Const FormData = Require(Form-Data);
-Const Fs = Require(Fs);
-Const API_KEY = YOUR_GIPHY_API_KEY; // Replace with your Giphy API key
-Const GIF_PATH = ./Mygif.Gif; // Path to your local GIF file
-Async Function UploadGif() {
-Try {
-Prepare Form Data
-Const Form = New FormData();
-Form.Append(File, Fs.CreateReadStream(GIF_PATH));
-Form.Append(Api_key, API_KEY);
-Form.Append(Tags, Example,Upload,Test);
-Form.Append(Source_post_url, Https://Yourwebsite.Com);
-Send POST Request To Giphy
-Const Response = Await Axios.Post(
-Https://Upload.Giphy.Com/V1/Gifs,
-Form,
-{Headers: Form.GetHeaders() }
+const axios =require(axios);
+const formdata =require(form-data);
+const fs = require(fs);
+const api_key =your_giphy_api_key; // replace with your giphy api key
+const GIF_PATH = ./Mygif.Gif; // path to your local gif file
+async Function UploadGif() {
+try {
+prepare form data
+const form = new formdata();
+form.append(file, fs.createreadstream(gif_path));
+form.append(api_key, api_key);
+form.append(tags, example,upload,test);
+form.append(source_post_url, https://yourwebsite.com);
+send post request to giphy
+const response = await axios.post(
+https://upload.giphy.com/v1/gifs,
+form,
+{headers: form.getheaders() }
 );
-Console.Log(GIF Uploaded Successfully!);
-Console.Log(GIF ID:, Response.Data.Data.Id);
-Console.Log(View It At: Https://Giphy.Com/Gifs/${Response.Data.Data.Id});
-} Catch (Error) {
-Console.Error(Error Uploading GIF:, Error.Response?.Data || Error.Message);
+console.log(gif uploaded successfully!);
+console.log(gif id:, response.data.data.id);
+console.log(view it at: https://giphy.com/gifs/${response.data.data.id});
+}catch (error) {
+console.error(error uploading gif:,error.response?.data || error.message);
 }
 }
-UploadGif();
-2. Hosting On GitHub Pages
-If You Just Want To Host A GIF File Publicly:
-Create A GitHub Repository.
-Add Your GIF File To The Repo (E.G., Assets/Mygif.Gif).
-Enable GitHub Pages In Repo Settings (Set Branch To Main And Folder To / Or /Docs).
-Access Your GIF At:
-Https://<Username>.Github.Io/<Repo-Name>/Assets/Mygif.Gif
-Example HTML To Embed It:
-Html
-<!DOCTYPE Html>
-<Html>
-<Head>
-<Title>My GIF</Title>
-</Head>
-<Body>
-<H1>Hosted GIF Example</H1>
-<Img Src=Https://<Username>.Github.Io/<Repo-Name>/Assets/Mygif.Gif Alt=My GIF>
-</Body>
-</Html>
-<Subheading.Html>
-Covid Strings Secure Node.Js Proxy Version That Hides Your Giphy API Key But Still Lets The Browser Upload Directly 
-How To Create A Secure Node.Js Proxy Version That Hides Your Giphy API Key But Still Lets The Browser Upload Directly For Covid Strings
-Server.Js
-Require(Dotenv).Config(); // Load .env variables
-Const Express = Require(Express);
-Const Fetch = Require(Node-Fetch); // For making API requests
-Const Cors = Require(Cors);
-Const RateLimit = Require(Express-Rate-Limit);
-Const App = Express();
-Const PORT = Process.Env.PORT || 3000;
-Enable CORS For Browser Access
-App.Use(Cors());
-Apply Rate Limiting To Prevent Abuse
-Const Limiter = RateLimit({
-WindowMs: 60 * 1000, // 1 minute
-Max: 30, // limit each IP to 30 requests per minute
-Message: {Error: Too Many Requests, Please Try Again Later.}
+uploadgif();
+2. hosting on github pages
+if you just want to host a gif file publicly:
+create a github repository.
+add your gif file to the repo (e.g., assets/mygif.gif).
+enable github pages in repo settings (set branch to main and folder to /or /docs).
+access your gif at:
+https://<username>.github.io/<repo-name>/assets/mygif.gif
+example html to embed it:
+html
+<!doc type html>
+<html>
+<head>
+<title>my gif</title>
+</head>
+<body>
+<h1>hosted gif example</h1>
+<img src=https://<username>.github.io/<repo-name>/assets/mygif.gif alt=my gif>
+</body>
+</html>
+<subheading.html>
+covid strings secure node.js proxy version that hides your giphy api key but still lets the browser upload directly 
+how to create a secure node.js proxy version that hides your giphy api key but still lets the browser upload directly for covid strings
+server.js
+require(dotenv).config(); // load .env variables
+const express=require(express);
+const fetch =require(node-fetch); // for making api requests
+const cors = require(cors);
+const ratelimit = require(express-rate-limit);
+const app = express();
+const port = process.env.port || 3000;
+enable cors for browser access
+app.use(cors());
+apply rate limiting to prevent abuse
+const limiter = ratelimit({
+windowms: 60 * 1000, // 1 minute
+max: 30, // limit each ip to 30 requests per minute
+message: {error: too many requests, please try again later.}
 });
-App.Use(Limiter);
-Proxy Endpoint For Giphy Search
-App.Get(/Giphy/Search, Async (Req,Res) => {
-Try {
-Const Query = Req.Query.Q;
-If (!Query) {
-Return Res.Status(400).Json({Error: Missing Search Query Parameter Q});
+app.use(limiter);
+proxy endpoint for giphy search
+app.get(/giphy/search, async (req,res) => {
+try {
+const query =req.query.q;
+if (!query) {
+return res.status(400).json({error: missing search query parameter q});
 }
-Const ApiKey =Process.Env.GIPHY_API_KEY;
-If (!ApiKey) {
-Return Res.Status(500).Json({Error: Server Misconfiguration: API Key Missing });
+const apikey =process.env.giphy_api_key;
+if (!apikey) {
+return res.status(500).json({error: server misconfiguration: api key missing });
 }
-Forward Request To Giphy API
-Const GiphyUrl = Https://Api.Giphy.Com/V1/Gifs/Search?Api_key=${ApiKey}&Q=${EncodeURIComponent(Query)}&Limit=10&Rating=G;
-Const Response = Await Fetch(GiphyUrl);
-If (!Response.Ok) {
-Return Res.Status(Response.Status).Json({Error: Failed To Fetch From Giphy API});
+forward request to giphy api
+const giphyurl = https://api.giphy.com/v1/gifs/search?api_key=${apikey}&q=${encodeuricomponent(query)}&limit=10&rating=g;
+const response = await fetch(giphyurl);
+if (!response.ok) {
+return res.status(response.status).json({error: failed to fetch from giphy api});
 }
-Const Data = Await Response.Json();
-Res.Json(Data); // Send JSON back to browser
-} Catch (Err) {
-Console.Error(Proxy Error:, Err);
-Res.Status(500).Json({Error: Internal Server Error});
+const data =await response.json();
+res.json(data); //send json back to browser
+}catch (err) {
+console.error(proxy error:, err);
+res.status(500).json({error: internal server error});
 }
 });
-App.Listen(PORT, () => {
-Console.Log(Secure Giphy Proxy Running On Http://Localhost:${PORT});
+app.listen(port, () => {
+console.log(secure giphy proxy running on http://localhost:${port});
 });
-.Env (Never Commit This To GitHub)
-GIPHY_API_KEY=Your_real_giphy_api_key_here
-Frontend Example (JavaScript In Browser)
-Html
-<!DOCTYPE Html>
-<Html>
-<Head>
-<Title>Giphy Search Via Secure Proxy</Title>
-</Head>
-<Body>
-<Input Id=Search Placeholder=Search Giphy.../>
-<Button Onclick=SearchGiphy()>Search</Button>
-<Div Id=Results></Div>
-<Script>
-Async Function SearchGiphy() {
-Const Query = Document.GetElementById(Search).Value;
-If (!Query) Return Alert(Enter A Search Term);
-Try {
-Const Res = Await Fetch(Http://Localhost:3000/Giphy/Search?Q=${EncodeURIComponent(Query)});
-Const Data = Await Res.Json();
-Const ResultsDiv = Document.GetElementById(Results);
-ResultsDiv.InnerHTML = '';
-If (Data.Data) {
-Data.Data.ForEach(Gif => {
-Const Img = Document.CreateElement(Img);
-Img.Src = Gif.Images.Fixed_height.Url;
-ResultsDiv.AppendChild(Img);
+.env (never commit this to github)
+giphy_api_key=your_real_giphy_api_key_here
+frontend example (javascript in browser)
+html
+<!doc type html>
+<html>
+<head>
+<title>giphy search via secure proxy</title>
+</head>
+<body>
+<input id=search placeholder=search giphy.../>
+<button onclick=searchgiphy()>search</button>
+<div id=results></div>
+<script>
+async function searchgiphy() {
+const query=document.getelementbyid(search).value;
+if (!query) return alert(enter a search term);
+try {
+const res = await fetch(http://localhost:3000/giphy/search?q=${encodeuricomponent(query)});
+const data =await res.json();
+const resultsdiv=document.getelementbyid(results);
+resultsdiv.innerhtml = '';
+if (data.data) {
+data.data.foreach(gif => {
+const img =document.createelement(img);
+img.src =gif.images.fixed_height.url;
+resultsdiv.appendchild(img);
 });
-} Else {
-ResultsDiv.InnerHTML = <P>No Results Found.</P>;
+} else {
+resultsdiv.innerhtml = <p>no results found.</p>;
 }
-} Catch (Err) {
-Console.Error(Err);
-Alert(Error Fetching GIFs);
+} catch (err) {
+console.error(err);
+alert(error fetching gifs);
 }
 }
-<Script>
-</Body>
-</Html>
-<Subheading.Html>
-Covid Strings Version With HTTPS + API Key Rotation
+<script>
+</body>
+</html>
+<subheading.html>
+covid strings version with https + api key rotation
 How To Create A Version With HTTPS + API Key Rotation For Covid Strings GIF Pull Requests
 /
  * Example: HTTPS API Request With Automatic API Key Rotation
