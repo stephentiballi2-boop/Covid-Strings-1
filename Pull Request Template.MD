@@ -5665,463 +5665,463 @@ alert(error fetching gifs);
 </html>
 <subheading.html>
 covid strings version with https + api key rotation
-How To Create A Version With HTTPS + API Key Rotation For Covid Strings GIF Pull Requests
+how to create a version with https + api key rotation for covid strings gif pull requests
 /
- * Example: HTTPS API Request With Automatic API Key Rotation
- * Requirements: Node.Js 18+ (For Native Fetch) Or Install Node-Fetch For Older Versions
+ * example: https api request with automatic api key rotation
+ * requirements: node.js 18+ (for native fetch) or install node-fetch for older versions
  */
-Import Https From Https;
-Import Fs From Fs;
-Import Path From Path;
-CONFIGURATION
-Const CONFIG_PATH = Path.Join(Process.Cwd(), Config.Json);
-Let ApiKey = LoadApiKey();
-Load API Key From Config File Or Environment Variable
-Function LoadApiKey() {
-Try {
-If (Process.Env.API_KEY) {
-Return Process.Env.API_KEY;
+import https from https;
+import fs from fs;
+import path from path;
+configuration
+const config_path =path.join(process.cwd(),config.json);
+let apikey = loadapikey();
+load api key from config file or environment variable
+function loadapikey() {
+try {
+if (process.env.api_key) {
+return process.env.api_key;
 }
-Const Config = JSON.Parse(Fs.ReadFileSync(CONFIG_PATH, Utf8));
-If (!Config.ApiKey) Throw New Error(API Key Missing In Config.Json);
-Return Config.ApiKey;
-} Catch (Err) {
-Console.Error(Error Loading API Key:, Err.Message);
-Process.Exit(1);
-}
-}
-Simulated Secure API Key Rotation Function
-Async Function RotateApiKey() {
-Try {
-Console.Log(Rotating API Key...);
-In Real-World: Fetch From Secure Vault (Azure Key Vault, AWS Secrets Manager, Etc.)
-Const NewKey = Key_${Date.Now()}; // Simulated new key
-ApiKey = NewKey;
-Save To Config.Json
-Fs.WriteFileSync(CONFIG_PATH, JSON.Stringify({ApiKey: NewKey }, Null, 2));
-Console.Log(API Key Rotated Successfully:, NewKey);
-} Catch (Err) {
-Console.Error(Failed To Rotate API Key:, Err.Message);
+const config = json.parse(fs.readfilesync(config_path, utf8));
+if (!config.apikey) throw new error(api key missing in config.json);
+return config.apikey;
+}catch (err) {
+console.error(error loading api key:, err.message);
+process.exit(1);
 }
 }
-HTTPS Request Function
-Function MakeSecureRequest(Endpoint) {
-Return New Promise((Resolve, Reject) => {
-Const Options = {
-Hostname: Api.Example.Com, // Replace with your API host
-Path: Endpoint,
-Method: GET,
-Headers: {
-Authorization: Bearer ${ApiKey},
-Content-Type: Application/Json
+simulated secure api key rotation function
+async function rotateapikey() {
+try {
+console.log(rotating api key...);
+in real-world: fetch from secure vault (azure key vault, aws secrets manager, etc.)
+const newkey = key_${date.now()}; // simulated new key
+apikey = newkey;
+save to config.json
+fs.writefilesync(config_path, json.stringify({apikey: newkey}, null, 2));
+console.log(api key rotated successfully:, newkey);
+}catch (err) {
+console.error(failed to rotate api key:, err.message);
+}
+}
+https request function
+function makesecurerequest(endpoint) {
+return new promise((resolve, reject) => {
+const options = {
+hostname: api.example.com, // replace with your api host
+path: endpoint,
+method: get,
+headers: {
+authorization: bearer ${apikey},
+content-type: application/json
 },
-Agent: New Https.Agent({KeepAlive: True })
+agent: new https.agent({keepalive: true })
 };
-Const Req = Https.Request(Options, (Res) => {
-Let Data = '';
-Res.On(Data, Chunk => Data += Chunk);
-Res.On(End, () => {
-If (Res.StatusCode === 401) {
-Reject(New Error(Unauthorized - API Key May Be Invalid));
-} Else {
-Resolve({Status: Res.StatusCode, Body: Data });
+const req=https.request(options,(res) => {
+let data = '';
+res.on(data,chunk =>data +=chunk);
+res.on(end, () => {
+if (res.statuscode === 401) {
+reject(new error(unauthorized - api key may be invalid));
+} else {
+resolve({status: res.statuscode, body: data });
 }
 });
 });
-Req.On(Error, Reject);
-Req.End();
+req.on(error, reject);
+req.end();
 });
 }
-Schedule API Key Rotation Every 10 Minutes
-SetInterval(RotateApiKey, 10 * 60 * 1000);
-Example Usage
-(Async () => {
-Try {
-Const Response = Await MakeSecureRequest(/V1/Data);
-Console.Log(Response:, Response);
-} Catch (Err) {
-Console.Error(Request Failed:, Err.Message);
-// If unauthorized, rotate key immediately
-If (Err.Message.Includes(Unauthorized)) {
-Await RotateApiKey();
+schedule api key rotation every 10 minutes
+setinterval(rotateapikey, 10 * 60 * 1000);
+example usage
+(async () => {
+try {
+const response =await makesecurerequest(/v1/data);
+console.log(response:, response);
+}catch (err) {
+console.error(request failed:, err.message);
+//if unauthorized, rotate key immediately
+if (err.message.includes(unauthorized)) {
+await rotateapikey();
 }
 }
 })();
-{ApiKey: Initial_key_123}
-<Subheading.Html>
-Covid Strings Upgrading To Real Azure Key Vault API Key Rotation 
-How To Upgrade To Real Azure Key Vault API Key Rotation For Covid Strings 
-Npm Install @Azure/Identity @Azure/Keyvault-Keys
-2. JavaScript Code For Key Rotation
-Import Azure SDK Modules
-Const { DefaultAzureCredential } = Require(@Azure/Identity);
-Const { KeyClient } = Require(@Azure/Keyvault-Keys);
-Async Function RotateKey() {
-Try {
-Replace With Your Key Vault Name And Key Name
-Const KeyVaultName =YOUR_KEY_VAULT_NAME;
-Const KeyName = YOUR_KEY_NAME;
-Construct The Key Vault URL
-Const KeyVaultUrl = Https://${KeyVaultName}.Vault.Azure.Net;
-Authenticate Using DefaultAzureCredential
-This Works With Azure CLI Login, Managed Identity, Or Environment Variables
-Const Credential = New DefaultAzureCredential();
-Create A KeyClient
-Const Client = New KeyClient(KeyVaultUrl, Credential);
-Console.Log(Rotating Key: ${KeyName} In Vault: ${KeyVaultName});
-MANUAL ROTATION: Create A New Version Of The Key
-Const NewKey = Await Client.RotateKey(KeyName);
-Console.Log(✅ New Key Version Created: ${NewKey.Properties.Version});
-OPTIONAL: Configure Automatic Rotation Policy
-Const RotationPolicy = Await Client.UpdateKeyRotationPolicy(KeyName, {
-Rotate Every 90 Days
-LifetimeActions: [
+{apikey: initial_key_123}
+<subheading.html>
+covid strings upgrading to real azure key vault api key rotation 
+how to upgrade to real azure key vault api key rotation for covid strings 
+npm install @azure/identity @azure/keyvault-keys
+2. javascript code for key rotation
+import azure sdk modules
+const {defaultazurecredential } =require(@azure/identity);
+const {keyclient}=require(@azure/keyvault-keys);
+async function rotatekey() {
+try {
+replace with your key vault name and key name
+const keyvaultname=your_key_vault_name;
+const keyname =your_key_name;
+construct the key vault url
+const keyvaulturl=https://${keyvaultname}.vault.azure.net;
+authenticate using defaultazurecredential
+this works with azure cli login, managed identity, or environment variables
+const credential =new defaultazurecredential();
+create a keyclient
+const client =new keyclient(keyvaulturl, credential);
+console.log(rotating key: ${keyname} in vault: ${keyvaultname});
+manual rotation: create a new version of the key
+const newkey = await client.rotatekey(keyname);
+console.log(✅ new key version created: ${newkey.properties.version});
+optional: configure automatic rotation policy
+const rotationpolicy =await client.updatekeyrotationpolicy(keyname, {
+rotate every 90 days
+lifetimeactions: [
 {
-Trigger: {TimeAfterCreate: P90D}, // ISO 8601 duration
-Action: {Type: Rotate }
+trigger: {timeaftercreate: p90d}, // iso 8601 duration
+action: {type: rotate }
 }
 ],
-Notify 30 Days Before Expiry
-ExpiryTime: P180D
+notify 30 days before expiry
+expirytime: p180d
 });
-Console.Log(✅ Rotation Policy Updated:, RotationPolicy);
-} Catch (Err) {
-Console.Error(❌ Error Rotating Key:, Err.Message);
-If (Err.Response) {
-Console.Error(Azure Response:, Err.Response.Body);
+console.log(✅ rotation policy updated:, rotationpolicy);
+}catch (err) {
+console.error(❌ error rotating key:, err.message);
+if (err.response) {
+console.error(azure response:, err.response.body);
 }
 }
 }
-Run The Rotation Function
-RotateKey();
-3. Authentication Setup
-DefaultAzureCredential Supports Multiple Authentication Methods:
-Local Development:
-Bash
-Az Login
-Environment Variables:
-Bash
-Export AZURE_CLIENT_ID=Your-Client-Id
-Export AZURE_TENANT_ID=Your-Tenant-Id
-Export AZURE_CLIENT_SECRET=Your-Client-Secret
-<Subheading.Html>
-Covid Strings Typescript Version With Full Type Safety And IntelliSense For Azure Key Vault Key Rotation
-How To Create A Typescript Version With Full Type Safety And IntelliSense For Azure Key Vault Key Rotation In Covid Strings 
+run the rotation function
+rotatekey();
+3. authentication setup
+defaultazurecredential supports multiple authentication methods:
+local development:
+bash
+az login
+environment variables:
+bash
+export azure_client_id=your-client-id
+export azure_tenant_id=your-tenant-id
+export azure_client_secret=your-client-secret
+<subheading.html>
+covid strings typescript version with full type safety and intellisense for azure key vault key rotation
+how to create a typescript version with full type safety and intellisense for azure key vault key rotation in covid strings 
 /
- * Azure Key Vault Key Rotation - TypeScript Example
+ * azure key vault key rotation - typescript example
  * 
- * Requirements:
- *  Npm Install @Azure/Keyvault-Keys @Azure/Identity
- *  Set Environment Variables:
- *  AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_CLIENT_SECRET, KEY_VAULT_URL, KEY_NAME
+ * requirements:
+ *  npm install @azure/keyvault-keys @azure/identity
+ *  set environment variables:
+ *  azure_client_id, azure_tenant_id, azure_client_secret, key_vault_url, key_name
  */
-Import { DefaultAzureCredential } From @Azure/Identity;
-Import { KeyClient, KeyVaultKey } From @Azure/Keyvault-Keys;
-Strongly Typed Environment Variables
-Interface EnvConfig {
-AZURE_CLIENT_ID: String;
-AZURE_TENANT_ID: String;
-AZURE_CLIENT_SECRET: String;
-KEY_VAULT_URL: String;
-KEY_NAME: String;
+import {defaultazurecredential } from @azure/identity;
+import {keyclient, keyvaultkey } from @azure/keyvault-keys;
+strongly typed environment variables
+interface envconfig {
+azure_client_id:string;
+azure_tenant_id:string;
+azure_client_secret:string;
+key_vault_url:string;
+key_name:string;
 }
-Validate And Load Environment Variables
-Function LoadEnv(): EnvConfig {
-Const RequiredVars: (Keyof EnvConfig)[] = [
-AZURE_CLIENT_ID,
-AZURE_TENANT_ID,
-AZURE_CLIENT_SECRET,
-KEY_VAULT_URL,
-KEY_NAME
+validate and load environment variables
+function loadenv(): envconfig {
+const requiredvars: (keyof envconfig)[] = [
+azure_client_id,
+azure_tenant_id,
+azure_client_secret,
+key_vault_url,
+key_name
 ];
-Const Config: Partial<EnvConfig> = {};
-For (Const Key Of RequiredVars) {
-Const Value = Process.Env[Key];
-If (!Value) {
-Throw New Error(Missing Required Environment Variable: ${Key});
+const config: partial<envconfig> = {};
+for (const key of requiredvars) {
+const value = process.env[key];
+if (!value) {
+throw new error(missing required environment variable: ${key});
 }
-Config[Key] = Value;
+config[key] =value;
 }
-Return Config As EnvConfig;
+return config as envconfig;
 }
-Async Function RotateKey(): Promise<Void> {
-Try {
-Const Env = LoadEnv();
-Authenticate Using DefaultAzureCredential
-Const Credential = New DefaultAzureCredential();
-Create A KeyClient Instance
-Const KeyClient = New KeyClient(Env.KEY_VAULT_URL, Credential);
-Console.Log(🔄 Rotating Key: ${Env.KEY_NAME} In Vault: ${Env.KEY_VAULT_URL});
-Rotate The Key
-Const RotatedKey: KeyVaultKey = Await KeyClient.RotateKey(Env.KEY_NAME);
-Console.Log(✅ Key Rotated Successfully!);
-Console.Log(Key Name: ${RotatedKey.Name});
-Console.Log(Key ID: ${RotatedKey.Id});
-Console.Log(Key Type: ${RotatedKey.KeyType});
-Console.Log(Updated On: ${RotatedKey.Properties.UpdatedOn});
-} Catch (Error) {
-If (Error Instanceof Error) {
-Console.Error(❌ Error Rotating Key: ${Error.Message});
-} Else {
-Console.Error(❌ Unknown Error Occurred During Key Rotation.);
+async function rotatekey(): promise<void> {
+try {
+const env =loadenv();
+authenticate using defaultazurecredential
+const credential =new defaultazurecredential();
+create a keyclient instance
+const keyclient =new keyclient(env.key_vault_url, credential);
+console.log(🔄 rotating key: ${env.key_name} in vault: ${env.key_vault_url});
+rotate the key
+const rotatedkey: keyvaultkey =await keyclient.rotatekey(env.key_name);
+console.log(✅ key rotated successfully!);
+console.log(key name: ${rotatedkey.name});
+console.log(key id: ${rotatedkey.id});
+console.log(key type: ${rotatedkey.keytype});
+console.log(updated on: ${rotatedKey.properties.updatedon});
+}catch (error) {
+if (error instanceof error) {
+console.error(❌ error rotating key: ${error.message});
+}else {
+console.error(❌ unknown error occurred during key rotation.);
 }
-Process.Exit(1);
+process.exit(1);
 }
 }
-Run The Rotation
-RotateKey();
-Npm Init-Y
-Npm Install Typescript Ts-Node @Azure/Keyvault-Keys @Azure/Identity
-Npx Tsc --Init
-Export AZURE_CLIENT_ID=Your-Client-Id
-Export AZURE_TENANT_ID=Your-Tenant-Id
-Export AZURE_CLIENT_SECRET=Your-Client-Secret
-Export KEY_VAULT_URL=Https://Your-Vault-Name.Vault.Azure.Net/
-Export KEY_NAME=Your-Key-Name
-Npx Ts-Node RotateKey.Ts
-<Subheading.Html>
-Covid Strings Automatic Scheduled Rotation So The Key Rotates On A Schedule Without Manual Execution 
-How To Program Automatic Scheduled Rotation So The Key Rotates On A Schedule Without Manual Execution 
+run the rotation
+rotatekey();
+npm init-y
+npm install typescript ts-node @azure/keyvault-keys @azure/identity
+npx tsc --init
+export azure_client_id=your-client-id
+export azure_teant_id=your-tenant-id
+export azure_client_secret=your-client-secret
+export key_vault_url=https://your-vault-name.vault.azure.net/
+export key_name=your-key-name
+npx ts-node rotatekey.ts
+<subheading.html>
+covid strings automatic scheduled rotation so the key rotates on a schedule without manual execution 
+how to program automatic scheduled rotation so the key rotates on a schedule without manual execution 
 /
- * Enable Automatic Key Rotation For A Cloud KMS Key.
+ * enable automatic key rotation for a cloud kms key.
  * 
- * Prerequisites:
- * 1. Install Dependencies: Npm Install @Google-Cloud/Kms
- * 2. Authenticate: Gcloud Auth Application-Default Login
- * 3. Ensure The Service Account Has Roles/Cloudkms.Admin
+ * prerequisites:
+ * 1. install dependencies: npm install @google-cloud/kms
+ * 2. authenticate: gcloud auth application-default login
+ * 3. ensure the service account has roles/cloudkms.admin
  */
-Const { KeyManagementServiceClient } = Require(@Google-Cloud/Kms);
-Async Function SetAutomaticKeyRotation() {
-  // TODO: Replace with your values
-Const ProjectId = YOUR_PROJECT_ID;
-Const LocationId = Us-East1; // e.g., 'us-east1'
-Const KeyRingId = YOUR_KEY_RING;
-Const KeyId = YOUR_KEY_NAME;
-// Rotation period in seconds (e.g., 30 days)
-Const RotationPeriodSeconds = 30 * 24 * 60 * 60;
-// First rotation date (RFC 3339 format)
-Const NextRotationTime = {
-Seconds: Math.Floor(Date.Now() / 1000) + RotationPeriodSeconds,
+const {keymanagementserviceclient}=require(@google-cloud/Kms);
+async function setautomatickeyrotation() {
+//todo: replace with your values
+const projectid=your_project_id;
+const locationid=us-east1; // e.g., 'us-east1'
+const keyringid =your_key_ring;
+const keyid=your_key_name;
+// rotation period in seconds (e.g., 30 days)
+const rotationperiodseconds = 30 * 24 * 60 * 60;
+// first rotation date (rfc 3339 format)
+const nextrotationtime = {
+seconds: math.floor(date.now() / 1000) + rotationperiodseconds,
 };
-Const Client = New KeyManagementServiceClient();
-Const KeyName = Client.CryptoKeyPath(ProjectId, LocationId, KeyRingId, KeyId);
-Try {
-Const [UpdatedKey] = Await Client.UpdateCryptoKey({
-CryptoKey: {
-Name: KeyName,
-RotationPeriod: {Seconds: RotationPeriodSeconds },
-NextRotationTime,
+const client=new keymanagementserviceclient();
+const keyname =client.cryptokeypath(projectid, locationid, keyringid, keyid);
+try {
+const [updatedkey]=await client.updatecryptokey({
+cryptokey: {
+name: keyname,
+rotationperiod: {seconds: rotationperiodseconds },
+nextrotationtime,
 },
-UpdateMask: {
-Paths: [Rotation_period, Next_rotation_time],
+updatemask: {
+paths: [rotation_period, next_rotation_time],
 },
 });
-Console.Log(✅ Automatic Rotation Enabled For Key: ${UpdatedKey.Name});
-Console.Log(🔄 Rotation Period: ${RotationPeriodSeconds / (24 * 60 * 60)} Days);
-Console.Log(📅 Next Rotation: ${UpdatedKey.NextRotationTime});
-} Catch (Err) {
-Console.Error(❌ Error Enabling Automatic Rotation:, Err.Message);
+console.log(✅ automatic rotation enabled for key: ${updatedkey.name});
+console.log(🔄 rotation period: ${rotationperiodseconds / (24 * 60 * 60)} days);
+console.log(📅 next rotation: ${updatedkey.nextrotationtime});
+} catch (err) {
+console.error(❌ error enabling automatic rotation:,err.message);
 }
 }
-SetAutomaticKeyRotation();
-If You’re Using AWS KMS
-AWS KMS Supports Automatic Yearly Rotation For Customer-Managed Keys With A Single API Call:
-Import { KMSClient, EnableKeyRotationCommand } From @Aws-Sdk/Client-Kms;
-Const Client = New KMSClient({Region: Us-East-1});
-Async Function EnableAWSKeyRotation() {
-Try {
-Await Client.Send(New EnableKeyRotationCommand({
-KeyId: YOUR_KEY_ID
+setautomatickeyrotation();
+if you’re using aws kms
+aws kms supports automatic yearly rotation for customer-managed keys with a single api call:
+import {kmsclient, enablekeyrotationcommand } from @aws-sdk/client-kms;
+const client =new kmsclient({region: us-east-1});
+async function enableawskeyrotation() {
+try {
+await client.send(new enablekeyrotationcommand({
+keyid: your_key_id
 }));
-Console.Log(✅ Automatic Yearly Rotation Enabled For AWS KMS Key.);
-} Catch (Err) {
-Console.Error(❌ Error Enabling Rotation:, Err.Message);
+console.log(✅ automatic yearly rotation enabled for aws kms key.);
+}catch (err) {
+console.error(❌ error enabling rotation:, err.message);
 }
 }
-EnableAWSKeyRotation();
-<Subheading.Html>
-Covid Strings Installing A AWS KMS And A Custom Rotation Schedule Instead Of The Default Yearly Rotation
-How To Install A AWS KMS And A Custom Rotation Schedule Instead Of The Default Yearly Rotation For Covid Strings
-Install Dependencies First:
-Npm Install Aws-Cdk-Lib Constructs
-Const Cdk = Require(Aws-Cdk-Lib);
-Const Kms = Require(Aws-Cdk-Lib/Aws-Kms);
-Const Lambda = Require(Aws-Cdk-Lib/Aws-Lambda);
-Const Events = Require(Aws-Cdk-Lib/Aws-Events);
-Const Targets = Require(Aws-Cdk-Lib/Aws-Events-Targets);
-Class KmsCustomRotationStack Extends Cdk.Stack {
-Constructor(Scope,Id,Props) {
-Super(Scope,Id,Props);
-1. Create A KMS CMK
-Const MyKey = New Kms.Key(This, MyCustomKey, {
-EnableKeyRotation: False, // Disable default yearly rotation
-Alias: Alias My-Custom-Key,
-Description: KMS Key With Custom Rotation Schedule,
+enableawskeyrotation();
+<subheading.html>
+covid strings installing a aws kms and a custom rotation schedule instead of the default yearly rotation
+how to install a aws kms and a custom rotation schedule instead of the default yearly rotation for covid strings
+install dependencies first:
+npm install aws-cdk-lib constructs
+const cdk=require(aws-cdk-lib);
+const kms=require(aws-cdk-lib/aws-Kms);
+const lambda=require(aws-cdk-lib/aws-lambda);
+const events=require(aws-cdk-lib/aws-events);
+const targets=require(aws-cdk-lib/aws-events-targets);
+class kmscustomRotationstack extends cdk.stack {
+constructor(scope,id,props) {
+super(scope,id,props);
+1. create a kms cmk
+const mykey =new kms.key(this, mycustomkey, {
+enablekeyrotation: false, //disable default yearly rotation
+alias: alias my-custom-key,
+description: kms key with custom rotation schedule,
 });
-2. Lambda Function To Rotate The Key
-Const RotateLambda = New Lambda.Function(This, RotateKmsKeyLambda, {
-Runtime: Lambda.Runtime.NODEJS_18_X,
-Handler: Index.Handler,
-Code: Lambda.Code.FromInline(
-Const AWS = Require(Aws-Sdk);
-Const Kms = New AWS.KMS();
-Exports.Handler = Async () => {
-Try {
-Create A New Key
-Const NewKey = Await Kms.CreateKey({
-Description: Rotated KMS Key,
-KeyUsage: ENCRYPT_DECRYPT,
-CustomerMasterKeySpec: SYMMETRIC_DEFAULT
-}).Promise();
-Console.Log(New Key Created:, NewKey.KeyMetadata.KeyId);
-Optionally Disable The Old Key (Replace With Your Key ID)
-Await Kms.DisableKey({ KeyId: OLD_KEY_ID}).Promise();
-Return {Status: Rotation Complete, NewKeyId: NewKey.KeyMetadata.KeyId };
-} Catch (Err) {
-Console.Error(Rotation Failed:, Err);
-Throw Err;
+2. lambda function to rotate the key
+const rotatelambda =new lambda.function(this,rotatekmskeylambda, {
+runtime: lambda.runtime.nodejs_18_x,
+handler: index.handler,
+code: lambda.code.frominline(
+const aws = require(aws-sdk);
+const kms = new aws.kms();
+exports.handler = async () => {
+try {
+create a new key
+const newkey = await kms.createkey({
+description: rotated kms key,
+keyusage: encrypt_decrypt,
+customermasterkeyspec: symmetric_default
+}).promise();
+console.log(new key created:, newkey.keymetadata.keyid);
+optionally disable the old key (replace with your key id)
+await kms.disableKey({keyid: old_key_id}).promise();
+return {status: rotation complete, newkeyid: newkey.keymetadata.keyid };
+}catch (err) {
+console.error(rotation failed:, err);
+throw err;
 }
 };
 ),
-Timeout: Cdk.Duration.Seconds(30)
+timeout: cdk.duration.seconds(30)
 });
-Grant Lambda Permissions To Manage KMS Keys
-MyKey.GrantAdmin(RotateLambda);
-3. EventBridge Rule For Custom Rotation Schedule (Every 90 Days)
-New Events.Rule(This, CustomRotationRule, {
-Schedule: Events.Schedule.Rate(Cdk.Duration.Days(90)),
-Targets: [New Targets.LambdaFunction(RotateLambda)]
+grant lambda permissions to manage kms keys
+mykey.grantadmin(rotatelambda);
+3. eventbridge rule for custom rotation schedule (every 90 days)
+new events.rule(this, customrotationrule, {
+schedule: events.schedule.rate(cdk.duration.days(90)),
+targets: [new targets.lambdafunction(rotatelambda)]
 });
 }
 }
-Const App =New Cdk.App();
-New KmsCustomRotationStack(App, KmsCustomRotationStack);
-Deployment
-Bash
-Npm Install -G Aws-Cdk
-Cdk Init App --Language Javascript
-# Replace Lib/<Stack>.Js With The Code Above
-Npm Install Aws-Cdk-Lib Constructs
-Cdk Bootstrap
-Cdk Deploy
-<Subheading.Html>
-Covid Strings Installing A Pure AWS SDK JavaScript Script Without CDK That You Can Run From A Server Or Lambda To Rotate Keys On Demand
-How To Install A Pure AWS SDK JavaScript Script Without CDK That You Can Run From A Server Or Lambda To Rotate Keys On Demand
+const app=new cdk.app();
+new kmscustomrotationstack(app, kmscustomrotationstack);
+deployment
+bash
+npm install -g aws-cdk
+cdk init app --language javascript
+# replace lib/<stack>.js with the code above
+npm install aws-cdk-lib constructs
+cdk bootstrap
+cdk deploy
+<subheading.html>
+covid strings installing a pure aws sdk javascript script without cdk that you can run from a server or lambda to rotate keys on demand
+how to install a pure aws sdk javascript script without cdk that you can run from a server or lambda to rotate keys on demand
 /
- * AWS IAM Access Key Rotation Script
- * Requirements:
- *  Npm Install @Aws-Sdk/Client-Iam
+ * aws iam access key rotation script
+ * requirements:
+ *  npm install @aws-sdk/client-iam
  * 
- * Usage:
- *  Node Rotate-Keys.Js <IAM_USERNAME>
+ * usage:
+ *  node rotate-keys.js <iam_username>
  * 
- * Notes:
- * - Run With AWS Credentials That Have IAM Permissions:
- *  Iam:ListAccessKeys, Iam:CreateAccessKey, Iam:DeleteAccessKey
- * - Safe To Run In Lambda Or On A Server.
+ * notes:
+ * - run with aws credentials that have iam permissions:
+ *  iam:listaccesskeys, iam:createaccesskey, iam:deleteaccesskey
+ * - safe to run in lambda or on a server.
  */
-Import { IAMClient, ListAccessKeysCommand, CreateAccessKeyCommand, DeleteAccessKeyCommand } From @Aws-Sdk/Client-Iam;
-Validate CLI Arguments
-If (Process.Argv.Length < 3) {
-Console.Error(Usage: Node Rotate-Keys.Js <IAM_USERNAME>);
-Process.Exit(1);
+import {iamclient, listaccesskeyscommand, createaccesskeycommand, deleteaccesskeycommand } from @aws-sdk/client-iam;
+validate cli arguments
+if (process.argv.length < 3) {
+console.error(usage: node rotate-keys.js <iam_username>);
+process.exit(1);
 }
-Const IamUserName =Process.Argv[2];
-Create IAM Client (Region Is Irrelevant For IAM But Required By SDK)
-Const IamClient = New IAMClient({Region: Us-East-1});
-Async Function RotateKeys(UserName) {
-Try {
-Step 1: List Existing Access Keys
-Const ListResp = Await IamClient.Send(New ListAccessKeysCommand({ UserName: UserName }));
-Const Keys = ListResp.AccessKeyMetadata || [];
-Console.Log(Found ${Keys.Length} Existing Keys For User ${UserName});
-Step 2: If 2 Keys Exist, Delete The Oldest One
-If (Keys.Length >= 2) {
-Const OldestKey =Keys.Reduce((A, B) =>
-New Date(A.CreateDate) < New Date(B.CreateDate) ? A : B
+const iamusername =process.argv[2];
+create iam client (region is irrelevant for iam but required by sdk)
+const iamclient = new iamclient({region: us-east-1});
+async function rotatekeys(username) {
+try {
+step 1: list existing access Keys
+const listresp =await iamclient.send(new listaccesskeyscommand({username: username }));
+const keys=listresp.accesskeymetadata || [];
+console.log(found ${keys.length} existing keys for user ${username});
+step 2: if 2 keys exist, delete the oldest one
+if (keys.length >= 2) {
+const oldestkey=keys.reduce((a, b) =>
+new date(a.createdate) <new date(b.createdate) ? a:b
 );
-Console.Log(Deleting Oldest Key: ${OldestKey.AccessKeyId});
-Await IamClient.Send(New DeleteAccessKeyCommand({
-UserName: UserName,
-AccessKeyId: OldestKey.AccessKeyId
+console.log(deleting oldest key: ${oldestkey.accesskeyid});
+await iamclient.send(new deleteaccesskeycommand({
+username: username,
+accesskeyid: oldestkey.accesskeyid
 }));
 }
-Step 3: Create A New Access Key
-Const CreateResp = Await IamClient.Send(New CreateAccessKeyCommand({ UserName: UserName }));
-Const NewKey = CreateResp.AccessKey;
-Console.Log(✅ New Access Key Created:);
-Console.Log(AccessKeyId: ${NewKey.AccessKeyId});
-Console.Log(SecretAccessKey: ${NewKey.SecretAccessKey});
-Console.Log(⚠️ Store These Credentials Securely. They Will Not Be Shown Again.);
-}Catch (Err) {
-Console.Error(❌ Error Rotating Keys:, Err);
-Process.Exit(1);
+Step 3: create a new access key
+const createresp =await iamclient.send(new createaccesskeycommand({username: username }));
+const newkey = createresp.accesskey;
+console.log(✅ new access key created:);
+console.log(accesskeyid: ${newkey.accesskeyid});
+console.log(secretaccesskey: ${newkey.secretaccesskey});
+console.log(⚠️ store these credentials securely. they will not be shown again.);
+}catch (err) {
+console.error(❌ error rotating keys:, err);
+process.exit(1);
 }
 }
-Run The Rotation
-RotateKeys(IamUserName);
-Npm Init-Y
-Npm Install @Aws-Sdk/Client-Iam
-Rotate-Keys.Js.
-Node Rotate-Keys.Js My-Iam-User
+run the rotation
+rotatekeys(iamusername);
+npm init-y
+npm install @aws-sdk/client-iam
+rotate-keys.js.
+node rotate-keys.js my-iam-user
 {
-Version: 2012-10-17,
-Statement: [
-{Effect: Allow, Action: [Iam:ListAccessKeys, Iam:CreateAccessKey, Iam:DeleteAccessKey], Resource: Arn:Aws:Iam::*:User/My-Iam-User}
+version: 2012-10-17,
+statement: [
+{effect: allow, action: [iam:listaccesskeys, iam:createaccesskey, iam:deleteaccesskey], resource: arn:aws:iam::*:user/my-iam-user}
 ]
 }
-<Subheading.Html>
-Covid Strings Lambda-Ready Version That Automatically Stores The New Key In AWS Secrets Manager
-How To Create A  Lambda-Ready Version That Automatically Stores The New Key In AWS Secrets Manager
-Lambda Function To Generate A New API Key And Store It In AWS Secrets Manager
-AWS SDK V3 Is Used For Better Performance In Lambda
-Import { SecretsManagerClient, PutSecretValueCommand } From @Aws-Sdk/Client-Secrets-Manager;
-Import Crypto From Crypto;
-Create Secrets Manager Client (Region Is Taken From Lambda Environment)
-Const Client =New SecretsManagerClient({Region: Process.Env.AWS_REGION });
-Helper: Generate A Secure Random Key
-Function GenerateSecureKey(Length = 32) {
-If (Typeof Length !== Number || Length <= 0) {
-Throw New Error(Invalid Key Length Specified.);
+<subheading.html>
+covid strings lambda-ready version that automatically stores the new key in aws secrets manager
+how to create a lambda-ready version that automatically stores the new key in aws secrets manager
+lambda function to generate a new api key and store it in aws secrets manager
+aws sdk v3 is used for better performance in lambda
+import {secretsmanagerclient, putsecretvaluecommand } from @aws-sdk/client-secrets-manager;
+import crypto from crypto;
+create secrets manager client (region is taken from lambda environment)
+const client=new secretsmanagerclient({region: process.env.aws_region});
+helper: generate a secure random key
+function generatesecurekey(length = 32) {
+if (typeof length !== number || length <= 0) {
+throw new error(invalid key length specified.);
 }
-Return Crypto.RandomBytes(Length).ToString(Hex); // Hex string
+return crypto.randombytes(length).tostring(hex); //hex string
 }
-Export Const Handler = Async (Event) => {
-Try {
-Validate Required Environment Variable
-Const SecretName =Process.Env.SECRET_NAME;
-If (!SecretName) {
-Throw New Error(SECRET_NAME Environment Variable Is Not Set.);
+export const handler=async(event) => {
+try {
+validate required environment variable
+const secretname=process.env.secret_name;
+if (!secretname) {
+throw new error(secret_name environment variable is not set.);
 }
-Generate A New Secure Key
-Const NewKey = GenerateSecureKey(32); // 64 hex chars
-Store The New Key In AWS Secrets Manager
-Const Command = New PutSecretValueCommand({
-SecretId: SecretName,
-SecretString: JSON.Stringify({ApiKey: NewKey }),
+generate a new secure key
+const newkey =generatesecurekey(32); // 64 hex chars
+store the new key in aws secrets manager
+const command =new putsecretvaluecommand({
+secretid: secretname,
+secretstring: json.stringify({apikey: newkey }),
 });
-Const Response = Await Client.Send(Command);
-Console.Log(✅ Successfully Stored New Key In Secret: ${SecretName});
-Return {
-StatusCode: 200,
-Body: JSON.Stringify({
-Message: New Key Generated And Stored Successfully.,
-VersionId: Response.VersionId,
+const response =await client.send(command);
+console.log(✅ successfully stored new key in secret: ${secretname});
+return {
+statuscode: 200,
+body: json.stringify({
+message: new key generated and stored successfully.,
+versionid: response.versionid,
 }),
 };
-} Catch (Error) {
-Console.Error(❌ Error Storing Secret:, Error);
-Return {
-StatusCode: 500,
-Body: JSON.Stringify({Error: Error.Message }),
+} catch (error) {
+console.error(❌ error storing secret:,error);
+return {
+statuscode: 500,
+body: json.stringify({error: error.message }),
 };
 }
 };
-Aws Secretsmanager Create-Secret \
---Name MyApiKeySecret \
---Secret-String {ApiKey:InitialValue}
-Npm Init -Y
-Npm Install @Aws-Sdk/Client-Secrets-Manager
+aws secretsmanager create-secret \
+--name myapikeysecret \
+--secret-string {apikey:initialvalue}
+npm init-y
+npm install @aws-sdk/client-secrets-manager
 Zip -R Function.Zip .
 Aws Lambda Create-Function \
 --Function-Name RotateApiKey \
