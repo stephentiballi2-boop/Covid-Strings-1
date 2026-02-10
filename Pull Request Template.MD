@@ -6461,193 +6461,193 @@ versionstages: [aws pending]
 console.log(new secret version created);
 }
 /
- * Step 2: Apply The Pending Secret To The Target Resource (E.G., DB, API)
+ * step 2: apply the pending secret to the target resource (e.g., db, api)
  */
-Async Function SetSecret(SecretId,Token) {
-Console.Log(Applying Pending Secret For ${SecretId});
-TODO: Implement Logic To Update The Target System With The New Secret
-Example: Update Database User Password
+async function setsecret(secretid,token) {
+console.log(applying pending secret for ${secretid});
+todo: implement logic to update the target system with the new secret
+example: update database user password
 }
 /
- * Step 3: Test The Pending Secret
+ * step 3: test the pending secret
  */
-Async Function TestSecret(SecretId, Token) {
-Console.Log(Testing Pending Secret For ${SecretId});
-TODO: Implement Logic To Verify The New Secret Works
-Example: Attempt DB Connection With Pending Credentials
+async function testsecret(secretid, token) {
+console.log(testing pending secret for ${secretid});
+todo: implement logic to verify the new secret works
+example: attempt db connection with pending credentials
 }
 /
- * Step 4: Mark The Pending Secret As Current
+ * step 4: mark the pending secret as current
  */
-Async Function FinishSecret(SecretId, Token) {
-Console.Log(Finishing Rotation For ${SecretId});
-Const Metadata =Await SecretsClient.Send(New DescribeSecretCommand({ SecretId: secretId }));
-Const CurrentVersion = Object.Entries(Metadata.VersionIdsToStages)
-.Find(([_, Stages]) => Stages.Includes(AWSCURRENT))?.[0];
-If (CurrentVersion === Token) {
-Console.Log(Secret Already Marked As Current);
-Return;
+async function finishsecret(secretid, token) {
+console.log(finishing rotation for ${secretid});
+const metadata=await secretsclient.send(new describesecretcommand({secretid: secretid }));
+const currentversion= object.entries(metadata.versionidstostages)
+.find(([_, stages]) => stages.includes(aws current))?.[0];
+if (currentVersion === token) {
+console.log(secret already marked as current);
+return;
 }
-Await SecretsClient.Send(New UpdateSecretVersionStageCommand({
-SecretId: SecretId,
-VersionStage: AWSCURRENT,
-MoveToVersionId: Token,
-RemoveFromVersionId: CurrentVersion
+await secretsclient.send(new updatesecretversionstagecommand({
+secretid: secretid,
+versionstage: aws current,
+movetoversionid: token,
+removefromversionid: currentversion
 }));
-Console.Log(Rotation Complete);
+console.log(rotation complete);
 }
 /
- * Utility: Generate A Random Password
+ * utility: generate a random password
  */
-Function GenerateRandomPassword(Length = 16) {
-Const Chars = ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*();
-Return Array.From({Length }, () => Chars[Math.Floor(Math.Random() * Chars.Length)]).Join("");
+function generaterandompassword(length = 16) {
+const chars=abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*();
+return array.from({length }, () =>chars[math.floor(math.random() * chars.length)]).join("");
 }
-Aws Lambda Create-Function \
---Function-Name MySecretRotation \
---Runtime Nodejs18.X \
---Role Arn:Aws:Iam::<Account-Id>:Role/<LambdaExecutionRole> \
---Handler Index.Handler \
---Zip-File Fileb://Function.Zip
-Attach IAM Permissions To The Lambda Role:
-Secretsmanager:GetSecretValue
-Secretsmanager:PutSecretValue
-Secretsmanager:DescribeSecret
-Secretsmanager:UpdateSecretVersionStage
-Any Permissions Needed To Update Your Target Resource (E.G., RDS, API).
-Enable Rotation For Your Secret:
-Bash
-Aws Secretsmanager Rotate-Secret \
---Secret-Id MySecret \
---Rotation-Lambda-Arn Arn:Aws:Lambda:<Region>:<Account-Id>:Function:MySecretRotation \
---Rotation-Rules AutomaticallyAfterDays=30
-<Subheading.Html>
-Covid Strings Regularly Rotating RDS Credentials So It Updates Both Secrets Manager And The Database Automatically
-How To Regularly Rotate RDS Credentials So It Updates Both Secrets Manager And The Database Automatically
+aws lambda create-function \
+--function-name mysecretrotation \
+--runtime nodejs18.x \
+--role arn:Aws:iam::<account-id>:role/<lambdaexecutionrole> \
+--handler index.handler \
+--zip-file fileb://function.zip
+attach iam permissions to the lambda role:
+secretsmanager:getsecretvalue
+secretsmanager:putsecretvalue
+secretsmanager:describesecret
+secretsmanager:updatesecretversionstage
+any permissions needed to update your target resource (e.g., rds, api).
+enable rotation for your secret:
+bash
+aws secretsmanager rotate-secret \
+--secret-id mysecret \
+--rotation-lambda-arn arn:aws:lambda:<region>:<account-id>:function:mysecretrotation \
+--rotation-rules automaticallyafterdays=30
+<subheading.html>
+covid strings regularly rotating rds credentials so it updates both secrets manager and the database automatically
+how to regularly rotate rds credentials so it updates both secrets manager and the database automatically
 /
- * AWS Lambda Function For Rotating RDS Credentials Stored In AWS Secrets Manager.
- * This Function Follows AWSs Rotation Lambda Contract:
- *  - CreateSecret
- *  - SetSecret
- *  - TestSecret
- *  - FinishSecret
+ * aws lambda function for rotating rds credentials stored in aws secrets manager.
+ * this function follows aws rotation lambda contract:
+ *  - createsecret
+ *  - setsecret
+ *  - testsecret
+ *  - finishsecret
  */
-Const AWS = Require(Aws-Sdk);
-Const { Client } = Require(Pg); // Change to 'mysql2' if using MySQL
-Const SecretsManager = New AWS.SecretsManager();
-Const RDS = New AWS.RDS();
-Exports.Handler = Async (Event) => {
-Console.Log(Rotation Event: ${JSON.Stringify(Event)});
-Const Step = Event.Step;
-Const SecretArn = Event.SecretId;
-Try {
-Switch (Step) {
-Case CreateSecret:
-Await CreateSecret(SecretArn);
-Break;
-Case SetSecret:
-Await SetSecret(SecretArn);
-Break;
-Case TestSecret:
-Await TestSecret(SecretArn);
-Break;
-Case FinishSecret:
-Await FinishSecret(SecretArn);
-Break;
-Default:
-Throw New Error(Unknown Step: ${Step});
+const aws =require(aws-sdk);
+const {client } =require(pg); // change to 'mysql2' if using mysql
+const secretsmanager = new aws.secretsmanager();
+const rds =new aws.rds();
+exports.handler =async (event) => {
+console.log(rotation event: ${json.stringify(event)});
+const step = event.step;
+const secretarn = event.secretid;
+try {
+switch (step) {
+case createsecret:
+await createsecret(secretarn);
+break;
+case setsecret:
+await setsecret(secretarn);
+break;
+case testsecret:
+await testsecret(secretarn);
+break;
+case finishsecret:
+await finishsecret(secretarn);
+break;
+default:
+throw new error(unknown step: ${step});
 }
-} Catch (Err) {
-Console.Error(Error During ${Step}:, Err);
-Throw Err;
+} catch (err) {
+console.error(error during ${step}:, err);
+throw err;
 }
 };
 /
- * Step 1: Create A New Secret Version With A New Password
+ * step 1: create a new secret version with a new password
  */
-Async Function CreateSecret(SecretArn) {
-Const CurrentSecret = Await GetSecretValue(SecretArn, AWSCURRENT);
-Generate A New Password
-Const NewPassword = Math.Random().ToString(36).Slice(-12) + A1!;
-Store As AWSPENDING
-Await SecretsManager.PutSecretValue({
-SecretId: SecretArn,
-ClientRequestToken: Process.Env.AWS_LAMBDA_LOG_STREAM_NAME, // unique token
-SecretString: JSON.Stringify({
-...CurrentSecret,
-Password: NewPassword
+async function createsecret(secretarn) {
+const currentsecret = await getsecretvalue(secretarn, aws current);
+generate a new password
+const newpassword =math.random().tostring(36).slice(-12) + a1!;
+store as aws pending
+await secretsmanager.putsecretvalue({
+secretid: secretarn,
+clientrequesttoken: process.env.aws_lambda_log_stream_name, // unique token
+secretstring: json.stringify({
+...currentsecret,
+password: newpassword
 }),
-VersionStages: [AWSPENDING]
-}).Promise();
-Console.Log(Created New Pending Secret Version.);
+versionstages: [aws pending]
+}).promise();
+console.log(created new pending secret version.);
 }
 /
-* Step 2: Update The Database With The New Password
+* step 2: update the database with the new password
 */
-Async Function SetSecret(SecretArn) {
-Const PendingSecret = Await GetSecretValue(SecretArn, AWSPENDING);
-Const CurrentSecret = Await GetSecretValue(SecretArn, AWSCURRENT);
-Connect To DB With Current Credentials
-Const Client = New Client({
-Host: CurrentSecret.Host,
-Port: CurrentSecret.Port,
-User: CurrentSecret.Username,
-Password: CurrentSecret.Password,
-Database: CurrentSecret.Dbname
+async function setsecret(secretarn) {
+const pendingsecret =await getsecretvalue(secretarn, aws pending);
+const currentsecret=await getsecretvalue(secretarn, aws current);
+connect to db with current credentials
+const client=new client({
+host: currentsecret.host,
+port: currentsecret.port,
+user: currentsecret.username,
+password: currentsecret.password,
+database: currentsecret.dbname
 });
-Await Client.Connect();
-// Change password in DB
-Await Client.Query(ALTER USER ${PendingSecret.Username} WITH PASSWORD ${PendingSecret.Password});
-Await Client.End();
-Console.Log(Database Password Updated.);
+await client.connect();
+// change password in db
+await client.query(alter user ${pendingsecret.username} with password ${pendingsecret.password});
+await client.end();
+console.log(database password updated.);
 }
 /
- * Step 3: Test The Pending Secret
+ * step 3: test the pending secret
  */
-Async Function TestSecret(SecretArn) {
-Const PendingSecret = Await GetSecretValue(SecretArn, AWSPENDING);
-Const Client = New Client({
-Host: PendingSecret.Host,
-Port: PendingSecret.Port,
-User: PendingSecret.Username,
-Password: PendingSecret.Password,
-Database: PendingSecret.Dbname
+async function testsecret(secretarn) {
+const pendingsecret=await getsecretvalue(secretarn, aws pending);
+const client=new client({
+host: pendingsecret.host,
+port: pendingsecret.port,
+user: pendingsecret.username,
+password: pendingsecret.password,
+database: pendingsecret.dbname
 });
-Await Client.Connect();
-Await Client.Query(SELECT 1); // Simple test query
-Await Client.End();
-Console.Log(Pending Secret Tested Successfully.);
+await client.connect();
+await client.query(select 1); // simple test query
+await client.end();
+console.log(pending secret tested successfully.);
 }
 /
- * Step 4: Mark Pending Secret As Current
+ * step 4: mark pending secret as current
  */
-Async Function FinishSecret(SecretArn) {
-Await SecretsManager.UpdateSecretVersionStage({
-SecretId: SecretArn,
-VersionStage: AWSCURRENT,
-MoveToVersionId: Process.Env.AWS_LAMBDA_LOG_STREAM_NAME,
-RemoveFromVersionId: (Await GetSecretMetadata(SecretArn)).CurrentVersionId
-}).Promise();
-Console.Log(Secret Rotation Finished.);
+async function finishsecret(secretarn) {
+await secretsmanager.updatesecretversionstage({
+secretid: secretarn,
+versionstage: aws current,
+movetoversionid: process.env.aws_lambda_log_stream_name,
+removefromversionid: (await getsecretmetadata(secretarn)).currentversionid
+}).promise();
+console.log(secret rotation finished.);
 }
 /
 * helper: get secret value for a specific stage
 */
-Async Function GetSecretValue(SecretArn, Stage) {
-Const Data = Await SecretsManager.GetSecretValue({
-SecretId: SecretArn,
-VersionStage: Stage
-}).Promise();
-Return JSON.Parse(Data.SecretString);
+async function getsecretvalue(secretarn, stage) {
+const data =await secretsmanager.getsecretvalue({
+secretid: secretarn,
+versionstage: stage
+}).promise();
+return json.parse(data.secretstring);
 }
 /
-* Helper: Get Secret Metadata
+* helper: get secret metadata
 */
-Async Function GetSecretMetadata(SecretArn) {
-Const Meta = Await SecretsManager.DescribeSecret({ SecretId: SecretArn }).Promise();
-Return {
-CurrentVersionId: Object.Keys(Meta.VersionIdsToStages).Find(
-Id => Meta.VersionIdsToStages[Id].Includes(AWSCURRENT)
+async function getsecretmetadata(secretarn) {
+const meta =await secretsmanager.describesecret({secretid: secretarn }).promise();
+return {
+currentversionid: object.keys(meta.versionidstostages).find(
+id =>meta.versionidstostages[id].includes(aws current )
 )
 };
 }
@@ -6655,7 +6655,7 @@ Id => Meta.VersionIdsToStages[Id].Includes(AWSCURRENT)
 username: dbuser,
 password: oldpassword,
 engine: postgres,
-host: Mydb.Cluster-Xxxx.Us-East-1.Rds.Amazonaws.Com,
+host: mydb.cluster-xxxx.us-east-1.rds.amazonaws.com,
 port: 5432,
 dbname: mydatabase
 }
@@ -6664,374 +6664,374 @@ secretsmanager:getsecretvalue
 secretsmanager:putsecretvalue
 secretsmanager:updatesecretversionstage
 rds-db:connect
-<Header.Html>
-Covid Strings Quick PR Style Check Script
-How To Create A Quick Style Check Script For A Covid Strings Pull Request 
-#!/Usr/Bin/Env Node
+<header.html>
+covid strings quick pr style check script
+how to create a quick style check script for a covid strings pull request 
+#!/usr/bin/env node
 /**
- * Quick PR Style Check Script
+ * quick pr style check script
  * ---------------------------------
- * Runs ESLint and Prettier checks to ensure code style compliance
- * before submitting a Pull Request.
+ * runs eslint and prettier checks to ensure code style compliance
+ * before submitting a pull request.
  *
- * Usage:
- *   1. Install dependencies:
+ * usage:
+ *   1. install dependencies:
  *      npm install --save-dev eslint prettier
- *   2. Make this file executable:
+ *   2. make this file executable:
  *      chmod +x pr-style-check.js
- *   3. Run:
+ *   3. run:
  *      node pr-style-check.js
  */
-Const {ExecSync } = Require(Child_process);
-Function RunCommand(Command, Description) {
-Try {
-Console.Log(\N🔍 Running: ${Description}...);
-ExecSync(Command, {Stdio: Inherit});
-Console.Log(✅ ${Description} Passed);
-} Catch (Error) {
-Console.Error(❌ ${Description} Failed);
-Process.Exit(1); // Exit with failure
+const {execsync} =require(child_process);
+function runcommand(command, description) {
+try {
+console.log(\n🔍 running: ${description}...);
+execsync(command, {stdio: inherit});
+console.log(✅ ${description} passed);
+} catch (error) {
+console.error(❌ ${description} failed);
+process.exit(1); // exit with failure
 }
 }
-Console.Log(🚀 Starting PR Style Checks...);
-// 1. ESLint check (no auto-fix)
-RunCommand(Npx Eslint . --Ext .Js,.Jsx,.Ts,.Tsx, ESLint Style Check);
-// 2. Prettier check (no write)
-RunCommand(Npx Prettier --Check ., Prettier Formatting Check);
-Console.Log(\N🎉 All Style Checks Passed! Ready For PR Submission.);
-Setup Instructions
-Install ESLint & Prettier
-Bash
-Npm Install --Save-Dev Eslint Prettier
-Configure ESLint
-Bash
-Npx Eslint--Init
-Configure Prettier
-Create .Prettierrc:
-Json
+console.log(🚀 starting pr style checks...);
+// 1. eslint check (no auto-fix)
+runcommand(npx eslint . --ext .js,.jsx,.ts,.tsx, eslint style check);
+// 2. prettier check (no write)
+runcommand(npx prettier --check ., prettier formatting check);
+console.log(\n🎉 all style checks passed! ready for pr submission.);
+setup instructions
+install eslint & prettier
+bash
+npm install --save-dev eslint prettier
+configure eslint
+bash
+npx eslint--init
+configure prettier
+create.prettierrc:
+json
 {
-SingleQuote: True,
-Semi: True,
-TrailingComma: Es5
+singlequote: true,
+semi: true,
+trailingcomma: es5
 }
-Run The Script Before Pushing:
-Bash
-<Subheading.Html>
-Covid Strings  Also Checking For Missing Documentation And Test Coverage Before Allowing A PR 
-How To Also Check For Missing Documentation And Test Coverage Before Allowing A PR
-#!/Usr/Bin/Env Node
+run the script before pushing:
+bash
+<subheading.html>
+covid strings  also checking for missing documentation and test coverage before allowing a pr 
+how to also check for missing documentation and test coverage before allowing a pr
+#!/usr/bin/env node
 /**
- * PR Validation Script
+ * pr validation script
  * --------------------
- * 1. Checks if documentation changes are present when code changes are made.
- * 2. Checks if test coverage meets the minimum threshold.
+ * 1. checks if documentation changes are present when code changes are made.
+ * 2. checks if test coverage meets the minimum threshold.
  *
- * Usage:
- *   node pr-check.js <coverageThreshold>
+ * usage:
+ *   node pr-check.js <coveragethreshold>
  *
- * Example:
+ * example:
  *   node pr-check.js 80
  */
-Const {ExecSync } = Require(Child_process);
-Const Fs = Require(Fs);
-Const CoverageThreshold =ParseInt(Process.Argv[2] || 80, 10);
-If (IsNaN(CoverageThreshold) || CoverageThreshold <= 0 || CoverageThreshold > 100) {
-Console.Error(❌ Invalid Coverage Threshold. Must Be Between 1 And 100.);
-Process.Exit(1);
+const {execsync } = require(child_process);
+const fs = require(fs);
+const coveragethreshold=parseint(process.argv[2] || 80, 10);
+if (isnan(coveragethreshold) || coveragethreshold <= 0 || coveragethreshold > 100) {
+console.error(❌ invalid coverage threshold. must be between 1 and 100.);
+process.exit(1);
 }
-Try {
-Console.Log(🔍 Checking Changed Files In PR...);
-Const ChangedFiles = ExecSync(Git Diff --Name-Only Origin/Main...HEAD, {Encoding: Utf8})
-.Split(\N)
-.Filter(Boolean);
-Const CodeFiles =ChangedFiles.Filter(F =>F.EndsWith(.Js) || F.EndsWith(.Ts));
-Const DocFiles =ChangedFiles.Filter(F => F.StartsWith(Docs/) || F.ToLowerCase().Includes(Readme));
-If (CodeFiles.Length> 0 && DocFiles.Length === 0) {
-Console.Error(❌ Code Changes Detected But No Documentation Updates Found.);
-Console.Error(Please Update README Or Docs/Accordingly.);
-Process.Exit(1);
-} Else {
-Console.Log(✅ Documentation Check Passed.);
+try {
+console.log(🔍 checking changed files in pr...);
+const changedfiles = execsync(git diff --name-only origin/main...head, {encoding: utf8})
+.split(\n)
+.filter(boolean);
+const codefiles=changedfiles.filter(f =>f.endswith(.js) || f.endswith(.ts));
+const docfiles =changedfiles.filter(f => f.startswith(docs/) || f.tolowercase().includes(readme));
+if (codefiles.length> 0 && docfiles.length === 0) {
+console.error(❌ code changes detected but no documentation updates found.);
+console.error(please update read me or docs/accordingly.);
+process.exit(1);
+} else {
+console.log(✅ documentation check passed.);
 }
-Console.Log(📊 Running Test Coverage Check...);
-ExecSync(Npx Jest --Coverage --CoverageReporters=Json-Summary, {Stdio: Inherit});
-Const CoverageSummaryPath = ./Coverage/Coverage-Summary.Json;
-If (!Fs.ExistsSync(CoverageSummaryPath)) {
-Console.Error(❌ Coverage Summary File Not Found. Ensure Tests Generate Coverage.);
-Process.Exit(1);
+console.log(📊 running test coverage check...);
+execsync(npx jest --coverage --coveragereporters=json-summary, {stdio: inherit});
+const coveragesummarypath = ./coverage/coverage-summary.json;
+if (!fs.existssync(coveragesummarypath)) {
+console.error(❌ coverage summary file not found. ensure tests generate coverage.);
+process.exit(1);
 }
-Const CoverageData = JSON.Parse(Fs.ReadFileSync(CoverageSummaryPath, Utf8));
-Const StatementsCoverage =CoverageData.Total.Statements.Pct;
-If (StatementsCoverage <CoverageThreshold) {
-Console.Error(❌ Test Coverage Too Low: ${StatementsCoverage}% (Minimum ${CoverageThreshold}%));
-Process.Exit(1);
+const coveragedata =json.parse(fs.readfilesync(coveragesummarypath, utf8));
+const statementscoverage =coveragedata.total.statements.pct;
+if (statementscoverage <coveragethreshold) {
+console.error(❌ test coverage too low: ${statementscoverage}% (minimum ${coveragethreshold}%));
+process.exit(1);
 }
-Console.Log(✅ Test Coverage Check Passed: ${StatementsCoverage}%);
-Console.Log(🎉 All PR Checks Passed!);
-Process.Exit(0);
-} Catch (Err) {
-Console.Error(❌ Error Running PR Checks:,Err.Message);
-Process.Exit(1);
+console.log(✅ test coverage check passed: ${statementscoverage}%);
+console.log(🎉 all pr checks passed!);
+process.exit(0);
+} catch (err) {
+console.error(❌ error running pr checks:,err.message);
+process.exit(1);
 }
-Integration In GitHub Actions
-Yaml
-Name: PR Checks
-On:
-Pull_request:
-Branches: [Main ]
-Jobs:
-Validate-Pr:
-Runs-On: Ubuntu-Latest
-Steps:
--Uses: Actions/Checkout@V3
--Uses: Actions/Setup-Node@V3
-With:
-Node-Version: 18
--Run: Npm Install
--Run: Node Pr-Check.Js 80
-<Subheading.Html>
-Covid Strings Testing Framework That Automatically Generates Unit Tests For New Functions As They Are Added To The Codebase 
-How To Test The Framework That Automatically Generates Unit Tests For New Functions As They Are Added To The Codebase 
-Npm Init-Y
-Npm Install Jest Chokidar Fs-Extra --Save-Dev
-2. Project Structure
-Project/
-Src/
-Math.Js
-Tests/
-Auto-Test-Generator.Js
-Package.Json
-3. Example Source File (Src/Math.Js)
-// Example function
-Function Add(A, B) {
-Return A + B;
+integration in github actions
+yaml
+name: pr checks
+on:
+pull_request:
+branches: [main ]
+jobs:
+validate-pr:
+runs-on: ubuntu-latest
+steps:
+-uses: actions/checkout@v3
+-uses: actions/setup-node@v3
+with:
+node-version: 18
+-run: npm install
+-run: node pr-check.js 80
+<subheading.html>
+covid strings testing framework that automatically generates unit tests for new functions as they are added to the codebase 
+how to test the framework that automatically generates unit tests for new functions as they are added to the codebase 
+npm init-y
+npm install jest chokidar fs-extra --save-dev
+2. project structure
+project/
+src/
+math.js
+tests/
+auto-test-generator.js
+package.json
+3. example source file (src/math.js)
+// example function
+function add(a, b) {
+return a + b;
 }
-// Another function
-Function Multiply(A, B) {
-Return A * B;
+// another function
+function multiply(a, b) {
+return a * b;
 }
-Module.Exports={Add, Multiply };
-4. Auto Test Generator (Auto-Test-Generator.Js)
+module.exports={add,multiply };
+4. auto test generator (auto-test-generator.js)
 /**
- * Auto Test Generator
- * Watches the src/ folder for new JS files and generates Jest test stubs
+ * auto test generator
+ * watches the src/ folder for new js files and generates jest test stubs
  */
-Const Chokidar=Require(Chokidar);
-Const Fs = Require(Fs-Extra);
-Const Path = Require(Path);
-Const SRC_DIR = Path.Join(__ Dirname, Src);
-Const TEST_DIR = Path.Join(__ Dirname, Tests);
-Function GenerateTestTemplate(FilePath) {
-Const FileName = Path.Basename(FilePath, .Js);
-Const RelativeImport = ../Src/${FileName};
-Const FileContent =Fs.ReadFileSync(FilePath, Utf-8);
-// Extract function names using regex
-Const FunctionNames = [...FileContent.MatchAll(/function\s+([a-zA-Z0-9_]+)/g)]
-.Map(Match => Match[1]);
-Let TestContent = Const { ${FunctionNames.Join(", ")} } =Require(${RelativeImport});
-Describe(${FileName} Module, () => {
-${FunctionNames.Map(Fn => Test(${Fn} Should Work Correctly, () => {
-// TODO: Implement test for ${fn}
-Expect(${Fn}()).ToBeDefined();
-});).Join(\N)}
+const chokidar=require(chokidar);
+const fs = require(fs-extra);
+const path = require(path);
+const src_dir =path.join(__ dirname, src);
+const test_dir =path.join(__ dirname, tests);
+function generatetesttemplate(filepath) {
+const filename =path.basename(filepath, .js);
+const relativeimport= ../src/${filename};
+const filecontent=fs.readfilesync(filepath, utf-8);
+// extract function names using regex
+const functionnames = [...filecontent.natchall(/function\s+([a-za-z0-9_]+)/g)]
+.map(match =>match[1]);
+let testcontent =const { ${functionnames.join(", ")} }=require(${relativeimport});
+describe(${filename} module, () => {
+${functionnames.map(fn => test(${fn} should work correctly, () => {
+// todo: implement test for ${fn}
+expect(${fn}()).tobedefined();
+});).join(\n)}
 });
 ;
-Return TestContent;
+return testcontent;
 }
-// Watch for new files
-Chokidar.Watch(SRC_DIR, {IgnoreInitial: True })
-.On(Add, FilePath => {
-If (Path.Extname(FilePath) === .Js) {
-Const FileName = Path.Basename(FilePath, .Js);
-Const TestFilePath = Path.Join(TEST_DIR, ${FileName}.Test.Js);
-If (!Fs.ExistsSync(TestFilePath)) {
-Console.Log(Generating Test For ${FileName}...);
-Const TestTemplate =GenerateTestTemplate(FilePath);
-Fs.OutputFileSync(TestFilePath, TestTemplate);
-Console.Log(Test File Created: ${TestFilePath});
+//watch for new files
+chokidar.watch(src_dir, {ignoreinitial: true })
+.on(add, filepath => {
+if (path.extname(filepath) ===.js) {
+const filename =path.basename(filepath,.js);
+const testfilepath =path.join(test_dir, ${filename}.test.js);
+if (!fs.existssync(testfilepath)) {
+console.log(generating test for ${filename}...);
+const testtemplate=generatetesttemplate(filepath);
+fs.outputfilesync(testfilepath, testtemplate);
+console.log(test file created: ${testfilepath});
 }
 }
 });
-Console.Log(Watching For New JS Files In Src/...);
-5. Add Scripts To Package.Json
-Json
+console.log(watching for new js files in src/...);
+5. add scripts to package.json
+json
 {
-Scripts: {
-Test: Jest,
-Watch-Tests: Node Auto-Test-Generator.Js
+scripts: {
+test: jest,
+watch-tests: node auto-test-generator.js
 }
 }
-6. Run The Watcher
-Bash
-Npm Run Watch-Tests
-When You Add A New.Js File In Src/,A Matching .Test.Js File Will Be Created In Tests/With Jest Test Stubs.
-7. Run Tests
-Bash
-Npm Test
-<Subheading.Html>
-Covid Strings How To Integrate An AI API So That Your Script Automatically Fetches Diverse Test Inputs And Then Self‑Verifies Them Before Adding Them To Your Test Suite While ,Let AI Suggests Inputs. Let Your Code Compute The Expected Outputs. Keep Human Review In The Loop For Edge Cases And Logic Changes
-How To Integrate An AI API So That Your Script Automatically Fetches Diverse Test Inputs And Then Self‑Verifies Them Before Adding Them To Your Test Suite While Let AI Suggests Inputs. Let Your Code Compute The Expected Outputs. Keep Human Review In The Loop For Edge Cases And Logic Changes
+6. run the watcher
+bash
+npm run watch-tests
+when you add a new.js file in src/,a matching.test.js file will be created in tests/with jest test stubs.
+7. run tests
+bash
+npm test
+<subheading.html>
+covid strings how to integrate an ai api so that your script automatically fetches diverse test inputs and then self‑verifies them before adding them to your test suite while,let ai suggests inputs. let your code compute the expected outputs. keep human review in the loop for edge cases and logic changes
+how to integrate an ai api so that your script automatically fetches diverse test inputs and then self‑verifies them before adding them to your test suite while let ai suggests inputs. let your code compute the expected outputs. keep human review in the loop for edge cases and logic changes
 /**
- * Example: AI-assisted test input generation with self-verification
- * Requirements:
+ * example: ai-assisted test input generation with self-verification
+ * requirements:
  *   npm install openai dotenv
- *   Create a .env file with: OPENAI_API_KEY=your_api_key_here
+ *   create a .env file with: openai_api_key=your_api_key_here
  */
-Import OpenAI From Openai;
-Import Dotenv From Dotenv;
-Dotenv.Config();
-// Initialize OpenAI client
-Const Openai = New OpenAI({
-ApiKey: Process.Env.OPENAI_API_KEY
+import openai from openai;
+import dotenv from dotenv;
+dotenv.config();
+// initialize openai client
+const openai = new openai({
+apikey: process.env.openai_api_key
 });
-// Example function under test
-Function SumArray(Arr) {
-If (!Array.IsArray(Arr)) Throw New Error(Input Must Be An Array);
-Return Arr.Reduce((Acc, Val) => {
-If (Typeof Val !== Number) Throw New Error(Array Must Contain Only Numbers);
-Return Acc + Val;
+//example function under test
+function sumarray(arr) {
+if (!array.isarray(arr)) throw new error(input must be an array);
+return arr.reduce((acc,val) => {
+if (typeof val !== number) throw new error(array must contain only numbers);
+return acc +val;
 }, 0);
 }
-// Local function to compute expected output
-Function ComputeExpected(Input) {
-Return SumArray(Input);
+//local function to compute expected output
+function computeexpected(input) {
+return sumarray(input);
 }
-// Validate AI-suggested input
-Function IsValidInput(Input) {
-Return Array.IsArray(Input) && Input.Every(N => Typeof N === Number);
+//validate ai-suggested input
+function isvalidinput(input) {
+return array.isarray(input) && input.every(n => typeof n === number);
 }
-// Fetch diverse test inputs from AI
-Async Function FetchTestInputsFromAI() {
-Const Prompt = 
-Generate 5 Diverse JavaScript Array Inputs For Testing A SumArray Function.
-Include Edge Cases Like Empty Arrays, Negatives, Large Numbers, And Mixed Lengths.
-Return ONLY A JSON Array Of Arrays, No Explanations.
+// fetch diverse test inputs from ai
+async function fetchtestinputsfromai() {
+const prompt = 
+generate 5 diverse javascript array inputs for testing a sumarray function.
+include edge cases like empty arrays, negatives, large numbers, and mixed lengths.
+return only a json array of arrays, no explanations.
 ;
-Const Response =Await Openai.Chat.Completions.Create({
-Model: Gpt-4O-Mini, // lightweight, fast model
-Messages: [{Role: User, Content: Prompt }],
-Temperature: 0.7
+const response=await openai.chat.completions.create({
+model: gpt-4O-mini, // lightweight, fast model
+messages: [{role: user, content: prompt }],
+temperature: 0.7
 });
-Try {
-Const JsonText =Response.Choices[0].Message.Content.Trim();
-Const Parsed = JSON.Parse(JsonText);
-Return Parsed;
-} Catch (Err) {
-Console.Error(Failed To Parse AI Response:,Err);
-Return [];
+try {
+const jsontext=response.choices[0].message.content.trim();
+const parsed=json.parse(jsontext);
+return parsed;
+} catch (err) {
+console.error(failed to parse ai response:,err);
+return [];
 }
 }
-// Main workflow
-Async Function Main() {
-Console.Log(Fetching AI-Suggested Test Inputs...);
-Const AiInputs =Await FetchTestInputsFromAI();
-Const VerifiedTests = [];
-For (Const Input Of AiInputs) {
-If (!IsValidInput(Input)) {
-Console.Warn(Skipping Invalid Input (Needs Human Review):, Input);
-Continue;
+// main workflow
+async function main() {
+console.log(fetching ai-suggested test inputs...);
+const aiinputs=await fetchtestinputsfromai();
+const verifiedtests = [];
+for (const input of aiinputs) {
+if (!isvalidinput(input)) {
+console.warn(skipping invalid input (needs human review):, input);
+continue;
 }
-Try {
-Const Expected =ComputeExpected(Input);
-VerifiedTests.Push({Input, Expected});
-} Catch (Err) {
-Console.Warn(Error Computing Expected Output (Needs Human Review):, Input, Err.Message);
+try {
+const expected=computeexpected(input);
+verifiedtests.push({input, expected});
+} catch (err) {
+console.warn(error computing expected output (needs human review):, input, err.message);
 }
 }
-Console.Log(\N✅ Verified Tests Ready To Add To Suite:);
-Console.Log(JSON.Stringify(VerifiedTests, Null, 2));
-Console.Log(\N⚠️ Inputs Needing Human Review Were Skipped.);
+console.log(\n✅ verified tests ready to add to suite:);
+console.log(json.stringify(verifiedtests, null, 2));
+console.log(\n⚠️ inputs needing human review were skipped.);
 }
-Main().Catch(Err =>Console.Error(Fatal Error:,Err));
-How It Works
-AI Suggestion
-Uses OpenAI To Generate Diverse Test Inputs In JSON Format.
-Prompt Ensures No Explanations, Only Raw Data.
-Local Verification
-IsValidInput() Ensures The AI Output Matches The Expected Input Type.
-ComputeExpected() Calculates The True Expected Output Locally.
-Human Review Loop
-Any Invalid Or Unprocessable Inputs Are Skipped And Flagged For Review.
-This Prevents Bad AI Suggestions From Polluting Your Test Suite.
-Safe Integration
-AI Is Only Used For Input Diversity, Not Correctness.
-Expected Results Are Computed By Trusted Local Logic.
-Example Output
-Copy Code
-Fetching AI-Suggested Test Inputs...
-✅ Verified Tests Ready To Add To Suite:
+main().catch(err =>console.error(fatal error:,err));
+how it works
+ai suggestion
+uses openai to generate diverse test inputs in json format.
+prompt ensures no explanations, only raw data.
+local verification
+isvalidinput() ensures the ai output matches the expected input type.
+computeexpected() calculates the true expected output locally.
+human review loop
+any invalid or unprocessable inputs are skipped and flagged for review.
+this prevents bad ai suggestions from polluting your test suite.
+safe integration
+ai is only used for input diversity, not correctness.
+expected results are computed by trusted local logic.
+example output
+copy code
+fetching ai-suggested test inputs...
+✅ verified tests ready to add to suite:
 [
-{Input: [1, 2, 3], Expected: 6 },
-{Input: [], Expected: 0 },
-{Input: [-5, 5], Expected: 0 },
-{Input: [1000000, 2000000], Expected: 3000000 }
+{input: [1, 2, 3], expected: 6 },
+{input: [], expected: 0 },
+{input: [-5, 5], expected: 0 },
+{input: [1000000, 2000000], expected: 3000000 }
 ]
-⚠️ Inputs Needing Human Review Were Skipped.
-<Subheading.Html>
-Covid Strings Automatically Appending Verified Tests To A Jest Or Mocha Test File While Keeping A Separate Human-Review Queue For Flagged Cases
-How To Automatically Append Verified Tests To A Jest Or Mocha Test File While Keeping A Separate Human-Review Queue For Flagged Cases For Covid Strings
-Const Fs = Require(Fs);
-Const Path = Require(Path);
-Function AppendTest(TestName, TestBody, OutputFile) {
-Const FilePath = Path.Resolve(OutputFile);
-// Ensure file exists
-If (!Fs.ExistsSync(FilePath)) {
-Fs.WriteFileSync(FilePath, // Auto-generated tests\n\n', 'utf8');
+⚠️ inputs needing human review were skipped.
+<subheading.html>
+covid strings automatically appending verified tests to a jest or mocha test file while keeping a separate human-review queue for flagged cases
+how to automatically append verified tests to a jest or mocha test file while keeping a separate human-review queue for flagged cases for covid strings
+const fs =require(fs);
+const path =require(path);
+function appendtest(testname, testbody, outputfile) {
+const filepath =path.resolve(outputfile);
+// ensure file exists
+if (!fs.existssync(filepath)) {
+fs.writefilesync(filepath, //auto-generated tests\n\n', 'utf8');
 }
-// Append test
-Const TestCode = Test(${TestName}, Async () => {\N${TestBody}\N});\N\N;
-Fs.AppendFileSync(FilePath, TestCode, Utf8);
+// append test
+const testcode =test(${testname}, async () => {\n${testbody}\n});\n\n;
+fs.appendfilesync(filepath, testcode, utf8);
 }
-// Example usage
-AppendTest(
-Should Return Correct Sum,
-Expect(1 + 2).ToBe(3);,
-./Auto_generated_tests.Spec.Js
+// example usage
+appendtest(
+should return correct sum,
+expect(1 + 2).tobe(3);,
+./auto_generated_tests.spec.js
 );
-<Subheading.Html>
-Covid Strings Full Jest/Mocha-Compatible Script That: Runs Verification Appends Passing Tests Automatically Writes Failing Ones To A Pending_review/Folder Works In Both Local Dev And CI Pipelines 
-How To Create A Full Jest/Mocha-Compatible Script That: Runs Verification Appends Passing Tests Automatically Writes Failing Ones To A Pending_review/Folder Works In Both Local Dev And CI Pipelines For Covid Strings
-#!/Usr/Bin/Env Node
+<subheading.html>
+covid strings full jest/mocha-compatible script that: runs verification appends passing tests automatically writes failing ones to a pending_review/folder works in both local dev and ci pipelines 
+how to create a full jest/mocha-compatible script that: runs verification appends passing tests automatically writes failing ones to a pending_review/folder works in both local dev and ci pipelines for covid strings
+#!/usr/bin/env node
 /**
- * Cross-compatible Jest/Mocha test runner
- * - Runs tests
- * - Appends passing test names to verified_tests.json
- * - Writes failing test files to pending_review/ folder
- * - Works in local dev and CI
+ * cross-compatible jest/mocha test runner
+ * - runs tests
+ * - appends passing test names to verified_tests.json
+ * - writes failing test files to pending_review/ folder
+ * - works in local dev and ci
  */
-Const {ExecSync } =Require(Child_process);
-Const Fs = Require(Fs);
-Const Path = Require(Path);
-// Configurable paths
-Const VERIFIED_FILE =Path.Resolve(__ Dirname, Verified_tests.Json);
-Const PENDING_DIR =Path.Resolve(__ Dirname, Pending_review);
-// Ensure pending_review folder exists
-If (!Fs.ExistsSync(PENDING_DIR)) {
-Fs.MkdirSync(PENDING_DIR, {Recursive: True });
+const {execsync}=require(child_process);
+const fs =require(fs);
+const path=require(path);
+//configurable paths
+const verified_file=path.resolve(__ dirname, verified_tests.json);
+const pending_dir=path.resolve(__ dirname, pending_review);
+// ensure pending_review folder exists
+if (!fs.existssync(pending_dir)) {
+fs.mkdirsync(pending_dir, {recursive: true });
 }
-// Load existing verified tests
-Let VerifiedTests = [];
-If (Fs.ExistsSync(VERIFIED_FILE)) {
-Try {
-VerifiedTests = JSON.Parse(Fs.ReadFileSync(VERIFIED_FILE, Utf8));
-} Catch {
-VerifiedTests = [];
+// load existing verified tests
+let verifiedtests = [];
+if (fs.existssync(verified_file)) {
+try {
+verifiedtests =json.parse(fs.readfilesync(verified_file, utf8));
+}catch {
+verifiedtests = [];
 }
 }
-// Detect test framework
-Function DetectFramework() {
-If (Fs.ExistsSync(Path.Resolve(Node_modules, Jest))) Return Jest;
-If (Fs.ExistsSync(Path.Resolve(Node_modules, Mocha))) Return Mocha;
-Console.Error(❌ No Supported Test Framework Found (Install Jest Or Mocha).);
-Process.Exit(1);
+// detect test framework
+function detectframework() {
+if (fs.existssync(path.resolve(node_modules, jest))) return jest;
+if (fs.existssync(path.resolve(node_modules, mocha))) return mocha;
+console.error(❌ no supported test framework found (install jest or mocha).);
+process.exit(1);
 }
-// Run tests and capture results
-Function RunTests(Framework) {
-Console.Log(▶ Running Tests With ${Framework}...);
-Let Output;
-Try {
-If (Framework === Jest) {
-Output =ExecSync(Npx Jest --Json --OutputFile=Jest-Results.Json, {Stdio: Pipe}).ToString();
+// run tests and capture results
+function runtests(framework) {
+console.log(▶ running tests with ${framework}...);
+let output;
+try {
+if (framework === jest) {
+output=execsync(npx jest --json --outputfile=jest-results.json, {stdio: pipe}).tostring();
 Return JSON.Parse(Fs.ReadFileSync(Jest-Results.Json, Utf8));
 } Else If (Framework === Mocha) {
 Output =ExecSync(Npx Mocha --Reporter Json, {Stdio: Pipe}).ToString();
