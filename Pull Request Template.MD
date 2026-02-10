@@ -6122,343 +6122,343 @@ aws secretsmanager create-secret \
 --secret-string {apikey:initialvalue}
 npm init-y
 npm install @aws-sdk/client-secrets-manager
-Zip -R Function.Zip .
-Aws Lambda Create-Function \
---Function-Name RotateApiKey \
---Runtime Nodejs18.X \
---Role Arn:Aws:Iam::<ACCOUNT_ID>:Role/<LambdaRoleWithSecretsManagerAccess> \
---Handler Index.Handler \
---Zip-File Fileb://Function.Zip
-IAM Role Permissions (Attach To Lambda Role):
-Json
+zip -r function.zip .
+aws lambda create-function \
+--function-name rotateapikey \
+--runtime nodejs18.x \
+--role arn:aws:iam::<account_id>:role/<lambdarolewithsecretsmanager\access> \
+--handler index.handler \
+--zip-file fileb://function.zip
+iam role [ermissions (attach to lambda role):
+json
 {
-Version: 2012-10-17,
-Statement: [
+version: 2012-10-17,
+statement: [
 {
-Effect: Allow,
-Action: [
-Secretsmanager:PutSecretValue,
-Secretsmanager:GetSecretValue
+effect: allow,
+action: [
+secretsmanager:putsecretvalue,
+secretsmanager:getsecretvalue
 ],
-Resource: Arn:Aws:Secretsmanager:REGION:ACCOUNT_ID:Secret:MyApiKeySecret*
+resource:arn:aws:secretsmanager:region:account_id:secret:myapikeysecret*
 }
 ]
 }
-<Subheading.Html>
-Covid Strings Version That Integrates With AWS Secrets Manager’s Built-In Rotation Schedule
-How To Create A Version That Integrates With AWS Secrets Manager’s Built-In Rotation Schedule
-Lambda Function To Rotate A Secret In AWS Secrets Manager
-Compatible With AWS Secrets Managers Built-In Rotation Schedule
-Node.Js 18+ Runtime
-Import {
-SecretsManagerClient,
-DescribeSecretCommand,
-GetSecretValueCommand,
-PutSecretValueCommand,
-UpdateSecretVersionStageCommand
-} From @Aws-Sdk/Client-Secrets-Manager;
-Const Client = New SecretsManagerClient({Region: Process.Env.AWS_REGION });
+<subheading.html>
+covid strings version that integrates with aws secrets manager’s built-in rotation schedule
+how to create a version that integrates with aws secrets manager’s built-in rotation schedule
+lambda function to rotate a secret in aws secrets manager
+compatible with aws secrets managers built-in rotation schedule
+node.js 18+ runtime
+import {
+secretsmanagerclient,
+describesecretcommand,
+getsecretvaluecommand,
+putsecretvaluecommand,
+updatesecretversionstagecommand
+}from @aws-sdk/client-secrets-manager;
+const client =new secretsmanagerclient({region: process.env.aws_region});
 /
- * Entry Point For AWS Lambda Rotation
+ * entry point for aws lambda rotation
  */
-Export Const Handler = Async (Event) => {
-Console.Log(Rotation Event: ${JSON.Stringify(Event)});
-Const { SecretId, ClientRequestToken, Step } = Event;
-Validate Secret And Token
-Const SecretDescription = Await Client.Send(New DescribeSecretCommand({ SecretId }));
-If (!SecretDescription.RotationEnabled) {
-Throw New Error(Secret ${SecretId} Is Not Enabled For Rotation);
+export const handler =async (event) => {
+console.log(rotation event: ${json.stringify(event)});
+const {secretid,clientrequesttoken,step}=event;
+validate secret and token
+const secretdescription =await client.send(new describesecretcommand({secretid}));
+if (!secretdescription.rotationenabled) {
+throw new error(secret ${secretid} is not enabled for rotation);
 }
-If (!SecretDescription.VersionIdsToStages[ClientRequestToken]) {
-Throw New Error(Secret Version ${ClientRequestToken} Not Found);
+if (!secretdescription.versionidstostages[clientrequesttoken]) {
+throw new error(secret version ${clientrequesttoken} not found);
 }
-If (SecretDescription.VersionIdsToStages[ClientRequestToken].Includes(AWSCURRENT)) {
-Console.Log(Version ${ClientRequestToken} Is Already Marked As AWSCURRENT);
-Return;
+if (secretdescription.versionidstostages[clientrequesttoken].includes(aws current)) {
+console.log(version ${clientrequesttoken} is already marked as aws current);
+return;
 }
-Route To The Correct Step
-Switch (Step) {
-Case CreateSecret:
-Await CreateSecret(SecretId, ClientRequestToken);
-Break;
-Case SetSecret:
-Await SetSecret(SecretId, ClientRequestToken);
-Break;
-Case TestSecret:
-Await TestSecret(SecretId, ClientRequestToken);
-Break;
-Case FinishSecret:
-Await FinishSecret(SecretId, ClientRequestToken);
-Break;
-Default:
-Throw New Error(Unknown Step: ${Step});
+route to the correct step
+switch (step) {
+case createsecret:
+await createsecret(secretid, clientrequesttoken);
+break;
+case setsecret:
+await setsecret(secretid, clientrequesttoken);
+break;
+case testsecret:
+await testsecret(secretid, clientrequesttoken);
+break;
+case finishsecret:
+await finishsecret(secretid, clientrequesttoken);
+break;
+default:
+throw new error(unknown step: ${step});
 }
 };
 /
- * Step 1: Create A New Secret Version With New Credentials
+ * step 1: create a new secret version with new credentials
  */
-Async Function CreateSecret(SecretId, Token) {
-Console.Log(Creating New Secret Version For ${SecretId});
-Check If Secret Version Already Exists
-Try {
-Await Client.Send(New GetSecretValueCommand({
-SecretId: SecretId,
-VersionId: Token,
-VersionStage: AWSPENDING
+async function createsecret(secretid, token) {
+console.log(creating new secret version for ${secretid});
+check if secret version already exists
+try {
+await client.send(new getsecretvaluecommand({
+secretid: secretid,
+versionid: token,
+versionstage: aws pending
 }));
-Console.Log(AWSPENDING Version Already Exists);
-Return;
-} Catch (Err) {
-If (Err.Name !== ResourceNotFoundException) Throw Err;
+console.log(aws pending version already exists);
+return;
+} catch (err) {
+if (err.name !== resourcenotfoundexception) throw err;
 }
-Retrieve Current Secret
-Const CurrentSecret = Await Client.Send(New GetSecretValueCommand({
-SecretId: SecretId,
-VersionStage: AWSCURRENT
+retrieve current secret
+const currentsecret =await client.send(new getsecretvaluecommand({
+secretid: secretid,
+versionstage: aws current
 }));
-Const SecretObj = JSON.Parse(CurrentSecret.SecretString);
-Generate New Credentials (Example: Password Rotation)
-Const NewPassword = GenerateRandomPassword();
-Const NewSecretObj = {
-...SecretObj,
-Password: NewPassword
+const secretobj =json.parse(currentsecret.secretstring);
+generate new credentials (example: password rotation)
+const newpassword = generaterandompassword();
+const newsecretobj = {
+...secretobj,
+password: newpassword
 };
-Store New Secret Version
-Await Client.Send(New PutSecretValueCommand({
-SecretId: SecretId,
-ClientRequestToken: Token,
-SecretString: JSON.Stringify(NewSecretObj),
-VersionStages: [AWSPENDING]
+store new secret version
+await client.send(new putsecretvaluecommand({
+secretid: secretid,
+clientrequesttoken: token,
+secretstring: json.stringify(newsecretobj),
+versionstages: [aws pending]
 }));
-Console.Log(New Secret Version Created);
+console.log(new secret version created);
 }
 /
- * Step 2: Apply The New Secret To The Target Service
+ * step 2: apply the new secret to the target service
  */
-Async Function SetSecret(SecretId, Token) {
-Console.Log(Setting Secret For ${SecretId});
-Here You Would Connect To Your DB/Service And Update Credentials
-Example: Update Database User Password
+async function setsecret(secretid, token) {
+console.log(setting secret for ${secretid});
+here you would connect to your db/service and update credentials
+example: update database user password
 }
 /
- * Step 3: Test The New Secret
+ * step 3: test the new secret
  */
-Async Function TestSecret(SecretId, Token) {
-Console.Log(Testing Secret For ${SecretId});
-Here You Would Attempt To Connect To Your Service With The New Credentials
+async function testsecret(secretid, token) {
+console.log(testing secret for ${secretid});
+here you would attempt to connect to your service with the new credentials
 }
 /
-* Step 4: Mark The New Secret As AWSCURRENT
+* step 4: mark the new secret as aws current
 */
-Async Function FinishSecret(SecretId,Token) {
-Console.Log(Finishing Rotation For ${SecretId});
-Const Metadata = Await Client.Send(New DescribeSecretCommand({ SecretId: SecretId }));
-Const CurrentVersion = Object.Entries(Metadata.VersionIdsToStages)
-.Find(([_, Stages]) => Stages.Includes(AWSCURRENT))?.[0];
-If (CurrentVersion === Token) {
-Console.Log(Version Already Marked As AWSCURRENT);
-Return;
+async function finishsecret(secretid,token) {
+console.Log(finishing rotation for ${secretid});
+const metadata =await client.send(new describesecretcommand({secretid: secretid}));
+const currentversion =object.entries(metadata.versionidstostages)
+.find(([_, stages]) =>stages.includes(aws current))?.[0];
+if (currentversion ===token) {
+console.log(version already marked as aws current);
+return;
 }
-Await Client.Send(New UpdateSecretVersionStageCommand({
-SecretId: SecretId,
-VersionStage: AWSCURRENT,
-MoveToVersionId: Token,
-RemoveFromVersionId: CurrentVersion
+await client.send(new updatesecretversionstagecommand({
+secretid: secretid,
+versionstage: aws current,
+movetoversionid: token,
+removefromversionid: currentversion
 }));
-Console.Log(Rotation Complete);
+console.log(rotation complete);
 }
 /
- * Utility: Generate A Secure Random Password
+ * utility: generate a secure random password
  */
-Function GenerateRandomPassword(Length = 16) {
-Const Chars = ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+;
-Return Array.From(Crypto.GetRandomValues(New Uint32Array(Length)))
-.Map(X => Chars[X % Chars.Length])
-.Join("");
+function generaterandompassword(length = 16) {
+const chars=abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+;
+return array.from(crypto.getrandomvalues(new uint32array(length)))
+.map(x =>chars[x % chars.length])
+.join("");
 }
-<Subheading.Html>
-Covid Strings Version That Automatically Updates An RDS Database Password During Rotation 
-How To Create A Version That Automatically Updates An RDS Database Password During Rotation 
+<subheading.html>
+covid strings version that automatically updates an rds database password during rotation 
+how to create a version that automatically updates an rds database password during rotation 
 /
- * Auto-Updating RDS Password From AWS Secrets Manager
- * Requires: Npm Install @Aws-Sdk/Client-Secrets-Manager Mysql2
+ * auto-updating rds password from aws secrets manager
+ * requires: npm install @aws-sdk/client-secrets-manager mysql2
  */
-Import { SecretsManagerClient, GetSecretValueCommand } From @Aws-Sdk/Client-Secrets-Manager;
-Import Mysql From Mysql2/Promise;
-===== CONFIGURATION =====
-Const REGION = Us-East-1; // Change to your AWS region
-Const SECRET_NAME = My-Rds-Db-Secret; // Name of your secret in Secrets Manager
-Const REFRESH_INTERVAL_MS = 60 * 1000; // Check for updates every 60 seconds
-AWS Secrets Manager Client
-Const SmClient = New SecretsManagerClient({Region: REGION });
-Global DB Connection Pool
-Let Pool = Null;
-Let CurrentSecretVersion = Null;
+import {secretsmanagerclient, getsecretvaluecommand} from @aws-sdk/client-secrets-manager;
+import mysql from mysql2/promise;
+===== configuration =====
+const region =us-east-1; // change to your AWS region
+const secret_name =my-rds-db-secret; // Name of your secret in secrets manager
+const refresh_interval_ms = 60 * 1000; // check for updates every 60 seconds
+aws secrets manager client
+const smclient =new secretsmanagerclient({region: region });
+global db connection pool
+let pool =null;
+let currentsecretversion =null;
 /
- * Fetch Latest DB Credentials From AWS Secrets Manager
+ * fetch latest db credentials from aws secrets manager
  */
-Async Function FetchDbCredentials() {
-Try {
-Const Data = Await SmClient.Send(New GetSecretValueCommand({ SecretId: SECRET_NAME }));
-If (!Data.SecretString) {
-Throw New Error(SecretString Is Empty Or Undefined.);
+async function fetchdbcredentials() {
+try {
+const data =await smclient.send(new getsecretvaluecommand({secretid: secret_name}));
+if (!data.secretstring) {
+throw new error(secretstring is empty or undefined.);
 }
-Const Secret = JSON.Parse(Data.SecretString);
-// Ensure required fields exist
-If (!Secret.Username || !Secret.Password || !Secret.Host || !Secret.Port || !Secret.Dbname) {
-Throw New Error(Secret Is Missing Required Database Fields.);
+const secret=json.parse(data.secretstring);
+// ensure required fields exist
+if (!secret.username || !secret.password || !secret.host || !secret.port || !secret.dbname) {
+throw new error(secret is missing required database fields.);
 }
-Return { ...Secret, VersionId: Data.VersionId };
-} Catch (Err) {
-Console.Error(❌ Error Fetching DB Credentials:, Err.Message);
-Throw Err;
+return { ...secret, versionid: data.versionid};
+}catch (err) {
+console.error(❌ error fetching db credentials:, err.message);
+throw err;
 }
 }
 /
- * Initialize Or Update The DB Connection Pool
+ * initialize or update the db connection pool
  */
-Async Function InitOrUpdatePool() {
-Const Creds = Await FetchDbCredentials();
-Only Recreate Pool If Version Changed
-If (Creds.VersionId !== CurrentSecretVersion) {
-Console.Log(🔄 Updating DB Connection Pool (Version: ${Creds.VersionId}));
-Close Old Pool If Exists
-If (Pool) {
-Await Pool.End().Catch(Err => Console.Warn(⚠️ Error Closing Old Pool:, Err.Message));
+async function initorupdatepool() {
+const creds =await fetchdbcredentials();
+only recreate pool if version changed
+if (creds.versionid !==currentsecretversion) {
+console.log(🔄 updating db connection pool (version: ${creds.versionid}));
+close old pool if exists
+if (pool) {
+await pool.end().catch(err =>console.warn(⚠️ error closing old pool:,err.message));
 }
-Create New Pool
-Pool = Mysql.CreatePool({
-Host: Creds.Host,
-User: Creds.Username,
-Password: Creds.Password,
-Database: Creds.Dbname,
-Port: Creds.Port,
-WaitForConnections: True,
-ConnectionLimit: 10,
-QueueLimit: 0
+create new pool
+pool = mysql.createpool({
+host: creds.host,
+user: creds.username,
+password: creds.password,
+database: creds.dbname,
+port: creds.port,
+waitforconnections: true,
+connectionlimit: 10,
+queuelimit: 0
 });
-CurrentSecretVersion =Creds.VersionId;
+currentsecretversion=creds.versionid;
 }
 }
 /
- * Periodically Refresh DB Credentials
+ * periodically refresh db credentials
  */
-Function StartAutoRefresh() {
-SetInterval(Async () => {
-Try {
-Await InitOrUpdatePool();
-} Catch (Err) {
-Console.Error(❌ Failed To Refresh DB Credentials:, Err.Message);
+function startautorefresh() {
+setinterval(async () => {
+try {
+await initorupdatepool();
+} catch (err) {
+console.error(❌ failed to refresh db credentials:, err.message);
 }
-}, REFRESH_INTERVAL_MS);
+}, refresh_interval_ms);
 }
 /
- * Example Query Function
+ * example query function
  */
-Async Function Query(Sql, Params) {
-If (!Pool) {
-Throw New Error(Database Pool Not Initialized.);
+async function query(sql, params) {
+if (!pool) {
+throw new error(database pool not initialized.);
 }
-Const [Rows] = Await Pool.Execute(Sql, Params);
-Return Rows;
+const [rows] = await pool.execute(sql, params);
+return rows;
 }
-===== MAIN STARTUP =====
-(Async () => {
-Try {
-Await InitOrUpdatePool();
-StartAutoRefresh();
-Example Usage
-Const Result = Await Query(SELECT NOW() AS Current_time);
-Console.Log(✅ DB Time:, Result[0].Current_time);
-} Catch (Err) {
-Console.Error(❌ Startup Error:, Err.Message);
-Process.Exit(1);
+===== main startup =====
+(async () => {
+try {
+await initorupdatepool();
+startautorefresh();
+example usage
+const result =await query(select now() as current_time);
+console.log(✅ db time:, result[0].current_time);
+}catch (err) {
+console.error(❌ startup error:, err.message);
+process.exit(1);
 }
 })();
 {
-Username: Dbuser,
-Password: Mypassword,
-Host: Mydb.Cluster-Xxxx.Us-East-1.Rds.Amazonaws.Com,
-Port: 3306,
-Dbname: Mydatabase
+username: dbuser,
+password: Mypassword,
+host: mydb.cluster-xxxx.us-east-1.rds.amazonaws.com,
+port: 3306,
+dbname: mydatabase
 }
-<Subheading.Html>
-Covid Strings Installing A Lambda Rotation Function That Updates The Secret Automatically In AWS Secrets Manager
-How To Install A Lambda Rotation Function That Updates The Secret Automatically In AWS Secrets Manager For Covid Strings
-Lambda Rotation Function For AWS Secrets Manager
-Node.Js 18+ Runtime
-Import {
-SecretsManagerClient,
-GetSecretValueCommand,
-PutSecretValueCommand,
-DescribeSecretCommand
-} From @Aws-Sdk/Client-Secrets-Manager;
-Const SecretsClient = New SecretsManagerClient({Region: Process.Env.AWS_REGION });
+<subheading.html>
+covid strings installing a lambda rotation function that updates the secret automatically in aws secrets manager
+how To install a lambda rotation function that updates the secret automatically in aws secrets manager for covid strings
+lambda rotation function for aws secrets manager
+node.js 18+ runtime
+import {
+secretsmanagerclient,
+getsecretvaluecommand,
+putsecretvaluecommand,
+describesecretcommand
+}from @aws-sdk/client-secrets-manager;
+const secretsclient =new secretsmanagerclient({region: process.env.aws_region});
 /
- * Entry Point For Lambda Rotation
+ * entry point for lambda rotation
  */
-Export Const Handler = Async (Event) => {
-Console.Log(Rotation Event:, JSON.Stringify(Event));
-Const { SecretId, ClientRequestToken, Step } = Event;
-Validate Secret And Token
-Const SecretDescription = Await SecretsClient.Send(New DescribeSecretCommand({ SecretId }));
-If (!SecretDescription.RotationEnabled) {
-Throw New Error(Secret ${SecretId} Is Not Enabled For Rotation);
+export const handler = async (event) => {
+console.log(rotation event:, json.stringify(event));
+const {secretid, clientrequesttoken, step} =event;
+validate secret and token
+const secretdescription =await secretsclient.send(new describesecretcommand({secretid}));
+if (!secretdescription.rotationenabled) {
+throw new error(secret ${secretid} is not enabled for rotation);
 }
-If (!SecretDescription.VersionIdsToStages[ClientRequestToken] ||   !SecretDescription.VersionIdsToStages[ClientRequestToken].Includes(AWSPENDING)) {
-Throw New Error(Invalid Rotation Token: ${ClientRequestToken});
+if (!secretdescription.versionidstostages[clientrequesttoken] ||   !secretdescription.versionidstostages[clientrequesttoken].includes(aws pending)) {
+throw new error(invalid rotation token: ${clientrequesttoken});
 }
-Route To The Correct Step
-Switch (Step) {
-Case CreateSecret:
-Await CreateSecret(SecretId, ClientRequestToken);
-Break;
-Case SetSecret:
-Await SetSecret(SecretId, ClientRequestToken);
-Break;
-Case TestSecret:
-Await TestSecret(SecretId, ClientRequestToken);
-Break;
-Case FinishSecret:
-Await FinishSecret(SecretId, ClientRequestToken);
-Break;
-Default:
-Throw New Error(Unknown Step: ${Step});
+route to the correct step
+switch (step) {
+case createsecret:
+await createsecret(secretid, clientrequesttoken);
+break;
+case setsecret:
+await setsecret(secretid, clientrequesttoken);
+break;
+case testsecret:
+await testsecret(secretid, clientrequesttoken);
+break;
+case finishsecret:
+await finishsecret(secretid, clientrequesttoken);
+break;
+default:
+throw new error(unknown step: ${step});
 }
 };
 /
- * Step 1: Create A New Secret Version With Updated Credentials
+ * step 1: create a new secret version with updated credentials
  */
-Async Function CreateSecret(SecretId, Token) {
-Console.Log(Creating New Secret Version For ${SecretId});
-Check If Secret Version Already Exists
-Try {
-Await SecretsClient.Send(New GetSecretValueCommand({
-SecretId: SecretId,
-VersionId: Token,
-VersionStage: AWSPENDING
+async function createsecret(secretid, token) {
+console.log(creating new secret version for ${secretid});
+check if secret version already exists
+try {
+await secretsclient.send(new getsecretvaluecommand({
+secretid: secretid,
+versionid: token,
+versionstage: aws pending
 }));
-Console.Log(Pending Secret Version Already Exists);
-Return;
-} Catch {
-Continue To Create New Secret
+console.log(pending secret version already exists);
+return;
+}catch {
+continue to create new secret
 }
-Get Current Secret
-Const CurrentSecret = Await SecretsClient.Send(New GetSecretValueCommand({
-SecretId: SecretId,
-VersionStage: AWSCURRENT
+get current secret
+const currentsecret =await secretsclient.send(new getsecretvaluecommand({
+secretid: secretid,
+versionstage: aws current
 }));
-Let SecretObj = JSON.Parse(CurrentSecret.SecretString);
-Example: Generate A New Password (Replace With Your Own Logic)
-SecretObj.Password = GenerateRandomPassword();
-Store New Secret Version
-Await SecretsClient.Send(New PutSecretValueCommand({
-SecretId: SecretId,
-ClientRequestToken: Token,
-SecretString: JSON.Stringify(SecretObj),
-VersionStages: [AWSPENDING]
+let secretobj =json.parse(currentsecret.secretstring);
+example: generate a new password (replace with your own logic)
+secretobj.password = generaterandompassword();
+store new secret version
+await secretsclient.send(new putsecretvaluecommand({
+secretid: secretid,
+clientrequesttoken: token,
+secretstring: json.stringify(secretobj),
+versionstages: [aws pending]
 }));
-Console.Log(New Secret Version Created);
+console.log(new secret version created);
 }
 /
  * Step 2: Apply The Pending Secret To The Target Resource (E.G., DB, API)
