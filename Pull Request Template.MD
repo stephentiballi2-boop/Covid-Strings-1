@@ -7217,507 +7217,507 @@ await use(page);
 test(should display dashboard for logged-in user, async ({authenticatedpage}) => {
 await expect(authenticatedpage.locator(#welcome-message)).tocontaintext(welcome);
 });
-// Another test reusing the same fixture
-Test(Should Allow User To Navigate To Profile, Async ({AuthenticatedPage}) => {
-Await AuthenticatedPage.Click(#Profile-Link);
-Await Expect(AuthenticatedPage.Locator(H1)).ToHaveText(Your Profile);
+// another test reusing the same fixture
+test(should allow user to navigate to profile, async ({authenticatedpage}) => {
+await authenticatedpage.click(#profile-link);
+await expect(authenticatedpage.locator(h1)).tohavetext(your profile);
 });
-Running The Test
-Bash
-Npx Playwright Test Example.Spec.Js
-<Subheading.Html>
-Covid Strings Split This Into A Separate Fixtures.Js File So Multiple Test Files Can Share The Same Login Fixture 
-How To Split This Into A Separate Fixtures.Js File So Multiple Test Files Can Share The Same Login Fixture 
-Fixtures.Js
-Shared Login Fixture For Multiple Test Files
+running the test
+bash
+npx playwright test example.spec.js
+<subheading.html>
+covid strings split this into a separate fixtures.js file so multiple test files can share the same login fixture 
+how to split this Into a separate fixtures.js file so multiple test files can share the same login fixture 
+fixtures.js
+shared login fixture for multiple test files
 /
- * Simulates Or Performs A Login Action.
- * Replace With Your Actual Login Logic (API Call, UI Automation, Etc.)
- * @Param {Object} Page - Optional Page Object If Using Playwright/Puppeteer
- * @Param {String} Username
- * @Param {String} Password
- * @Returns {Promise<Object>} - Returns A User Session Object Or Token
+ * simulates or performs a login action.
+ * replace with your actual login logic (api call, ui automation, etc.)
+ * @param {object} page - optional page object if using playwright/puppeteer
+ * @param {string} username
+ * @param {string} password
+ * @returns {promise<object>} - returns a user session object or token
  */
-Async Function LoginFixture(Page, Username, Password) {
-If (!Username || !Password) {
-Throw New Error(Username And Password Are Required For LoginFixture);
+async function loginfixture(page, username, password) {
+if (!username || !password) {
+throw new error(username and password are required for loginfixture);
 }
-// Example: Playwright login
-If (Page) {
-Await Page.Goto(Https://Example.Com/Login);
-Await Page.Fill(#Username, Username);
-Await Page.Fill(#Password, Password);
-Await Page.Click(#LoginButton);
-Await Page.WaitForSelector(#Dashboard);
-Return {Status: Logged_in, User: Username };
+// example: playwright login
+if (page) {
+await page.goto(https://example.com/login);
+await page.fill(#username, username);
+await page.fill(#password, password);
+await page.click(#loginbutton);
+await page.waitforselector(#dashboard);
+return {status: logged_in, user: username };
 }
-Example: API-Based Login
-Return {Token: Fake-Jwt-Token, User: Username };
+example: api-based login
+return {token: fake-jwt-token, user: username };
 }
-Module.Exports = {LoginFixture };
-Test1.Spec.Js (Using The Shared Fixture)
-Const {LoginFixture } =Require(./Fixtures);
-Describe(Test Suite 1, () => {
-Test(Should Log In Successfully, Async () => {
-Const Session = Await LoginFixture(Null, TestUser, TestPass);
-Expect(Session.Status).ToBe(Logged_In);
+module.exports={loginfixture};
+test1.spec.js (using the shared fixture)
+const {loginfixture }=require(./fixtures);
+describe(test suite 1, () => {
+test(should log in successfully, async () => {
+const session = await loginfixture(null, testuser, testpass);
+expect(session.status).tobe(logged_in);
 });
 });
-Test2.Spec.Js (Reusing The Same Fixture)
-Const {LoginFixture } = Require(./Fixtures);
-Describe(Test Suite 2, () => {
-Test(Should Return A Token, Async () => {
-Const Session = Await LoginFixture(Null, AnotherUser, AnotherPass);
-Expect(Session.Token).ToBeDefined();
+test2.spec.js (reusing the same fixture)
+const {loginfixture }=require(./fixtures);
+describe(test suite 2, () => {
+test(should return a  token, async () => {
+const session =await loginfixture(null, anotheruser, anotherpass);
+expect(session.token).tobedefined();
 });
 });
-How To Run
-Bash
-Npm Install Jest --Save-Dev
-Npx Jest
-<Subheading.Html>
-Covid Strings Using Playwrights Built In Test Functions And Hooks To Manage The Login Process
-How To Use Playwrights Built In Test Functions And Hooks To Manage The Login Process
-Playwright.Config.Js
-Module.Exports = {
-Use: {
-Headless: True, // Set to false if you want to see the browser
-BaseURL: Https://Example.Com, // Replace with your app's base URL
-StorageState: StorageState.Json, // Store login session here
+how to run
+bash
+npm install jest --save-dev
+npx jest
+<subheading.html>
+covid strings using playwrights built in test functions and hooks to manage the login process
+how to use playwrights built in test functions and hooks to manage the login process
+playwright.config.js
+module.exports = {
+use: {
+headless: true, //set to false if you want to see the browser
+baseurl: https://example.com, // replace with your app's base URL
+storagestate: storagestate.json, // store login session here
 },
 };
-Tests/Login.Spec.Js
-@Ts-Check
-Const {Test, Expect} =Require(@Playwright/Test);
-Test.Describe(Authenticated Tests, () => {
-Run Once Before All Tests In This Describe Block
-Test.BeforeAll(Async ({Browser }) => {
-Const Context = Await Browser.NewContext();
-Const Page = Await Context.NewPage();
-Navigate To Login Page
-Await Page.Goto(/Login);
-Perform Login
-Await Page.Fill(#Username, Testuser); // Replace with valid username
-Await Page.Fill(#Password, Password123); // Replace with valid password
-Await Page.Click(Button[Type=Submit]);
-Wait For Navigation Or A Specific Element That Confirms Login
-Await Page.WaitForURL(/Dashboard);
-Save Authentication State For Reuse
-Await Context.StorageState({Path: StorageState.Json});
-Await Context.Close();
+tests/login.spec.js
+@ts-check
+const {test, expect}=require(@playwright/test);
+test.describe(authenticated tests, () => {
+run once before all tests in this describe block
+test.beforeall(async ({browser }) => {
+const context= await browser.newcontext();
+const page =await context.newpage();
+navigate to login page
+await page.goto(/login);
+perform login
+await page.fill(#username, testuser); // replace with valid username
+await page.fill(#password, password123); // replace with valid password
+await page.click(button[type=submit]);
+wait for navigation or a specific element that confirms login
+await page.waitforurl(/dashboard);
+save authentication state for reuse
+await context.storagestate({path: storagestate.json});
+await context.close();
 });
-Run Before Each Test
-Test.BeforeEach(Async ({Page }) => {
-The StorageState From Config Will Auto-Login The User
-Await Page.Goto(/Dashboard);
+run before each test
+test.beforeeach(async ({page }) => {
+the storagestate from config will auto-login the user
+await page.goto(/dashboard);
 });
-Run After Each Test
-Test.AfterEach(Async ({Page }) => {
-Example: Take A Screenshot After Each Test
-Await Page.Screenshot({Path: Screenshots/${Date.Now()}.Png});
+run after each test
+test.aftereach(async ({page }) => {
+example: take a screenshot after each test
+await page.screenshot({path: screenshots/${date.now()}.png});
 });
-Run Once After All Tests
-Test.AfterAll(Async () => {
-Console.Log(All Tests Completed.);
+run once after all tests
+test.afterall(async () => {
+console.log(all tests completed.);
 });
-Example Test 1
-Test(Should Display Dashboard Widgets,Async ({Page }) => {
-Await Expect(Page.Locator(.Widget)).ToHaveCount(3);
+example test 1
+test(should display dashboard widgets, async ({page }) => {
+await expect(page.locator(.widget)).tohavecount(3);
 });
-Example Test 2
-Test(Should Allow Navigation To Profile Page, Async ({Page }) => {
-Await Page.Click(A[Href=/Profile]);
-Await Expect(Page).ToHaveURL(/.*\/profile/);
+example test 2
+test(should allow navigation to profile page, async ({page }) => {
+await page.click(a[href=/profile]);
+await expect(page).tohaveurl(/.*\/profile/);
 });
 });
-<Subheading.Html>
-Covid Strings Creating A Version That Uses A Global Setup File So The Login Happens Before The Test Suite Starts And Works Across Multiple Test Files 
-How To Create A Version That Uses A Global Setup File So The Login Happens Before The Test Suite Starts And Works Across Multiple Test Files 
-Npm Init-Y
-Npm Install @Playwright/Test
-Npx Playwright Install
-2️⃣ Create Global-Setup.Js
-This File Will:
-Launch A Browser
-Perform Login
-Save The Authentication State To A File
-Global-Setup.Js
-Const {Chromium } = Require(@Playwright/Test);
-Const Path = Require(Path);
-Module.Exports = Async (Config) => {
-Const StorageStatePath = Path.Resolve(__ Dirname, StorageState.Json);
-Launch Browser
-Const Browser =Await Chromium.Launch();
-Const Page =Await Browser.NewPage();
-Try {
-Go To Login Page
-Await Page.Goto(Https://Example.Com/Login);
-Fill In Credentials (Replace With Real Selectors & Credentials)
-Await Page.Fill(#Username, Process.Env.TEST_USERNAME || MyUser);
-Await Page.Fill(#Password, Process.Env.TEST_PASSWORD || MyPass);
-Await Page.Click(Button[Type=Submit]);
-Wait For Navigation Or A Known Logged-In Element
-Await Page.WaitForURL(Https://Example.Com/Dashboard);
-Save Authentication State
-Await Page.Context().StorageState({Path: StorageStatePath });
-Console.Log(✅ Login State Saved To ${StorageStatePath});
-}Catch (Err) {
-Console.Error(❌ Global Setup Failed:, Err);
-Process.Exit(1);
-}Finally {
-Await Browser.Close();
+<subheading.html>
+covid strings creating a version that uses a global setup file so the login happens before the test suite starts and works across multiple test Files 
+how to create a version that uses a global setup file so the login happens before the test suite starts and works across multiple test files 
+npm init-y
+npm install @playwright/test
+npx playwright install
+2️⃣ create global-setup.js
+this file will:
+launch a browser
+perform login
+save the authentication state to a file
+global-setup.js
+const {chromium } =require(@playwright/test);
+const path=require(path);
+module.exports=async (config) => {
+const storagestatepath=path.resolve(__ dirname, storagestate.json);
+launch browser
+const browser=await chromium.launch();
+const page=await browser.newpage();
+try {
+go to login page
+await page.goto(https://example.com/login);
+fill in credentials (replace with real selectors & credentials)
+await page.fill(#username, process.env.test_username || myuser);
+await page.fill(#password, process.env.test_password || mypass);
+await page.click(button[type=submit]);
+wait for navigation or a known logged-in element
+await page.waitforurl(https://example.com/dashboard);
+save authentication state
+await page.context().storagestate({path: storagestatepath });
+console.log(✅ login state saved To ${storagestatepath});
+}catch (err) {
+console.error(❌ global setup failed:, err);
+process.exit(1);
+}finally {
+await browser.close();
 }
 };
-3️⃣ Update Playwright.Config.Js
-Tell Playwright To Run The Global Setup Before Tests And Reuse The Saved State.
-Playwright.Config.Js
-Const Path = Require(Path);
-Module.Exports = {
-TestDir: ./Tests,
-GlobalSetup: Require.Resolve(./Global-Setup.Js),
-Use: {
-BaseURL: Https://Example.Com,
-StorageState: Path.Resolve(__ Dirname, StorageState.Json), // Reuse login state
-Headless: True,
+3️⃣ update playwright.config.js
+tell playwright to run the global setup before tests and reuse the saved state.
+playwright.config.js
+const path=require(path);
+module.exports = {
+testdir:./tests,
+globalsetup: require.resolve(./global-setup.js),
+use: {
+baseurl: https://example.com,
+storagestate: path.resolve(__ dirname, storagestate.json), // reuse login state
+headless: true,
 },
 };
-4️⃣ Example Test Files
-Tests/Dashboard.Spec.Js
-Const {Test, Expect } = Require(@Playwright/Test);
-Test(Should Display Dashboard For Logged-In User, Async ({Page }) => {
-Await Page.Goto(/Dashboard);
-Await Expect(Page.Locator(H1)).ToHaveText(Dashboard);
+4️⃣ example test files
+tests/dashboard.spec.js
+const {test, expect }=require(@playwright/test);
+test(should display dashboard for logged-in user,async ({page}) => {
+await page.goto(/dashboard);
+await expect(page.locator(h1)).tohavetext(dashboard);
 });
-Tests/Profile.Spec.Js
-Const {Test, Expect } = Require(@Playwright/Test);
-Test(Should Display Profile Page For Logged-In User, Async ({Page }) => {
-Await Page.Goto(/Profile);
-Await Expect(Page.Locator(H1)).ToHaveText(Profile);
+tests/profile.spec.js
+const {test, expect }=require(@playwright/test);
+test(should display profile page for logged-in user, async ({page}) => {
+await page.goto(/profile);
+await expect(page.locator(h1)).tohavetext(profile);
 });
-5️⃣ Run Tests
-Bash
-Npx Playwright Test
-<Subheading.Html>
-Covid Strings Pull Request Typescript Strict Mode
-How To Use  Typescript Strict Mode For A Covid Strings Pull Request
-Enable Strict Mode In Tsconfig.Json For Maximum Type Safety
+5️⃣ run tests
+bash
+npx playwright test
+<subheading.html>
+covid strings pull request typescript strict mode
+how to use typescript strict mode for a covid strings pull request
+enable strict mode in tsconfig.json for maximum type safety
 {
-CompilerOptions: {
-Strict: True,
-Target: ES2020,
-Module: Commonjs
+compileroptions: {
+strict: true,
+target: es2020,
+module: commonjs
 }
 }
 /
- * Supported Arithmetic Operations
+ * supported arithmetic operations
  */
-Type Operation = Add | Subtract | Multiply | Divide;
+type operation=add |subtract |multiply |divide;
 /
- * Interface For Calculation Input
+ * interface for calculation input
  */
-Interface CalculationInput {
-A: Number;
-B: Number;
-Operation: Operation;
-}
-/
- * Custom Error For Invalid Operations
- */
-Class CalculationError Extends Error {
-Constructor(Message: String) {
-Super(Message);
-This.Name = CalculationError;
-}
+interface calculationinput {
+a: number;
+b: number;
+operation: operation;
 }
 /
- * Perform A Calculation With Full Type Safety
- * @Param Input - CalculationInput Object
- * @Returns Number Result
+ * custom error for invalid operations
  */
-Function Calculate(Input: CalculationInput): Number {
-Const {A, B, Operation } = Input;
-Input Validation
-If (Typeof A !== Number || Typeof B !== Number) {
-Throw New CalculationError(Inputs Must Be Numbers.);
-}
-Switch (Operation) {
-Case Add:
-Return A + B;
-Case Subtract:
-Return A -B;
-Case Multiply:
-Return A*B;
-Case Divide:
-If (B === 0) Throw New CalculationError(Division By Zero Is Not Allowed.);
-Return A /B;
-Default:
-This Should Never Happen Due To Type Safety
-Throw New CalculationError(Unknown Operation: ${Operation});
+class calculationerror extends error {
+constructor(message: string) {
+super(message);
+this.name =calculationerror;
 }
 }
-Example Usage
-Try {
-Const Result =Calculate({A: 10, B: 5, Operation: Divide});
-Console.Log(Result: ${Result});
-} Catch (Error) {
-If (Error Instanceof CalculationError) {
-Console.Error(Calculation Error: ${Error.Message});
-} Else {
-Console.Error(Unexpected Error:, Error);
+/
+ * perform a calculation with full type safety
+ * @param input - calculationinput object
+ * @returns number result
+ */
+function calculate(input: calculationinput): number {
+const {a, b, operation } =input;
+input validation
+if (typeof a !== number || typeof b !== number) {
+throw new calculationerror(inputs must be numbers.);
+}
+switch (operation) {
+case add:
+return a + b;
+case subtract:
+return a-b;
+case multiply:
+return a*b;
+case divide:
+if (b === 0) throw new calculationerror(division by zero is not allowed.);
+return a /b;
+default:
+this should never happen due to type safety
+throw new calculationerror(unknown operation: ${operation});
+}
+}
+example usage
+try {
+const result=calculate({a: 10, b: 5, operation: divide});
+console.log(result: ${result});
+} catch (error) {
+if (error instanceof calculationerror) {
+console.error(calculation error: ${error.message});
+} else {
+console.error(unexpected error:, error);
 }
 }
 }
-}# Install TypeScript Globally If Not Installed
-Npm Install -G Typescript
-# Compile TypeScript To JavaScript
-Tsc Calculator.Ts
-# Run The Compiled JavaScript
-Node Calculator.Js
-<Subheading.Html>
-Covid Strings Pull Request MathUtils Installation
-How To Install MathUtils For A Covid Strings Pull Request
-MathUtils.Js - Original JavaScript
-Function Add(A, B) {
-Return A + B;
+}# install typescript globally if not installed
+npm install-g typescript
+# compile typescript to javascript
+tsc calculator.ts
+# run the compiled javascript
+node calculator.js
+<subheading.html>
+covid strings pull request mathutils installation
+how to install mathutils for a covid strings pull request
+mathutils.js - original javascript
+function add(a, b) {
+return a + b;
 }
-Function Multiply(A, B) {
-Return A * B;
+function multiply(a, b) {
+return a * b;
 }
-Module.Exports = {Add, Multiply };
-This Works Fine In JavaScript, But There’s No Type Safety — You Could Pass Strings And Get Unexpected Results.
-Step 2 — Rename To .Ts And Enable TypeScript
-Install TypeScript Locally:
-Bash
-Npm Install --Save-Dev Typescript @Types/Node
-Initialize A Tsconfig.Json:
-Bash
-Npx Tsc --Init
-Rename The File:
-MathUtils.Js → MathUtils.Ts
-Step 3 — Add Type Annotations
-Typescript
-// mathUtils.ts - Converted to TypeScript
-Export Function Add(A: Number, B: Number): Number {
-Return A+B;
+module.exports = {add, multiply };
+this works fine in javascript, but there’s no type safety — you could pass strings and get unexpected results.
+step 2 — rename to.ts and enable typescript
+install typescript locally:
+bash
+npm install --save-dev typescript @Types/Node
+initialize a tsconfig.json:
+bash
+npx tsc --init
+rename the file:
+mathutils.js → mathutils.ts
+step 3 — add type annotations
+typescript
+// mathutils.ts - converted to typescript
+export function add(a: number, b: number): number {
+return a+b;
 }
-Export Function Multiply(A: Number, B: Number): Number {
-Return A * B;
+export function multiply(a: number, b: number): number {
+return a * b;
 }
-Changes Made:
-Added: Number Type Annotations For Parameters And Return Values.
-Switched From Module.Exports To ES Module Export Syntax.
-Step 4 — Create A TypeScript Consumer File
-Typescript
+changes made:
+added: number type annotations for parameters and return values.
+switched from module.exports to es module export syntax.
+step 4 — create a typescript consumer file
+typescript
 // index.ts
-Import {Add, Multiply} From ./MathUtils;
-Const Sum =Add(5, 10);
-Const Product =Multiply(3, 4);
-Console.Log(Sum: ${Sum});
-Console.Log(Product: ${Product});
-❌ This Will Now Cause A Compile-Time Error:
-Const Wrong =Add(5, 10);
-Step 5 — Compile And Run
-Bash
-Npx Tsc
-Node Dist/Index.Js
-Output:
-Sum: 15
-Product: 12
-Step 6 — Optional: Add Interfaces For Complex Types
-If Your Functions Take Objects, You Can Define Interfaces:
-Types.Ts
-Export Interface Point {
-X: Number;
-Y: Number;
+import {add, multiply} from ./mathutils;
+const sum =add(5, 10);
+const product=multiply(3, 4);
+console.log(sum: ${sum});
+console.log(product: ${product});
+❌ this will now cause a compile-time error:
+const wrong =add(5, 10);
+step 5 — compile and run
+bash
+npx tsc
+node dist/index.Js
+output:
+sum: 15
+product: 12
+step 6 — optional: add interfaces for complex types
+if your functions take objects, you can define interfaces:
+types.ts
+export interface point {
+x: number;
+y: number;
 }
-Geometry.Ts
-Import {Point } From ./Types;
-Export Function Distance(P1: Point, P2: Point): Number {
-Const Dx = P1.X - P2.X;
-Const Dy = P1.Y - P2.Y;
-Return Math.Sqrt(Dx * Dx + Dy * Dy);
+geometry.ts
+import {point} from ./types;
+export function distance(p1: point, p2: point): number {
+const dx = p1.x - p2.x;
+const dy = p1.y - p2.y;
+return math.sqrt(dx * dx + dy * dy);
 }
-<Subheading.Html>
-Covid Strings Creating A Full Working Before-And-After Project Folder So You Can Drop It Into Your Own Repo And Migrate Faster
-How To Create A Full Working Before-And-After Project Folder So You Can Drop It Into Your Own Repo And Migrate Faster
-#!/Usr/Bin/Env Node
+<subheading.html>
+covid strings creating a full working before-and-after project folder so you can drop it into your own repo and migrate faster
+how to create a full working before-and-after project folder so you can drop it into your own repo and migrate faster
+#!/usr/bin/env node
 /
- * Script To Create A Before And After Project Folder Structure
- * For Migration Or Refactoring Comparisons.
+ * script to create a before and after project folder structure
+ * for migration or refactoring comparisons.
  *
- * Usage:
- *  Node CreateBeforeAfterFolders.Js
+ * usage:
+ *  node createbeforeafterfolders.js
  */
-Const Fs = Require(Fs);
-Const Path = Require(Path);
-Root Folder Where Before/After Will Be Created
-Const ROOT_DIR = Process.Cwd();
-Const BEFORE_DIR = Path.Join(ROOT_DIR, Before);
-Const AFTER_DIR = Path.Join(ROOT_DIR, After);
-Example Folder Structure
-Const STRUCTURE = [
-Src,
-Src/Components,
-Src/Utils,
-Tests,
+const fs=require(fs);
+const path =require(path);
+root folder where before/after will be created
+const root_dir=process.cwd();
+const before_dir=path.join(root_dir, before);
+const after_dir=path.join(root_dir, after);
+example folder structure
+const structure = [
+src,
+src/components,
+src/utils,
+tests,
 Public
 ];
-// Example files to create in each folder
-Const SAMPLE_FILES = {
-Src/Index.Js: Console.Log(Hello From BEFORE Project);,
-Src/Components/App.Js: Export Default Function App() {Return <H1>Hello</H1>; },
-Src/Utils/Helpers.Js: Export Const Sum = (A, B) => A + B,
-Tests/App.Test.Js: Console.Log(Running Tests...);,
-Public/Index.Html: <!DOCTYPE Html><Html><Body><H1>Before Project</H1></Body></Html>
+// example files to create in each folder
+const sample_files= {
+src/index.js: console.log(hello from before project);,
+src/components/app.js: export default function app() {return <h1>hello</h1>; },
+src/utils/helpers.js: export const sum = (a, b) => a + b,
+tests/app.test.js: console.log(running tests...);,
+public/index.html: <!doc type html><html><body><h1>before project</h1></body></html>
 };
 /
- * Create A Folder If It Doesnt Exist
+ * create a folder if it doesnt exist
  */
-Function EnsureDir(DirPath) {
-Try {
-If (!Fs.ExistsSync(DirPath)) {
-Fs.MkdirSync(DirPath, {Recursive: True });
-Console.Log(✅ Created Folder: ${DirPath});
+function ensuredir(dirpath) {
+try {
+if (!fs.existssync(dirpath)) {
+fs.mkdirsync(dirpath, {recursive: true });
+console.log(✅ created folder: ${dirpath});
 }
-} Catch (Err) {
-Console.Error(❌ Error Creating Folder ${DirPath}:, Err.Message);
+}catch (err) {
+console.error(❌ error creating folder ${dirpath}:, err.message);
 }
 }
 /
- * Create Files With Sample Content
+ * create files with sample content
  */
-Function CreateFiles(BaseDir, Files) {
-For (Const [RelativePath, Content] Of Object.Entries(Files)) {
-Const FilePath =Path.Join(BaseDir, RelativePath);
-EnsureDir(Path.Dirname(FilePath));
-Try {
-Fs.WriteFileSync(FilePath, Content, {Flag: Wx}); // 'wx' prevents overwrite
-Console.Log(📄 Created File: ${FilePath});
-}Catch (Err) {
-If (Err.Code === EEXIST) {
-Console.Warn(⚠️ File Already Exists: ${FilePath});
-} Else {
-Console.Error(❌ Error Creating File ${FilePath}:, Err.Message);
+function createfiles(basedir, files) {
+for (const [relativepath,content] of object.entries(files)) {
+const filepath =path.join(basedir, relativepath);
+ensuredir(path.dirname(filepath));
+try {
+fs.writefilesync(filepath, content, {flag: wx}); // 'wx' prevents overwrite
+console.log(📄 created file: ${filepath});
+}catch (err) {
+if (err.code === eexist) {
+console.warn(⚠️ file already exists: ${filepath});
+}else {
+console.error(❌ Error Creating File ${FilePath}:, Err.Message);
 }
 }
 }
 }
 /
- * Main Function
+ * main function
  */
-Function Main() {
-Console.Log(🚀 Creating BEFORE And AFTER Project Folders...);
-Create Before/After Directories
-[BEFORE_DIR, AFTER_DIR].ForEach(Dir => EnsureDir(Dir));
-Create Subfolders In Both
-STRUCTURE.ForEach(Folder => {
-EnsureDir(Path.Join(BEFORE_DIR, Folder));
-EnsureDir(Path.Join(AFTER_DIR, Folder));
+function main() {
+console.log(🚀 creating before and after project folders...);
+create before/after directories
+[before_dir, after_dir].foreach(dir =>ensuredir(Dir));
+create subfolders in both
+structure.foreach(folder => {
+ensuredir(path.join(before_dir, folder));
+ensuredir(path.join(after_dir, folder));
 });
-Create Sample Files In BEFORE
-CreateFiles(BEFORE_DIR, SAMPLE_FILES);
-Create Sample Files In AFTER (Slightly Modified)
-Const AfterFiles = { ...SAMPLE_FILES };
-AfterFiles[Src/Index.Js] = Console.Log(Hello From AFTER Project);;
-AfterFiles[Public/Index.Html] = <!DOCTYPE Html><Html><Body><H1>After Project</H1></Body></Html>;
-CreateFiles(AFTER_DIR, AfterFiles);
-Console.Log(✅ Before/After Project Structure Created Successfully!);
+create sample files in before
+createfiles(before_dir, sample_files);
+create sample files in after (slightly modified)
+const afterfiles = { ...sample_files };
+afterfiles[src/index.js] =console.log(hello from after project);;
+afterfiles[public/index.html] = <!doc type html><html><body><h1>after project</h1></body></html>;
+createfiles(after_dir, afterfiles);
+console.log(✅ before/after project structure created successfully!);
 }
-Main();
-How To Use
-Save The Script As CreateBeforeAfterFolders.Js In Your Repo Root.
-Run:
-Bash
-Node CreateBeforeAfterFolders.Js
-It Will Create:
-Before/
-Src/
-Index.Js
-Components/App.Js
-Utils/Helpers.Js
-Tests/App.Test.Js
-Public/Index.Html
-After/
-Src/
-Index.Js
-Components/App.Js
-Utils/Helpers.Js
-Tests/App.Test.Js
-Public/Index.Html
-<Subheading.Html>
-Covid Strings Using A Before_script To Set Up The Necessary Environment Variables And Configurations Before The Migration Work Begins 
-How To Use A Before_script To Set Up The Necessary Environment Variables And Configurations Before The Migration Work Begins 
-Stages:
--Setup
--Migrate
-# Global Before_script For All Jobs
-Before_script:
-# Install Dependencies
--Npm Ci
-# Set Environment Variables
--Export NODE_ENV=Production
--Export DB_HOST=Db.Example.Com
--Export DB_USER=Admin
--Export DB_PASS=Securepassword
--Echo Environment Variables Set. Ready For Migration.
-# Migration Job
-Migrate_database:
-Stage: Migrate
-Image: Node:18
-Script:
--Node Migration.Js
-Migration.Js (JavaScript Migration Script)
-Migration.Js
-Const {Client } =Require(Pg); // PostgreSQL client
-Require(Dotenv).Config(); // Optional: load from .env if running locally
-Validate Required Environment Variables
-Const RequiredVars = [DB_HOST, DB_USER, DB_PASS];
-For (Const V Of RequiredVars) {
-If (!Process.Env[V]) {
-Console.Error(❌ Missing Required Environment Variable: ${V});
-Process.Exit(1);
+main();
+how to use
+save the script as createbeforeafterfolders.js in your repo root.
+run:
+bash
+node createbeforeafterfolders.js
+it will create:
+before/
+src/
+index.js
+components/app.js
+utils/helpers.js
+tests/app.test.js
+public/index.html
+after/
+src/
+index.js
+components/app.js
+utils/helpers.js
+tests/app.test.js
+public/index.html
+<subheading.html>
+covid strings using a before_script to set up the necessary environment variables and configurations before the migration work begins 
+how to use a before_script to set up the necessary environment variables and configurations before the migration work begins 
+stages:
+-setup
+-migrate
+# global before_script for all jobs
+before_script:
+# install dependencies
+-npm ci
+# set environment variables
+-export node_env=production
+-export db_host=db.example.com
+-export db_user=admin
+-export db_pass=securepassword
+-echo environment variables set. ready for migration.
+# migration job
+migrate_database:
+stage: migrate
+image: node:18
+script:
+-node migration.js
+migration.js (javascript migration script)
+migration.js
+const {client}=require(pg); // postgresql client
+require(dotenv).config(); // optional: load from .env if running locally
+validate required environment variables
+const requiredvars = [db_host, db_user, db_pass];
+for (const v of requiredvars) {
+if (!process.env[v]) {
+console.error(❌ missing required environment variable: ${v});
+process.exit(1);
 }
 }
-Create DB Connection
-Const Client =New Client({
-Host: Process.Env.DB_HOST,
-User: Process.Env.DB_USER,
-Password: Process.Env.DB_PASS,
-Database: Process.Env.DB_NAME || My_database,
+create db connection
+const client=new client({
+host: process.env.db_host,
+user: process.env.db_user,
+password: process.env.db_pass,
+database: process.env.db_name || my_database,
 });
-(Async () => {
-Try {
-Await Client.Connect();
-Console.Log(✅ Connected To Database.);
-Example Migration: Create A Table If Not Exists
-Await Client.Query(
-CREATE TABLE IF NOT EXISTS Users (
-Id SERIAL PRIMARY KEY,
-Name VARCHAR(100) NOT NULL,
-Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+(async () => {
+try {
+await client.connect();
+console.log(✅ connected to database.);
+example migration: create a table if not exists
+await client.query(
+create table if not exists users (
+id serial primary key,
+name varchar(100) not null,
+created_at timestamp default current_time stamp
 );
 );
-Console.Log(✅ Migration Completed Successfully.);
-} Catch (Err) {
-Console.Error(❌ Migration Failed:, Err);
-Process.Exit(1);
-} Finally {
-Await Client.End();
+console.log(✅ migration completed successfully.);
+} catch (err) {
+console.error(❌ migration failed:, err);
+process.exit(1);
+} finally {
+await client.end();
 }
 })();
-<Subheading.Html>
-Covid Strings Creating A Docker-Based Version So The Migration Runs In An Isolated Container With Preloaded Configs
-How To Create A Docker-Based Version So The Migration Runs In An Isolated Container With Preloaded Configs
-Project/
-│── Dockerfile
-│── Docker-Compose.Yml
-│── Package.Json
-│── Migrate.Js
-│── Config/
-│    └── Default.Json
-│── Migrations/
-│    └── 001_ Init.Js
-2️⃣ Dockerfile
+<subheading.html>
+covid strings creating a docker-based version so the migration runs in an isolated container with preloaded configs
+how to create a docker-based version so the migration runs in an isolated container with preloaded configs
+project/
+│── dockerfile
+│── docker-compose.yml
+│── package.json
+│── migrate.js
+│── config/
+│    └── default.json
+│── migrations/
+│    └── 001_ init.js
+2️⃣ dockerfile
 Dockerfile
 # Use Official Node.Js LTS Image
 FROM Node:18-Alpine
