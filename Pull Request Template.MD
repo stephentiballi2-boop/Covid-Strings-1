@@ -7032,190 +7032,190 @@ let output;
 try {
 if (framework === jest) {
 output=execsync(npx jest --json --outputfile=jest-results.json, {stdio: pipe}).tostring();
-Return JSON.Parse(Fs.ReadFileSync(Jest-Results.Json, Utf8));
-} Else If (Framework === Mocha) {
-Output =ExecSync(Npx Mocha --Reporter Json, {Stdio: Pipe}).ToString();
-Return JSON.Parse(Output);
+return json.parse(fs.readfilesync(jest-results.json, utf8));
+}else if (framework === mocha) {
+output =execsync(npx mocha --reporter json, {stdio: pipe}).tostring();
+return json.parse(output);
 }
-} Catch (Err) {
-// Even if tests fail, Mocha/Jest still produce JSON output
-If (Framework === Jest && Fs.ExistsSync(Jest-Results.Json)) {
-Return JSON.Parse(Fs.ReadFileSync(Jest-Results.Json, Utf8));
+} catch (err) {
+// Even if tests fail, mocha/jest still produce json output
+if (framework ===jest && fs.existssync(jest-results.json)) {
+return json.parse(fs.readfilesync(jest-results.json, utf8));
 }
-If (Framework === Mocha && Err.Stdout) {
-Return JSON.Parse(Err.Stdout.ToString());
+if (framework === mocha && err.stdout) {
+return json.parse(err.stdout.tostring());
 }
-Console.Error(❌ Failed To Run Tests:, Err.Message);
-Process.Exit(1);
+console.error(❌ failed to run tests:, err.message);
+process.exit(1);
 }
 }
-// Process results
-Function ProcessResults(Framework, Results) {
-Let Passed = [];
-Let Failed = [];
-If (Framework === Jest) {
-Results.TestResults.ForEach(TestFile => {
-TestFile.AssertionResults.ForEach(Assertion => {
-If (Assertion.Status === Passed) {
-Passed.Push(Assertion.FullName);
-}Else If (Assertion.Status === Failed) {
-Failed.Push(TestFile.Name);
-}
-});
-});
-} Else If (Framework === Mocha) {
-Passed = Results.Passes.Map(T => T.FullTitle);
-Failed = Results.Failures.Map(F => F.File || F.FullTitle);
-}
-// Append new passing tests
-Const NewPasses =Passed.Filter(T => !VerifiedTests.Includes(T));
-If (NewPasses.Length > 0) {
-VerifiedTests.Push(...NewPasses);
-Fs.WriteFileSync(VERIFIED_FILE, JSON.Stringify(VerifiedTests, Null, 2));
-Console.Log(✅ Added ${NewPasses.Length} Passing Tests To Verified List.);
-}
-// Move failing test files to pending_review/
-Failed.ForEach(FilePath => {
-If (!FilePath) Return;
-Const FileName =Path.Basename(FilePath);
-Const DestPath =Path.Join(PENDING_DIR,FileName);
-Try {
-If (Fs.ExistsSync(FilePath)) {
-Fs.CopyFileSync(FilePath, DestPath);
-Console.Log(⚠ Moved Failing Test To Pending_review/: ${FileName});
-}
-} Catch (Err) {
-Console.Error(❌ Could Not Move ${FilePath}:, Err.Message);
+// process results
+function processresults(framework, results) {
+let passed = [];
+let failed = [];
+if (framework === jest) {
+results.testresults.foreach(testfile => {
+testfile.assertionresults.foreach(assertion => {
+if (assertion.status ===passed) {
+passed.push(assertion.fullname);
+}else if (assertion.status ===failed) {
+failed.push(testfile.name);
 }
 });
-// Exit with proper code for CI
-If (Failed.Length > 0) {
-Console.Log(❌ ${Failed.Length} Test(S) Failed.);
-Process.Exit(1);
-} Else {
-Console.Log(🎉 All Tests Passed!);
-Process.Exit(0);
+});
+} else if (framework===mocha) {
+passed = results.passes.map(t => t.fulltitle);
+failed = results.failures.map(f => f.file || f.fulltitle);
+}
+// append new passing tests
+const newpasses =passed.filter(T => !verifiedtests.includes(t));
+if (newpasses.length > 0) {
+verifiedtests.push(...newpasses);
+fs.writefilesync(verified_file, json.stringify(verifiedtests, null, 2));
+console.log(✅ added ${newpasses.length} passing tests to verified list.);
+}
+// move failing test files to pending_review/
+failed.foreach(filepath => {
+if (!filepath) return;
+const filename =path.basename(filepath);
+const destpath =path.join(pending_dir,filename);
+try {
+if (fs.existssync(filepath)) {
+fs.copyfilesync(filepath, destpath);
+console.log(⚠ moved failing test to pending_review/: ${filename});
+}
+} catch (err) {
+console.error(❌ could not move ${filepath}:, err.message);
+}
+});
+// exit with proper code for ci
+if (failed.length > 0) {
+console.log(❌ ${failed.length} test(s) failed.);
+process.exit(1);
+}else {
+console.log(🎉 All Tests Passed!);
+process.exit(0);
 }
 }
-// Main execution
-(Function Main() {
-Const Framework = DetectFramework();
-Const Results = RunTests(Framework);
-ProcessResults(Framework, Results);
+// main execution
+(function main() {
+const framework =detectframework();
+const results =runtests(framework);
+processresults(framework,results);
 })();
-Usage
-Bash
-# Install Dependencies
-Npm Install --Save-Dev Jest Mocha
-# Make Script Executable
-Chmod +X Test-Runner.Js
-# Run
-./Test-Runner.Js
-Example Output
-▶ Running Tests With Jest...
-✅ Added 3 Passing Tests To Verified List.
-⚠ Moved Failing Test To Pending_review/: Math.Test.Js
-❌ 1 Test(S) Failed.
-<Subheading.Html>
-Covid Strings  Extending This Script So That It Automatically Retries Failing Tests Before Moving Them — Useful For Flaky Tests In CI
-How To Extend This Script So That It Automatically Retries Failing Tests Before Moving Them — Useful For Flaky Tests In CI
+usage
+bash
+# install dependencies
+npm install --save-dev jest mocha
+# make script executable
+chmod +x test-runner.js
+# run
+./test-runner.js
+example output
+▶ running tests with jest...
+✅ added 3 passing tests to verified list.
+⚠ moved failing test to pending_review/: math.test.js
+❌ 1 test(s) failed.
+<subheading.html>
+covid strings  extending this script so that it automatically retries failing tests before moving them — useful for flaky tests in ci
+how to extend this script so that it automatically retries failing tests before moving them — useful for flaky tests in ci
 // playwright.config.js
-// Global configuration for Playwright tests
-// This will retry each failing test up to 2 times in CI
-Const Config = {
-Retries: Process.Env.CI ? 2 : 0, // Enable retries only in CI
+// global configuration for playwright tests
+// this will retry each failing test up to 2 times in CI
+const config = {
+retries: process.env.ci ? 2 : 0, // enable retries only in CI
 Use: {
-Headless: True, // Run in headless mode for CI
-Screenshot: Only-On-Failure, // Capture screenshot on failure
-Video: Retain-On-Failure, // Keep Video For Debugging
+headless: true, // Run in headless mode for CI
+screenshot: only-on-failure, // capture screenshot on failure
+video: retain-on-failure, // keep video for debugging
 },
-Reporter: [[List], [Html, {Open: Never}]], // Multiple reporters
+reporter: [[list], [html, {open: never}]], // multiple reporters
 };
-Module.Exports=Config;
+module.exports=config;
 // example.spec.js
-Const {Test, Expect } =Require(@Playwright/Test);
-Test.Describe(Flaky Test Handling, () => {
-// Retry only this test 3 times (overrides global retries)
-Test.Retry(3);
-Test(Should Handle Flaky Behavior Gracefully,Async ({Page }, TestInfo) => {
-Console.Log(Running Attempt #${TestInfo.Retry + 1});
-Await Page.Goto(Https://Example.Com);
-// Simulate flaky behavior: randomly fail
-Const RandomFail = Math.Random() < 0.5;
-If (RandomFail) {
-Throw New Error(Simulated Flaky Failure);
+const {test, expect }=require(@playwright/test);
+test.describe(flaky test handling, () => {
+// retry only this test 3 times (overrides global retries)
+test.retry(3);
+test(should handle flaky behavior gracefully,async ({page }, testinfo) => {
+console.log(running attempt #${testinfo.retry + 1});
+await page.goto(https://example.com);
+// simulate flaky behavior: randomly fail
+const randomfail =math.random() < 0.5;
+if (randomfail) {
+throw new error(simulated flaky failure);
 }
-// Actual assertion
-Await Expect(Page.Locator(H1)).ToHaveText(Example Domain);
+// actual assertion
+await expect(page.locator(h1)).tohavetext(example domain);
 });
 });
-<Subheading.Html>
-Covid Strings Version That Retries Only Specific Failing Steps Instead Of The Whole Test — This Can Make CI Runs Faster
-How To Create A Version That Retries Only Specific Failing Steps Instead Of The Whole Test Which Can Make CI Runs Faster
+<subheading.html>
+covid strings version that retries only specific failing steps instead of the whole test — this can make ci runs faster
+how to create a version that retries only specific failing steps instead of the whole test which can make ci runs faster
 // tests/retry-specific-step.spec.js
-Const {Test,Expect }=Require(@Playwright/Test);
+const {test,expect}=require(@playwright/test);
 /
- * Retry A Function Up To MaxRetries Times With A Delay Between Attempts.
- * @Param {Function} Fn - The Async Function To Retry.
- * @Param {Number} MaxRetries - Number Of Retries.
- * @Param {Number} DelayMs - Delay Between Retries In Milliseconds.
+ * retry a function up to maxretries times with a delay between attempts.
+ * @param {function}fn -the async function to retry.
+ * @param {number} maxretries - number of retries.
+ * @param {number} delayms - delay between retries in milliseconds.
  */
-Async Function RetryStep(Fn, MaxRetries = 3, DelayMs = 500) {
-Let LastError;
-For (Let Attempt = 1; Attempt <= MaxRetries; Attempt++) {
-Try {
-Return Await Fn();
-} Catch (Err) {
-LastError = Err;
-Console.Warn(Step Failed (Attempt ${Attempt}/${MaxRetries}): ${Err.Message});
-If (Attempt < MaxRetries) {
-Await New Promise(Res =>SetTimeout(Res, DelayMs));
+async function retrystep(fn, maxretries = 3, delayms = 500) {
+let lasterror;
+for (let attempt = 1; attempt <= maxretries; attempt++) {
+try {
+return await Fn();
+} catch (err) {
+lasterror =err;
+console.warn(step failed (attempt ${attempt}/${maxretries}): ${Err.Message});
+if (attempt <maxretries) {
+await new promise(res =>settimeout(res, delayms));
 }
 }
 }
-Throw LastError; // Throw after all retries fail
+throw lasterror; // throw after all retries fail
 }
-Test(Only Retry The Flaky Step, Async ({Page }) => {
-// Step 1: Navigate (no retry needed)
-Await Page.Goto(Https://Example.Com);
-// Step 2: Login (stable step)
-Await Page.Fill(#Username, Testuser);
-Await Page.Fill(#Password, Password123);
-Await Page.Click(#Login);
-// Step 3: Flaky element click — retry only this step
-Await RetryStep(Async () => {
-Await Page.Click(#Sometimes-Fails, {Timeout: 2000 });
-Await Expect(Page.Locator(#Success-Message)).ToBeVisible();
+test(only retry the flaky step, async ({page }) => {
+// step 1: navigate (no retry needed)
+await page.goto(https://example.com);
+// step 2: login (stable step)
+await page.fill(#username, testuser);
+await page.fill(#password, Password123);
+await page.click(#Login);
+// step 3: flaky element click — retry only this step
+await retrystep(async () => {
+await page.click(#sometimes-fails, {timeout: 2000 });
+await expect(page.locator(#success-message)).tobevisible();
 }, 3, 1000);
-// Step 4: Verify final state
-Await Expect(Page.Locator(#Dashboard)).ToBeVisible();
+// step 4: verify final state
+await expect(Page.Locator(#Dashboard)).ToBeVisible();
 });
-<Subheading.Html>
-Covid Strings Using Playwrights Built-In Fixtures And Test Extend Method To Create Reusable And Maintainable Tests
-How To Use Playwrights Built-In Fixtures And Test Extend Method To Create Reusable And Maintainable Tests
+<subheading.Html>
+covid strings using playwrights built-in fixtures and test extend method to create reusable and maintainable tests
+how to use playwrights built-in fixtures and test extend method to create reusable and maintainable tests
 // @ts-check
-Const {Test: Base, Expect } = Require(@Playwright/Test);
+const {test: base, expect}=require(@playwright/test);
 /
- * Extend The Built-In Test With A Custom Fixture: AuthenticatedPage
- * This Fixture Logs In Once Before Each Test And Provides The Logged-In Page.
+ * extend the built-in test with a custom fixture: authenticatedpage
+ * this fixture logs in once before each test and provides the logged-in page.
  */
-Const Test=Base.Extend({
-AuthenticatedPage: Async ({Page }, Use) => {
-Navigate To Login Page
-Await Page.Goto(Https://Example.Com/Login);
-Perform Login (Replace Selectors With Your Apps)
-Await Page.Fill(#Username, Testuser);
-Await Page.Fill(#Password, Password123);
-Await Page.Click(Button[Type=Submit]);
-// Wait for navigation or a logged-in element
-Await Page.WaitForSelector(#Dashboard);
-// Provide the logged-in page to the test
-Await Use(Page);
+const test=base.extend({
+authenticatedpage: async ({page}, use) => {
+navigate to login page
+await page.goto(https://example.com/login);
+perform login (replace selectors with your apps)
+await page.fill(#username, testuser);
+await page.fill(#password, password123);
+await page.click(button[type=submit]);
+//wait for navigation or a logged-in element
+await page.waitforselector(#dashboard);
+//provide the logged-in page to the test
+await use(page);
 }
 });
-// Example test using the custom fixture
-Test(Should Display Dashboard For Logged-In User, Async ({AuthenticatedPage}) => {
-Await Expect(AuthenticatedPage.Locator(#Welcome-Message)).ToContainText(Welcome);
+// example test using the custom fixture
+test(should display dashboard for logged-in user, async ({authenticatedpage}) => {
+await expect(authenticatedpage.locator(#welcome-message)).tocontaintext(welcome);
 });
 // Another test reusing the same fixture
 Test(Should Allow User To Navigate To Profile, Async ({AuthenticatedPage}) => {
