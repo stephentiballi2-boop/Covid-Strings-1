@@ -7597,7 +7597,7 @@ console.log(📄 created file: ${filepath});
 if (err.code === eexist) {
 console.warn(⚠️ file already exists: ${filepath});
 }else {
-console.error(❌ Error Creating File ${FilePath}:, Err.Message);
+console.error(❌ error creating file ${filepath}:, err.message);
 }
 }
 }
@@ -7608,7 +7608,7 @@ console.error(❌ Error Creating File ${FilePath}:, Err.Message);
 function main() {
 console.log(🚀 creating before and after project folders...);
 create before/after directories
-[before_dir, after_dir].foreach(dir =>ensuredir(Dir));
+[before_dir, after_dir].foreach(dir =>ensuredir(dir));
 create subfolders in both
 structure.foreach(folder => {
 ensuredir(path.join(before_dir, folder));
@@ -7718,476 +7718,476 @@ project/
 │── migrations/
 │    └── 001_ init.js
 2️⃣ dockerfile
-Dockerfile
-# Use Official Node.Js LTS Image
-FROM Node:18-Alpine
-# Set Working Directory
-WORKDIR/App
-# Copy Package Files First For Caching
-COPY Package*.Json ./
-# Install Dependencies
-RUN Npm Install --Only=Production
-# Copy The Rest Of The Application
-COPY . .
-# Set Environment Variables (Can Be Overridden At Runtime)
-ENV NODE_ENV=Production
-# Run Migration Script By Default
-CMD [Node, Migrate.Js]
-3️⃣ Docker-Compose.Yml
-Yaml
-Version: 3.9
-Services:
-Migration-Runner:
-Build: .
-Container_name: Migration_runner
-Environment:
-DB_HOST: Db
-DB_USER: Root
-DB_PASS: Example
-Volumes:
-- ./Migrations:/App/Migrations
-- ./Config:/App/Config
-Depends_on:
--Db
-Command: [Node, Migrate.Js]
-Db:
-Image: Mysql:8.0
-Container_name: Migration_db
-Environment:
-MYSQL_ROOT_PASSWORD: Example
-MYSQL_DATABASE: Testdb
-Ports:
+dockerfile
+# use official node.js lts image
+from node:18-alpine
+# set working directory
+workdir/app
+# copy package files first for caching
+copy package*.json ./
+# install dependencies
+run npm install --only=production
+# copy the rest of the application
+copy . .
+# set environment variables (can be overridden at runtime)
+env node_env=production
+# run migration script by default
+cmd [node, migrate.js]
+3️⃣ docker-compose.yml
+yaml
+version: 3.9
+services:
+migration-runner:
+build: .
+container_name: migration_runner
+environment:
+db_host: db
+db_user: root
+db_pass: example
+volumes:
+- ./migrations:/app/migrations
+- ./config:/app/config
+depends_on:
+-db
+command: [node, migrate.js]
+db:
+image: mysql:8.0
+container_name: migration_db
+environment:
+mysql_root_password: example
+mysql_datbase: testdb
+ports:
 -3306:3306
-4️⃣ Package.Json
-Json
+4️⃣ package.json
+json
 {
-Name: Docker-Migration-Runner,
-Version: 1.0.0,
-Main: Migrate.Js,
-Scripts: {
-Start: Node Migrate.Js
-  },
-Dependencies: {
-Mysql2: ^3.9.0,
-Config: ^3.3.9
-  }
+name: docker-migration-runner,
+version: 1.0.0,
+main: migrate.js,
+scripts: {
+start: node migrate.js
+},
+dependencies: {
+mysql2: ^3.9.0,
+config: ^3.3.9
 }
-5️⃣ Config/Default.Json
-Json
+}
+5️⃣ config/default.json
+json
 {
-Database: {
-Host: Localhost,
-User: Root,
-Password: Example,
-Database: Testdb
+database: {
+host: localhost,
+user: root,
+password: example,
+database: testdb
 }
 }
-6️⃣ Example Migration File — Migrations/001_ Init.Js
+6️⃣ example migration file — migrations/001_ init.js
 /
- * Example Migration Script
- * This Could Be Replaced With A Migration Framework Like Knex Or Sequelize
+ * example migration script
+ * this could be replaced with a migration framework like knex or sequelize
  */
-Module.Exports =Async Function Migrate(Connection) {
-Await Connection.Execute(
-CREATE TABLE IF NOT EXISTS Users (
-Id INT AUTO_INCREMENT PRIMARY KEY,
-Name VARCHAR(255) NOT NULL
+module.exports =async function migrate(connection) {
+await connection.execute(
+create table if not exists users (
+id int auto_increment primary key,
+name var char(255) not null
 )
 );
-Console.Log(✅ Migration 001_ Init Completed);
+console.log(✅ migration 001_ init completed);
 };
-7️⃣ Migration Runner — Migrate.Js
-Const Mysql = Require(Mysql2/Promise);
-Const Config = Require(Config);
-Const Fs = Require(Fs);
-Const Path = Require(Path);
-(Async () => {
-Try {
-Load DB Config From Preloaded Config File
-Const DbConfig = Config.Get(Database);
-Console.Log(🔄 Connecting To Database...);
-Const Connection = Await Mysql.CreateConnection({
-Host: Process.Env.DB_HOST || DbConfig.Host,
-User: Process.Env.DB_USER || DbConfig.User,
-Password: Process.Env.DB_PASS || DbConfig.Password,
-Database: DbConfig.Database
+7️⃣ migration runner — migrate.js
+const mysql =require(mysql2/promise);
+const config = require(config);
+const fs = require(fs);
+const path = require(path);
+(async () => {
+try {
+load db config from preloaded config file
+const dbconfig = config.get(database);
+console.log(🔄 connecting to database...);
+const connection = await mysql.createconnection({
+host: process.env.db_host || dbconfig.host,
+user: process.env.db_user || dbconfig.user,
+password: process.env.db_pass || dbconfig.password,
+database: dbconfig.database
 });
-Console.Log(✅ Connected To Database);
-Run All Migration Files In Order
-Const MigrationDir =Path.Join(__ Dirname, Migrations);
-Const Files = Fs.ReaddirSync(MigrationDir).Sort();
-For (Const File Of Files) {
-If (File.EndsWith(.Js)) {
-Console.Log(🚀 Running Migration: ${File});
-Const Migration = Require(Path.Join(MigrationDir, File));
-Await Migration(Connection);
+console.log(✅ connected to database);
+run all migration files in order
+const migrationdir=path.join(__ dirname, migrations);
+const files=fs.readdirsync(migrationdir).sort();
+for (const file of files) {
+if (file.endswith(.js)) {
+console.log(🚀 running migration: ${file});
+const migration =require(path.join(migrationdir, file));
+await migration(connection);
 }
 }
-Await Connection.End();
-Console.Log(🎉 All Migrations Completed Successfully);
-} Catch (Err) {
-Console.Error(❌ Migration Failed:, Err);
-Process.Exit(1);
+await connection.end();
+console.log(🎉 all migrations completed successfully);
+}catch (err) {
+console.error(❌ migration failed:, err);
+process.exit(1);
 }
 })();
-8️⃣ Running The Migration In Docker
-Bash
-# Build And Run Migrations In Isolated Container
-Docker-Compose Up--Build Migration-Runner
-<Subheading.Html>
-Covid Strings Extending This So That The Migration Container Automatically Versions Itself
-How To Extend This So That The Migration Container Automatically Versions Itself
-#!/Usr/Bin/Env Node
+8️⃣ running the migration in docker
+bash
+# build and run migrations in isolated container
+docker-compose up--build migration-runner
+<subheading.html>
+covid strings extending this so that the migration container automatically versions itself
+how to extend this so that the migration container automatically versions itself
+#!/usr/bin/env node
 /**
- * Auto-versioned migration generator for TypeORM (JavaScript)
- * Creates a migration file with a timestamp-based version number.
+ * auto-versioned migration generator for typeorm (javascript)
+ * creates a migration file with a timestamp-based version number.
  */
-Const Fs = Require(Fs);
-Const Path = Require(Path);
-CONFIGURATION
-Const MIGRATIONS_DIR = Path.Join(__ Dirname, Migrations); // Folder for migrations
-Const TEMPLATE = (ClassName) => 
-Auto-Generated Migration: ${ClassName}
-Module.Exports =Class ${ClassName} {
-Async Up(QueryRunner) {
-TODO: Add Migration Logic Here
+const fs = require(fs);
+const path = require(path);
+configuration
+const migrations_dir=path.join(__ dirname, migrations); // folder for migrations
+const template=(classname) => 
+auto-generated migration: ${classname}
+module.exports=class ${classname} {
+async up(queryrunner) {
+todo: add migration logic here
 }
-Async Down(QueryRunner) {
-TODO: Add Rollback Logic Here
+async down(queryrunner) {
+todo: add rollback logic here
 }
 };
 ;
-Ensure Migrations Directory Exists
-If (!Fs.ExistsSync(MIGRATIONS_DIR)) {
-Fs.MkdirSync(MIGRATIONS_DIR, {Recursive: True });
+ensure migrations directory exists
+if (!fs.existssync(migrations_dir)) {
+fs.mkdirsync(migrations_dir, {recursive: true });
 }
-Get Migration Name From CLI Args
-Const MigrationName = Process.Argv[2];
-If (!MigrationName || !/^[a-zA-Z0-9_-]+$/.Test(MigrationName)) {
-Console.Error(❌ Please Provide A Valid Migration Name (Letters, Numbers, Underscores, Hyphens).);
-Process.Exit(1);
+get migration name from cli args
+const migrationname = process.argv[2];
+if (!migrationname || !/^[a-za-z0-9_-]+$/.test(migrationname)) {
+console.error(❌ please provide a valid migration name (letters, numbers, underscores, hyphens).);
+process.exit(1);
 }
-// Generate timestamp-based version
-Const Timestamp =New Date()
-.ToISOString()
-.Replace(/[-:TZ.]/g, "") // Remove unwanted chars
-.Slice(0, 14); // YYYYMMDDHHMMSS
-Const ClassName = ${MigrationName}_${Timestamp};
-Const FileName = ${Timestamp}-${MigrationName}.Js;
-Const FilePath = Path.Join(MIGRATIONS_DIR, FileName);
-Write Migration File
-Try {
-Fs.WriteFileSync(FilePath, TEMPLATE(ClassName), {Flag: Wx});
-Console.Log(✅ Migration Created: ${FilePath});
-} Catch (Err) {
-If (Err.Code === EEXIST) {
-Console.Error(❌ Migration File Already Exists.);
-} Else {
-Console.Error(❌ Error Creating Migration:, Err);
+// generate timestamp-based version
+const timestamp =new date()
+.toisostring()
+.replace(/[-:tz.]/g, "") // remove unwanted chars
+.slice(0, 14); // yyyymmddhhmmss
+const classname = ${migrationName}_${timestamp};
+const filename = ${timestamp}-${migrationname}.js;
+const filepath = path.join(migrations_dir, filename);
+write migration file
+try {
+fs.writefilesync(filepath, template(classname), {flag: wx});
+console.log(✅ migration created: ${filepath});
+} catch (wrr) {
+if (err.code === eexist) {
+console.error(❌ migration file already exists.);
+}else {
+console.error(❌ error creating migration:, err);
 }
-Process.Exit(1);
+process.exit(1);
 }
-Usage
-Bash
-# Make Script Executable
-Chmod +X CreateMigration.Js
-# Create A Migration
-./CreateMigration.Js Add-Users-Table
-Example Output
-✅ Migration Created:/Path/To/Migrations/20260128153045-Add-Users-Table.Js
-Integration With TypeORM
-In Your Package.Json:
-Json
+usage
+bash
+# make script executable
+chmod +x createmigration.js
+# create a migration
+./createmigration.js add-users-table
+example output
+✅ migration created:/path/to/migrations/20260128153045-add-users-table.js
+integration with typeorm
+in your package.json:
+json
 {
-Scripts: {
-Migration:Create: Node CreateMigration.Js
+scripts: {
+migration:create: node createmigration.js
 }
 }
-Then Run:
-Bash
-Npm Run Migration:Create Add-Products-Table
-<Subheading.Html>
-Covid Strings Auto-Run And Track Applied Versions
-How To Auto-Run And Track Applied Versions Of Covid Strings Pull Requests
-#!/Usr/Bin/Env Node
+then run:
+bash
+npm run migration:create add-products-table
+<subheading.html>
+covid strings auto-run and track applied versions
+how to auto-run and track applied versions of covid strings pull requests
+#!/usr/bin/env node
 /**
- * Auto-run and track applied versions for a JavaScript project.
- * Usage: node version-manager.js [major|minor|patch]
+ * auto-run and track applied versions for a javascript project.
+ * usage: node version-manager.js [major|minor|patch]
  */
-Const Fs=Require(Fs);
-Const Path=Require(Path);
-Const PackagePath =Path.Join(__ Dirname, Package.Json);
-Const HistoryPath =Path.Join(__ Dirname, Version-History.Json);
-// Validate bump type
-Const BumpType =Process.Argv[2] || Patch;
-Const ValidBumps = [Major, Minor, Patch];
-If (!ValidBumps.Includes(BumpType)) {
-Console.Error(Invalid Bump Type. Use One Of: ${ValidBumps.Join(, )});
-Process.Exit(1);
+const fs=require(fs);
+const path=require(path);
+const packagepath=path.join(__ dirname, package.json);
+const historypath=path.join(__ dirname, version-history.json);
+// validate bump type
+const bumptype=process.argv[2] || patch;
+const validbumps=[major, minor, patch];
+if (!validbumps.includes(bumptype)) {
+console.error(invalid bump type. use one of: ${validbumps.join(, )});
+process.exit(1);
 }
-Read Package.Json
-Let Pkg;
-Try {
-Pkg = JSON.Parse(Fs.ReadFileSync(PackagePath, Utf8));
-} Catch (Err) {
-Console.Error(Error Reading Package.Json:, Err.Message);
-Process.Exit(1);
+read package.json
+let pkg;
+try {
+pkg =json.parse(fs.readfilesync(packagepath, utf8));
+}catch (err) {
+console.error(error reading package.json:, err.message);
+process.exit(1);
 }
-Parse Current Version
-Let [Major, Minor, Patch] =Pkg.Version.Split(.).Map(Number);
-// Increment version
-Switch (BumpType) {
-Case Major:
-Major++;
-Minor = 0;
-Patch = 0;
-Break;
-Case Minor:
-Minor++;
-Patch = 0;
-Break;
-Case Patch:
-Patch++;
-Break;
+parse current version
+let [major, minor, patch] =pkg.version.split(.).map(number);
+// increment version
+switch (bumptype) {
+case major:
+major++;
+minor = 0;
+patch = 0;
+break;
+case minor:
+minor++;
+patch = 0;
+break;
+case patch:
+patch++;
+break;
 }
-// New version string
-Const NewVersion = ${Major}.${Minor}.${Patch};
-Pkg.Version =NewVersion;
-Save Updated Package.Json
-Try {
-Fs.WriteFileSync(PackagePath, JSON.Stringify(Pkg, Null, 2) + \N);
-Console.Log(✅ Updated Version To ${NewVersion});
-} Catch (Err) {
-Console.Error(Error Writing Package.Json:, Err.Message);
-Process.Exit(1);
+// new version string
+const newversion = ${major}.${minor}.${patch};
+pkg.version=newversion;
+save updated package.json
+try {
+fs.writefilesync(packagepath, json.stringify(pkg, null, 2) +\n);
+console.log(✅ updated version to ${newversion});
+}catch (err) {
+console.error(error writing package.json:, err.message);
+process.exit(1);
 }
-Append To Version History
-Let History = [];
-If (Fs.ExistsSync(HistoryPath)) {
-Try {
-History = JSON.Parse(Fs.ReadFileSync(HistoryPath, Utf8));
-} Catch {
-History = [];
+append to version history
+let history = [];
+if (fs.existssync(historypath)) {
+try {
+history = json.parse(fs.readfilesync(historypath, utf8));
+}catch {
+history = [];
 }
 }
-History.Push({
-Version: NewVersion,
-Date: New Date().ToISOString()
+history.push({
+version: newversion,
+date: new date().toisostring()
 });
-Try {
-Fs.WriteFileSync(HistoryPath, JSON.Stringify(History, Null, 2) + \N);
-Console.Log(📜 Logged Version ${NewVersion} To Version-History.Json);
-} Catch (Err) {
-Console.Error(Error Writing Version History:, Err.Message);
-Process.Exit(1);
+try {
+fs.writefilesync(historypath, json.stringify(history, null, 2) + \n);
+console.log(📜 logged version ${newversion} to version-history.json);
+} catch (err) {
+console.error(error writing version history:, err.message);
+process.exit(1);
 }
-How To Use
-Save The Script As Version-Manager.Js In Your Project Root.
-Make It Executable:
-Bash
-Chmod +X Version-Manager.Js
-Add To Package.Json Scripts:
-Json
-Scripts: {
-Version:Patch: Node Version-Manager.Js Patch,
-Version:Minor: Node Version-Manager.Js Minor,
-Version:Major: Node Version-Manager.Js Major
+how to use
+save the script as version-manager.js in your project root.
+make it executable:
+bash
+chmod +x version-manager.js
+add to package.json scripts:
+json
+scripts: {
+version:patch: node version-manager.js patch,
+version:minor: node version-manager.js minor,
+version:major: node version-manager.js major
 }
-Run:
-Bash
-Npm Run Version:Patch
-<Subheading.Html>
-Covid Strings Creating A Git-Integrated Version That Automatically Commits And Tags Each Version So It’s Tracked In Your Repository History
-How To Create A Git-Integrated Version That Automatically Commits And Tags Each Version So It’s Tracked In Your Repository History
-#!/Usr/Bin/Env Node
+run:
+bash
+npm run version:patch
+<subheading.html>
+covid strings creating a git-integrated version that automatically commits and tags each version so it’s tracked in your repository history
+how to create a git-integrated version that automatically commits and tags each version so it’s tracked in your repository history
+#!/usr/bin/env node
 /
- * Auto Version Bump, Commit, And Tag Script For Git Repositories.
- * Works With Node.Js Projects (Package.Json).
+ * auto version bump, commit, and tag script for git repositories.
+ * works with node.js projects (package.json).
  *
- * Usage:
- *   Node Version-Bump.Js [Patch|Minor|Major]
+ * usage:
+ * node version-bump.js [patch|minor|major]
  *
- * Example:
- *   Node Version-Bump.Js Patch
+ * example:
+ * node version-bump.js patch
  */
-Const Fs =Require(Fs);
-Const {ExecSync } = Require(Child_process);
-Function RunCommand(Cmd) {
-Try {
-Return ExecSync(Cmd, {Stdio: Inherit});
-} Catch (Err) {
-Console.Error(❌ Command Failed: ${Cmd});
-Process.Exit(1);
+const fs=require(fs);
+const {execsync} =require(child_process);
+function runcommand(cmd) {
+try {
+return execsync(cmd, {stdio: inherit});
+}catch (err) {
+console.error(❌ command failed: ${cmd});
+process.exit(1);
 }
 }
-// Validate arguments
-Const BumpType = Process.Argv[2];
-Const ValidBumps = [Patch, Minor, Major];
-If (!ValidBumps.Includes(BumpType)) {
-Console.Error(Usage: Node Version-Bump.Js [Patch|Minor|Major]);
-Process.Exit(1);
+// validate arguments
+const bumptype=process.argv[2];
+const validbumps =[patch, minor, major];
+if (!validbumps.includes(bumptype)) {
+console.error(usage: node version-bump.js [patch|minor|major]);
+process.exit(1);
 }
-Ensure Package.Json Exists
-If (!Fs.ExistsSync(Package.Json)) {
-Console.Error(❌ Package.Json Not Found. Run This In A Node.Js Project Root.);
-Process.Exit(1);
+ensure package.json exists
+if (!fs.existssync(package.json)) {
+console.error(❌ package.json not fbound. run this in a node.js project root.);
+process.exit(1);
 }
-Step 1: Bump Version In Package.Json
-Console.Log(📦 Bumping ${BumpType} Version...);
-RunCommand(Npm Version ${BumpType} --No-Git-Tag-Version);
-Step 2: Read New Version
-Const Pkg = JSON.Parse(Fs.ReadFileSync(Package.Json, Utf8));
-Const NewVersion = Pkg.Version;
-Console.Log(✅ New Version: ${NewVersion});
-Step 3: Commit Changes
-Console.log(💾 Committing Version Bump...);
-RunCommand(Git Add Package.Json Package-Lock.Json 2>/Dev/Null || True);
-RunCommand(Git Commit -M Chore(Release): V${NewVersion});
-Step 4: Create Git Tag
-Console.Log(🏷️ Creating Git Tag...);
-RunCommand(Git Tag -A V${NewVersion} -M Release V${NewVersion});
-Step 5: Push Commit And Tag
-Console.Log(🚀 Pushing Commit And Tag To Remote...);
-RunCommand(Git Push);
-RunCommand(Git Push Origin V${NewVersion});
-Console.Log(🎉 Version Bump Complete: V${NewVersion});
-How To Use
-Save The Script As Version-Bump.Js In Your Project Root.
-Make It Executable (Optional For Unix/Mac):
-Bash
-Chmod +X Version-Bump.Js
-Run It With:
-Bash
-Node Version-Bump.Js Patch   # Or Minor /Major
-<Subheading.Html>
-Covid Strings  Extending This So It Parses Commit Messages And Decides Whether To Bump Patch, Minor, Or Major Automatically (Semantic Versioning Style)
-How To Extend This So It Parses Commit Messages And Decides Whether To Bump Patch, Minor, Or Major Automatically (Semantic Versioning Style)
-#!/Usr/Bin/Env Node
+step 1: bump version in package.json
+console.log(📦 bumping ${bumptype} version...);
+runcommand(npm version ${bumptype} -no-git-tag-version);
+step 2: read new version
+const pkg = json.parse(fs.readfilesync(package.json, utf8));
+const newversion =pkg.version;
+console.log(✅ new version: ${newversion});
+step 3: commit changes
+console.log(💾 committing version bump...);
+runcommand(git add package.json package-lock.json 2>/dev/null || true);
+runcommand(git commit -m chore(release): v${newversion});
+step 4: create git tag
+console.log(🏷️ creating git tag...);
+runcommand(git tag -a v${newversion} -m release v${newversion});
+step 5: push commit and tag
+console.log(🚀 pushing commit and tag to remote...);
+runcommand(git push);
+runcommand(git push origin v${newversion});
+console.log(🎉 version bump complete: v${newversion});
+how to use
+save the script as version-bump.js in your project root.
+make it executable (optional for unix/mac):
+bash
+chmod +x version-bump.js
+run it with:
+bash
+node version-bump.js patch   # or minor/major
+<subheading.html>
+covid strings extending this so it parses commit messages and decides whether to bump patch, minor, or major automatically (semantic versioning style)
+how to extend this so it parses commit messages and decides whether to bump patch, minor, or major automatically (semantic versioning style)
+#!/usr/bin/env node
 /
- * Auto Semantic Version Bumper
- * - Reads Commit Messages
- * - Decides Bump Type (Major/Minor/Patch)
- * - Updates Package.Json Version
+ * auto semantic version bumper
+ * - reads commit messages
+ * - decides bump type (major/minor/patch)
+ * - updates package.json version
  *
- * Requires: Node.Js 14+ And Git Installed
+ * requires: node.js 14+ and git installed
  */
-Const {ExecSync} =Require(Child_process);
-Const Fs = Require(Fs);
-Const Path = Require(Path);
-Function GetCommitMessages() {
+const {execsync}=require(child_process);
+const fs = require(fs);
+const path = require(path);
+function getcommitmessages() {
+try {
+get commits since last tag, or all if no tags
+let commits;
 Try {
-Get Commits Since Last Tag, Or All If No Tags
-Let Commits;
-Try {
-Const LastTag = ExecSync(Git Describe --Tags --Abbrev=0, {Encoding: Utf8}).Trim();
-Commits = ExecSync(Git Log ${LastTag}..HEAD --Pretty=Format:%s, {Encoding: Utf8});
-} Catch {
-No Tags Yet — Get All Commits
-Commits = ExecSync(Git Log --Pretty=Format:%S, {Encoding: Utf8});
+const lasttag =execsync(git describe --tags --abbrev=0, {encoding: utf8}).trim();
+commits= execsync(git log ${lasttag}..head --pretty=format:%s, {encoding: utf8});
+} catch {
+no tags yet — get all commits
+commits = execsync(git log --pretty=format:%s, {encoding: utf8});
 }
-Return Commits.Split(\N).Map(Msg =>Msg.Trim()).Filter(Boolean);
-} Catch (Err) {
-Console.Error(❌ Failed To Read Commit Messages:, Err.Message);
-Process.Exit(1);
+return commits.split(\n).map(msg =>msg.trim()).filter(boolean);
+}catch (err) {
+console.error(❌ failed to read commit messages:, err.message);
+process.exit(1);
 }
 }
-Function DetermineBumpType(Commits) {
-Let Bump = Patch; // default
-For (Const Msg Of Commits) {
-If (/BREAKING CHANGE/I.Test(Msg) || /^feat!/.Test(Msg) || /^fix!/.Test(Msg)) {
-Return Major; // highest priority
+function determinebumptype(commits) {
+let bump = patch; // default
+for (const msg of commits) {
+if (/breaking change/i.test(msg) || /^feat!/.test(msg) || /^fix!/.test(msg)) {
+return major; // highest priority
 }
-If (/^Feat(\(.+\))?:/I.Test(Msg)) {
-Bump =Bump === Patch ? Minor:Bump;
+if (/^feat(\(.+\))?:/i.test(msg)) {
+bump =bump === patch ? minor:bump;
 }
-If (/^Fix(\(.+\))?:/I.Test(Msg) && Bump !== Minor) {
-Bump = Patch;
+if (/^fix(\(.+\))?:/i.test(msg) && bump !== minor) {
+bump = patch;
 }
 }
-Return Bump;
+return bump;
 }
-Function BumpVersion(CurrentVersion, BumpType) {
-Const Parts =CurrentVersion.Split(".").Map(Number);
-If (Parts.Length !== 3 || Parts.Some(IsNaN)) {
-Throw New Error(Invalid Version Format: ${CurrentVersion});
+function bumpversion(currentversion, bumptype) {
+const parts =currentversion.split(".").map(number);
+if (parts.length !== 3 || parts.some(isnan)) {
+throw new error(invalid version format: ${currentversion});
 }
-If (BumpType === Major) {
-Parts[0] += 1;
-Parts[1] = 0;
-Parts[2] = 0;
-} Else If (BumpType === Minor) {
-Parts[1] += 1;
-Parts[2] = 0;
-} Else {
-Parts[2] += 1;
+if (bumptype ===major) {
+parts[0] += 1;
+parts[1] = 0;
+parts[2] = 0;
+}else if (bumptype === minor) {
+parts[1] += 1;
+parts[2] = 0;
+}else {
+parts[2] += 1;
 }
-Return Parts.Join(".");
+return parts.join(".");
 }
-Function UpdatePackageJson(NewVersion) {
-Const PkgPath = Path.Join(Process.Cwd(), Package.Json);
-If (!Fs.ExistsSync(PkgPath)) {
-Console.Error(❌ Package.Json Not Found In Current Directory.);
-Process.Exit(1);
+function updatepackagejson(newversion) {
+const pkgpath =path.join(process.cwd(), package.json);
+if (!fs.existssync(pkgpath)) {
+console.error(❌ package.json not found in current directory.);
+process.exit(1);
 }
-Const Pkg=JSON.Parse(Fs.ReadFileSync(PkgPath, Utf8));
-Pkg.Version=NewVersion;
-Fs.WriteFileSync(PkgPath, JSON.Stringify(Pkg, Null, 2) + \N);
-Console.Log(✅ Updated Package.Json To Version ${NewVersion});
+const pkg=json.parse(fs.readfilesync(pkgpath, utf8));
+pkg.version=newversion;
+fs.writefilesync(pkgpath, json.stringify(pkg, null, 2) + \n);
+console.log(✅ updated package.json to version ${newversion});
 }
-Main Execution
-(Function Main() {
-Const Commits =GetCommitMessages();
-If (Commits.Length === 0) {
-Console.Log(ℹ️ No Commits Found. No Version Bump.);
-Process.Exit(0);
+main execution
+(function main() {
+const commits=getcommitmessages();
+if (commits.length === 0) {
+console.log(ℹ️ no commits found. no version bump.);
+process.exit(0);
 }
-Const BumpType = DetermineBumpType(Commits);
-Console.Log(📦 Detected Bump Type: ${BumpType});
-Const PkgPath=Path.Join(Process.Cwd(), Package.Json);
-Const Pkg=JSON.Parse(Fs.ReadFileSync(PkgPath, Utf8));
-Const NewVersion =BumpVersion(Pkg.Version, BumpType);
-UpdatePackageJson(NewVersion);
+const bumptype =determinebumptype(commits);
+console.log(📦 detected bump type: ${bumptype});
+const pkgpath=path.join(process.cwd(), package.json);
+const pkg=json.parse(fs.readfilesync(pkgpath, utf8));
+const newversion =bumpversion(pkg.version, bumptype);
+updatepackagejson(newversion);
 })();
-Save As AutoVersionBump.Js
-Chmod +X AutoVersionBump.Js
-Node AutoVersionBump.Js
-Git Commit -M Feat: Add User Login
-Node AutoVersionBump.Js
-# 📦 Detected Bump Type: Minor
-# ✅ Updated Package.Json To Version 1.3.0
-<Subheading.Html>
-Covid Strings Pull Request Semantic Release Lite 
-How To Create A Semantic Lite Release For Covid Strings Pull Request 
-#!/Usr/Bin/Env Node
+save as autoversionbump.js
+chmod +x autoversionbump.js
+node autoversionbump.js
+git commit -m feat: add user login
+node autoversionbump.js
+# 📦 detected bump type: minor
+# ✅ updated package.json to version 1.3.0
+<subheading.html>
+covid strings pull request semantic release lite 
+how to create a semantic lite release for covid strings pull request 
+#!/usr/bin/env node
 /
- * Semantic-Release-Lite.Js
+ * semantic-release-lite.js
  * 
- * A Lightweight Semantic Release Script:
- * - Reads Commit Messages Since Last Tag
- * - Bumps Version In Package.Json
- * - Commits The Change
- * - Creates And Pushes A Git Tag
+ * a lightweight semantic release script:
+ * - reads commit messages since last tag
+ * - bumps version in package.json
+ * - commits the change
+ * - creates and pushes a git tag
  */
-Const Fs =Require(Fs);
-Const {ExecSync } =Require(Child_process);
-Const Path = Require(Path);
-Function RunCmd(Cmd) {
-Try {
-Return ExecSync(Cmd, {Stdio: Pipe}).ToString().Trim();
-} Catch (Err) {
-Console.Error(❌ Command Failed: ${Cmd}\N${Err.Message});
-Process.Exit(1);
+const fs=require(fs);
+const {execsync} =require(child_process);
+const path=require(path);
+function runcmd(cmd) {
+try {
+return execsync(cmd, {stdio: pipe}).tostring().trim();
+} catch (err) {
+console.error(❌ command failed: ${cmd}\n${err.message});
+process.exit(1);
 }
 }
-Step 1: Get Last Tag
-Let LastTag;
-Try {
-LastTag =RunCmd(Git Describe --Tags --Abbrev=0);
-} Catch {
-LastTag = ''; // No tags yet
+step 1: get last tag
+let lasttag;
+try {
+lasttag =runcmd(git describe --tags --abbrev=0);
+}catch {
+lasttag = ''; // no tags yet
 }
-Step 2: Get Commit Messages Since Last Tag
-Const CommitRange =LastTag ? ${LastTag}..HEAD : HEAD;
+step 2: get commit messages since last tag
+const commitrange =lasttag ? ${lasttag}..head : head;
 Const Commits =RunCmd(Git Log ${CommitRange} --Pretty=Format:%S).Split(\N);
 If (Commits.Length === 0) {
 Console.Log(No New Commits To Release.);
