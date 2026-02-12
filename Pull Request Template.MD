@@ -8188,288 +8188,288 @@ lasttag = ''; // no tags yet
 }
 step 2: get commit messages since last tag
 const commitrange =lasttag ? ${lasttag}..head : head;
-Const Commits =RunCmd(Git Log ${CommitRange} --Pretty=Format:%S).Split(\N);
-If (Commits.Length === 0) {
-Console.Log(No New Commits To Release.);
-Process.Exit(0);
+const commits=runcmd(git log ${commitrange} --pretty=format:%s).split(\n);
+if (commits.length === 0) {
+console.log(no new commits to release.);
+process.exit(0);
 }
-Step 3: Determine Bump Type
-Let BumpType = Patch;
-If (Commits.Some(Msg => /#Major/I.Test(Msg))) BumpType = Major;
-Else If (Commits.Some(Msg => /#Minor/I.Test(Msg))) BumpType =Minor;
-Console.Log(📦 Detected Bump Type: ${BumpType});
-Step 4: Read And Bump Package.Json
-Const PkgPath = Path.Resolve(Package.Json);
-Const Pkg = JSON.Parse(Fs.ReadFileSync(PkgPath, Utf8));
-Const [Major, Minor, Patch]=Pkg.Version.Split(.).Map(Number);
-Let NewVersion;
-If (BumpType === Major) NewVersion =${Major + 1}.0.0;
-Else If (BumpType === Minor) NewVersion = ${Major}.${Minor + 1}.0;
-Else NewVersion = ${Major}.${Minor}.${Patch + 1};
-Pkg.Version = NewVersion;
-Fs.WriteFileSync(PkgPath, JSON.Stringify(Pkg,Null, 2) + \N);
-Console.Log(✅ Version Bumped To ${NewVersion});
-Step 5: Commit The Change
-RunCmd(Git Add Package.Json);
-RunCmd(Git Commit -M Chore(Release): ${NewVersion});
-Step 6: Create And Push Tag
-RunCmd(Git Tag V${NewVersion});
-RunCmd(Git Push Origin HEAD);
-RunCmd(Git Push Origin V${NewVersion});
-Console.Log(🚀 Release V${NewVersion} Pushed Successfully!);
-Usage
-Save As Semantic-Release-Lite.Js In Your Repo.
-Make It Executable:
-Bash
-Chmod +X Semantic-Release-Lite.Js
-Run After Merging PRs:
-Bash
-./Semantic-Release-Lite.Js
-Optional: GitHub Actions Automation
-You Can Run This Automatically On Main Merges:
-Yaml
-Name: Release
-On:
-Push:
-Branches:
--Main
-Jobs:
-Release:
-Runs-On: Ubuntu-Latest
-Steps:
--Uses: Actions/Checkout@V4
-With:
-Fetch-Depth: 0 # Needed For Tags
--Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 18
--Run: Npm Ci
--Run: ./Semantic-Release-Lite.Js
-Env:
-GITHUB_TOKEN: ${{Secrets.GITHUB_TOKEN }}
-<Subheading.Html>
-Covid Strings Extending This Further So It Also Generates A GitHub Release With Changelog Notes — Making It A Full Semantic-Release-Lite Workflow
-How To Extend This Further So It Also Generates A GitHub Release With Changelog Notes — Making It A Full Semantic-Release-Lite Workflow
-#!/Usr/Bin/Env Node
+step 3: determine bump type
+let bumptype =patch;
+if (commits.some(msg => /#major/i.test(msg))) bumptype =major;
+else if (commits.some(msg => /#minor/i.test(msg))) bumptype=minor;
+console.log(📦 detected bump type: ${bumptype});
+step 4: read and bump package.json
+const pkgpath = path.resolve(package.json);
+const pkg = json.parse(fs.readfilesync(pkgpath, utf8));
+const [major, minor, patch]=pkg.version.split(.).map(number);
+let newversion;
+if (bumptype === major) newversion =${major + 1}.0.0;
+else if (bumptype === minor) newversion = ${major}.${minor + 1}.0;
+else newversion = ${major}.${minor}.${patch + 1};
+pkg.version = newversion;
+fs.writefilesync(pkgpath, json.stringify(pkg,null, 2) + \N);
+console.log(✅ version bumped to ${newversion});
+step 5: commit the change
+runcmd(git add package.json);
+runcmd(git commit -m chore(release): ${newversion});
+step 6: create and push tag
+runcmd(git tag v${newversion});
+runcmd(git push origin head);
+runcmd(git push origin v${newversion});
+console.log(🚀 release v${newversion} pushed successfully!);
+usage
+save as semantic-release-lite.js in your repo.
+make it executable:
+bash
+chmod +x semantic-release-lite.js
+run after merging PRs:
+bash
+./semantic-release-lite.js
+optional: github actions automation
+you can run this automatically on main merges:
+yaml
+name: release
+on:
+push:
+branches:
+-main
+jobs:
+release:
+runs-on: ubuntu-latest
+steps:
+-uses: actions/checkout@v4
+with:
+fetch-depth: 0 # needed for tags
+-uses: actions/setup-node@v4
+with:
+node-version: 18
+-run: npm ci
+-run: ./semantic-release-lite.js
+env:
+github_token: ${{secrets.github_token}}
+<subheading.html>
+covid Strings extending this further so it also generates a github release with changelog notes — making it a full semantic-release-lite workflow
+how to extend this further so it also generates a github release with changelog notes — making it a full semantic-release-lite workflow
+#!/usr/bin/env node
 /
- * Semantic-Release-Lite With GitHub Release
- * Requires: Npm Install @Octokit/Rest Conventional-Changelog Conventional-Recommended-Bump
+ * semantic-release-lite with github release
+ * requires: npm install @octokit/rest conventional-changelog conventional-recommended-bump
  */
-Const Fs =Require(Fs);
-Const {ExecSync } = Require(Child_process);
-Const { Octokit } = Require(@Octokit/Rest);
-Const ConventionalChangelog =Require(Conventional-Changelog);
-Const RecommendedBump =Require(Conventional-Recommended-Bump);
---- CONFIG ---
-Const GITHUB_TOKEN = Process.Env.GITHUB_TOKEN; // Must be set in env
-Const REPO_OWNER = Your-Github-Username;
-Const REPO_NAME = Your-Repo-Name;
---- VALIDATION ---
-If (!GITHUB_TOKEN) {
-Console.Error(❌ Missing GITHUB_TOKEN Environment Variable.);
-Process.Exit(1);
+const fs=require(fs);
+const {execsync } =require(child_process);
+const {octokit } =require(@octokit/rest);
+const conventionalchangelog=require(conventional-changelog);
+const recommendedbump=require(conventional-recommended-bump);
+--- config ---
+const github_token =process.env.github_token; // must be set in env
+const repo_owner=your-github-username;
+const repo_name =your-repo-name;
+--- validation---
+if (!github_token) {
+console.error(❌ missing github_token environment variable.);
+process.exit(1);
 }
---- STEP 1: Determine Next Version ---
-RecommendedBump({Preset: Conventionalcommits}, (Err, Result) => {
-If (Err) {
-Console.Error(Error Determining Version Bump:, Err);
-Process.Exit(1);
+--- step 1: determine next version ---
+recommendedbump({preset: conventionalcommits}, (err, result) => {
+if (err) {
+console.error(error determining version bump:, err);
+process.exit(1);
 }
-Const Pkg = JSON.Parse(Fs.ReadFileSync(Package.Json, Utf8));
-Const CurrentVersion =Pkg.Version;
-Const Semver =Require(Semver);
-Const NewVersion =Semver.Inc(CurrentVersion, Result.ReleaseType);
-If (!NewVersion) {
-Console.Log(No Version Bump Needed.);
-Process.Exit(0);
+const pkg = json.parse(fs.readfilesync(package.json, utf8));
+const currentversion=pkg.version;
+const semver=require(semver);
+const newversion=semver.inc(currentversion, result.releasetype);
+if (!newversion) {
+console.log(no version bump needed.);
+process.exit(0);
 }
-Console.Log(📦 Bumping Version: ${CurrentVersion} → ${NewVersion});
---- STEP 2: Update Package.Json ---
-Pkg.Version =NewVersion;
-Fs.WriteFileSync(Package.Json, JSON.Stringify(Pkg, Null, 2) + \N);
-Commit Version Bump
-ExecSync(Git Add Package.Json);
-ExecSync(Git Commit -M Chore(Release): ${NewVersion});
-ExecSync(Git Tag V${NewVersion});
---- STEP 3: Generate Changelog ---
-Let ChangelogContent = "";
-ConventionalChangelog({Preset: Conventionalcommits})
-.On(Data, (Chunk) => {
-ChangelogContent += Chunk.ToString();
+console.log(📦 bumping version: ${currentversion} → ${newversion});
+--- step 2: update package.json ---
+pkg.version =newversion;
+fs.writefilesync(package.json, json.stringify(pkg, null, 2) + \n);
+commit version bump
+execsync(git add package.json);
+execsync(git commit -m chore(release): ${newversion});
+execsync(git tag v${newversion});
+--- step 3: generate changelog ---
+let changelogcontent = "";
+conventionalchangelog({preset: conventionalcommits})
+.on(data,(chunk) => {
+changelogcontent +=chunk.tostring();
 })
-.On(End, Async () => {
-Fs.WriteFileSync(CHANGELOG.Md, ChangelogContent);
-ExecSync(Git Add CHANGELOG.Md);
-ExecSync(Git Commit --Amend --No-Edit);
-ExecSync(Git Push Origin Main --Tags);
-Console.Log(📝 Changelog Generated And Committed.);
---- STEP 4: Create GitHub Release ---
-Const Octokit =New Octokit({Auth: GITHUB_TOKEN });
-Try {
-Await Octokit.Repos.CreateRelease({
-Owner: REPO_OWNER,
-Repo: REPO_NAME,
-Tag_name: V${NewVersion},
-Name: V${NewVersion},
-Body: ChangelogContent,
-Draft: False,
-Prerelease: False,
+.on(end, async () => {
+fs.writefilesync(change log.md, changelogcontent);
+execsync(git add changelog.md);
+execsync(git commit --amend --no-edit);
+execsync(git push origin main --tags);
+console.log(📝 changelog generated and committed.);
+--- step 4: create github release ---
+const octokit=new octokit({auth: github_token});
+try {
+await octokit.repos.createrelease({
+owner: repo_owner,
+repo: repo_name,
+tag_name: v${newversion},
+name: v${newversion},
+body: changelogcontent,
+draft: false,
+prerelease: false,
 });
-Console.Log(🚀 GitHub Release V${NewVersion} Created Successfully.);
-} Catch (ReleaseErr) {
-Console.Error(❌ Failed To Create GitHub Release:, ReleaseErr);
-Process.Exit(1);
+console.log(🚀 github release v${newversion} created successfully.);
+}catch (releaseerr) {
+console.error(❌ failed to create github release:, releaseerr);
+process.exit(1);
 }
 });
 });
-How To Use
-Install Dependencies:
-Bash
-Npm Install @Octokit/Rest Conventional-Changelog Conventional-Recommended-Bump Semver
-Set Your GitHub Token (With Repo Scope):
-Bash
-Export GITHUB_TOKEN=Your_personal_access_token
-Update Config In The Script:
-Js
-Const REPO_OWNER = Your-Github-Username;
-Const REPO_NAME = Your-Repo-Name;
-Run The Script:
-Bash
-Node Release.Js
-<Subheading.Html>
-Covid Strings Extending This Further So It Also Publishes To Npm After Creating The GitHub Release — Making It A Full CI/CD Release Pipeline
-How To Extend This Further So It Also Publishes To Npm After Creating The GitHub Release — Making It A Full CI/CD Release Pipeline
-Name: Release And Publish
-On:
-Push:
-Tags:
-- V* # Trigger On Version Tags Like V1.0.0
-Jobs:
-Release:
-Runs-On: Ubuntu-Latest
-Steps:
--Name: Checkout Repository
-Uses: Actions/Checkout@V4
-- Name: Setup Node.Js
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 20
-Registry-Url: Https://Registry.Npmjs.Org
--Name: Install Dependencies
-Run: Npm Ci
--Name: Run Tests
-Run: Npm Test
--Name: Create GitHub Release
-Uses: Softprops/Action-Gh-Release@V2
-With:
-Generate_release_notes: True
-Env:
-GITHUB_TOKEN: ${{Secrets.GITHUB_TOKEN }}
-- Name: Publish To Npm
-Run: Npm Publish --Access Public
-Env:
-NODE_AUTH_TOKEN: ${{Secrets.NPM_TOKEN }}
-<Subheading.Html>
-Covid Strings Extending This Further So It Automatically Bumps The Version In Package.Json And Tags It Before Running This Pipeline — Making It A Fully Automated Release Flow 
-How To Extend This Further So It Automatically Bumps The Version In Package.Json And Tags It Before Running This Pipeline — Making It A Fully Automated Release Flow 
-Name: Automated Release
-On:
-Push:
-Branches:
--Main  # Trigger Only On Main Branch Pushes
-Jobs:
-Release:
-Runs-On: Ubuntu-Latest
-Steps:
-# 1. Checkout Repo With Full History (Needed For Tagging)
-- Name: Checkout Repository
-Uses: Actions/Checkout@V4
-With:
-Fetch-Depth: 0
-# 2. Setup Node.Js
--Name: Setup Node.Js
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 20
-# 3. Install Dependencies
--Name: Install Dependencies
-Run: Npm Ci
-# 4. Run Version Bump Script
--Name: Bump Version And Tag
-Run: Node Scripts/Bump-Version.Js
-Env:
-GITHUB_TOKEN: ${{Secrets.GITHUB_TOKEN }}
-# 5. Push Changes (Package.Json +Tag)
--Name: Push Changes
-Run: |
-Git Config User.Name Github-Actions[Bot]
-Git Config User.Email Github-Actions[Bot]@Users.Noreply.Github.Com
-Git Push Origin Main --Follow-Tags
-Version Bump Script (Scripts/Bump-Version.Js)
-#!/Usr/Bin/Env Node
+how to use
+install dependencies:
+bash
+npm install @octokit/rest conventional-changelog conventional-recommended-bump semver
+set your github token (with repo scope):
+bash
+export github_token=your_personal_access_token
+update config in the script:
+js
+const repo_owner =your-github-username;
+const repo_name =your-repo-name;
+run the script:
+bash
+node release.js
+<subheading.html>
+covid strings extending this further so it also publishes to npm after creating the github release — making it a full ci/cd release pipeline
+how to extend this further so it also publishes to npm after creating the github release — making it a full ci/cd release pipeline
+name: release and publish
+on:
+push:
+tags:
+- v* # trigger on version tags like v1.0.0
+jobs:
+release:
+runs-on: ubuntu-latest
+steps:
+-name: checkout repository
+uses: actions/checkout@v4
+-name: setup node.js
+uses: actions/setup-node@v4
+with:
+node-version: 20
+registry-url: https://registry.npmjs.org
+-name: install dependencies
+run: npm ci
+-name: run tests
+run: npm test
+-name: create github release
+uses: softprops/action-gh-release@v2
+with:
+generate_release_notes: true
+env:
+github_token: ${{secrets.github_token}}
+-name: publish to npm
+run: npm publish --access public
+env:
+node_auth_token: ${{secrets.npm_token}}
+<subheading.html>
+covid strings extending this further so it automatically bumps the version in package.json and tags it before running this pipeline — making it a fully automated release flow 
+how to extend this further so it automatically bumps the version in package.json and tags it before running this pipeline — making it a fully automated release flow 
+name: automated release
+on:
+push:
+branches:
+-main  # trigger only on main branch pushes
+jobs:
+release:
+runs-on: ubuntu-latest
+steps:
+# 1. checkout repo with full history (needed for tagging)
+-name: checkout repository
+uses: actions/checkout@v4
+with:
+fetch-depth: 0
+# 2. setup node.js
+-name: setup node.js
+uses: actions/setup-node@v4
+with:
+node-version: 20
+# 3. install dependencies
+-name: install dependencies
+run: npm ci
+# 4. run version bump script
+-name: bump version and tag
+run: node scripts/bump-version.js
+env:
+github_token: ${{secrets.github_token}}
+# 5. push changes (package.json +tag)
+-name: push changes
+run: |
+git config user.name github-actions[bot]
+git config user.email github-actions[bot]@users.noreply.github.com
+git push origin main --follow-tags
+version bump script (scripts/bump-Version.Js)
+#!/usr/bin/env node
 /
- * Script To Automatically Bump Version In Package.Json,
- * Commit The Change, And Create A Git Tag.
+ * script to automatically bump version in package.json,
+ * commit the change, and create a git tag.
  * 
- * Supports: Patch, Minor, Major Bumps.
- * Can Be Extended To Parse Commit Messages For Semantic Versioning.
+ * supports: patch, minor, major bumps.
+ * can be extended to parse commit messages for semantic versioning.
  */
-Const Fs = Require(Fs);
-Const {ExecSync} =Require(Child_process);
-Try {
-Read Package.Json
-Const PkgPath = ./Package.Json;
-Const Pkg = JSON.Parse(Fs.ReadFileSync(PkgPath, Utf8));
-Decide Bump Type (Default:Patch)
-You Can Enhance This To Parse Commit Messages For Feat, Fix, Etc.
-Const BumpType =Process.Env.BUMP_TYPE || Patch;
-Run Npm Version To Bump And Tag
-ExecSync(Npm Version ${BumpType} --No-Git-Tag-Version, {Stdio: Inherit});
-Read Updated Version
-Const UpdatedPkg = JSON.Parse(Fs.ReadFileSync(PkgPath, Utf8));
-Const NewVersion = UpdatedPkg.Version;
-Commit Changes
-ExecSync(Git Add Package.Json Package-Lock.Json, {Stdio: Inherit});
-ExecSync(Git Commit -M Chore(Release): V${NewVersion}, {Stdio: Inherit});
-Create Git Tag
-ExecSync(Git Tag V${NewVersion}, {Stdio: Inherit});
-Console.Log(✅ Version Bumped To ${NewVersion} And Tagged.);
-} Catch (Err) {
-Console.Error(❌ Failed To Bump Version:,Err);
-Process.Exit(1);
+const fs =require(fs);
+const {execsync} =require(child_process);
+try {
+read package.json
+const pkgpath = ./package.json;
+const pkg =json.parse(fs.readfilesync(pkgpath,utf8));
+decide bump type (default:patch)
+you can enhance this to parse commit messages for feat, fix, etc.
+const bumptype=process.env.bump_type || patch;
+run npm version to bump and tag
+execsync(npm version ${bumptype} --no-git-tag-version, {stdio: inherit});
+read updated version
+const updatedpkg =json.parse(fs.readfilesync(pkgpath, utf8));
+const newversion =updatedpkg.version;
+commit changes
+execsync(git add package.json package-lock.json, {stdio: inherit});
+execsync(git commit -m chore(release): v${newversion}, {stdio: inherit});
+create git tag
+execsync(git tag v${newversion}, {stdio: inherit});
+console.log(✅ version bumped to ${newversion} and tagged.);
+} catch (err) {
+console.error(❌ failed to bump version:,err);
+process.exit(1);
 }
-<Subheading.Html>
-Covid Strings Extend This Script So It Automatically Detects The Bump Type From Commit Messages And Applies Semantic Versioning Without Manual BUMP_TYPE Setting — Making It Truly Hands-Off 
-How To Extend This Script So It Automatically Detects The Bump Type From Commit Messages And Applies Semantic Versioning Without Manual BUMP_TYPE Setting — Making It Truly Hands-Off 
-#!/Usr/Bin/Env Node
+<subheading.html>
+covid strings extend this script so it automatically detects the bump type from commit messages and applies semantic versioning without manual bump_type setting — making it truly hands-off 
+how to extend this script so it automatically detects the bump type from commit messages and applies semantic versioning without manual bump_type setting — making it truly hands-off 
+#!/usr/bin/env node
 /
- * Auto Semantic Version Bump Script
+ * auto semantic version bump script
  * ---------------------------------
- * Detects Bump Type From Commit Messages And Updates Package.Json Automatically.
- * Rules:
- *   - BREAKING CHANGE Or Feat! → Major
- *   - Feat → Minor
- *   - Fix Or Others → Patch
+ * detects bump type from commit messages and updates package.json automatically.
+ * rules:
+ *   - breaking change or feat! → major
+ *   - feat → minor
+ *   - fix or others → patch
  */
-Const {ExecSync} =Require(Child_process);
-Const Fs = Require(Fs);
-Const Path = Require(Path);
-Function RunCommand(Cmd) {
-Try {
-Return ExecSync(Cmd, {Encoding: Utf8 }).Trim();
-} Catch (Err) {
-Console.Error(Error Running Command: ${Cmd}\N, Err.Message);
-Process.Exit(1);
+const {execsync}=require(child_process);
+const fs = require(fs);
+const path =require(path);
+function runcommand(cmd) {
+try {
+return execsync(cmd, {encoding: utf8 }).trim();
+} catch (err) {
+console.error(error running command: ${cmd}\n, err.message);
+process.exit(1);
 }
 }
-Step 1: Get last Git tag
-Let LastTag;
-Try {
-LastTag = RunCommand(Git Describe --Tags --Abbrev=0);
-} Catch {
-LastTag = ""; // No tags yet
+step 1: get last git tag
+let lasttag;
+try {
+lasttag = runcommand(git describe --tags --abbrev=0);
+} catch {
+lasttag = ""; // no tags yet
 }
-Step 2: Get Commit Messages Since Last Tag
+step 2: get commit messages since last tag
 Const CommitRange = LastTag ? ${LastTag}..HEAD : HEAD;
 Const Commits = RunCommand(Git Log ${CommitRange} --Pretty=Format:%S%N%B).Split(\N);
 // Step 3: Determine bump type
