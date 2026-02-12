@@ -8470,166 +8470,165 @@ lasttag = runcommand(git describe --tags --abbrev=0);
 lasttag = ""; // no tags yet
 }
 step 2: get commit messages since last tag
-Const CommitRange = LastTag ? ${LastTag}..HEAD : HEAD;
-Const Commits = RunCommand(Git Log ${CommitRange} --Pretty=Format:%S%N%B).Split(\N);
-// Step 3: Determine bump type
-Let BumpType = Patch; // default
-For (Const Msg Of Commits) {
-Const LowerMsg = Msg.ToLowerCase();
-If (LowerMsg.Includes(Breaking Change) || /feat!/.Test(LowerMsg)) {
-BumpType = Major;
-Break; // highest priority
-} Else If (LowerMsg.StartsWith(Feat)) {
-BumpType =BumpType === Patch? Minor :BumpType;
+const commitrange = lasttag ? ${lasttag}..head : head;
+const commits = runcommand(git log ${commitrange} --pretty=format:%s%n%b).split(\n);
+// step 3: determine bump type
+let bumptype = patch; // default
+for (const msg of commits) {
+const Lowermsg =msg.tolowercase();
+if (lowermsg.includes(breaking change) || /feat!/.test(lowermsg)) {
+bumptype =major;
+break; // highest priority
+} else if (lowermsg.startswith(feat)) {
+bumptype=bumptype ===patch? minor :bumptype;
 }
 }
-Step 4: Read And Update Package.Json
-Const PkgPath = Path.Join(Process.Cwd(), Package.Json);
-Const Pkg = JSON.Parse(Fs.ReadFileSync(PkgPath, Utf8));
-Function BumpVersion(Version, Type) {
-Const Parts = Version.Split(.).Map(Number);
-If (Type === Major) {
-Parts[0] += 1;
-Parts[1] = 0;
-Parts[2] = 0;
-} Else If (Type === Minor) {
-Parts[1] += 1;
-Parts[2] = 0;
-} Else {
-Parts[2] += 1;
+step 4: read and update package.json
+const pkgpath =path.join(process.cwd(), package.json);
+const pkg = json.parse(fs.readfilesync(pkgpath, utf8));
+function bumpversion(version, type) {
+const parts=version.split(.).Map(Number);
+if (type ===major) {
+parts[0] += 1;
+parts[1] = 0;
+parts[2] = 0;
+}else if (type ===minor) {
+parts[1] += 1;
+parts[2] = 0;
+}else {
+parts[2] += 1;
 }
-Return Parts.Join(.);
+return parts.join(.);
 }
-Const NewVersion =BumpVersion(Pkg.Version, BumpType);
-Pkg.Version = NewVersion;
-Fs.WriteFileSync(PkgPath, JSON.Stringify(Pkg, Null, 2) + \N);
-Console.Log(Detected Bump Type: ${BumpType});
-Console.Log(Version Updated: ${Pkg.Version});
-Step 5: Commit And Tag
-RunCommand(Git Add Package.Json);
-RunCommand(Git Commit -M Chore(Release): ${Pkg.Version});
-RunCommand(Git Tag V${Pkg.Version});
-Console.Log(Tagged Release V${Pkg.Version});
-<Subheading.Html>
-Covid Strings Extend This Script So It Automatically Detects The Bump Type From Commit Messages And Applies Semantic Versioning Without Manual BUMP_TYPE Setting — Making It Truly Hands-Off
-How To Extend This Script So It Automatically Detects The Bump Type From Commit Messages And Applies Semantic Versioning Without Manual BUMP_TYPE Setting — Making It Truly Hands-Off
-Uto-Bump.Js In Your Repo.
-Make Executable:
-Bash
-Chmod +X Auto-Bump.Js
-Run After Commits:
-Bash
-Node Auto-Bump.Js
-Push Tags:
-Bash
-Git Push --FollowTags
-<Subheading.Html>
-Covid Strings Extend This Into A GitHub Actions Workflow So Releases Happen Hands-Off 
-How To Extend This Into A GitHub Actions Workflow So Releases Happen Hands-Off  
-Name: Release
-On:
-Push:
-Tags:
--V* # Trigger Only When Pushing Tags Like V1.0.0
-Jobs:
-Release:
-Runs-On: Ubuntu-Latest
-Steps:
-# 1. Checkout Repository
--Name: Checkout Code
-Uses: Actions/Checkout@V4
-# 2. Setup Node.Js
--Name: Setup Node.Js
-Uses: Actions/Setup-Node@V4
-With:
-Node-Version: 20 # Adjust To Your Projects Node.Js Version
-Registry-Url: Https://Registry.Npmjs.Org
-# 3. Install Dependencies
--Name: Install Dependencies
-Run: Npm Ci
-# 4. Run Tests
--Name: Run Tests
-Run: Npm Test
-# 5. Build Project (If Applicable)
--Name: Build Project
-Run: Npm Run Build --If-Present
-# 6. Publish To Npm (Only If NPM_TOKEN Is Set)
--Name: Publish To Npm
-If: Env.NPM_TOKEN != ''
-Run: Npm Publish
-Env:
-NODE_AUTH_TOKEN: ${{Secrets.NPM_TOKEN }}
-# 7. Create GitHub Release
--Name: Create GitHub Release
-Uses: Softprops/Action-Gh-Release@V2
-With:
-Generate_release_notes: True
-Env:
-GITHUB_TOKEN: ${{Secrets.GITHUB_TOKEN }}
-Git Tag V1.0.0
-Git Push Origin V1.0.0
-<Subheading.Html>
-Covid Strings Automating And Tagging Docker Images To Maintain A Clean And Manageable Container Registry
-How To Automate And Tag Docker Images To Maintain A Clean And Manageable Container Registry For A Covid Strings Pull Request
+const newversion=bumpversion(pkg.version, bumptype);
+pkg.version =newversion;
+fs.writefilesync(pkgpath, json.stringify(pkg, null, 2) + \n);
+console.log(detected bump type: ${bumptype});
+console.log(version updated: ${pkg.version});
+step 5: commit and tag
+runcommand(git add package.json);
+runcommand(git commit -m chore(release): ${pkg.version});
+runcommand(git tag V${pkg.version});
+console.log(tagged release v${pkg.version});
+<subheading.html>
+covid strings extend this script so it automatically detects the bump type from commit messages and applies semantic versioning without manual bump_type setting — making it truly hands-off
+how to extend this script so it automatically detects the bump type from commit messages and applies semantic versioning without manual bump_type setting — making it truly hands-off
+uto-bump.js in your repo.
+make executable:
+bash
+chmod +x auto-bump.js
+run after commits:
+bash
+node auto-Bump.Js
+push tags:
+bash
+git push --followtags
+<subheading.html>
+covid strings extend this into a github actions workflow so releases happen hands-off 
+how to extend this into a github actions workflow so releases happen hands-off  
+name: release
+on:
+push:
+tags:
+-v* # trigger only when pushing tags like v1.0.0
+jobs:
+release:
+runs-on: ubuntu-latest
+steps:
+# 1. checkout repository
+-name: checkout code
+uses: actions/checkout@v4
+# 2. setup node.js
+-name: setup node.js
+uses: actions/setup-node@v4
+with:
+node-version: 20 # adjust to your projects node.js version
+registry-url: https://registry.npmjs.org
+# 3. install dependencies
+-name: install dependencies
+run: npm ci
+# 4. run tests
+-name: run tests
+run: npm test
+# 5. build project (if applicable)
+-name: build project
+run: npm run build --if-present
+# 6. publish to npm (only if npm_token is set)
+-name: publish to npm
+if: env.npm_token != ''
+run: npm publish
+env:
+node_auth_token: ${{secrets.npm_token }}
+# 7. create github release
+-name: create github release
+uses: softprops/action-gh-release@v2
+with:
+generate_release_notes: true
+env:
+github_token: ${{secrets.github_token}}
+git tag v1.0.0
+git push origin v1.0.0
+<subheading.html>
+covid strings automating and tagging docker images to maintain a clean and manageable container registry
+how to automate and tag docker images to maintain a clean and manageable container registry for a covid strings pull request
 /
- * Docker Image Automation Script
+ * docker image automation script
  * --------------------------------
- * - Builds A Docker Image
- * - Tags It With Version And Latest
- * - Pushes To A Registry
- * - Cleans Up Old Local Images
+ * - builds a docker image
+ * - tags it with version and latest
+ * - pushes to a registry
+ * - cleans up old local images
  *
- * Requirements:
- *   - Node.Js 14+
- *   - Docker CLI Installed And Accessible
+ * requirements:
+ *   - node.js 14+
+ *   - docker cli installed and accessible
  */
-
-Const {ExecSync} =Require(Child_process);
-Const Path = Require(Path);
-===== CONFIGURATION =====
-Const IMAGE_NAME = Myapp; // Your image name
-Const VERSION = 1.0.0;    // Change dynamically if needed
-Const REGISTRY = Docker.Io/Username; // e.g., Docker Hub username or private registry
-Const DOCKERFILE_PATH = Path.Join(__ Dirname, Dockerfile);
-Const CLEANUP_OLD_IMAGES = True; // Set false to skip cleanup
-Helper To Run Shell Commands Safely
-Function RunCommand(Command) {
-Try {
-Console.Log(\N▶ Running: ${Command});
-Const Output =ExecSync(Command, {Stdio: Inherit});
-Return Output;
-} Catch(Error) {
-Console.Error(❌ Error Executing: ${Command});
-Process.Exit(1);
+const {execsync}=require(child_process);
+const path =require(path);
+===== configuration =====
+const image_name =myapp; // your image name
+const version = 1.0.0;   //change dynamically if needed
+const registry=docker.io/username; // e.g., docker hub username or private registry
+const dockerfile_path =path.join(__ dirname, dockerfile);
+const cleanup_old_images=true; //set false to skip cleanup
+helper to run shell commands safely
+function runcommand(command) {
+try {
+console.log(\n▶ running: ${command});
+const output=execsync(command, {stdio: inherit});
+return output;
+}catch(error) {
+console.error(❌ error executing: ${command});
+process.exit(1);
 }
 }
-Function Main() {
-Console.Log(🚀 Starting Docker Automation...);
-Full Image Tags
-Const VersionTag = ${REGISTRY}/${IMAGE_NAME}:${VERSION};
-Const LatestTag = ${REGISTRY}/${IMAGE_NAME}:Latest;
-1️⃣ Build The Docker Image
-RunCommand(Docker Build -T ${VersionTag} -f ${DOCKERFILE_PATH} .);
- 2️⃣ Tag The Image As Latest
-RunCommand(Docker Tag ${VersionTag} ${LatestTag});
-3️⃣ Push Both Tags To The Registry
-RunCommand(Docker Push ${VersionTag});
-RunCommand(Docker Push ${LatestTag});
-4️⃣ Optional: Remove Old Local Images To Save Space
-If (CLEANUP_OLD_IMAGES) {
-Console.Log(🧹 Cleaning Up Old Local Images...);
-RunCommand(Docker Image Prune -F);
+function main() {
+console.log(🚀 starting docker automation...);
+full image tags
+const versiontag = ${registry}/${image_name}:${version};
+const latesttag = ${registry}/${image_name}:latest;
+1️⃣ build the docker image
+runcommand(docker build -t ${versiontag} -f ${dockerfile_path} .);
+ 2️⃣ tag the image as latest
+runcommand(docker tag ${versiontag} ${latesttag});
+3️⃣ push both tags to the registry
+runcommand(docker push ${versiontag});
+runcommand(docker push ${latesttag});
+4️⃣ optional: remove old local images to save space
+if (cleanup_old_images) {
+console.log(🧹 cleaning up old local images...);
+runcommand(docker image prune -f);
 }
-Console.Log(✅ Docker Automation Completed Successfully!);
+console.log(✅ docker automation completed successfully!);
 }
-Main();
-Usage
-Save The Script As Docker-Automation.Js.
-Update The Config Section With Your:
-IMAGE_NAME
-VERSION
-REGISTRY
-Run:
-Bash
-Node Docker-Automation.Js
-Return Filename
+main();
+usage
+save the script as docker-automation.js.
+update the config section with your:
+image_name
+version
+registry
+run:
+bash
+node docker-automation.js
+return filename
