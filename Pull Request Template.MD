@@ -1676,7 +1676,7 @@ test(optimized document still contains essential content, async () => {
 const optimized = await fs.readfile(outputfile, utf8);
 expect(optimized).tomatch(/hello world/);
 });
-# stage 1: eun tests before build
+# stage 1: run tests before build
 from node:20 as tester
 workdir /app
 copy package*.json ./
@@ -1987,9 +1987,9 @@ console.error(❌ missing required environment variables. please set github_toke
 process.exit(1);
 }
 initialize octokit with authentication
-const Octokit = New Octokit({
-auth: GITHUB_TOKEN,
-useragent: Github-Pr-Comment-Script V1.0,
+const octokit = new octokit({
+auth: github_token,
+useragent: github-pr-comment-script v1.0,
 timezone: UTC
 });
 (async () => {
@@ -2156,8 +2156,8 @@ curl -x post http://localhost:3000/data -h content-type: application/json -d {na
 # write request (denied if user lacks write)
 # change permissions in mockauth to [read] and retry
 <subheading.html>
-covid strings role based version where write access is tied to specific roles (E.G., Admin, Editor) Instead Of Just A Write Permission Flag 
-how to create a role based version where write access is tied to specific roles (E.G., Admin, Editor) Instead Of Just A Write Permission Flag For Covid Strings 
+covid strings role based version where write access is tied to specific roles (e.g., admin, editor) instead of just a write permission flag 
+how to create a role based version where write access is tied to specific roles (e.g.,admin, editor) instead of just a write permission flag for covid strings 
 /
  * role-based access control (rbac) example
  * -----------------------------------------
@@ -2996,8 +2996,8 @@ update-changelog: node update-changelog.js
 optional: run before merging into main
 with husky:
 bash
-npx husky Add .Husky/Pre-Push Npm Run Update-Changelog
-in github Actions (Before Merge Step):
+npx husky add.husky/pre-push npm run update-changelog
+in github actions (before merge step):
 yaml
 -name: update changelog
 run: npm run update-changelog
@@ -4017,9 +4017,9 @@ make sure that articles within the newsletter can include future versions of thi
  * requirements:
  *   1. install dependencies: npm install @octokit/rest
  *   2. set environment variables:
- *  GITHUB_TOKEN   - personal access token with repo permissions
- *  REPO_OWNER     - repository owner (username or org)
- *  REPO_NAME      - repository name
+ *  github_token   - personal access token with repo permissions
+ *  repo_owner    - repository owner (username or org)
+ *  repo_name      - repository name
  */
 const {octokit}=require(@octokit/rest);
 const fs=require(fs);
@@ -4173,6 +4173,7 @@ console.warn(no element found for selector: ${selector});
 }
 return updated html
 return isnode ? document.documentelement.outerhtml : document.documentelement.outerhtml;
+}
 example usage
 (async () => {
 const originalhtml= 
@@ -5250,8 +5251,8 @@ console.error(❌ error:, err.message);
 setup instructions
 install dependencies:
 bash
-npm Install Node-Fetch
-set Environment Variables:
+npm install node-fetch
+set environment variables:
 bash
 export github_token=your_github_pat
 export github_owner=your_username_or_org
@@ -5498,14 +5499,14 @@ if (!fs.existssync(gif_path)) {
 throw new error(gif file not found: ${gif_path});
 }
 step 2: upload gif to github via issue comment
-gitHub comments support markdown with image embedding
+github comments support markdown with image embedding
 const giffilename = path.basename(gif_path);
 const gifdata =fs.readfilesync(gif_path);
 option 1: host gif externally (recommended for large files)
 for demo, well use githubs own image hosting via markdown
 you can drag & drop the gif into a comment manually to get a url
 here, we assume you already have a hosted gif url:
-const HostedGifUrl =https://media.giphy.com/media/jix9t2j0ztn9s/giphy.gif;
+const hostedgifurl =https://media.giphy.com/media/jix9t2j0ztn9s/giphy.gif;
 step 3: post comment with gif
 const commentbody = ![gif](${hostedgifurl});
 await octokit.issues.createcomment({
@@ -6046,7 +6047,7 @@ username: username,
 accesskeyid: oldestkey.accesskeyid
 }));
 }
-Step 3: create a new access key
+step 3: create a new access key
 const createresp =await iamclient.send(new createaccesskeycommand({username: username }));
 const newkey = createresp.accesskey;
 console.log(✅ new access key created:);
@@ -7180,17 +7181,17 @@ test(only retry the flaky step, async ({page }) => {
 await page.goto(https://example.com);
 // step 2: login (stable step)
 await page.fill(#username, testuser);
-await page.fill(#password, Password123);
-await page.click(#Login);
+await page.fill(#password, password123);
+await page.click(#login);
 // step 3: flaky element click — retry only this step
 await retrystep(async () => {
 await page.click(#sometimes-fails, {timeout: 2000 });
 await expect(page.locator(#success-message)).tobevisible();
 }, 3, 1000);
 // step 4: verify final state
-await expect(Page.Locator(#Dashboard)).ToBeVisible();
+await expect(page.locator(#dashboard)).tobevisible();
 });
-<subheading.Html>
+<subheading.html>
 covid strings using playwrights built-in fixtures and test extend method to create reusable and maintainable tests
 how to use playwrights built-in fixtures and test extend method to create reusable and maintainable tests
 // @ts-check
@@ -7560,7 +7561,7 @@ src,
 src/components,
 src/utils,
 tests,
-Public
+public
 ];
 // example files to create in each folder
 const sample_files= {
@@ -8248,7 +8249,7 @@ node-version: 18
 env:
 github_token: ${{secrets.github_token}}
 <subheading.html>
-covid Strings extending this further so it also generates a github release with changelog notes — making it a full semantic-release-lite workflow
+covid strings extending this further so it also generates a github release with changelog notes — making it a full semantic-release-lite workflow
 how to extend this further so it also generates a github release with changelog notes — making it a full semantic-release-lite workflow
 #!/usr/bin/env node
 /
